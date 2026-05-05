@@ -1,5 +1,7 @@
 # Agent First
 
+*by Joshua Baer · v0.5, April 2026*
+
 ---
 
 ## Every Product Now Has Two Customers
@@ -310,6 +312,20 @@ Design accordingly.
 ---
 
 *Framework v0.5. April 2026.*
+
+---
+
+## About the author
+
+Josh Baer is the founder and CEO of [Capital Factory](https://capitalfactory.com), the center of gravity for entrepreneurs in Texas. He's been building software companies and accelerators for two decades.
+
+This thesis is part of his ongoing work on how AI agents reshape the way products are designed and used.
+
+**Contact:**
+- 𝕏 [@joshuabaer](https://x.com/joshuabaer)
+- 🐙 [github.com/joshuabaer](https://github.com/joshuabaer)
+- ✉️ [josh@quityourjob.com](mailto:josh@quityourjob.com)
+- 💬 Comments below (preferred for thesis feedback)
 
 ---
 
