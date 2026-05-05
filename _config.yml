@@ -1,5 +1,5 @@
 title: Agent First
-description: Design framework for products built for both humans and AI agents
+description: Every product now has two customers — the human who pays and the agent who decides. A design framework for building products that AI agents can use as primary consumers.
 url: https://agentsfirst.dev
 baseurl: ""
 theme: jekyll-theme-cayman
@@ -7,6 +7,25 @@ markdown: kramdown
 plugins:
   - jekyll-relative-links
   - jekyll-sitemap
+  - jekyll-seo-tag
 relative_links:
   enabled: true
   collections: true
+
+author:
+  name: Joshua Baer
+  twitter: joshuabaer
+
+twitter:
+  username: joshuabaer
+  card: summary_large_image
+
+social:
+  name: Joshua Baer
+  links:
+    - https://twitter.com/joshuabaer
+    - https://github.com/joshuabaer
+
+image: /og-image.png
+
+logo: /og-image.png
