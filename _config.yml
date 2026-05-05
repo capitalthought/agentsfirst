@@ -1,4 +1,4 @@
-title: Agent First
+title: Agents First
 description: Every product now has two customers — the human who pays and the agent who decides. A design framework for building products that AI agents can use as primary consumers.
 url: https://agentsfirst.dev
 baseurl: ""
@@ -29,3 +29,16 @@ social:
 image: /og-image.png
 
 logo: /og-image.png
+
+exclude:
+  - docs/
+  - tools/
+  - bugs/
+  - todo.md
+  - todolist-archive.md
+  - CLAUDE.md
+  - .claude/
+  - .github/
+  - bin/
+  - Gemfile
+  - Gemfile.lock

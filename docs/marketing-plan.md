@@ -1,4 +1,4 @@
-# Agent First — Marketing Plan
+# Agents First — Marketing Plan
 
 *Synthesis of 6 parallel persona-strategist agents (HN/Twitter, PR, podcast/conference, founder/VC propagation, SEO/compounding, enterprise GTM) — 2026-05-04, after agentsfirst.dev v0.5 went live with Giscus comments + working HTTPS.*
 
@@ -27,7 +27,7 @@ Site: <https://agentsfirst.dev> · Repo: <https://github.com/capitalthought/agen
 - **SEO bundle**: meta description + canonical + Twitter/OG card image (1200×630 with the "Two Customers" line) + JSON-LD `TechArticle` schema + anchor IDs on every principle.
   - Why: without this every share renders as bare text on X/LinkedIn/Slack.
   - Mikey can do most of this autonomously; Josh just needs to OK an OG-image draft.
-- **`npx create-agent-first` scaffold** — build v0 (MCP server + AGENTS.md + prep gate + typed state).
+- **`npx create-agents-first` scaffold** — build v0 (MCP server + AGENTS.md + prep gate + typed state).
   - HN strategist flagged this as the converting moment from "interesting essay" → "I just shipped Level 2 in 4 minutes."
   - High effort but **essential** for HN traction.
   - Anti-pattern: don't ship half-working — broken `npx` on launch day kills the thread.
@@ -44,7 +44,7 @@ Five 200-word notes with one specific ask each:
 5. **Maggie Appleton** — has the right audience for "two customers" framing
 
 Also: submit **AI Engineer World's Fair CFP** (closes ~6 weeks pre-event).
-- Title: `Agent First: Designing Products When Your User Is a Tool Call`
+- Title: `Agents First: Designing Products When Your User Is a Tool Call`
 - Abstract: every product has two customers — the human paying and the agent choosing. Walk through 8 implementation principles + 7 anti-patterns drawn from 545 startups at Capital Factory.
 
 ### Week 2 — Coordinated launch day (Tuesday 8:05am ET / 7:05am CT)
@@ -52,11 +52,11 @@ Also: submit **AI Engineer World's Fair CFP** (closes ~6 weeks pre-event).
 | Time | Action | Owner |
 |---|---|---|
 | T-24h | Pre-brief 5 amplifiers complete | Josh |
-| T 8:05am ET | HN submission with title `Agent First: products now have two customers — the human who pays and the agent who decides` | Josh |
+| T 8:05am ET | HN submission with title `Agents First: products now have two customers — the human who pays and the agent who decides` | Josh |
 | T+90s | Josh first-comment with **runnable example** (30-line MCP server vs REST equivalent — token counts + time-to-first-call side-by-side) | Josh |
 | T 9:30am CT | 9-tweet X thread, anchored by Cloudflare Code Mode 99.9% stat. Tweet 1 = hook (NO link — X throttles link-leading threads ~40%). Tweet 9 = link | Josh |
 | T+5min | 3 seeded HN counter-comments from CF mentors with substantive pushback ("isn't this just SDK design?", "Level 4 vs agent swarms?", "$0.50/decision pencils?"). Josh answers within 5 min. Disagreement-with-substance = HN algorithmic catnip | Josh + 3 CF mentors briefed in advance |
-| T+30min | Latent Space pitch email goes out: subject `Agent First: a vendor-neutral design framework after 2 years of MCP chaos`. Exclusive on the podcast taping | Josh |
+| T+30min | Latent Space pitch email goes out: subject `Agents First: a vendor-neutral design framework after 2 years of MCP chaos`. Exclusive on the podcast taping | Josh |
 
 **Anti-patterns to avoid:**
 - "I wrote a thing" tone on HN — penalized by ranker
@@ -88,14 +88,14 @@ Also: submit **AI Engineer World's Fair CFP** (closes ~6 weeks pre-event).
 ### Month 3+ — Enterprise wedge
 **Owner: Josh (high-leverage, unique-to-CF moves)**
 
-- **Capital Factory Agent First Council**: half-day private summit at CF Austin, Q3 2026
+- **Capital Factory Agents First Council**: half-day private summit at CF Austin, Q3 2026
   - 25 architects from CF Innovation Council + defense primes
   - Chatham House rules, Josh moderates
-  - Output: signed "Agent First Charter"
+  - Output: signed "Agents First Charter"
   - Once 5 logos sign, the rest follow
   - **Target #1 logo: AT&T** (Jeremy Legg, CTO; reachable through CF; needs Agentforce narrative ammo). Defense primes (BAE, Raytheon) follow within 90 days because procurement language travels
 - **RFP language pack** — pre-written procurement clauses ("Vendor MUST ship MCP server with <20 verb-first tools, structured errors, and a published Prep Gate"). Distributed via CF Innovation Council legal/procurement reps. **Trojan horse** — once one F500 puts it in an RFP, every vendor scrambles
-- **Microsoft co-published "Agent First Lens"** whitepaper (AWS Well-Architected pattern). Microsoft is on CF Innovation Council and needs Copilot Studio narrative ammo. Target Ignite/Build session
+- **Microsoft co-published "Agents First Lens"** whitepaper (AWS Well-Architected pattern). Microsoft is on CF Innovation Council and needs Copilot Studio narrative ammo. Target Ignite/Build session
 - **Maturity Assessment PDF + scorecard**: 1-page printable scoring any team against the 8 principles + 7 anti-patterns, lands them on the 0-4 ladder. Enterprises adopt frameworks they can score themselves with (SOC 2 / DORA / Well-Architected pattern)
 
 ---
@@ -114,7 +114,7 @@ Also: submit **AI Engineer World's Fair CFP** (closes ~6 weeks pre-event).
 
 1. **This week:** ship the SEO bundle + start the scaffold (Week 0)
 2. **This month:** book Latent Space + submit AI Engineer World's Fair CFP
-3. **This quarter:** convene the Capital Factory Agent First Council with AT&T as target logo #1
+3. **This quarter:** convene the Capital Factory Agents First Council with AT&T as target logo #1
 
 ---
 

@@ -1,11 +1,11 @@
 ---
-title: Agent First
+title: Agents First
 description: Every product now has two customers — the human who pays and the agent who decides. A design framework for building products that AI agents can use as primary consumers.
 image: /og-image.png
 author: Joshua Baer
 ---
 
-# Agent First
+# Agents First
 
 *by Joshua Baer · v0.5, April 2026*
 
@@ -31,7 +31,7 @@ We're early in the same curve. Agent-mediated product interactions are small tod
 
 Most companies build a web UI, maybe expose a REST API, and then — if someone asks — add agent support as an afterthought.
 
-**Agent First** says: design the agent interface first. Ship it first. Make the agent your primary consumer. Then build human UIs as one of many clients — not the only one.
+**Agents First** says: design the agent interface first. Ship it first. Make the agent your primary consumer. Then build human UIs as one of many clients — not the only one.
 
 This is protocol-agnostic. The agent interface might be an MCP server, a CLI, a typed SDK, or a set of function definitions. The principle is the same: design for the computer consumer first.
 
@@ -57,7 +57,7 @@ Today, that happens through:
 - **Documentation and developer content** — "Install our MCP server" or "Use our CLI" alongside "Install our SDK" in your getting-started guide.
 - **Bundling** — IDE extensions and platform integrations that include your agent tools out of the box.
 
-Agent First doesn't eliminate the need for distribution. It compresses everything that happens *after* distribution. The install-to-value gap drops from days to seconds. That's the leverage.
+Agents First doesn't eliminate the need for distribution. It compresses everything that happens *after* distribution. The install-to-value gap drops from days to seconds. That's the leverage.
 
 The pre-activation funnel: Discovery (the agent or developer learns your tool exists) → Evaluation (reads the description, checks trust signals) → Installation (runs the install command) → First agent action (a tool call succeeds) → Repeat usage (the agent returns to your tools). Drop-off happens at every step. Measure each one.
 
@@ -105,14 +105,14 @@ Here is how a company integrates with a traditional SaaS product:
 7. Test
 8. Deploy
 
-Here is how a company connects to an Agent-First product:
+Here is how a company connects to an Agents-First product:
 
 1. Install the agent tool (MCP server, CLI, SDK)
 2. Connect
 
 The agent already knows how to use it because agent tools are self-describing. The tool names, descriptions, and parameter schemas tell the agent everything it needs.
 
-**What this eliminates:** connection boilerplate — SDK installation, auth wiring, basic CRUD code. **What this doesn't eliminate:** data mapping between systems, business logic in the integration layer, compliance requirements, testing against production data. Agent First compresses *connection* cost. *Integration* cost — the hard part — is a function of domain complexity, not protocol choice.
+**What this eliminates:** connection boilerplate — SDK installation, auth wiring, basic CRUD code. **What this doesn't eliminate:** data mapping between systems, business logic in the integration layer, compliance requirements, testing against production data. Agents First compresses *connection* cost. *Integration* cost — the hard part — is a function of domain complexity, not protocol choice.
 
 ### Competitive Moat via Agent Ergonomics
 
@@ -163,7 +163,7 @@ Don't forget to measure the human side:
 
 ---
 
-## What Agent First Gets Wrong
+## What Agents First Gets Wrong
 
 Name these before the principles. Knowing what's broken is more useful than knowing what's ideal.
 
@@ -185,9 +185,9 @@ Name these before the principles. Knowing what's broken is more useful than know
 
 ## The Implementation Principles
 
-Agent First tells you what to prioritize. These principles tell you how to build it.
+Agents First tells you what to prioritize. These principles tell you how to build it.
 
-Some are genuinely new to agent-first systems. Others are established practices — health checks, typed schemas, retry logic — that become critical when agents are your primary operators. The novelty isn't in the individual practices. It's in recognizing which ones matter most when the operator can't improvise.
+Some are genuinely new to agents-first systems. Others are established practices — health checks, typed schemas, retry logic — that become critical when agents are your primary operators. The novelty isn't in the individual practices. It's in recognizing which ones matter most when the operator can't improvise.
 
 | # | Principle | What It Means |
 |---|-----------|---------------|
@@ -225,7 +225,7 @@ Some are genuinely new to agent-first systems. Others are established practices 
 | **0** | No agent access | Human operates all tools through UIs | Baseline |
 | **1** | Agent as Afterthought | Thin API wrappers. No contracts, no validation | Agents can technically use it, but poorly |
 | **2** | Agent-Aware | Usage rules exist. State is typed. Pre-flight checks validate before use | Agents use it reliably. Quality improves |
-| **3** | **Agent-First** | Agent interface designed and shipped first. Agent is primary consumer | Discovery funnel active. Agents recommend your product |
+| **3** | **Agents-First** | Agent interface designed and shipped first. Agent is primary consumer | Discovery funnel active. Agents recommend your product |
 | **4** | Agent-Driven | Agents extend the system for other agents. Self-healing. Multi-model checks | Platform effects. Your tools become infrastructure |
 
 Most companies today are at Level 0 or 1. The opportunity is at Level 3.
@@ -236,7 +236,7 @@ Most companies today are at Level 0 or 1. The opportunity is at Level 3.
 
 ## The Honest Cost
 
-Going Agent First isn't free. Here's what you're signing up for:
+Going Agents First isn't free. Here's what you're signing up for:
 
 **Engineering investment.** Designing good agent tools takes thought. Writing usage rules takes iteration. For a mid-size SaaS product, expect 2-4 weeks of engineering to go from Level 0 to Level 2, and another 4-8 weeks to reach Level 3.
 
@@ -274,7 +274,7 @@ Agent tools give AI programmatic access to create, modify, and delete data in yo
 
 ## Comparison
 
-| | TDD | API First | Mobile First | Agent First |
+| | TDD | API First | Mobile First | Agents First |
 |---|---|---|---|---|
 | **Mantra** | Red-Green-Refactor | Contract before code | Small screen first | Agent interface first |
 | **Primary artifact** | Test suite | OpenAPI spec | Responsive breakpoints | Tool definitions + usage rules |
@@ -282,7 +282,7 @@ Agent tools give AI programmatic access to create, modify, and delete data in yo
 | **Maturity** | 25+ years | 15+ years | 15+ years | < 2 years |
 | **Evidence base** | Extensive | Strong | Strong | Early / emerging |
 
-The maturity gap matters. TDD and API First have decades of evidence. Agent First has early adopter experience and a clear directional thesis. The principles are grounded in real production systems. The strategic claims need more data before they're settled.
+The maturity gap matters. TDD and API First have decades of evidence. Agents First has early adopter experience and a clear directional thesis. The principles are grounded in real production systems. The strategic claims need more data before they're settled.
 
 ---
 
@@ -290,15 +290,15 @@ The maturity gap matters. TDD and API First have decades of evidence. Agent Firs
 
 This is a v0.5 framework. Some important questions don't have answers yet:
 
-**What's the real adoption curve?** We don't have the Agent First equivalent of "mobile traffic crossed 50%." Agent-mediated product interactions are growing, but nobody has published reliable numbers on what percentage of SaaS usage flows through agents today. If agent-mediated interactions reach 10% of SaaS usage by 2028, Agent First is a two-year head start. If it takes until 2030, it's a four-year head start. If it stalls at 2%, the implementation principles still improve your API design — you just won't get the distribution leverage. The downside case is "you built a better API." The upside case is "you built the next platform."
+**What's the real adoption curve?** We don't have the Agents First equivalent of "mobile traffic crossed 50%." Agent-mediated product interactions are growing, but nobody has published reliable numbers on what percentage of SaaS usage flows through agents today. If agent-mediated interactions reach 10% of SaaS usage by 2028, Agents First is a two-year head start. If it takes until 2030, it's a four-year head start. If it stalls at 2%, the implementation principles still improve your API design — you just won't get the distribution leverage. The downside case is "you built a better API." The upside case is "you built the next platform."
 
 **Is MCP the right protocol?** There's active industry debate. MCP has massive adoption (110M+ monthly downloads) and broad support (Anthropic, OpenAI, Google, Microsoft). But critics point to token bloat, immature auth, and the question of whether tool-calling is even the right abstraction. Cloudflare's Code Mode and CLI-first approaches offer compelling alternatives for specific use cases. David Soria Parra, MCP's creator, acknowledges the context bloat problem and says the protocol is shifting toward progressive discovery, stateless transport, and code-based tool composition. The framework in this document is deliberately protocol-agnostic — the principles hold regardless of which protocol wins.
 
 **How do monetization models change?** If agents use your product and humans rarely open your UI, usage-based pricing becomes more natural than seat-based licensing. But who gets billed — the human, the agent operator, or the tool server host? These models are still forming.
 
-**What happens when every competitor has agent tools?** If every project management tool ships well-designed agent interfaces, the differentiation shifts back to product quality, pricing, and brand. Agent First is a durable engineering advantage but potentially a temporary distribution advantage. Design your tools better and keep iterating.
+**What happens when every competitor has agent tools?** If every project management tool ships well-designed agent interfaces, the differentiation shifts back to product quality, pricing, and brand. Agents First is a durable engineering advantage but potentially a temporary distribution advantage. Design your tools better and keep iterating.
 
-**What does agent-first customer support look like?** When the primary user can't file a support ticket or read a help article, your support model needs to change. Error messages in tool responses become your support channel. Tool descriptions become your documentation. Some teams are solving this with elicitation — raising to a human whenever uncertainty passes a specific threshold.
+**What does agents-first customer support look like?** When the primary user can't file a support ticket or read a help article, your support model needs to change. Error messages in tool responses become your support channel. Tool descriptions become your documentation. Some teams are solving this with elicitation — raising to a human whenever uncertainty passes a specific threshold.
 
 ---
 
@@ -308,7 +308,7 @@ Your next feature will be used by an agent before a human ever sees it. Not beca
 
 The question isn't whether to build for agents. It's whether to design for them intentionally or let it happen by accident.
 
-Agent First is the intentional version.
+Agents First is the intentional version.
 
 Design the interface for a computer consumer. Write the rules. Validate before every session. Make outputs visible. Don't trust a single model. Build systems that recover without paging you.
 
@@ -335,6 +335,43 @@ This thesis is part of his ongoing work on how AI agents reshape the way product
 - 💬 Comments below (preferred for thesis feedback)
 
 ---
+
+<!-- Newsletter capture
+     Posts to Buttondown (https://buttondown.com) at username `agentsfirst`.
+     If the account doesn't exist yet, register at https://buttondown.com/register and use `agentsfirst` as the username.
+     To swap to a different newsletter provider (ConvertKit, Substack, Mailchimp, etc.), replace the `action` URL on the <form> element below. -->
+
+<div id="newsletter" style="margin-top:3em;padding:2em 1.5em;border-top:1px solid rgba(0,0,0,0.15);background:rgba(0,0,0,0.02);border-radius:6px;">
+  <h2 style="margin-top:0;">📬 Subscribe</h2>
+  <p>Get an email when the thesis updates — new principles, anti-patterns, case studies, version bumps. No spam, unsubscribe anytime.</p>
+
+  <form
+    action="https://buttondown.com/api/emails/embed-subscribe/agentsfirst"
+    method="post"
+    target="popupwindow"
+    onsubmit="window.open('https://buttondown.com/agentsfirst', 'popupwindow')"
+    style="display:flex;gap:0.5em;flex-wrap:wrap;align-items:center;margin-top:1em;"
+  >
+    <label for="bd-email" style="position:absolute;left:-9999px;">Email address</label>
+    <input
+      type="email"
+      name="email"
+      id="bd-email"
+      placeholder="you@example.com"
+      required
+      style="flex:1 1 240px;min-width:200px;padding:0.6em 0.8em;border:1px solid rgba(0,0,0,0.25);border-radius:4px;font-size:1em;"
+    />
+    <input
+      type="submit"
+      value="Subscribe"
+      style="padding:0.6em 1.2em;background:#159957;color:#fff;border:0;border-radius:4px;cursor:pointer;font-size:1em;font-weight:600;"
+    />
+  </form>
+
+  <p style="margin-top:0.75em;font-size:0.9em;color:rgba(0,0,0,0.6);">
+    Or follow <a href="https://x.com/joshuabaer">@joshuabaer</a> on X · Watch the <a href="https://github.com/capitalthought/agentsfirst">GitHub repo</a> for releases · See the <a href="/changelog/">changelog</a>.
+  </p>
+</div>
 
 <div id="comments" style="margin-top:3em;padding-top:2em;border-top:1px solid rgba(0,0,0,0.15);">
   <h2>💬 Comments</h2>

@@ -1,4 +1,4 @@
-# Agent First
+# Agents First
 
 A design framework for products built for both humans and AI agents.
 

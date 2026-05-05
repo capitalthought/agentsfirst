@@ -1,4 +1,4 @@
-# Agent First — $2,500 Promo Budget Plan
+# Agents First — $2,500 Promo Budget Plan
 
 *Companion to `agentsfirst-marketing-plan.md` — the unified marketing plan ranks Latent Space, Simon Willison endorsement, per-principle URL split, and the AI Engineer World's Fair as the highest-leverage moves. Almost all of those are $0 (DM-and-pitch, free CFP, free SEO). This budget funds the paid amplifiers that accelerate the organic flywheel.*
 
@@ -20,10 +20,10 @@ Cheap defensive moves win the long tail. Big sponsor-slot bets win the launch we
 
 | # | Spend | $ | Why this beats alternatives |
 |---|-------|---|----------------------------|
-| 1 | **AI Engineer Newsletter sponsorship — 1 issue, primary slot** | **$1,500** | swyx's owned newsletter, ~30K AI-builder inboxes. Run it the week BEFORE the Latent Space pitch — converts the audience to "I've heard of Agent First" before the podcast pitch hits, makes the cold pitch warm. Beats Sidebar/Console.dev because it's the exact downstream audience the thesis cascades through. |
+| 1 | **AI Engineer Newsletter sponsorship — 1 issue, primary slot** | **$1,500** | swyx's owned newsletter, ~30K AI-builder inboxes. Run it the week BEFORE the Latent Space pitch — converts the audience to "I've heard of Agents First" before the podcast pitch hits, makes the cold pitch warm. Beats Sidebar/Console.dev because it's the exact downstream audience the thesis cascades through. |
 | 2 | **Custom illustration set — hero + 8 principle icons** | **$500** | Hire a top-rated Fiverr illustrator (or one of CF's portfolio designers) to do a proper hero illustration + 8 small icons for each principle. Replaces the current text-only OG card with a visual that 3-5×s click-through on X/LinkedIn. Also re-usable for the per-principle URL split (Month 2-3) — front-loads design work that has to happen anyway. |
 | 3 | **Print mini-zine + mail to 25 amplifiers** | **$300** | 32-page saddle-stitched mini-zine of the thesis on nice paper (~$8/copy at Mixam or Conveyor), hand-addressed envelopes, USPS Priority. Recipients: the 5 pre-brief targets (swyx, Simon Willison, Patrick McKenzie, David Cramer, Maggie Appleton) + 20 second-tier (Mario Gabriele, Packy McCormick, Stratechery, Theo, AI Engineer Newsletter team, Lenny, the AT&T target Jeremy Legg, etc.). Physical artifact breaks inbox fatigue — Maggie Appleton and Patrick McKenzie both reliably engage with well-crafted physical objects. |
-| 4 | **Brand domain defense — `.com`, `.ai`, `.org` + redirects** | **$100** | Register `agent-first.com`, `agent-first.ai`, `agentfirst.com`, `agentfirst.ai`, `agentsfirst.com`, `agentsfirst.ai` if available, and 301-redirect everything to `agentsfirst.dev`. Cheap insurance — if the thesis catches, anyone typo-ing `agent-first.com` lands on Josh's site, not a squatter's. Takes 5 minutes via Cloudflare Registrar. |
+| 4 | **Brand domain defense — `.com`, `.ai`, `.org` + redirects** | **$100** | Register `agents-first.com`, `agents-first.ai`, `agentfirst.com`, `agentfirst.ai`, `agentsfirst.com`, `agentsfirst.ai` if available, and 301-redirect everything to `agentsfirst.dev`. Cheap insurance — if the thesis catches, anyone typo-ing `agents-first.com` lands on Josh's site, not a squatter's. Takes 5 minutes via Cloudflare Registrar. |
 | 5 | **Reserve / contingency** | **$100** | Cover sponsorship overages, second-illustrator round, unexpected Postmark/email costs, or one X promoted-thread boost if the launch tweet underperforms in hour-1. |
 | | **Total** | **$2,500** | |
 
@@ -86,8 +86,8 @@ The next-best dollar buys, in priority:
 - HN launch — free
 - AI Engineer World's Fair CFP submission — free
 - 8-page per-principle URL split — Mikey's labor, $0
-- npx create-agent-first scaffold — Mikey's labor, $0
-- Capital Factory Innovation Council Agent First Council — covered by CF operations, not this budget
+- npx create-agents-first scaffold — Mikey's labor, $0
+- Capital Factory Innovation Council Agents First Council — covered by CF operations, not this budget
 - AT&T outreach — Josh's relationship, not paid
 
 The biggest unlock in the marketing plan ("Per-principle URL split is the SEO moat") is **free**. Don't confuse spend with leverage. The $2,500 is the accelerator on the engine, not the engine.

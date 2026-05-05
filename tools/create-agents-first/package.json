@@ -1,0 +1,37 @@
+{
+  "name": "@capitalthought/create-agents-first",
+  "version": "0.1.0",
+  "description": "Scaffold an Agents-First project — MCP server + AGENTS.md + prep gate + typed state. See https://agentsfirst.dev",
+  "license": "MIT",
+  "author": "Joshua Baer <josh@capitalfactory.com>",
+  "homepage": "https://agentsfirst.dev/principles/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/capitalthought/agentsfirst.git",
+    "directory": "tools/create-agents-first"
+  },
+  "bugs": {
+    "url": "https://github.com/capitalthought/agentsfirst/issues"
+  },
+  "keywords": [
+    "agents-first",
+    "mcp",
+    "model-context-protocol",
+    "scaffold",
+    "cli",
+    "agents-md"
+  ],
+  "type": "module",
+  "bin": {
+    "create-agents-first": "bin/index.js"
+  },
+  "files": [
+    "bin/",
+    "template/",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  }
+}

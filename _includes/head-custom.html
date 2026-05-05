@@ -2,16 +2,17 @@
 <meta property="article:author" content="Joshua Baer">
 <meta property="article:published_time" content="2026-04-15">
 
+{% if page.url == "/" %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "TechArticle",
-  "headline": "Agent First",
+  "headline": "Agents First",
   "description": "Every product now has two customers — the human who pays and the agent who decides. A design framework for building products that AI agents can use as primary consumers.",
   "url": "https://agentsfirst.dev/",
   "image": "https://agentsfirst.dev/og-image.png",
   "datePublished": "2026-04-15",
-  "dateModified": "2026-05-04",
+  "dateModified": "2026-05-05",
   "inLanguage": "en",
   "author": {
     "@type": "Person",
@@ -33,3 +34,40 @@
   "keywords": "agent first, MCP, model context protocol, AI agents, agent-tool design, two customers, agent UX, tool design, AGENTS.md"
 }
 </script>
+{% else %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ page.title | jsonify }},
+  "description": {{ page.description | default: site.description | jsonify }},
+  "url": "{{ site.url }}{{ page.url }}",
+  "image": "{{ site.url }}{{ page.image | default: site.image }}",
+  "datePublished": "2026-04-15",
+  "dateModified": "2026-05-05",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "TechArticle",
+    "name": "Agents First",
+    "url": "https://agentsfirst.dev/"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Joshua Baer",
+    "url": "https://agentsfirst.dev/",
+    "sameAs": [
+      "https://twitter.com/joshuabaer",
+      "https://github.com/joshuabaer"
+    ]
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Joshua Baer"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "{{ site.url }}{{ page.url }}"
+  }
+}
+</script>
+{% endif %}

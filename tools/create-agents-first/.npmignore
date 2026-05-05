@@ -1,0 +1,7 @@
+*.test.js
+*.test.ts
+.github/
+node_modules/
+*.log
+.DS_Store
+test-scaffold-output/
