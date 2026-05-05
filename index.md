@@ -317,7 +317,7 @@ Design accordingly.
 
 ## About the author
 
-Joshua Baer is the founder and CEO of [Capital Factory](https://capitalfactory.com), the center of gravity for entrepreneurs in Texas. He's been building software companies and accelerators for three decades.
+Joshua Baer is the founder and CEO of [Capital Factory](https://capitalfactory.com), the center of gravity for entrepreneurs in Texas. He's been building and investing in startups for three decades.
 
 This thesis is part of his ongoing work on how AI agents reshape the way products are designed and used.
 
