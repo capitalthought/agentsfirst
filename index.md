@@ -184,14 +184,14 @@ Some are genuinely new to agent-first systems. Others are established practices 
 
 | # | Principle | What It Means |
 |---|-----------|---------------|
-| 1 | **Interface First** | Design the agent interface before any human UI. Tool definitions are the first artifact of any feature — regardless of whether you ship them as MCP, CLI, SDK, or function specs. |
-| 2 | **Contract First** | Write usage rules — permissions, constraints, sequences, formatting rules — before implementation. Without them, agents hallucinate and violate constraints. |
-| 3 | **Prep Gates** | Validate credentials, load fresh IDs, and confirm system health (pre-flight checks) before every session. Stale context is the #1 source of agent errors. |
-| 4 | **Typed State** | All persistent agent state flows through a single structured data contract with versioned migrations. Each module owns its slice. |
-| 5 | **Visible Outputs** | Agent actions must produce human-readable results in existing workflow tools. If a user asks "what did the agent just do?", there should be a clear answer — not a JSON blob. |
-| 6 | **Multi-Model Verification** | For high-stakes decisions, fan out to multiple models and trust only what multiple agree on. A finding three models flag is almost certainly real. A finding only one model flags is a hypothesis. |
-| 7 | **Perspective Dispatch** | Complex reviews dispatch multiple constrained perspectives (security, UX, new-user, performance) against the same artifact. Each perspective has a defined focus area — findings outside it are discarded. |
-| 8 | **Autonomous Recovery** | The system retries with backoff before alerting. Humans only get involved when self-healing has already failed. An agent that pages a human for a transient API timeout is a bad agent. |
+| 1 | **Interface First**{:#interface-first} | Design the agent interface before any human UI. Tool definitions are the first artifact of any feature — regardless of whether you ship them as MCP, CLI, SDK, or function specs. |
+| 2 | **Contract First**{:#contract-first} | Write usage rules — permissions, constraints, sequences, formatting rules — before implementation. Without them, agents hallucinate and violate constraints. |
+| 3 | **Prep Gates**{:#prep-gates} | Validate credentials, load fresh IDs, and confirm system health (pre-flight checks) before every session. Stale context is the #1 source of agent errors. |
+| 4 | **Typed State**{:#typed-state} | All persistent agent state flows through a single structured data contract with versioned migrations. Each module owns its slice. |
+| 5 | **Visible Outputs**{:#visible-outputs} | Agent actions must produce human-readable results in existing workflow tools. If a user asks "what did the agent just do?", there should be a clear answer — not a JSON blob. |
+| 6 | **Multi-Model Verification**{:#multi-model-verification} | For high-stakes decisions, fan out to multiple models and trust only what multiple agree on. A finding three models flag is almost certainly real. A finding only one model flags is a hypothesis. |
+| 7 | **Perspective Dispatch**{:#perspective-dispatch} | Complex reviews dispatch multiple constrained perspectives (security, UX, new-user, performance) against the same artifact. Each perspective has a defined focus area — findings outside it are discarded. |
+| 8 | **Autonomous Recovery**{:#autonomous-recovery} | The system retries with backoff before alerting. Humans only get involved when self-healing has already failed. An agent that pages a human for a transient API timeout is a bad agent. |
 
 ### What's Genuinely New vs. Applied
 
