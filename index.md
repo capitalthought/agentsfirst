@@ -1,3 +1,10 @@
+---
+title: Agent First
+description: Every product now has two customers — the human who pays and the agent who decides. A design framework for building products that AI agents can use as primary consumers.
+image: /og-image.png
+author: Joshua Baer
+---
+
 # Agent First
 
 *by Joshua Baer · v0.5, April 2026*
