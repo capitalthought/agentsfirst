@@ -60,7 +60,7 @@ Per-line ROI checks 30 days after launch:
 
 | Line | What "worth it" looks like |
 |---|---|
-| AI Engineer Newsletter | ≥ 5K click-throughs to agentsfirst.dev from the sponsored placement; ≥ 50 newsletter signups attributable via UTM |
+| AI Engineer Newsletter | ≥ 5K click-throughs to agentsfirst.dev from the sponsored placement; ≥ 50 net-new follows of @joshuabaer on X attributable to UTM-tagged landings |
 | Illustrations | OG image click-through rate on X ≥ 2.5% (the text-only OG card should baseline at ~1.0-1.5%); illustrator outputs reusable for the per-principle URL split (Month 2-3 SEO unlock) |
 | Mini-zines | ≥ 8 of 25 amplifiers tweet/post about it OR send a substantive reply OR cite it in their next piece. (The plan's PR strategist called Simon Willison "single legitimacy node"; if the zine is what gets him to write 200 words, the $300 paid for itself 100×.) |
 | Brand domains | ≥ 50 typo redirects in the first 30 days = the defense was real. < 10 = no signal yet, still cheap insurance. |

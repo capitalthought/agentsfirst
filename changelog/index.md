@@ -7,7 +7,33 @@ author: Joshua Baer
 
 # Changelog
 
-Agents First is versioned like a piece of software. Each release notes substantive additions and corrections — new principles, new anti-patterns, sharpened arguments, corrected claims. Subscribe via [the newsletter](/#newsletter), follow [@joshuabaer](https://x.com/joshuabaer) on X, or watch [the repo](https://github.com/capitalthought/agentsfirst) to hear about new versions.
+Agents First is versioned like a piece of software. Each release notes substantive additions and corrections — new principles, new anti-patterns, sharpened arguments, corrected claims. Follow [@joshuabaer](https://x.com/joshuabaer) on X or watch [the repo](https://github.com/capitalthought/agentsfirst) to hear about new versions.
+
+---
+
+## v0.6 — May 2026
+
+Voice pass + the long tail.
+
+### Added
+
+- **Per-principle deep dives** at `/principles/` — eight ~1,000-word pages, one per principle. Lead, what it means, why it matters, how to apply it, what it prevents, the smallest experiment, related principles. Each page stands alone for a reader landing cold from search.
+- **Glossary** at `/glossary/` — 32 anchored definitions covering anti-patterns, principles, and the supporting vocabulary (MCP, Code Mode, AGENTS.md, Two Customers, Adoption Levels, Tool Success Rate, Time to First Agent Action, Progressive Discovery, Scoped Tokens, OAuth 2.0 with PKCE, Smallest Experiment).
+- **Changelog page** — this one.
+- **Follow / watch / changelog footer** — replaces the prior "subscribe" call-to-action on the canonical page. Distribution runs through X and the GitHub repo, not a separate newsletter list.
+- **`@capitalthought/create-agents-first` scaffold** — `npx`-runnable scaffold that ships an MCP server, an `AGENTS.md`, a `<project>_prep` tool, Zod-typed state, and retry-with-backoff recovery helpers in one command. Read it in five minutes, ship in another five.
+
+### Renamed
+
+- The framework is now **Agents First** (was "Agent First"). The URL `agentsfirst.dev` was always plural; the brand and the URL now match. References across the canonical page, the new sub-pages, and the npm package were updated in one drop.
+
+### Voice
+
+- The canonical page was rewritten in a tighter, more declarative voice. Cuts hedges, fragments where they earn it, sentence-case section headers throughout.
+
+### Status
+
+Still pre-1.0. The framework is settling. Strategic claims still want for production data; the implementation principles are grounded in real systems already.
 
 ---
 
@@ -47,10 +73,10 @@ v0.1 through v0.4 were internal Capital Factory drafts circulated for early-adop
 
 The directional roadmap, subject to change based on feedback:
 
-- **Per-principle URL split** — a deep-dive page per implementation principle, with stable URLs and the room to go deeper than the canonical page allows. Coming with v0.6.
-- **Long-tail glossary** — anchored definitions for terms like Code Mode, progressive discovery, prep gate, structured error, tool selection accuracy.
-- **`npx create-agents-first` scaffold** — an npm package that generates a starter MCP server, an `AGENTS.md`, a prep-gate stub, and a typed-state schema in a single command. The smallest experiment, packaged.
-- **First-party case study with metrics** — Time to First Agent Action, Tool Success Rate, Human Visibility Rate, captured from a production deployment rather than asserted.
+- **First-party case study with metrics** — Time to First Agent Action, Tool Success Rate, Human Visibility Rate, captured from a production deployment rather than asserted. The next thing this thesis needs to stop being early-stage.
+- **Anti-Pattern of the Month** — a recurring deep-dive on one anti-pattern, with a real (anonymized) product committing it and a forensic walkthrough of what it cost.
+- **Reference implementations** — beyond the scaffold, fully-worked examples of Levels 2, 3, and 4 in production codebases.
+- **v1.0** — once the strategic claims have enough production data behind them to drop the "early / emerging" line from the comparison table.
 
 ---
 

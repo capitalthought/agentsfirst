@@ -21,7 +21,7 @@ A design framework for products built for both humans and AI agents.
 | `CNAME` | Custom domain pointer for GitHub Pages |
 | `docs/marketing-plan.md` | Synthesized launch plan from 6 parallel persona-strategist agents |
 | `docs/promotion-plan.md` | $2,500 promo budget allocation |
-| `docs/thesis-source-snapshot.md` | Snapshot of the canonical thesis source (lives at `~/icloud/Documents/agent-first.md`) |
+| `docs/thesis-source-snapshot.md` | Snapshot of the canonical thesis source (lives at `~/icloud/Documents/agents-first.md`) |
 
 ---
 
