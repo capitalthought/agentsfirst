@@ -1,0 +1,12 @@
+title: Agent First
+description: Design framework for products built for both humans and AI agents
+url: https://agentsfirst.dev
+baseurl: ""
+theme: jekyll-theme-cayman
+markdown: kramdown
+plugins:
+  - jekyll-relative-links
+  - jekyll-sitemap
+relative_links:
+  enabled: true
+  collections: true
