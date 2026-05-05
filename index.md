@@ -1,6 +1,6 @@
 ---
 title: Agents First
-description: Every product now has two customers — the human who pays and the agent who decides. A design framework for building products that AI agents can use as primary consumers.
+description: Every product is getting a second customer — the human who pays, and the agent who decides. A design framework for building products that AI agents can use as primary consumers.
 image: /og-image.png
 author: Joshua Baer
 ---
@@ -11,7 +11,7 @@ author: Joshua Baer
 
 ---
 
-## Every product now has two customers
+## Every product is getting a second customer
 
 The human who pays.
 
