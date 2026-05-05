@@ -310,3 +310,26 @@ Design accordingly.
 ---
 
 *Framework v0.5. April 2026.*
+
+---
+
+<div id="comments" style="margin-top:3em;padding-top:2em;border-top:1px solid rgba(0,0,0,0.15);">
+  <h2>💬 Comments</h2>
+  <p>Have feedback, critique, examples, or counter-arguments? Comment below — backed by <a href="https://github.com/capitalthought/agentsfirst/discussions">GitHub Discussions</a>. (GitHub account required to post.)</p>
+</div>
+
+<script src="https://giscus.app/client.js"
+        data-repo="capitalthought/agentsfirst"
+        data-repo-id="R_kgDOSUZxkw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOSUZxk84C8WNg"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
