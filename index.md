@@ -56,6 +56,8 @@ The user might not even know they're using your product yet. They're already get
 - **Documentation** — "Install our MCP server" or "Use our CLI" sitting next to "Install our SDK" in your getting-started guide.
 - **Bundling** — IDE extensions and platform integrations that ship your tools out of the box.
 
+Cloudflare put a number on this in April 2026 — an [Agent Readiness Score](https://blog.cloudflare.com/agent-readiness/) across four dimensions: discoverability, content accessibility, bot access control, capabilities. The early data is damning. 4% of sites declare AI usage preferences. Fewer than 15 sites publish MCP Server Cards or API Catalogs combined. The bar is on the floor. The holdouts have a window.
+
 Agents First doesn't kill the need for distribution. It compresses what happens *after* distribution. The install-to-value gap drops from days to seconds. That's the leverage.
 
 The pre-activation funnel: Discovery (the agent or developer learns your tool exists) → Evaluation (reads the description, checks trust signals) → Installation (runs the install command) → First agent action (a tool call succeeds) → Repeat usage (the agent comes back). Drop-off happens at every step. Measure each one.
