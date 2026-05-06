@@ -1,5 +1,5 @@
 ---
-title: "Autonomous Recovery | Agents First"
+title: "Autonomous Recovery"
 description: "Retry with backoff before paging a human. When self-healing fails, escalate with what happened, what was tried, and a direct link to take manual action."
 image: /og-image.png
 author: Joshua Baer

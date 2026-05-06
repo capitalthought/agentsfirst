@@ -1,5 +1,5 @@
 ---
-title: "Multi-Model Verification | Agents First"
+title: "Multi-Model Verification"
 description: "For high-stakes decisions, fan out to three models in parallel and trust only what at least two agree on. Single-model confidence is a coin flip."
 image: /og-image.png
 author: Joshua Baer

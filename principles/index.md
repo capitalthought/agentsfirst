@@ -1,5 +1,5 @@
 ---
-title: "The 8 Implementation Principles | Agents First"
+title: "The 8 Implementation Principles"
 description: "Eight implementation principles for building Agents-First products — what to design first, what to write down, what to verify, and what to make visible."
 image: /og-image.png
 author: Joshua Baer

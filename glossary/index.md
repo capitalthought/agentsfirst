@@ -1,5 +1,5 @@
 ---
-title: "Glossary | Agents First"
+title: "Glossary"
 description: "Definitions of Agents First terminology — anti-patterns, implementation principles, metrics, and protocols."
 image: /og-image.png
 author: Joshua Baer

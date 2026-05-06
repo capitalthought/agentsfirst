@@ -1,5 +1,5 @@
 ---
-title: "Perspective Dispatch | Agents First"
+title: "Perspective Dispatch"
 description: "Dispatch multiple constrained perspectives — security, UX, accessibility, performance — against the same artifact. Each persona has a focus area; findings outside it get discarded."
 image: /og-image.png
 author: Joshua Baer

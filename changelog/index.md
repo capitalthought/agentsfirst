@@ -1,5 +1,5 @@
 ---
-title: "Changelog | Agents First"
+title: "Changelog"
 description: "Version history of the Agents First thesis — what changed and when."
 image: /og-image.png
 author: Joshua Baer

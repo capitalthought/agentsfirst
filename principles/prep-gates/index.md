@@ -1,5 +1,5 @@
 ---
-title: "Prep Gates | Agents First"
+title: "Prep Gates"
 description: "Run pre-flight checks before every agent session — validate credentials, load fresh IDs, confirm system health. Stale context is the #1 source of agent errors."
 image: /og-image.png
 author: Joshua Baer

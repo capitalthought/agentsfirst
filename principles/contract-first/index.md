@@ -1,5 +1,5 @@
 ---
-title: "Contract First | Agents First"
+title: "Contract First"
 description: "Write the usage rules — permissions, sequences, formatting, identifiers — in AGENTS.md before implementation. Without rules, agents hallucinate."
 image: /og-image.png
 author: Joshua Baer

@@ -1,5 +1,5 @@
 ---
-title: "Typed State | Agents First"
+title: "Typed State"
 description: "Persist agent state through one structured data contract with versioned migrations. Each module owns its slice — no JSON blobs, no ambient context."
 image: /og-image.png
 author: Joshua Baer

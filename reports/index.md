@@ -1,5 +1,5 @@
 ---
-title: "Agent Readiness Reports | Agents First"
+title: "Agent Readiness Reports"
 description: "Bi-weekly public scorecards on named products, scored against the Agents First framework."
 image: /og-image.png
 author: Joshua Baer

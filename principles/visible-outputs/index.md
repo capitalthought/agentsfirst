@@ -1,5 +1,5 @@
 ---
-title: "Visible Outputs | Agents First"
+title: "Visible Outputs"
 description: "Agent actions must produce human-readable results in tools the human already opens — Slack, email, the task manager — not a JSON blob in a dashboard nobody checks."
 image: /og-image.png
 author: Joshua Baer

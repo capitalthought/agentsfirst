@@ -1,5 +1,5 @@
 ---
-title: "Interface First | Agents First"
+title: "Interface First"
 description: "Design the agent interface — MCP server, CLI, or typed SDK — before any human UI. Tool definitions are the first artifact of every feature."
 image: /og-image.png
 author: Joshua Baer
