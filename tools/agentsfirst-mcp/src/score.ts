@@ -571,9 +571,12 @@ function scoreAgentCapabilities(signals: WebsiteSignals): PrincipleScore {
   let pts = 0;
   const notes: string[] = [];
   const surfaces = signals.signals.surfaces;
-  if (surfaces['well_known_mcp']?.ok) {
+  if (surfaces['well_known_mcp']?.ok || surfaces['well_known_mcp_json']?.ok) {
     pts += 15;
-    notes.push('/.well-known/mcp-server-card published');
+    const variant = surfaces['well_known_mcp_json']?.ok
+      ? '/.well-known/mcp-server-card.json'
+      : '/.well-known/mcp-server-card';
+    notes.push(`MCP Server Card published at ${variant}`);
   } else {
     notes.push('No MCP Server Card');
   }

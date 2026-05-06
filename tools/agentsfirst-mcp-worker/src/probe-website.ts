@@ -119,6 +119,7 @@ export async function probeWebsite(url: string): Promise<WebsiteSignals> {
     ['well_known_ai_plugin', `${origin}/.well-known/ai-plugin.json`],
     ['well_known_oauth', `${origin}/.well-known/oauth-authorization-server`],
     ['well_known_mcp', `${origin}/.well-known/mcp-server-card`],
+    ['well_known_mcp_json', `${origin}/.well-known/mcp-server-card.json`],
     ['sitemap', `${origin}/sitemap.xml`],
     ['openapi_root', `${origin}/openapi.json`],
     ['openapi_v1', `${origin}/v1/openapi.json`],
