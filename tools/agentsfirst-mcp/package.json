@@ -7,7 +7,7 @@
   "homepage": "https://agentsfirst.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/capitalthought/agentsfirst",
+    "url": "git+https://github.com/capitalthought/agentsfirst.git",
     "directory": "tools/agentsfirst-mcp"
   },
   "keywords": [
