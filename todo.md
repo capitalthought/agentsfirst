@@ -95,6 +95,16 @@ Items not yet attempted or needing a fresh approach after failed verification.
 ### Improvements
 
 - **Redo `og-image.png`** — current 1200×630 visually still says "Agent First." Needs new card with "Agents First" + the two-customers tagline. Binary file, can't sed. ~5-min Figma job. (added 2026-05-05)
+- **Delete orphan `agentsfirst-mcp` Worker in Capital Factory CF account.** First two `wrangler deploy` attempts during the Layer C ship landed in account `8d9591939eb1efd797959aa9c68afd64` (cloudflare@capitalfactory.com OAuth), with no route binding. Harmless (no traffic, no charges) but messy. Cleanup needs Josh's hands because `op item get --reveal` and `op read` for the capitalfactory CF token both time out silently in Claude Code's bash subshell — Touch ID prompt doesn't surface. Two paths:
+  - **A.** `npx wrangler logout && npx wrangler login` (browser → pick Capital Factory) → `npx wrangler delete agentsfirst-mcp --force` → log back into joshshop. ~30 sec.
+  - **B.** Use the direct CF API in a shell where Touch ID works:
+    ```bash
+    TOKEN=$(op item get e2o365g6hobmxl3b4pql4nsiie --vault Employee --reveal --format=json \
+      | jq -r '.fields[] | select(.type=="CONCEALED" and (.value|length>20)) | .value' | head -1)
+    curl -s -X DELETE -H "Authorization: Bearer $TOKEN" \
+      "https://api.cloudflare.com/client/v4/accounts/8d9591939eb1efd797959aa9c68afd64/workers/scripts/agentsfirst-mcp?force=true"
+    ```
+  Live joshshop deploy at `agentsfirst.dev/mcp` is unaffected by the orphan — independent account, separate route binding. (added 2026-05-05)
 
 ---
 
