@@ -100,6 +100,75 @@ Also: submit **AI Engineer World's Fair CFP** (closes ~6 weeks pre-event).
 
 ---
 
+## 📊 Agent Readiness Reports — recurring scorecard content engine
+
+*Added 2026-05-05 after both `@capitalthought/create-agents-first` and `@capitalthought/agentsfirst-mcp` shipped to npm. Now that the scorer is a public tool any agent can call, scoring becomes content.*
+
+### The play
+
+Every other Thursday, Josh runs `/agentsfirst` against a notable product (website + repo if open-source), publishes the score + report, and uses it as bait for distribution. Each report:
+
+- Names the company by name
+- Gives a numeric score (0–100) and adoption level (0–4)
+- Calls out the dominant **anti-pattern** detected (canonizes the vocabulary every time)
+- Surfaces the **top 3 fixes** that'd land them at Level 3 (constructive, not gotcha)
+- Cross-links to the relevant `/principles/` deep-dive pages
+
+### Why it works
+
+- **Self-serving for the framework:** every published report *uses* the framework. Each scorecard cements the principles + anti-patterns as named industry vocabulary, the way OWASP Top 10 cemented vulnerability vocabulary.
+- **Forces engagement:** named companies have to respond — confirm the score (you win), defend (the story keeps moving), or quietly fix the gaps (the report aged into a roadmap they implemented).
+- **Scales as content:** ~1 hour to produce a report; reusable as blog post + X thread + LinkedIn article + "courtesy DM" to the named company's CTO.
+- **Credibility loop:** if the named company actually *fixes* the gap and re-scores higher 90 days later, the second report is even better content.
+
+### Format
+
+**Long-form:** posted at `agentsfirst.dev/reports/<slug>/` (a new Jekyll collection), 500-800 words, with a one-screen scorecard graphic at the top.
+
+**Social cuts:** X thread (Tweet 1 = score + name + dominant anti-pattern; Tweet 2-5 = the top 3 fixes; Tweet 6 = link). LinkedIn = the X thread restitched into a single post for that audience.
+
+**Courtesy DM template:** "We just published a public Agent Readiness Report on [Company]. Score: X/100. The fix that'd unlock the most leverage: [one-sentence specific recommendation]. Full report: [link]. No need to respond — sharing in case useful."
+
+### First 10 targets — three tiers
+
+**Tier 1 — likely high readiness, lifts the framework:**
+
+1. **Cloudflare** — they wrote the Agent Readiness Score post we cited. Naming them in a report (and probably scoring them at Level 3 already) reinforces our citation + theirs. Could also become a co-published piece.
+2. **Anthropic** — owns MCP. Should score Level 3+. If they do, the framework gets canonized. If they don't, that's the bigger story.
+3. **Linear** — clean MCP server, beloved tool. Almost certainly Level 2-3. Engineering audience reposts.
+4. **Vercel** — heavy investment in agent infra; should score well, mid-Level 3.
+5. **Stripe** — the original "API as a product" company. The natural Level 3 contender; what's missing tells the most interesting story.
+
+**Tier 2 — mid readiness, instructive gaps:**
+
+6. **Notion** — popular, well-loved, but agent surface is uneven. Likely Level 1-2; the gap to Level 3 is concrete and writable.
+7. **GitHub** — owns the developer workflow. Has Copilot agents but exposes a fraction of what an agent could call. Probably Level 2.
+8. **Slack** — the canonical Visible Outputs target. But Slack itself? MCP server exists; how complete? Probably mid-Level 2.
+
+**Tier 3 — low readiness, dramatic gaps (the highest-engagement reports):**
+
+9. **A major bank with a well-known dev portal** (e.g., Plaid, Chase developer, Wells Fargo dev) — likely Level 0. Public sector finance + agent-readiness = highly newsworthy.
+10. **A defense prime's developer site** (Palantir, Anduril, BAE) — Josh's domain. Defense + Agents First = Fed Supernova fodder. Score whatever's public; offer to score the internal stack privately.
+
+### Cadence + calendar
+
+- **Bi-weekly Thursday publish** (~26 reports per year)
+- **Lead time:** Wednesday afternoon = run scorer + draft. Thursday morning = polish + ship.
+- **Track:** keep a running tally on `/reports/` of all targets, scores, and improvements over time. If three reports show the same anti-pattern at three different companies, that becomes a Lenny's pitch ("the three SaaS companies all making the same agent mistake").
+
+### Anti-patterns of using this play wrong
+
+- **Don't punch down.** Score companies bigger than CF, not portfolio founders or smaller teams who can't recover from a public scorecard.
+- **Don't gotcha.** Every report ends with "here's the Level 3 fix" — constructive, not destructive.
+- **Don't fake-grade.** If a company scores Level 0, say Level 0. The scorecard's value depends on consistency.
+- **Don't run it without prep.** Always invoke `agentsfirst_prep` first; cite which version of the rubric was used.
+
+### Optional follow-on: a `/scorecard` skill
+
+A future Claude Code skill that takes a company name + URL, runs the full scorecard pipeline (probe → score → draft post + X thread + LinkedIn variant + courtesy DM), and lands all three drafts on Josh's clipboard. ~1 hour to build, would cut report production from 1 hour to 15 minutes. Build after the first 3-5 reports validate the format.
+
+---
+
 ## 🚨 Disagreements / risks flagged
 
 - **Theo Browne (t3.gg)** — VC strategist recommended; high YT reach but no clear warm path AND Theo "roasts as easily as endorses." Risk-adjusted: **skip unless warm intro exists**.

@@ -82,8 +82,15 @@ Items not yet attempted or needing a fresh approach after failed verification.
 
 #### Recurring distribution
 
-- **Anti-Pattern of the Month LinkedIn series** — Josh authors monthly post naming a real product (anonymized) committing each anti-pattern. Enterprise architects screenshot into design-review decks. Goal: build the thesis into named industry vocabulary. (added 2026-05-05)
+- **Agent Readiness Reports — bi-weekly Thursday scorecards.** Run `npx -y @capitalthought/agentsfirst-mcp` against a notable product, publish the score + report at `agentsfirst.dev/reports/<slug>/`, X thread + LinkedIn article + courtesy DM to the company. Cadence: every other Thursday. Goal: weaponize the scorer as a distribution engine; canonize the principles + anti-patterns vocabulary one named company at a time. Full strategy in `docs/marketing-plan.md` "Agent Readiness Reports" section. First 10 targets ranked there. (added 2026-05-05)
+  - **Report 1 (suggested):** Cloudflare — they wrote the Agent Readiness Score post we cite. Should score Level 3. Reinforces our citation + theirs; potentially co-published.
+  - **Report 2:** Anthropic — owns MCP. The framework gets canonized if they're at Level 3+; if they're not, that's the bigger story.
+  - **Report 3:** Stripe — the canonical "API as a product" company.
+  - **Report 4:** Linear — clean MCP server, engineering audience reposts well.
+  - **Report 5:** Vercel — heavy agent-infra investment; mid-Level 3 expected.
+- **Anti-Pattern of the Month LinkedIn series** — Josh authors monthly post naming a real product (anonymized) committing each anti-pattern. Enterprise architects screenshot into design-review decks. Goal: build the thesis into named industry vocabulary. *Subsumed-or-paired with the bi-weekly Agent Readiness Reports above — each report names its dominant anti-pattern, so the monthly LinkedIn rollup becomes a "best-of" digest.* (added 2026-05-05)
 - **CF Innovation Council "Agents First Council"** — half-day private summit at CF Austin, Q3 2026. Output: signed "Agents First Charter." Tactic per `docs/marketing-plan.md` enterprise GTM track. (added 2026-05-05)
+- **Build `/scorecard` skill** — Claude Code skill that takes a company name + URL, runs the full pipeline (probe → score → draft post + X thread + LinkedIn variant + courtesy DM), lands all three drafts on the clipboard. ~1 hour to build. Build after the first 3-5 manual reports validate the format. (added 2026-05-05)
 
 ### Improvements
 
