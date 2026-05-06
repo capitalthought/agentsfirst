@@ -1,0 +1,88 @@
+{
+  "$schema": "https://agentsfirst.dev/schemas/principles.v0.json",
+  "framework": "Agents First",
+  "version": "0.6",
+  "framework_url": "https://agentsfirst.dev",
+  "updated": "2026-05-05",
+  "principles": [
+    {
+      "slug": "interface-first",
+      "number": 1,
+      "name": "Interface First",
+      "summary": "Design the agent interface before any human UI. Tool definitions are the first artifact of every feature — regardless of whether you ship them as MCP, CLI, SDK, or function specs.",
+      "url": "https://agentsfirst.dev/principles/interface-first/",
+      "category": "new",
+      "anti_patterns_defended": ["lazy-wrapper", "invisible-product", "god-server"]
+    },
+    {
+      "slug": "contract-first",
+      "number": 2,
+      "name": "Contract First",
+      "summary": "Write usage rules — permissions, constraints, sequences, formatting — before implementation. Without them, agents hallucinate identifiers and violate constraints.",
+      "url": "https://agentsfirst.dev/principles/contract-first/",
+      "category": "new",
+      "anti_patterns_defended": ["agents-without-rules"]
+    },
+    {
+      "slug": "prep-gates",
+      "number": 3,
+      "name": "Prep Gates",
+      "summary": "Validate credentials, load fresh IDs, and confirm system health before every session. Stale context is the #1 source of agent errors.",
+      "url": "https://agentsfirst.dev/principles/prep-gates/",
+      "category": "applied",
+      "anti_patterns_defended": ["agents-without-rules", "ship-and-forget"]
+    },
+    {
+      "slug": "typed-state",
+      "number": 4,
+      "name": "Typed State",
+      "summary": "All persistent agent state flows through a single structured data contract with versioned migrations. Each module owns its slice.",
+      "url": "https://agentsfirst.dev/principles/typed-state/",
+      "category": "applied",
+      "anti_patterns_defended": ["lazy-wrapper"]
+    },
+    {
+      "slug": "visible-outputs",
+      "number": 5,
+      "name": "Visible Outputs",
+      "summary": "Agent actions produce human-readable results in existing workflow tools (Slack, email, task manager) — not a JSON blob in a dashboard nobody opens.",
+      "url": "https://agentsfirst.dev/principles/visible-outputs/",
+      "category": "applied",
+      "anti_patterns_defended": ["slow-chatbot", "ship-and-forget"]
+    },
+    {
+      "slug": "multi-model-verification",
+      "number": 6,
+      "name": "Multi-Model Verification",
+      "summary": "High-stakes decisions fan out to multiple models. Trust agreement. A finding three models flag is almost certainly real; one model alone is a hypothesis.",
+      "url": "https://agentsfirst.dev/principles/multi-model-verification/",
+      "category": "applied",
+      "anti_patterns_defended": ["single-model-trust"]
+    },
+    {
+      "slug": "perspective-dispatch",
+      "number": 7,
+      "name": "Perspective Dispatch",
+      "summary": "Complex reviews dispatch multiple constrained perspectives (security, UX, new-user, performance) against the same artifact. Each persona has a defined focus area.",
+      "url": "https://agentsfirst.dev/principles/perspective-dispatch/",
+      "category": "applied",
+      "anti_patterns_defended": []
+    },
+    {
+      "slug": "autonomous-recovery",
+      "number": 8,
+      "name": "Autonomous Recovery",
+      "summary": "The system retries with backoff before alerting. Humans only get pulled in when self-healing has already failed — and the alert includes what happened, what was tried, and a direct link to take manual action.",
+      "url": "https://agentsfirst.dev/principles/autonomous-recovery/",
+      "category": "applied",
+      "anti_patterns_defended": ["slow-chatbot"]
+    }
+  ],
+  "adoption_levels": [
+    { "level": 0, "name": "No agent access", "marker": "Human operates all tools through UIs" },
+    { "level": 1, "name": "Agent as Afterthought", "marker": "Thin API wrappers; no contracts, no validation" },
+    { "level": 2, "name": "Agent-Aware", "marker": "Usage rules exist; state is typed; pre-flight checks validate before use" },
+    { "level": 3, "name": "Agents First", "marker": "Agent interface designed and shipped first; agent is primary consumer" },
+    { "level": 4, "name": "Agent-Driven", "marker": "Agents extend the system for other agents; self-healing; multi-model checks" }
+  ]
+}

@@ -42,3 +42,16 @@ exclude:
   - bin/
   - Gemfile
   - Gemfile.lock
+
+# Jekyll excludes dot-directories by default; we need .well-known/ served.
+include:
+  - .well-known
+  - .well-known/mcp-server-card.json
+
+# Don't run AGENTS.md, llms.txt, or the JSON catalogs through any Liquid/markdown processing —
+# they need to be served verbatim as agent-readable artifacts.
+keep_files:
+  - AGENTS.md
+  - llms.txt
+  - api
+  - .well-known

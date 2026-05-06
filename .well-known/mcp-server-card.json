@@ -1,0 +1,86 @@
+{
+  "$schema": "https://agentsfirst.dev/schemas/mcp-server-card.v0.json",
+  "name": "Agents First",
+  "version": "0.6",
+  "description": "The Agents First thesis website — a design framework for products built for both humans and AI agents. This card declares the agent-callable surfaces an agent will find here.",
+  "homepage": "https://agentsfirst.dev",
+  "documentation": "https://agentsfirst.dev/principles/",
+  "agents_md": "https://agentsfirst.dev/AGENTS.md",
+  "llms_txt": "https://agentsfirst.dev/llms.txt",
+  "license": "CC BY 4.0",
+  "author": {
+    "name": "Joshua Baer",
+    "url": "https://agentsfirst.dev/"
+  },
+  "tools": [
+    {
+      "name": "create-agents-first",
+      "type": "scaffold",
+      "package": "@capitalthought/create-agents-first",
+      "registry": "npm",
+      "install": "npx @capitalthought/create-agents-first <project-name>",
+      "description": "Scaffold an Agents-First MCP server in one command — AGENTS.md, prep gate, Zod-typed state, retry-with-backoff helpers.",
+      "documentation": "https://www.npmjs.com/package/@capitalthought/create-agents-first"
+    },
+    {
+      "name": "agentsfirst-mcp",
+      "type": "mcp-server",
+      "package": "@capitalthought/agentsfirst-mcp",
+      "registry": "npm",
+      "install": "npx -y @capitalthought/agentsfirst-mcp",
+      "transport": "stdio",
+      "description": "MCP server that scores websites and codebases against the Agents First framework.",
+      "documentation": "https://www.npmjs.com/package/@capitalthought/agentsfirst-mcp",
+      "tools": [
+        {
+          "name": "agentsfirst_prep",
+          "description": "Pre-flight check — verifies rubric is loaded and principles are at the expected version."
+        },
+        {
+          "name": "score_codebase",
+          "description": "Scores a local directory against the eight implementation principles. Returns score (0–100), adoption level (0–4), per-principle breakdown, anti-patterns flagged, top-3 next moves."
+        },
+        {
+          "name": "score_website",
+          "description": "Scores a public URL on agent-readiness — discoverability, content accessibility, bot access control, agent capabilities."
+        },
+        {
+          "name": "get_principle",
+          "description": "Returns the canonical text of one of the eight principles by slug."
+        },
+        {
+          "name": "get_anti_pattern",
+          "description": "Returns the canonical definition of one of the seven anti-patterns by slug."
+        }
+      ]
+    }
+  ],
+  "api": {
+    "principles": {
+      "url": "https://agentsfirst.dev/api/principles.json",
+      "description": "Typed catalog of all eight implementation principles."
+    },
+    "glossary": {
+      "url": "https://agentsfirst.dev/api/glossary.json",
+      "description": "Typed catalog of all glossary terms — anti-patterns, principles, concepts, metrics."
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/capitalthought/agentsfirst"
+  },
+  "framework": {
+    "name": "Agents First",
+    "version": "0.6",
+    "url": "https://agentsfirst.dev",
+    "principles_count": 8,
+    "anti_patterns_count": 7,
+    "adoption_levels": [
+      "0 — No agent access",
+      "1 — Agent as Afterthought",
+      "2 — Agent-Aware",
+      "3 — Agents First",
+      "4 — Agent-Driven"
+    ]
+  }
+}

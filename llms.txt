@@ -1,0 +1,38 @@
+# Agents First
+
+> A design framework for products built for both humans and AI agents. The thesis: every product is getting a second customer — the human who pays, and the agent who decides. Design for the agent first.
+
+## Read
+
+- [Canonical thesis](https://agentsfirst.dev/): the full ~4,000-word framework — strategic case, eight implementation principles, seven anti-patterns, security model, levels of adoption.
+- [The eight principles](https://agentsfirst.dev/principles/): index of deep-dive pages — Interface First, Contract First, Prep Gates, Typed State, Visible Outputs, Multi-Model Verification, Perspective Dispatch, Autonomous Recovery.
+- [Glossary](https://agentsfirst.dev/glossary/): 32 anchored definitions covering anti-patterns, principles, and the supporting vocabulary (MCP, Code Mode, AGENTS.md, Two Customers, Adoption Levels, metrics).
+- [Changelog](https://agentsfirst.dev/changelog/): version history. Current: v0.6 (May 2026).
+- [AGENTS.md](https://agentsfirst.dev/AGENTS.md): tight machine-readable summary of the framework, principles, anti-patterns, and the JSON catalogs.
+
+## API (machine-readable)
+
+- [Principles JSON](https://agentsfirst.dev/api/principles.json): all eight principles with slug, name, one-line summary, full URL, anti-patterns defended.
+- [Glossary JSON](https://agentsfirst.dev/api/glossary.json): all glossary terms with slug, name, definition, related principle, glossary anchor URL.
+- [MCP Server Card](https://agentsfirst.dev/.well-known/mcp-server-card.json): declares the official Agents First tools and how to install them.
+
+## Tools
+
+- [@capitalthought/create-agents-first](https://www.npmjs.com/package/@capitalthought/create-agents-first): npx-runnable scaffold that generates a starter Agents-First project — MCP server, AGENTS.md, prep gate, typed state, retry-with-backoff helpers. One command, ~250 LOC of starter code.
+- [@capitalthought/agentsfirst-mcp](https://www.npmjs.com/package/@capitalthought/agentsfirst-mcp): MCP server that scores any URL or codebase against this framework. Five tools: agentsfirst_prep, score_codebase, score_website, get_principle, get_anti_pattern.
+
+## Repo
+
+- [GitHub: capitalthought/agentsfirst](https://github.com/capitalthought/agentsfirst): source for the site, the npm scaffold, and the MCP scorer.
+- [GitHub Discussions](https://github.com/capitalthought/agentsfirst/discussions): comments, critique, examples, counter-arguments.
+
+## Raw markdown (for direct ingest)
+
+- [Canonical thesis (raw)](https://raw.githubusercontent.com/capitalthought/agentsfirst/main/index.md)
+- [Principles index (raw)](https://raw.githubusercontent.com/capitalthought/agentsfirst/main/principles/index.md)
+- [Glossary (raw)](https://raw.githubusercontent.com/capitalthought/agentsfirst/main/glossary/index.md)
+
+## Optional
+
+- [Author: Joshua Baer](https://x.com/joshuabaer): founder/CEO of Capital Factory; on X.
+- [License: CC BY 4.0](https://creativecommons.org/licenses/by/4.0/): cite freely with attribution.
