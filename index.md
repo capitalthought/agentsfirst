@@ -324,6 +324,34 @@ Design accordingly.
 
 ---
 
+## We ate our own dogfood
+
+When the v0.5 essay went live, we ran the framework against itself and found agentsfirst.dev itself scored 25/100 — Level 1 (Agent as Afterthought). The thesis preached agents-first; the site shipped to humans only.
+
+Three layers fixed it. Each is reusable on its own.
+
+**Layer A — the site itself.** agentsfirst.dev now serves `/AGENTS.md`, `/llms.txt`, `/.well-known/mcp-server-card.json`, `/api/principles.json`, `/api/glossary.json`, and a `robots.txt` that explicitly addresses 14 named AI agents. After the fixes, the site re-scored at 80/100 — Level 3. An agent landing here cold finds a complete machine-readable picture of the framework.
+
+**Layer B — `npx @capitalthought/create-agents-first`.** Scaffold that generates a starter MCP server with all eight principles wired in: Interface First (the MCP server itself), Contract First (an `AGENTS.md` template), Prep Gates (a `<project>_prep` tool), Typed State (Zod-validated), Visible Outputs (sink markers), Autonomous Recovery (retry-with-backoff helpers). Read it in five minutes, ship a Level-2 starter in another five. Source: <https://github.com/capitalthought/agentsfirst>.
+
+**Layer C — `agentsfirst.dev/mcp`.** The scoring logic, hosted as a callable MCP server. Three ways to use it:
+
+1. **Add `https://agentsfirst.dev/mcp` as a remote MCP server** in your agent of choice (Claude Code, Cursor, Cline, Windsurf). You get four tools: `agentsfirst_prep`, `score_website`, `get_principle`, `get_anti_pattern`.
+2. **Install locally** for the full five tools (adds `score_codebase` for local repos): `npx -y @capitalthought/agentsfirst-mcp`.
+3. **`curl` it directly** — the endpoint speaks JSON-RPC over HTTP:
+   ```bash
+   curl -sX POST https://agentsfirst.dev/mcp \
+     -H "Content-Type: application/json" \
+     -H "Accept: application/json, text/event-stream" \
+     -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"score_website","arguments":{"url":"https://YOUR-SITE.com"}}}'
+   ```
+
+The rubric, the probe, and the scoring are all open-source. Reproducible by design. We're publishing **Agent Readiness Reports** — scorecards on named products, using the same hosted scorer — bi-weekly. The first reports land soon.
+
+A framework only matters if it's measurable. We made it measurable.
+
+---
+
 ## About the author
 
 Joshua Baer is the founder and CEO of [Capital Factory](https://capitalfactory.com), the center of gravity for entrepreneurs outside Silicon Valley. He's been building and investing in startups for three decades.
