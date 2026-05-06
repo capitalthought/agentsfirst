@@ -8,9 +8,9 @@ main = "src/index.ts"
 compatibility_date = "2026-05-01"
 compatibility_flags = ["nodejs_compat"]
 
-# account_id is intentionally empty. Wrangler picks it up from CF_ACCOUNT_ID
-# (set in 1Password joshshop entry) or from interactive `wrangler login`.
-account_id = ""
+# Pinned to the joshshop Cloudflare account (where agentsfirst.dev lives).
+# Avoids accidental deploys to wrong-account login sessions.
+account_id = "ac5a9971e6d58775db8f543db1489403"
 
 # Path-scoped route. Cloudflare matches on the full path; only /mcp and /mcp/*
 # reach the Worker. The apex (/) and the rest of the site continue to flow to
