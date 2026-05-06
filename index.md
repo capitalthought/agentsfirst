@@ -346,7 +346,7 @@ Three layers fixed it. Each is reusable on its own.
      -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"score_website","arguments":{"url":"https://YOUR-SITE.com"}}}'
    ```
 
-The rubric, the probe, and the scoring are all open-source. Reproducible by design. We're publishing **Agent Readiness Reports** — scorecards on named products, using the same hosted scorer — bi-weekly. The first reports land soon.
+The rubric, the probe, and the scoring are all open-source. Reproducible by design. We're publishing public **[Agent Readiness Reports](/reports/)** — scorecards on named products, using the same hosted scorer. First batch of 10 (Vercel, Anthropic, Cloudflare, Coinbase, Amazon, Linear, Google, Stripe, WSJ, Indeed — scores ranging 10 → 75) is live. Reports auto-update weekly; new targets ship every other Thursday.
 
 A framework only matters if it's measurable. We made it measurable.
 

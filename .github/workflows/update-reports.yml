@@ -1,0 +1,88 @@
+name: update-reports
+
+# Re-score every target in /reports/<slug>/ via the live MCP scorer at
+# agentsfirst.dev/mcp, refresh each report's front matter + scoring-data.json,
+# regenerate the /reports/index.md scoreboard, and commit if anything moved.
+#
+# Cron: every Thursday at 14:00 UTC (= 09:00 Austin / 10:00 ET on standard time).
+
+on:
+  schedule:
+    - cron: '0 14 * * 4'   # 14:00 UTC every Thursday
+  workflow_dispatch:        # manual trigger
+    inputs:
+      slug:
+        description: 'Single slug to refresh (default: all)'
+        required: false
+        default: ''
+      dry_run:
+        description: 'Dry run (do not commit)'
+        required: false
+        default: 'false'
+
+# Permission so the workflow can `git push` back to main with the default GITHUB_TOKEN.
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run scoreboard updater
+        id: update
+        run: |
+          set -euo pipefail
+          ARGS=""
+          if [ -n "${{ github.event.inputs.slug || '' }}" ]; then
+            ARGS="$ARGS --slug=${{ github.event.inputs.slug }}"
+          fi
+          if [ "${{ github.event.inputs.dry_run || 'false' }}" = "true" ]; then
+            ARGS="$ARGS --dry-run"
+          fi
+          node tools/scoreboard-updater/update.mjs $ARGS > /tmp/_update_summary.json
+          cat /tmp/_update_summary.json
+
+      - name: Commit + push if changed
+        if: github.event.inputs.dry_run != 'true'
+        run: |
+          set -euo pipefail
+          git config user.name "agentsfirst-bot"
+          git config user.email "noreply@agentsfirst.dev"
+
+          git add reports/
+
+          if git diff --cached --quiet; then
+            echo "No changes — scoreboard is up to date."
+            exit 0
+          fi
+
+          MOVED=$(jq -r '.moved' /tmp/_update_summary.json)
+          MOVEMENTS=$(jq -r '
+            .movements[] |
+            "  - \(.slug): \(.from.score // "—") → \(.to.score) (Level \(.from.level // "—") → \(.to.level))"
+          ' /tmp/_update_summary.json)
+
+          if [ -z "$MOVEMENTS" ]; then
+            BODY="No score movements; refresh of front-matter dates + scoring-data.json metadata only."
+          else
+            BODY=$(printf 'Score movements:\n%s\n' "$MOVEMENTS")
+          fi
+
+          git commit -m "chore(reports): weekly auto-refresh — ${MOVED} score movement(s)
+
+          $BODY
+
+          Triggered by .github/workflows/update-reports.yml.
+          Source: tools/scoreboard-updater/update.mjs."
+          git push
