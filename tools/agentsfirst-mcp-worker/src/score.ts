@@ -548,21 +548,40 @@ function scoreBotAccessControl(signals: WebsiteSignals): PrincipleScore {
   let pts = 0;
   const notes: string[] = [];
   const robots = signals.signals.robots_analysis;
-  if (robots) {
-    if (robots.address_count > 0 && !robots.blanket_disallow) {
-      pts += 10;
-      notes.push('Per-bot allow/deny posture (no blanket disallow)');
-    } else if (robots.address_count > 0) {
-      pts += 5;
-      notes.push('Addresses AI agents but uses blanket disallow');
-    }
-    if (robots.address_count >= 3) {
-      pts += 5;
-      notes.push(`Distinct posture for ${robots.address_count} bots — granular control`);
-    }
-  } else {
+  if (!robots) {
     notes.push('No robots.txt analysis available');
+    return { pts: 0, max, status: statusFor(0, max), notes };
   }
+
+  // 10 pts: Cloudflare Content-Signal directive OR equivalent AI-policy declaration.
+  // Content-Signal is the modern machine-readable convention; per-bot rules are the
+  // older convention and earn partial credit when Content-Signal is absent.
+  const cs = robots.content_signal_directives;
+  if (cs && Object.keys(cs).length > 0) {
+    pts += 10;
+    const fmt = Object.entries(cs)
+      .map(([k, v]) => `${k}=${v}`)
+      .join(', ');
+    notes.push(`Content-Signal directive declared: ${fmt}`);
+  } else if (robots.address_count >= 3) {
+    pts += 5;
+    notes.push(
+      `AI policy implicit via ${robots.address_count} per-bot rules — consider adding a Content-Signal directive for machine-readable, future-proof AI policy`,
+    );
+  } else {
+    notes.push('No Content-Signal directive and no per-bot AI policy in robots.txt');
+  }
+
+  // 5 pts: per-bot granular posture (names ≥3 AI bots and is not paired with a global blanket disallow).
+  if (robots.address_count >= 3 && !robots.blanket_disallow) {
+    pts += 5;
+    notes.push(`Per-bot granular posture for ${robots.address_count} named bots`);
+  } else if (robots.address_count >= 3 && robots.blanket_disallow) {
+    notes.push(`Names ${robots.address_count} bots but pairs with a global blanket disallow`);
+  } else if (robots.address_count > 0) {
+    notes.push(`Names ${robots.address_count} bot(s) — under threshold (need 3+) for granular-control credit`);
+  }
+
   return { pts: Math.min(pts, max), max, status: statusFor(pts, max), notes };
 }
 

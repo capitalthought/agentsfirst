@@ -37,6 +37,7 @@ export interface WebsiteSignals {
       ai_agents_addressed: string[];
       address_count: number;
       blanket_disallow: boolean;
+      content_signal_directives?: Record<string, string>;
     };
     markdown_negotiation: {
       requested?: string;
@@ -161,10 +162,25 @@ export async function probeWebsite(url: string): Promise<WebsiteSignals> {
     const declared = aiAgents.filter((ua) =>
       new RegExp(`User-agent:\\s*${ua}`, 'i').test(robotsBody),
     );
+    // Content-Signal directive (Cloudflare's emerging AI-policy convention).
+    // Format: `Content-Signal: ai-train=yes, search=yes, ai-input=yes`
+    const contentSignalLines = robotsBody.match(/^Content-Signal:\s*(.+)$/gim) ?? [];
+    const directives: Record<string, string> = {};
+    for (const line of contentSignalLines) {
+      const m = line.match(/^Content-Signal:\s*(.+)$/i);
+      const captured = m?.[1];
+      if (!captured) continue;
+      for (const pair of captured.split(',')) {
+        const [k, v] = pair.split('=').map((s) => s.trim().toLowerCase());
+        if (k && v) directives[k] = v;
+      }
+    }
+
     out.signals.robots_analysis = {
       ai_agents_addressed: declared,
       address_count: declared.length,
       blanket_disallow: /User-agent:\s*\*[\s\S]*?Disallow:\s*\//i.test(robotsBody),
+      ...(Object.keys(directives).length > 0 && { content_signal_directives: directives }),
     };
   }
 
