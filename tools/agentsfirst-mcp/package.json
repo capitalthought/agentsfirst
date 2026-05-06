@@ -1,0 +1,49 @@
+{
+  "name": "@capitalthought/agentsfirst-mcp",
+  "version": "0.1.0",
+  "description": "MCP server that scores websites and codebases against the Agents First framework. Use it to check how agent-ready any product is. https://agentsfirst.dev",
+  "license": "MIT",
+  "author": "Joshua Baer <josh@capitalfactory.com>",
+  "homepage": "https://agentsfirst.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/capitalthought/agentsfirst",
+    "directory": "tools/agentsfirst-mcp"
+  },
+  "keywords": [
+    "agents-first",
+    "mcp",
+    "model-context-protocol",
+    "agent-readiness",
+    "scoring",
+    "framework"
+  ],
+  "type": "module",
+  "bin": {
+    "agentsfirst-mcp": "dist/server.js"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "AGENTS.md"
+  ],
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsc -p .",
+    "start": "node dist/server.js",
+    "prep": "tsx src/prep.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
