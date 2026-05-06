@@ -1,0 +1,617 @@
+{
+  "developers.linear.app": {
+    "anti_patterns_flagged": [],
+    "dimensions": {
+      "agent-capabilities": {
+        "max": 30,
+        "notes": [
+          "MCP Server Card published at /.well-known/mcp-server-card.json",
+          "Homepage references agent surfaces: SDK",
+          "OAuth / AI-plugin auth-server discovery present"
+        ],
+        "pts": 30,
+        "status": "pass"
+      },
+      "bot-access-control": {
+        "max": 15,
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "content-accessibility": {
+        "max": 20,
+        "notes": [
+          "No markdown content negotiation",
+          "sitemap.xml present",
+          "OpenAPI surface discoverable"
+        ],
+        "pts": 10,
+        "status": "partial"
+      },
+      "discoverability": {
+        "max": 25,
+        "notes": [
+          "robots.txt exists but does not address AI agents specifically",
+          "/llms.txt published",
+          "/AGENTS.md or /.well-known/agent-rules published"
+        ],
+        "pts": 20,
+        "status": "pass"
+      },
+      "visibility-of-agent-integrations": {
+        "max": 10,
+        "notes": [
+          "Homepage hides agent integrations from human-onboarding flow"
+        ],
+        "pts": 0,
+        "status": "fail"
+      }
+    },
+    "level": 2,
+    "level_name": "Agent-Aware",
+    "probe_signals": {
+      "mode": "website",
+      "signals": {
+        "homepage": {
+          "content_type": "text/html; charset=utf-8",
+          "length": 1509525,
+          "ok": true,
+          "status": 200,
+          "url": "https://developers.linear.app"
+        },
+        "homepage_analysis": {
+          "mentions_agents_first": false,
+          "mentions_api": true,
+          "mentions_cli": false,
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_oauth": true,
+          "mentions_sdk": true
+        },
+        "markdown_negotiation": {
+          "content_type_returned": "text/html; charset=utf-8",
+          "requested": "text/markdown",
+          "served_markdown": false,
+          "status": 200
+        },
+        "robots_analysis": {
+          "address_count": 0,
+          "ai_agents_addressed": [],
+          "blanket_disallow": false
+        },
+        "surfaces": {
+          "agents_md": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1509525,
+            "ok": true,
+            "status": 200,
+            "url": "https://developers.linear.app/AGENTS.md"
+          },
+          "llms_full_txt": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1509439,
+            "ok": true,
+            "status": 200,
+            "url": "https://developers.linear.app/llms-full.txt"
+          },
+          "llms_txt": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1509525,
+            "ok": true,
+            "status": 200,
+            "url": "https://developers.linear.app/llms.txt"
+          },
+          "openapi_api": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1509439,
+            "ok": true,
+            "status": 200,
+            "url": "https://developers.linear.app/api/openapi.json"
+          },
+          "openapi_root": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1509439,
+            "ok": true,
+            "status": 200,
+            "url": "https://developers.linear.app/openapi.json"
+          },
+          "openapi_v1": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1509525,
+            "ok": true,
+            "status": 200,
+            "url": "https://developers.linear.app/v1/openapi.json"
+          },
+          "robots_txt": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1509439,
+            "ok": true,
+            "status": 200,
+            "url": "https://developers.linear.app/robots.txt"
+          },
+          "sitemap": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1509525,
+            "ok": true,
+            "status": 200,
+            "url": "https://developers.linear.app/sitemap.xml"
+          },
+          "well_known_agent_rules": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1509439,
+            "ok": true,
+            "status": 200,
+            "url": "https://developers.linear.app/.well-known/agent-rules"
+          },
+          "well_known_ai_plugin": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1509439,
+            "ok": true,
+            "status": 200,
+            "url": "https://developers.linear.app/.well-known/ai-plugin.json"
+          },
+          "well_known_mcp": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1509525,
+            "ok": true,
+            "status": 200,
+            "url": "https://developers.linear.app/.well-known/mcp-server-card"
+          },
+          "well_known_mcp_json": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1509439,
+            "ok": true,
+            "status": 200,
+            "url": "https://developers.linear.app/.well-known/mcp-server-card.json"
+          },
+          "well_known_oauth": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1509525,
+            "ok": true,
+            "status": 200,
+            "url": "https://developers.linear.app/.well-known/oauth-authorization-server"
+          }
+        }
+      },
+      "target": "https://developers.linear.app",
+      "timestamp": "2026-05-06T20:38:51.381Z"
+    },
+    "score": 60,
+    "top_moves": [
+      {
+        "action": "Replace any blanket Disallow with per-bot rules. Cloudflare Content Signals or equivalent declarative AI-policy.",
+        "gap_pts": 15,
+        "principle": "bot-access-control",
+        "rank": 1
+      },
+      {
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
+        "gap_pts": 10,
+        "principle": "content-accessibility",
+        "rank": 2
+      },
+      {
+        "action": "Add an \"Install our MCP server\" or \"Use our CLI\" call-out next to the human-onboarding hero, not buried in /docs.",
+        "gap_pts": 10,
+        "principle": "visibility-of-agent-integrations",
+        "rank": 3
+      }
+    ]
+  },
+  "linear.app": {
+    "anti_patterns_flagged": [
+      {
+        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected.",
+        "name": "The Invisible Product",
+        "slug": "invisible-product"
+      }
+    ],
+    "dimensions": {
+      "agent-capabilities": {
+        "max": 30,
+        "notes": [
+          "No MCP Server Card",
+          "Homepage does not reference MCP / CLI / SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "bot-access-control": {
+        "max": 15,
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "content-accessibility": {
+        "max": 20,
+        "notes": [
+          "No markdown content negotiation",
+          "sitemap.xml present",
+          "OpenAPI surface discoverable"
+        ],
+        "pts": 10,
+        "status": "partial"
+      },
+      "discoverability": {
+        "max": 25,
+        "notes": [
+          "robots.txt exists but does not address AI agents specifically",
+          "/llms.txt published",
+          "/AGENTS.md or /.well-known/agent-rules published"
+        ],
+        "pts": 20,
+        "status": "pass"
+      },
+      "visibility-of-agent-integrations": {
+        "max": 10,
+        "notes": [
+          "Homepage hides agent integrations from human-onboarding flow"
+        ],
+        "pts": 0,
+        "status": "fail"
+      }
+    },
+    "level": 2,
+    "level_name": "Agent-Aware",
+    "probe_signals": {
+      "mode": "website",
+      "signals": {
+        "homepage": {
+          "content_type": "text/html; charset=utf-8",
+          "length": 2348281,
+          "ok": true,
+          "status": 200,
+          "url": "https://linear.app"
+        },
+        "homepage_analysis": {
+          "mentions_agents_first": false,
+          "mentions_api": true,
+          "mentions_cli": false,
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_oauth": false,
+          "mentions_sdk": false
+        },
+        "markdown_negotiation": {
+          "content_type_returned": "text/html; charset=utf-8",
+          "requested": "text/markdown",
+          "served_markdown": false,
+          "status": 200
+        },
+        "robots_analysis": {
+          "address_count": 0,
+          "ai_agents_addressed": [],
+          "blanket_disallow": true
+        },
+        "surfaces": {
+          "agents_md": {
+            "content_type": "text/html",
+            "length": 17478,
+            "ok": true,
+            "status": 200,
+            "url": "https://linear.app/AGENTS.md"
+          },
+          "llms_full_txt": {
+            "content_type": "text/html",
+            "length": 17478,
+            "ok": true,
+            "status": 200,
+            "url": "https://linear.app/llms-full.txt"
+          },
+          "llms_txt": {
+            "content_type": "text/plain; charset=utf-8",
+            "length": 9375,
+            "ok": true,
+            "status": 200,
+            "url": "https://linear.app/llms.txt"
+          },
+          "openapi_api": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1372049,
+            "ok": false,
+            "status": 404,
+            "url": "https://linear.app/api/openapi.json"
+          },
+          "openapi_root": {
+            "content_type": "text/html",
+            "length": 17478,
+            "ok": true,
+            "status": 200,
+            "url": "https://linear.app/openapi.json"
+          },
+          "openapi_v1": {
+            "content_type": "text/html",
+            "length": 17478,
+            "ok": true,
+            "status": 200,
+            "url": "https://linear.app/v1/openapi.json"
+          },
+          "robots_txt": {
+            "content_type": "text/plain; charset=UTF-8",
+            "length": 107,
+            "ok": true,
+            "status": 200,
+            "url": "https://linear.app/robots.txt"
+          },
+          "sitemap": {
+            "content_type": "application/xml",
+            "length": 97923,
+            "ok": true,
+            "status": 200,
+            "url": "https://linear.app/sitemap.xml"
+          },
+          "well_known_agent_rules": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1372102,
+            "ok": false,
+            "status": 404,
+            "url": "https://linear.app/.well-known/agent-rules"
+          },
+          "well_known_ai_plugin": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1372102,
+            "ok": false,
+            "status": 404,
+            "url": "https://linear.app/.well-known/ai-plugin.json"
+          },
+          "well_known_mcp": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1372079,
+            "ok": false,
+            "status": 404,
+            "url": "https://linear.app/.well-known/mcp-server-card"
+          },
+          "well_known_mcp_json": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1372102,
+            "ok": false,
+            "status": 404,
+            "url": "https://linear.app/.well-known/mcp-server-card.json"
+          },
+          "well_known_oauth": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1372079,
+            "ok": false,
+            "status": 404,
+            "url": "https://linear.app/.well-known/oauth-authorization-server"
+          }
+        }
+      },
+      "target": "https://linear.app",
+      "timestamp": "2026-05-06T20:38:49.511Z"
+    },
+    "score": 30,
+    "top_moves": [
+      {
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
+        "gap_pts": 30,
+        "principle": "agent-capabilities",
+        "rank": 1
+      },
+      {
+        "action": "Replace any blanket Disallow with per-bot rules. Cloudflare Content Signals or equivalent declarative AI-policy.",
+        "gap_pts": 15,
+        "principle": "bot-access-control",
+        "rank": 2
+      },
+      {
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
+        "gap_pts": 10,
+        "principle": "content-accessibility",
+        "rank": 3
+      }
+    ]
+  },
+  "linear.app/docs": {
+    "anti_patterns_flagged": [
+      {
+        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected.",
+        "name": "The Invisible Product",
+        "slug": "invisible-product"
+      }
+    ],
+    "dimensions": {
+      "agent-capabilities": {
+        "max": 30,
+        "notes": [
+          "No MCP Server Card",
+          "Homepage does not reference MCP / CLI / SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "bot-access-control": {
+        "max": 15,
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "content-accessibility": {
+        "max": 20,
+        "notes": [
+          "No markdown content negotiation",
+          "sitemap.xml present",
+          "OpenAPI surface discoverable"
+        ],
+        "pts": 10,
+        "status": "partial"
+      },
+      "discoverability": {
+        "max": 25,
+        "notes": [
+          "robots.txt exists but does not address AI agents specifically",
+          "/llms.txt published",
+          "/AGENTS.md or /.well-known/agent-rules published"
+        ],
+        "pts": 20,
+        "status": "pass"
+      },
+      "visibility-of-agent-integrations": {
+        "max": 10,
+        "notes": [
+          "Homepage hides agent integrations from human-onboarding flow"
+        ],
+        "pts": 0,
+        "status": "fail"
+      }
+    },
+    "level": 2,
+    "level_name": "Agent-Aware",
+    "probe_signals": {
+      "mode": "website",
+      "signals": {
+        "homepage": {
+          "content_type": "text/html; charset=utf-8",
+          "length": 1594102,
+          "ok": true,
+          "status": 200,
+          "url": "https://linear.app/docs"
+        },
+        "homepage_analysis": {
+          "mentions_agents_first": false,
+          "mentions_api": true,
+          "mentions_cli": false,
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_oauth": false,
+          "mentions_sdk": false
+        },
+        "markdown_negotiation": {
+          "content_type_returned": "text/html; charset=utf-8",
+          "requested": "text/markdown",
+          "served_markdown": false,
+          "status": 200
+        },
+        "robots_analysis": {
+          "address_count": 0,
+          "ai_agents_addressed": [],
+          "blanket_disallow": true
+        },
+        "surfaces": {
+          "agents_md": {
+            "content_type": "text/html",
+            "length": 17478,
+            "ok": true,
+            "status": 200,
+            "url": "https://linear.app/AGENTS.md"
+          },
+          "llms_full_txt": {
+            "content_type": "text/html",
+            "length": 17478,
+            "ok": true,
+            "status": 200,
+            "url": "https://linear.app/llms-full.txt"
+          },
+          "llms_txt": {
+            "content_type": "text/plain; charset=utf-8",
+            "length": 9375,
+            "ok": true,
+            "status": 200,
+            "url": "https://linear.app/llms.txt"
+          },
+          "openapi_api": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1372048,
+            "ok": false,
+            "status": 404,
+            "url": "https://linear.app/api/openapi.json"
+          },
+          "openapi_root": {
+            "content_type": "text/html",
+            "length": 17478,
+            "ok": true,
+            "status": 200,
+            "url": "https://linear.app/openapi.json"
+          },
+          "openapi_v1": {
+            "content_type": "text/html",
+            "length": 17478,
+            "ok": true,
+            "status": 200,
+            "url": "https://linear.app/v1/openapi.json"
+          },
+          "robots_txt": {
+            "content_type": "text/plain; charset=UTF-8",
+            "length": 107,
+            "ok": true,
+            "status": 200,
+            "url": "https://linear.app/robots.txt"
+          },
+          "sitemap": {
+            "content_type": "application/xml",
+            "length": 97923,
+            "ok": true,
+            "status": 200,
+            "url": "https://linear.app/sitemap.xml"
+          },
+          "well_known_agent_rules": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1371706,
+            "ok": false,
+            "status": 404,
+            "url": "https://linear.app/.well-known/agent-rules"
+          },
+          "well_known_ai_plugin": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1371706,
+            "ok": false,
+            "status": 404,
+            "url": "https://linear.app/.well-known/ai-plugin.json"
+          },
+          "well_known_mcp": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1371706,
+            "ok": false,
+            "status": 404,
+            "url": "https://linear.app/.well-known/mcp-server-card"
+          },
+          "well_known_mcp_json": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1372102,
+            "ok": false,
+            "status": 404,
+            "url": "https://linear.app/.well-known/mcp-server-card.json"
+          },
+          "well_known_oauth": {
+            "content_type": "text/html; charset=utf-8",
+            "length": 1371706,
+            "ok": false,
+            "status": 404,
+            "url": "https://linear.app/.well-known/oauth-authorization-server"
+          }
+        }
+      },
+      "target": "https://linear.app/docs",
+      "timestamp": "2026-05-06T20:38:53.212Z"
+    },
+    "score": 30,
+    "top_moves": [
+      {
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
+        "gap_pts": 30,
+        "principle": "agent-capabilities",
+        "rank": 1
+      },
+      {
+        "action": "Replace any blanket Disallow with per-bot rules. Cloudflare Content Signals or equivalent declarative AI-policy.",
+        "gap_pts": 15,
+        "principle": "bot-access-control",
+        "rank": 2
+      },
+      {
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
+        "gap_pts": 10,
+        "principle": "content-accessibility",
+        "rank": 3
+      }
+    ]
+  }
+}

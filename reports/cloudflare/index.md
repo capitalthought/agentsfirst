@@ -1,0 +1,78 @@
+---
+title: "Agent Readiness Report: Cloudflare"
+description: "Cloudflare scored 40/100 (Level 2) on developers.cloudflare.com — even after we shipped a rubric fix to credit the Content-Signal directive Cloudflare invented. The blog hosting their original Agent Readiness Score post lands at 15/100, Level 1."
+image: /og-image.png
+author: Joshua Baer
+permalink: /reports/cloudflare/
+report_date: 2026-05-06
+report_target: Cloudflare
+report_score: 40
+report_level: 2
+---
+
+# Agent Readiness Report: Cloudflare
+
+**Score: 40/100 · Level 2 (Agent-Aware)** · scored across cloudflare.com / blog.cloudflare.com / developers.cloudflare.com — 2026-05-06. Highest surface: `developers.cloudflare.com` at 40/100. Marketing root: 25/100. Blog: 15/100.
+
+Cloudflare wrote [the Agent Readiness Score post](https://blog.cloudflare.com/agent-readiness/) in April 2026 — the piece this thesis cites. We pointed our scorer at theirs first. While probing, we found a bug in our rubric: it didn't credit the `Content-Signal` directive Cloudflare itself invented. We shipped v0.1.2 to fix that. Even after crediting their innovation, Cloudflare lands at **40/100**. The story is the variance — 40 / 25 / 15 — and a blog hosting Cloudflare's own agent-readiness post that scores Level 1 against the rubric the post helped popularize.
+
+## What's working
+
+`developers.cloudflare.com` does the things most companies don't.
+
+It publishes a real **`/llms.txt`** — structured, with a [full documentation archive](https://developers.cloudflare.com/llms-full.txt) for offline indexing. Per-product files for narrow context, one fat archive for large-context models. 10 of 25 points in [discoverability](https://agentsfirst.dev/principles/interface-first/).
+
+It passes **content negotiation**. Hit any docs URL with `Accept: text/markdown` and the server returns markdown, not HTML. OpenAPI surface discoverable. Sitemap present. Clean 20/20 on content-accessibility — the only dimension where any Cloudflare surface gets full marks.
+
+The robots.txt is where Cloudflare's protocol shows up. The file declares `Content-Signal: ai-train=yes, search=yes, ai-input=yes` — Cloudflare's [Content Signals](https://blog.cloudflare.com/content-signals-policy/) policy. The directive is present on **all three surfaces**, earning each 10 of 15 points in [bot-access-control](https://agentsfirst.dev/principles/contract-first/). Cloudflare invented the convention, ships it consistently, and the v0.1.2 rubric credits it.
+
+## What's missing
+
+**Agent-capabilities is zero across all three surfaces** — 0 of 30 points. No MCP Server Card. No `/.well-known/ai-plugin.json`. None of the homepages reference MCP, the CLI, or any SDK install path. Cloudflare ships [Code Mode](https://agentsfirst.dev/glossary/#code-mode) — the canonical example of exposing 2,500 endpoints to an agent in 1,000 tokens — and we cite it in the thesis. None of that is discoverable from the homepage. That's [the Invisible Product](https://agentsfirst.dev/glossary/#invisible-product) anti-pattern: the capability is real, the signal isn't.
+
+**`blog.cloudflare.com` scores 15/100 — Level 1.** No `/llms.txt`. No markdown content negotiation. The April 2026 Agent Readiness Score post sits on a surface that scores Level 1 against the rubric it helped popularize, saved from Level 0 only by the Content-Signal directive. **`www.cloudflare.com` lands at 25/100, Level 1** — publishes `/llms.txt` but no markdown negotiation, no OpenAPI, no MCP reference from the hero.
+
+## The top three fixes
+
+1. **Publish an MCP Server Card from `cloudflare.com` and reference it from the homepage hero.** Worth 30 points across every surface. Cloudflare already operates MCP servers people use in production; the missing piece is the discovery breadcrumb that says "this exists, here's the install command, here's the auth flow." Today an agent reading cloudflare.com cannot tell an MCP server exists. See [Interface First](https://agentsfirst.dev/principles/interface-first/).
+
+2. **Lift `/llms.txt` to the blog and ship `/AGENTS.md` on all three surfaces.** `cloudflare.com` already publishes `/llms.txt`. The blog doesn't. Add it; have it index the post archive. Then ship `/AGENTS.md` on all three: declare the usage rules that turn each surface from documentation into [a contract](https://agentsfirst.dev/principles/contract-first/) the agent can rely on. Lowest-effort, highest-leverage move. Closes the [Agents Without Rules](https://agentsfirst.dev/glossary/#agents-without-rules) gap.
+
+3. **Pair Content-Signal with per-named-bot blocks.** Our v0.1.2 rubric credits Content Signals; adoption is still early, and competing rubrics may keep scoring per-named-bot rules. Belt-and-suspenders: keep `Content-Signal: ai-train=yes, search=yes, ai-input=yes` and add explicit `User-agent: GPTBot / ClaudeBot / anthropic-ai / Google-Extended / PerplexityBot / CCBot` blocks. Picks up the remaining 5 points in bot-access-control on every surface. See [Contract First](https://agentsfirst.dev/principles/contract-first/).
+
+## What other companies can learn from this
+
+The lesson is the *shape* of the score, not the number. One subdomain at Level 2; two at Level 1. Most companies that ship an agent strategy ship it in one place and forget the marketing site, blog, and changelog all have to be addressable too. A Level 3 product is Level 3 across every surface an agent might land on. Score your three most-trafficked subdomains; the variance is the bug.
+
+The other lesson, for rubric authors: credit the conventions the people you're scoring are inventing. We almost shipped this with Cloudflare at 30/100 because our rubric didn't recognize the directive Cloudflare wrote. Fix the rubric, then publish.
+
+## How we scored this
+
+Three URLs were probed via the live scorer at `https://agentsfirst.dev/mcp` on 2026-05-06: `www.cloudflare.com` (25/100, Level 1), `blog.cloudflare.com` (15/100, Level 1), `developers.cloudflare.com` (40/100, Level 2). Headline is the highest of the three. Raw probe data — robots.txt bodies, content-negotiation responses, capability checks — is in [the report directory](https://github.com/capitalthought/agentsfirst/tree/main/reports/cloudflare).
+
+Methodology note: this score uses the v0.1.2 rubric, which credits the `Content-Signal` directive in `robots.txt` — the convention Cloudflare itself invented. Earlier rubric versions missed it; v0.1.2 fixed the bug. Source: <https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts>.
+
+---
+
+*Part of Agent Readiness Reports — bi-weekly scorecards on how named products score against the [Agents First framework](https://agentsfirst.dev/principles/). Comments, corrections, and "we just shipped the fix" notes welcome below.*
+
+<div id="comments" style="margin-top:3em;padding-top:2em;border-top:1px solid rgba(0,0,0,0.15);">
+  <h2>💬 Comments</h2>
+  <p>Have feedback, corrections, or "we just shipped the fix" notes? Comment below — backed by <a href="https://github.com/capitalthought/agentsfirst/discussions">GitHub Discussions</a>.</p>
+</div>
+
+<script src="https://giscus.app/client.js"
+        data-repo="capitalthought/agentsfirst"
+        data-repo-id="R_kgDOSUZxkw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOSUZxk84C8WNg"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>

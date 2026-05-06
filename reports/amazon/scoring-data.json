@@ -1,0 +1,638 @@
+{
+  "_meta": {
+    "rubric_source": "https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts",
+    "rubric_version": "v0.1.2",
+    "scored_at": "2026-05-06",
+    "scorer_endpoint": "https://agentsfirst.dev/mcp"
+  },
+  "https://aws.amazon.com": {
+    "anti_patterns_flagged": [
+      {
+        "evidence": "Agent capabilities advertised but no /AGENTS.md or /.well-known/agent-rules.",
+        "name": "Agents Without Rules",
+        "slug": "agents-without-rules"
+      }
+    ],
+    "dimensions": {
+      "agent-capabilities": {
+        "max": 30,
+        "notes": [
+          "No MCP Server Card",
+          "Homepage references agent surfaces: CLI, SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ],
+        "pts": 10,
+        "status": "partial"
+      },
+      "bot-access-control": {
+        "max": 15,
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "content-accessibility": {
+        "max": 20,
+        "notes": [
+          "No markdown content negotiation",
+          "No sitemap.xml",
+          "No discoverable OpenAPI surface"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "discoverability": {
+        "max": 25,
+        "notes": [
+          "robots.txt exists but does not address AI agents specifically",
+          "No /llms.txt",
+          "No /AGENTS.md or /.well-known/agent-rules"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "visibility-of-agent-integrations": {
+        "max": 10,
+        "notes": [
+          "Homepage promotes agent install / MCP / CLI alongside human onboarding"
+        ],
+        "pts": 10,
+        "status": "pass"
+      }
+    },
+    "level": 1,
+    "level_name": "Agent as Afterthought",
+    "probe_signals": {
+      "mode": "website",
+      "signals": {
+        "homepage": {
+          "content_type": "text/html;charset=utf-8",
+          "length": 340770,
+          "ok": true,
+          "status": 200,
+          "url": "https://aws.amazon.com"
+        },
+        "homepage_analysis": {
+          "mentions_agents_first": false,
+          "mentions_api": true,
+          "mentions_cli": true,
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_oauth": false,
+          "mentions_sdk": true
+        },
+        "markdown_negotiation": {
+          "content_type_returned": "text/html;charset=utf-8",
+          "requested": "text/markdown",
+          "served_markdown": false,
+          "status": 200
+        },
+        "robots_analysis": {
+          "address_count": 0,
+          "ai_agents_addressed": [],
+          "blanket_disallow": true
+        },
+        "surfaces": {
+          "agents_md": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001,
+            "ok": false,
+            "status": 404,
+            "url": "https://aws.amazon.com/AGENTS.md"
+          },
+          "llms_full_txt": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001,
+            "ok": false,
+            "status": 404,
+            "url": "https://aws.amazon.com/llms-full.txt"
+          },
+          "llms_txt": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001,
+            "ok": false,
+            "status": 404,
+            "url": "https://aws.amazon.com/llms.txt"
+          },
+          "openapi_api": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001,
+            "ok": false,
+            "status": 404,
+            "url": "https://aws.amazon.com/api/openapi.json"
+          },
+          "openapi_root": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001,
+            "ok": false,
+            "status": 404,
+            "url": "https://aws.amazon.com/openapi.json"
+          },
+          "openapi_v1": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001,
+            "ok": false,
+            "status": 404,
+            "url": "https://aws.amazon.com/v1/openapi.json"
+          },
+          "robots_txt": {
+            "content_type": "text/plain;charset=UTF-8",
+            "length": 13955,
+            "ok": true,
+            "status": 200,
+            "url": "https://aws.amazon.com/robots.txt"
+          },
+          "sitemap": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001,
+            "ok": false,
+            "status": 404,
+            "url": "https://aws.amazon.com/sitemap.xml"
+          },
+          "well_known_agent_rules": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001,
+            "ok": false,
+            "status": 404,
+            "url": "https://aws.amazon.com/.well-known/agent-rules"
+          },
+          "well_known_ai_plugin": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001,
+            "ok": false,
+            "status": 404,
+            "url": "https://aws.amazon.com/.well-known/ai-plugin.json"
+          },
+          "well_known_mcp": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001,
+            "ok": false,
+            "status": 404,
+            "url": "https://aws.amazon.com/.well-known/mcp-server-card"
+          },
+          "well_known_mcp_json": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001,
+            "ok": false,
+            "status": 404,
+            "url": "https://aws.amazon.com/.well-known/mcp-server-card.json"
+          },
+          "well_known_oauth": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001,
+            "ok": false,
+            "status": 404,
+            "url": "https://aws.amazon.com/.well-known/oauth-authorization-server"
+          }
+        }
+      },
+      "target": "https://aws.amazon.com",
+      "timestamp": "2026-05-06T20:39:53.219Z"
+    },
+    "score": 20,
+    "top_moves": [
+      {
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
+        "gap_pts": 25,
+        "principle": "discoverability",
+        "rank": 1
+      },
+      {
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
+        "gap_pts": 20,
+        "principle": "agent-capabilities",
+        "rank": 2
+      },
+      {
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
+        "gap_pts": 20,
+        "principle": "content-accessibility",
+        "rank": 3
+      }
+    ]
+  },
+  "https://developer.amazon.com": {
+    "anti_patterns_flagged": [
+      {
+        "evidence": "Agent capabilities advertised but no /AGENTS.md or /.well-known/agent-rules.",
+        "name": "Agents Without Rules",
+        "slug": "agents-without-rules"
+      }
+    ],
+    "dimensions": {
+      "agent-capabilities": {
+        "max": 30,
+        "notes": [
+          "No MCP Server Card",
+          "Homepage references agent surfaces: MCP",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ],
+        "pts": 10,
+        "status": "partial"
+      },
+      "bot-access-control": {
+        "max": 15,
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "content-accessibility": {
+        "max": 20,
+        "notes": [
+          "No markdown content negotiation",
+          "No sitemap.xml",
+          "No discoverable OpenAPI surface"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "discoverability": {
+        "max": 25,
+        "notes": [
+          "robots.txt exists but does not address AI agents specifically",
+          "/llms.txt published",
+          "No /AGENTS.md or /.well-known/agent-rules"
+        ],
+        "pts": 10,
+        "status": "partial"
+      },
+      "visibility-of-agent-integrations": {
+        "max": 10,
+        "notes": [
+          "Homepage promotes agent install / MCP / CLI alongside human onboarding"
+        ],
+        "pts": 10,
+        "status": "pass"
+      }
+    },
+    "level": 2,
+    "level_name": "Agent-Aware",
+    "probe_signals": {
+      "mode": "website",
+      "signals": {
+        "homepage": {
+          "content_type": "text/html;charset=utf-8",
+          "length": 351405,
+          "ok": true,
+          "status": 200,
+          "url": "https://developer.amazon.com"
+        },
+        "homepage_analysis": {
+          "mentions_agents_first": true,
+          "mentions_api": false,
+          "mentions_cli": false,
+          "mentions_mcp": true,
+          "mentions_npx": false,
+          "mentions_oauth": false,
+          "mentions_sdk": false
+        },
+        "markdown_negotiation": {
+          "content_type_returned": "text/html;charset=utf-8",
+          "requested": "text/markdown",
+          "served_markdown": false,
+          "status": 200
+        },
+        "robots_analysis": {
+          "address_count": 0,
+          "ai_agents_addressed": [],
+          "blanket_disallow": true
+        },
+        "surfaces": {
+          "agents_md": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 83828,
+            "ok": false,
+            "status": 404,
+            "url": "https://developer.amazon.com/AGENTS.md"
+          },
+          "llms_full_txt": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 83867,
+            "ok": false,
+            "status": 404,
+            "url": "https://developer.amazon.com/llms-full.txt"
+          },
+          "llms_txt": {
+            "content_type": "text/plain;charset=UTF-8",
+            "length": 69083,
+            "ok": true,
+            "status": 200,
+            "url": "https://developer.amazon.com/llms.txt"
+          },
+          "openapi_api": {
+            "content_type": null,
+            "length": 19,
+            "ok": false,
+            "status": 500,
+            "url": "https://developer.amazon.com/api/openapi.json"
+          },
+          "openapi_root": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 83855,
+            "ok": false,
+            "status": 404,
+            "url": "https://developer.amazon.com/openapi.json"
+          },
+          "openapi_v1": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 83889,
+            "ok": false,
+            "status": 404,
+            "url": "https://developer.amazon.com/v1/openapi.json"
+          },
+          "robots_txt": {
+            "content_type": "text/plain;charset=UTF-8",
+            "length": 875,
+            "ok": true,
+            "status": 200,
+            "url": "https://developer.amazon.com/robots.txt"
+          },
+          "sitemap": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 83846,
+            "ok": false,
+            "status": 404,
+            "url": "https://developer.amazon.com/sitemap.xml"
+          },
+          "well_known_agent_rules": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 83967,
+            "ok": false,
+            "status": 404,
+            "url": "https://developer.amazon.com/.well-known/agent-rules"
+          },
+          "well_known_ai_plugin": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 83994,
+            "ok": false,
+            "status": 404,
+            "url": "https://developer.amazon.com/.well-known/ai-plugin.json"
+          },
+          "well_known_mcp": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 84006,
+            "ok": false,
+            "status": 404,
+            "url": "https://developer.amazon.com/.well-known/mcp-server-card"
+          },
+          "well_known_mcp_json": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 84051,
+            "ok": false,
+            "status": 404,
+            "url": "https://developer.amazon.com/.well-known/mcp-server-card.json"
+          },
+          "well_known_oauth": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 84105,
+            "ok": false,
+            "status": 404,
+            "url": "https://developer.amazon.com/.well-known/oauth-authorization-server"
+          }
+        }
+      },
+      "target": "https://developer.amazon.com",
+      "timestamp": "2026-05-06T20:39:51.943Z"
+    },
+    "score": 30,
+    "top_moves": [
+      {
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
+        "gap_pts": 20,
+        "principle": "agent-capabilities",
+        "rank": 1
+      },
+      {
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
+        "gap_pts": 20,
+        "principle": "content-accessibility",
+        "rank": 2
+      },
+      {
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
+        "gap_pts": 15,
+        "principle": "discoverability",
+        "rank": 3
+      }
+    ]
+  },
+  "https://www.amazon.com": {
+    "anti_patterns_flagged": [
+      {
+        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected.",
+        "name": "The Invisible Product",
+        "slug": "invisible-product"
+      }
+    ],
+    "dimensions": {
+      "agent-capabilities": {
+        "max": 30,
+        "notes": [
+          "No MCP Server Card",
+          "Homepage does not reference MCP / CLI / SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "bot-access-control": {
+        "max": 15,
+        "notes": [
+          "AI policy implicit via 7 per-bot rules \u2014 consider adding a Content-Signal directive for machine-readable, future-proof AI policy",
+          "Names 7 bots but pairs with a global blanket disallow"
+        ],
+        "pts": 5,
+        "status": "partial"
+      },
+      "content-accessibility": {
+        "max": 20,
+        "notes": [
+          "No markdown content negotiation",
+          "No sitemap.xml",
+          "No discoverable OpenAPI surface"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "discoverability": {
+        "max": 25,
+        "notes": [
+          "robots.txt addresses 7 AI agents: GPTBot, ClaudeBot, Google-Extended, PerplexityBot, Bytespider, CCBot, cohere-ai",
+          "No /llms.txt",
+          "No /AGENTS.md or /.well-known/agent-rules"
+        ],
+        "pts": 5,
+        "status": "partial"
+      },
+      "visibility-of-agent-integrations": {
+        "max": 10,
+        "notes": [
+          "Homepage hides agent integrations from human-onboarding flow"
+        ],
+        "pts": 0,
+        "status": "fail"
+      }
+    },
+    "level": 0,
+    "level_name": "No agent access",
+    "probe_signals": {
+      "mode": "website",
+      "signals": {
+        "homepage": {
+          "content_type": "text/html",
+          "length": 1386459,
+          "ok": true,
+          "status": 200,
+          "url": "https://www.amazon.com"
+        },
+        "homepage_analysis": {
+          "mentions_agents_first": false,
+          "mentions_api": false,
+          "mentions_cli": false,
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_oauth": false,
+          "mentions_sdk": false
+        },
+        "markdown_negotiation": {
+          "content_type_returned": "text/html;charset=UTF-8",
+          "requested": "text/markdown",
+          "served_markdown": false,
+          "status": 200
+        },
+        "robots_analysis": {
+          "address_count": 7,
+          "ai_agents_addressed": [
+            "GPTBot",
+            "ClaudeBot",
+            "Google-Extended",
+            "PerplexityBot",
+            "Bytespider",
+            "CCBot",
+            "cohere-ai"
+          ],
+          "blanket_disallow": true
+        },
+        "surfaces": {
+          "agents_md": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 2296,
+            "ok": false,
+            "status": 404,
+            "url": "https://www.amazon.com/AGENTS.md"
+          },
+          "llms_full_txt": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 2296,
+            "ok": false,
+            "status": 404,
+            "url": "https://www.amazon.com/llms-full.txt"
+          },
+          "llms_txt": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 2296,
+            "ok": false,
+            "status": 404,
+            "url": "https://www.amazon.com/llms.txt"
+          },
+          "openapi_api": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 2296,
+            "ok": false,
+            "status": 404,
+            "url": "https://www.amazon.com/api/openapi.json"
+          },
+          "openapi_root": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 2296,
+            "ok": false,
+            "status": 404,
+            "url": "https://www.amazon.com/openapi.json"
+          },
+          "openapi_v1": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 2296,
+            "ok": false,
+            "status": 404,
+            "url": "https://www.amazon.com/v1/openapi.json"
+          },
+          "robots_txt": {
+            "content_type": "text/plain",
+            "length": 5888,
+            "ok": true,
+            "status": 200,
+            "url": "https://www.amazon.com/robots.txt"
+          },
+          "sitemap": {
+            "content_type": "text/html",
+            "length": 2672,
+            "ok": false,
+            "status": 500,
+            "url": "https://www.amazon.com/sitemap.xml"
+          },
+          "well_known_agent_rules": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 2296,
+            "ok": false,
+            "status": 404,
+            "url": "https://www.amazon.com/.well-known/agent-rules"
+          },
+          "well_known_ai_plugin": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 2296,
+            "ok": false,
+            "status": 404,
+            "url": "https://www.amazon.com/.well-known/ai-plugin.json"
+          },
+          "well_known_mcp": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 2296,
+            "ok": false,
+            "status": 404,
+            "url": "https://www.amazon.com/.well-known/mcp-server-card"
+          },
+          "well_known_mcp_json": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 2296,
+            "ok": false,
+            "status": 404,
+            "url": "https://www.amazon.com/.well-known/mcp-server-card.json"
+          },
+          "well_known_oauth": {
+            "content_type": "text/html;charset=UTF-8",
+            "length": 2296,
+            "ok": false,
+            "status": 404,
+            "url": "https://www.amazon.com/.well-known/oauth-authorization-server"
+          }
+        }
+      },
+      "target": "https://www.amazon.com",
+      "timestamp": "2026-05-06T20:39:50.699Z"
+    },
+    "score": 10,
+    "top_moves": [
+      {
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
+        "gap_pts": 30,
+        "principle": "agent-capabilities",
+        "rank": 1
+      },
+      {
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
+        "gap_pts": 20,
+        "principle": "discoverability",
+        "rank": 2
+      },
+      {
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
+        "gap_pts": 20,
+        "principle": "content-accessibility",
+        "rank": 3
+      }
+    ]
+  }
+}

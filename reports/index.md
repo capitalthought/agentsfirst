@@ -14,15 +14,22 @@ The framework only matters if it's measurable. These reports are how we keep our
 
 ## Reports
 
-The first scorecard drops the week of **2026-05-11**. Subsequent reports land every other Thursday. This page is the index as they ship.
+The first batch (10 scorecards) shipped 2026-05-06 against rubric v0.1.2. Subsequent reports land every other Thursday — sorted by score descending.
 
 | Date | Target | Score | Level | Read |
-|---|---|---|---|---|
-| *(coming soon)* | Cloudflare | TBD | TBD | — |
-| *(planned)* | Anthropic | — | — | — |
-| *(planned)* | Stripe | — | — | — |
-| *(planned)* | Linear | — | — | — |
-| *(planned)* | Vercel | — | — | — |
+|---|---|---:|---:|---|
+| 2026-05-06 | Vercel | **75** | 3 — Agents First | [Read →](/reports/vercel/) |
+| 2026-05-06 | Anthropic | **60** | 2 — Agent-Aware | [Read →](/reports/anthropic/) |
+| 2026-05-06 | Cloudflare | **40** | 2 — Agent-Aware | [Read →](/reports/cloudflare/) |
+| 2026-05-06 | Coinbase | **35** | 2 — Agent-Aware | [Read →](/reports/coinbase/) |
+| 2026-05-06 | Amazon | **30** | 2 — Agent-Aware | [Read →](/reports/amazon/) |
+| 2026-05-06 | Linear | **30** | 2 — Agent-Aware | [Read →](/reports/linear/) |
+| 2026-05-06 | Google | **25** | 1 — Agent as Afterthought | [Read →](/reports/google/) |
+| 2026-05-06 | Stripe | **25** | 1 — Agent as Afterthought | [Read →](/reports/stripe/) |
+| 2026-05-06 | The Wall Street Journal | **10** | 0 — No agent access | [Read →](/reports/wsj/) |
+| 2026-05-06 | Indeed | **10** | 0 — No agent access | [Read →](/reports/indeed/) |
+
+**Distribution across the first batch:** 1 at Level 3, 5 at Level 2, 2 at Level 1, 2 at Level 0. The mid is Level 2, the spread is 65 points (Vercel 75 → WSJ/Indeed 10). The framework holds at the extremes; the middle is where most companies live and where the discovery breadcrumbs matter most.
 
 ## How we score
 

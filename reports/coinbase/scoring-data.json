@@ -1,0 +1,278 @@
+{
+  "_meta": {
+    "rubric_source": "https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts",
+    "rubric_version": "v0.1.2",
+    "scored_at": "2026-05-06",
+    "scorer_endpoint": "https://agentsfirst.dev/mcp",
+    "scorer_tool": "score_website"
+  },
+  "headline": {
+    "highest_surface": "https://docs.cdp.coinbase.com",
+    "level": 2,
+    "level_name": "Agent-Aware",
+    "score": 35,
+    "spread": "35 / 20 / 10",
+    "target": "Coinbase"
+  },
+  "https://developers.coinbase.com": {
+    "anti_patterns_flagged": [
+      {
+        "name": "The Invisible Product",
+        "slug": "invisible-product"
+      }
+    ],
+    "dimensions": {
+      "agent-capabilities": {
+        "max": 30,
+        "notes": [
+          "No MCP Server Card",
+          "Homepage does not reference MCP / CLI / SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "bot-access-control": {
+        "max": 15,
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "content-accessibility": {
+        "max": 20,
+        "notes": [
+          "No markdown content negotiation",
+          "No sitemap.xml",
+          "No discoverable OpenAPI surface"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "discoverability": {
+        "max": 25,
+        "notes": [
+          "robots.txt exists but does not address AI agents specifically",
+          "/llms.txt published",
+          "/AGENTS.md or /.well-known/agent-rules published"
+        ],
+        "pts": 20,
+        "status": "pass"
+      },
+      "visibility-of-agent-integrations": {
+        "max": 10,
+        "notes": [
+          "Homepage hides agent integrations from human-onboarding flow"
+        ],
+        "pts": 0,
+        "status": "fail"
+      }
+    },
+    "level": 1,
+    "level_name": "Agent as Afterthought",
+    "narrative_signals": {
+      "anti_bot_wall": "Cloudflare 'Just a moment...' challenge returns 429 on /llms.txt, /openapi*, /.well-known/mcp, /.well-known/ai-plugin, /.well-known/oauth-* and sitemap. Probe credited 200s on /robots.txt, /AGENTS.md, /.well-known/agent-rules, /llms-full.txt \u2014 but each returned the generic CDP HTML page (not a real file). The score overcredits; in practice an unauthenticated agent reading developers.coinbase.com is mostly walled off."
+    },
+    "score": 20,
+    "top_moves": [
+      {
+        "action": "Ship an MCP server, publish /.well-known/mcp-server-card, reference it from the homepage hero.",
+        "gap_pts": 30,
+        "principle": "agent-capabilities",
+        "rank": 1
+      },
+      {
+        "action": "Serve text/markdown when Accept asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
+        "gap_pts": 20,
+        "principle": "content-accessibility",
+        "rank": 2
+      },
+      {
+        "action": "Replace any blanket Disallow with per-bot rules or adopt Content Signals.",
+        "gap_pts": 15,
+        "principle": "bot-access-control",
+        "rank": 3
+      }
+    ]
+  },
+  "https://docs.cdp.coinbase.com": {
+    "anti_patterns_flagged": [
+      {
+        "name": "Agents Without Rules",
+        "slug": "agents-without-rules"
+      }
+    ],
+    "dimensions": {
+      "agent-capabilities": {
+        "max": 30,
+        "notes": [
+          "No MCP Server Card",
+          "Homepage references agent surfaces: SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ],
+        "pts": 10,
+        "status": "partial"
+      },
+      "bot-access-control": {
+        "max": 15,
+        "notes": [
+          "No robots.txt analysis available"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "content-accessibility": {
+        "max": 20,
+        "notes": [
+          "Server responds to text/markdown content negotiation",
+          "sitemap.xml present",
+          "No discoverable OpenAPI surface"
+        ],
+        "pts": 15,
+        "status": "pass"
+      },
+      "discoverability": {
+        "max": 25,
+        "notes": [
+          "No robots.txt",
+          "/llms.txt published",
+          "No /AGENTS.md or /.well-known/agent-rules"
+        ],
+        "pts": 10,
+        "status": "partial"
+      },
+      "visibility-of-agent-integrations": {
+        "max": 10,
+        "notes": [
+          "Homepage hides agent integrations from human-onboarding flow"
+        ],
+        "pts": 0,
+        "status": "fail"
+      }
+    },
+    "level": 2,
+    "level_name": "Agent-Aware",
+    "narrative_signals": {
+      "llms_txt_mentions": {
+        "MCP": 13,
+        "SDK": 19,
+        "Wallet": 17,
+        "agent": 21,
+        "x402": 3
+      },
+      "named_capabilities": [
+        "CDP CLI MCP server",
+        "AgentKit MCP Extension",
+        "Agentic Wallet MCP",
+        "CDP Docs MCP",
+        "x402 HTTP-native payments",
+        "Server Wallets v2",
+        "Embedded Wallets"
+      ]
+    },
+    "score": 35,
+    "top_moves": [
+      {
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
+        "gap_pts": 20,
+        "principle": "agent-capabilities",
+        "rank": 1
+      },
+      {
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
+        "gap_pts": 15,
+        "principle": "discoverability",
+        "rank": 2
+      },
+      {
+        "action": "Replace any blanket Disallow with per-bot rules. Cloudflare Content Signals or equivalent declarative AI-policy.",
+        "gap_pts": 15,
+        "principle": "bot-access-control",
+        "rank": 3
+      }
+    ]
+  },
+  "https://www.coinbase.com": {
+    "anti_patterns_flagged": [
+      {
+        "name": "The Invisible Product",
+        "slug": "invisible-product"
+      }
+    ],
+    "dimensions": {
+      "agent-capabilities": {
+        "max": 30,
+        "notes": [
+          "No MCP Server Card",
+          "Homepage does not reference MCP / CLI / SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "bot-access-control": {
+        "max": 15,
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "content-accessibility": {
+        "max": 20,
+        "notes": [
+          "No markdown content negotiation",
+          "No sitemap.xml",
+          "No discoverable OpenAPI surface"
+        ],
+        "pts": 0,
+        "status": "fail"
+      },
+      "discoverability": {
+        "max": 25,
+        "notes": [
+          "robots.txt exists but does not address AI agents specifically",
+          "/llms.txt published",
+          "No /AGENTS.md or /.well-known/agent-rules"
+        ],
+        "pts": 10,
+        "status": "partial"
+      },
+      "visibility-of-agent-integrations": {
+        "max": 10,
+        "notes": [
+          "Homepage hides agent integrations from human-onboarding flow"
+        ],
+        "pts": 0,
+        "status": "fail"
+      }
+    },
+    "level": 0,
+    "level_name": "No agent access",
+    "narrative_signals": {
+      "llms_txt_quality": "Genuinely well-written. Explicitly redirects agents to docs.cdp.coinbase.com, names Agentic Wallet, Embedded Wallets, Server Wallets v2, AgentKit, x402, framework integrations (LangChain, Vercel AI SDK). 5KB plaintext containing the most agent-aware copy on any Coinbase surface \u2014 the rubric still scored www at 10/100 because everything else (sitemap, OpenAPI, MCP card, AGENTS.md) is missing."
+    },
+    "score": 10,
+    "top_moves": [
+      {
+        "action": "Ship an MCP server, publish /.well-known/mcp-server-card, reference it from the homepage hero.",
+        "gap_pts": 30,
+        "principle": "agent-capabilities",
+        "rank": 1
+      },
+      {
+        "action": "Serve text/markdown when Accept asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
+        "gap_pts": 20,
+        "principle": "content-accessibility",
+        "rank": 2
+      },
+      {
+        "action": "Publish /AGENTS.md at the site root. Update robots.txt to address named bots.",
+        "gap_pts": 15,
+        "principle": "discoverability",
+        "rank": 3
+      }
+    ]
+  }
+}
