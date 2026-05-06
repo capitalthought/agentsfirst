@@ -1,0 +1,30 @@
+{
+  "name": "@capitalthought/agentsfirst-mcp-worker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cloudflare Worker hosting the Agents First MCP scorer at https://agentsfirst.dev/mcp. Remote MCP server — no install required.",
+  "license": "MIT",
+  "author": "Joshua Baer <josh@capitalfactory.com>",
+  "homepage": "https://agentsfirst.dev",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/capitalthought/agentsfirst.git",
+    "directory": "tools/agentsfirst-mcp-worker"
+  },
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local",
+    "deploy": "wrangler deploy",
+    "tail": "wrangler tail",
+    "types": "wrangler types"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240512.0",
+    "typescript": "^5.4.0",
+    "wrangler": "^3.80.0"
+  }
+}

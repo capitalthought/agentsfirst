@@ -1,0 +1,23 @@
+# Cloudflare Worker — Agents First MCP scorer at https://agentsfirst.dev/mcp.
+#
+# Route pattern is path-scoped: only requests matching agentsfirst.dev/mcp (and /mcp/*)
+# hit this Worker. Everything else flows to the GitHub Pages site as before.
+
+name = "agentsfirst-mcp"
+main = "src/index.ts"
+compatibility_date = "2026-05-01"
+compatibility_flags = ["nodejs_compat"]
+
+# account_id is intentionally empty. Wrangler picks it up from CF_ACCOUNT_ID
+# (set in 1Password joshshop entry) or from interactive `wrangler login`.
+account_id = ""
+
+# Path-scoped route. Cloudflare matches on the full path; only /mcp and /mcp/*
+# reach the Worker. The apex (/) and the rest of the site continue to flow to
+# GitHub Pages via the existing CNAME.
+[[routes]]
+pattern = "agentsfirst.dev/mcp*"
+zone_name = "agentsfirst.dev"
+
+[observability]
+enabled = true
