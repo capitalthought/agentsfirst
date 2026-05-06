@@ -1,6 +1,6 @@
 ---
 title: "Agents First Score — angellist.com"
-description: "Private agent-readiness audit of angellist.com against the Agents First framework — score, gaps, anti-patterns, and prioritized next moves."
+description: "Score: 5/100 · Level 0 (No agent access). AngelList is invisible to agents — every well-known agent-discovery path returns 200 with the SPA shell, a soft-404 that misleads any probing agent."
 noindex: true
 sitemap: false
 image: /og-image.png

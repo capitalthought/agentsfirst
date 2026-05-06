@@ -1,6 +1,6 @@
 ---
 title: "Agents First Score — really.com"
-description: "Private agent-readiness audit of really.com against the Agents First framework — score, gaps, anti-patterns, and prioritized next moves."
+description: "Score: 0/100 · Level 0 (No agent access). really.com is the maximum-strength version of the Invisible Product anti-pattern: not just absent from the agent surface, but actively hostile to it."
 noindex: true
 sitemap: false
 image: /og-image.png
