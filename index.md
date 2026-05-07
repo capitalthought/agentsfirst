@@ -7,7 +7,7 @@ author: Joshua Baer
 
 # Agents First
 
-*by Joshua Baer · v0.6, May 2026*
+*by Joshua Baer · v0.7, May 2026*
 
 ---
 
@@ -56,7 +56,9 @@ The user might not even know they're using your product yet. They're already get
 - **Documentation** — "Install our MCP server" or "Use our CLI" sitting next to "Install our SDK" in your getting-started guide.
 - **Bundling** — IDE extensions and platform integrations that ship your tools out of the box.
 
-Cloudflare put a number on this in April 2026 — an [Agent Readiness Score](https://blog.cloudflare.com/agent-readiness/) across four dimensions: discoverability, content accessibility, bot access control, capabilities. The early data is damning. 4% of sites declare AI usage preferences. Fewer than 15 sites publish MCP Server Cards or API Catalogs combined. The bar is on the floor. The holdouts have a window.
+Cloudflare put a number on this in April 2026 — an [Agent Readiness Score](https://blog.cloudflare.com/agent-readiness/) across four dimensions: discoverability, content accessibility, bot access control, capabilities. The early data is damning. 4% of sites declare AI usage preferences. Fewer than 15 sites publish MCP Server Cards or API Catalogs combined. Cloudflare also shipped a dedicated agent-targeted documentation surface at [`developers.cloudflare.com/docs-for-agents/`](https://developers.cloudflare.com/docs-for-agents/) — explicit acknowledgement that the agent reader and the human reader want different views of the same docs. The bar is on the floor. The holdouts have a window.
+
+The window is closing fast. In a single week (April 29–30, 2026), three of the largest infrastructure vendors shipped agent-as-customer infrastructure simultaneously: [Stripe](https://stripe.com/blog/giving-agents-the-ability-to-pay) launched Link Wallet for Agents and Issuing for Agents — payment rails native to non-humans. [Cloudflare](https://blog.cloudflare.com/agents-stripe-projects/) opened account creation, domain purchase, and Worker deployment to agents. [Vercel](https://vercel.com/changelog/vercel-now-supports-pro-plan-in-stripe-projects) matched on Pro plan via Stripe Projects. The "agents have payment rails" future is now in production at three of the largest vendors. Out of category, [Datasite](https://x.com/DatasiteGlobal/status/2051594438971937166) shipped the first virtual-data-room MCP server for M&A diligence; agents can now operate inside private-equity workflows. [Framer](https://x.com/BuiltWithBala/status/2052072675288461684) added native `/llms.txt` support as a dashboard option. The ecosystem is moving from "build the inside" to "build the door" in real time.
 
 Agents First doesn't kill the need for distribution. It compresses what happens *after* distribution. The install-to-value gap drops from days to seconds. That's the leverage.
 
@@ -232,6 +234,10 @@ Some are genuinely new. Others are established practices — health checks, type
 
 Most companies today are at Level 0 or 1. The opportunity is Level 3.
 
+### Versus Cloudflare's Agent Readiness Score
+
+Cloudflare's Agent Readiness Score uses a 5-level adoption ladder (Level 0–4) that mirrors this one in shape and numbering. Both are useful; they measure different things. **Cloudflare ARS is outside-in** — it scores the discoverable signals an external crawler can verify (robots.txt, llms.txt, MCP Server Cards, OAuth discovery). **Agents First is inside-out** — it scores the eight implementation principles that determine whether your product *thinks correctly* about agents as customers, regardless of what an external probe can see. A site can score Level 4 on Cloudflare ARS by publishing all the right artifacts and still ship a Lazy Wrapper underneath. A product can be deeply Agents First in mindset (verb-first tools, typed contracts, prep gates, visible outputs) while underinvesting in marketing-root discovery. Use both. They're complementary; the same way TDD and API First are complementary. Fivetran's [2026 Agentic AI Readiness Index](https://www.morningstar.com/news/business-wire/20260505250301/fivetran-launches-2026-agentic-ai-readiness-index-revealing-gap-between-enterprise-investment-and-data-preparedness-for-agentic-ai) covers a third axis — enterprise data foundation. Three labels, three lenses. None of them obsoletes the others.
+
 **The smallest experiment.** Don't start with the full framework. Pick your most-used API endpoint. Wrap it as a single agent tool — an MCP tool, a CLI command, or a typed function — with a clear name, typed parameters, and a structured error response. Ship it. Measure time to first agent action and tool success rate. If agents use it reliably, you've validated the thesis. Build from there.
 
 ---
@@ -294,7 +300,7 @@ This is a v0.6 framework. Some important questions don't have answers yet:
 
 **What's the real adoption curve?** We don't have the Agents First equivalent of "mobile traffic crossed 50%." Agent-mediated product interactions are growing, but nobody has published reliable numbers on what percentage of SaaS usage flows through agents today. If agent-mediated interactions reach 10% of SaaS usage by 2028, Agents First is a two-year head start. If it takes until 2030, it's a four-year head start. If it stalls at 2%, the implementation principles still improve your API design — you just don't get the distribution leverage. Downside case: you built a better API. Upside case: you built the next platform.
 
-**Is MCP the right protocol?** Active industry debate. MCP has massive adoption (110M+ monthly downloads) and broad support (Anthropic, OpenAI, Google, Microsoft). Critics point to token bloat, immature auth, and the question of whether tool-calling is even the right abstraction. Cloudflare's Code Mode and CLI-first approaches are compelling alternatives for specific use cases. David Soria Parra, MCP's creator, acknowledges the context-bloat problem and says the protocol is shifting toward progressive discovery, stateless transport, and code-based tool composition. The framework here is deliberately protocol-agnostic. The principles hold regardless of which protocol wins.
+**Is MCP the right protocol?** Active industry debate. MCP has massive adoption (110M+ monthly downloads) and broad support (Anthropic, OpenAI, Google, Microsoft). Critics point to token bloat, immature auth, and the question of whether tool-calling is even the right abstraction. Cloudflare's Code Mode and CLI-first approaches are compelling alternatives for specific use cases. David Soria Parra, MCP's creator, acknowledges the context-bloat problem and says the protocol is shifting toward progressive discovery, stateless transport, and code-based tool composition. **The spec is actively iterating** — the draft schema saw 20+ commits in the two weeks before this revision (including a breaking `IncompleteResult` → `InputRequiredResult` rename and a newly-merged SDK Working Group charter). When you build, validate against a specific draft date or release tag and re-validate before each ship. The framework here is deliberately protocol-agnostic. The principles hold regardless of which protocol wins.
 
 **How do monetization models change?** If agents use your product and humans rarely open your UI, usage-based pricing becomes more natural than seat-based licensing. Who gets billed — the human, the agent operator, or the tool server host? These models are still forming.
 
@@ -320,7 +326,7 @@ Design accordingly.
 
 ---
 
-*Framework v0.6. May 2026.*
+*Framework v0.7. May 2026.*
 
 ---
 

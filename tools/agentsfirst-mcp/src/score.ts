@@ -500,17 +500,21 @@ function scoreWebDiscoverability(signals: WebsiteSignals): PrincipleScore {
   } else {
     notes.push('No robots.txt');
   }
-  if (surfaces['llms_txt']?.ok || surfaces['llms_full_txt']?.ok) {
-    pts += 10;
-    notes.push('/llms.txt published');
-  } else {
-    notes.push('No /llms.txt');
-  }
+  // v0.2.0: AGENTS.md is the load-bearing contract artifact (15pts), llms.txt downgraded to optional (5pts).
+  // Rationale: SE Ranking (May 2026) found /llms.txt at 10% adoption with no AI-citation correlation;
+  // Google publicly declined to support it. Meanwhile AGENTS.md is winning HN front-page conversation
+  // and shipping in Linear, Bun (PORTING.md), GitHub Copilot. Section total stays at 25pts.
   if (surfaces['agents_md']?.ok || surfaces['well_known_agent_rules']?.ok) {
-    pts += 10;
-    notes.push('/AGENTS.md or /.well-known/agent-rules published');
+    pts += 15;
+    notes.push('/AGENTS.md or /.well-known/agent-rules published (canonical contract artifact)');
   } else {
-    notes.push('No /AGENTS.md or /.well-known/agent-rules');
+    notes.push('No /AGENTS.md or /.well-known/agent-rules — the load-bearing contract artifact');
+  }
+  if (surfaces['llms_txt']?.ok || surfaces['llms_full_txt']?.ok) {
+    pts += 5;
+    notes.push('/llms.txt published (useful but optional)');
+  } else {
+    notes.push('No /llms.txt (optional belt-and-suspenders artifact)');
   }
   return { pts: Math.min(pts, max), max, status: statusFor(pts, max), notes };
 }
@@ -525,11 +529,12 @@ function scoreContentAccessibility(signals: WebsiteSignals): PrincipleScore {
   } else {
     notes.push('No markdown content negotiation');
   }
-  if (signals.signals.surfaces['sitemap']?.ok) {
+  if (signals.signals.surfaces['sitemap']?.ok || signals.signals.surfaces['sitemap_index']?.ok) {
     pts += 5;
-    notes.push('sitemap.xml present');
+    const variant = signals.signals.surfaces['sitemap']?.ok ? 'sitemap.xml' : 'sitemap-index.xml';
+    notes.push(`${variant} present`);
   } else {
-    notes.push('No sitemap.xml');
+    notes.push('No sitemap.xml / sitemap-index.xml');
   }
   const openapiSurfaces = ['openapi_root', 'openapi_v1', 'openapi_api'].some(
     (k) => signals.signals.surfaces[k]?.ok,
@@ -590,14 +595,21 @@ function scoreAgentCapabilities(signals: WebsiteSignals): PrincipleScore {
   let pts = 0;
   const notes: string[] = [];
   const surfaces = signals.signals.surfaces;
-  if (surfaces['well_known_mcp']?.ok || surfaces['well_known_mcp_json']?.ok) {
+  // v0.2.0: also credit /agents.json (the spec name some are coalescing on per WorkOS MCP-2026 explainer).
+  if (
+    surfaces['well_known_mcp']?.ok ||
+    surfaces['well_known_mcp_json']?.ok ||
+    surfaces['agents_json']?.ok
+  ) {
     pts += 15;
     const variant = surfaces['well_known_mcp_json']?.ok
       ? '/.well-known/mcp-server-card.json'
-      : '/.well-known/mcp-server-card';
+      : surfaces['well_known_mcp']?.ok
+        ? '/.well-known/mcp-server-card'
+        : '/agents.json';
     notes.push(`MCP Server Card published at ${variant}`);
   } else {
-    notes.push('No MCP Server Card');
+    notes.push('No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)');
   }
   const homepage = signals.signals.homepage_analysis;
   if (homepage) {

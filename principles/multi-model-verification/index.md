@@ -29,7 +29,7 @@ The opposite failure mode — suspecting every model output — is also expensiv
 
 1. **Identify the decisions that justify the cost.** Deploy approval. Security review of new code. Billing or pricing changes. Mass communications to users. Schema migrations. Anything expensive to undo or affecting multiple people. Most agent actions aren't on this list.
 
-2. **Send the same prompt to three independent models.** Different vendors are best — GPT-4o or GPT-5, Claude, Gemini. If budget is tight, two models from different vendors is meaningfully better than one. Same vendor, different sizes (e.g., Opus + Sonnet) is the weakest version — failure modes correlate.
+2. **Send the same prompt to three independent models.** Different vendors are best — GPT-5.5, Claude, Gemini, Grok. If budget is tight, two models from different vendors is meaningfully better than one. Same vendor, different sizes (e.g., Opus + Sonnet) is the weakest version — failure modes correlate.
 
 3. **Run findings through a deduplication step.** Use a small, cheap model (Haiku, Flash, GPT-4o-mini) to read the three sets of findings and group them by underlying issue. Path normalization, severity normalization, and synonym handling matter — the same finding shows up with different phrasing across models.
 

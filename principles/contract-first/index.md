@@ -13,7 +13,11 @@ Tool definitions alone aren't enough. A `send_email` tool exposes the capability
 
 Without a contract, every agent that touches your product runs with no prior context — because it has none. It guesses at the right sequence of calls. It hallucinates IDs that look plausible but don't exist. It violates rate limits because nobody told it the limits. It sends a confirmation email to the wrong customer because it pattern-matched on the closest-looking ID from the previous turn.
 
-The fix is a markdown file. It lives at the root of your project (or your MCP server's repo) under a name agents will look for — `AGENTS.md` is the emerging convention; `CLAUDE.md`, `.cursorrules`, and equivalents work the same way. It documents the rules in plain prose, with examples. The agent loads it as part of its context at session start and refers to it whenever uncertainty arises.
+The fix is a markdown file. It lives at the root of your project (or your MCP server's repo) under the canonical name agents look for: **`AGENTS.md`**. As of mid-2026 this is the load-bearing artifact — it's winning the front page of Hacker News (Augment Code's "[A good AGENTS.md is a model upgrade](https://news.ycombinator.com/item?id=47938417)" hit 140 points), shipping inside flagship OSS (Bun's [`docs/PORTING.md`](https://x.com/simonw/status/2051476878712840407) for the Zig→Rust port is an AGENTS.md-shaped contract written explicitly for coding agents), and is now the file Linear, GitHub Copilot CLI, and most agent harnesses load by default. `CLAUDE.md`, `.cursorrules`, and equivalents are tool-specific aliases of the same idea. Pick `AGENTS.md` as the canonical name; reference it from those aliases if your stack expects them.
+
+The agent loads it as part of its context at session start and refers to it whenever uncertainty arises.
+
+**The cargo-cult risk.** AGENTS.md is high-leverage but high-floor. A 200-line file full of stale rules is *worse* than no file — the agent treats it as ground truth and confidently follows expired guidance. The Augment Code post warns this directly: a bad AGENTS.md "is worse than no docs at all." If you ship one, you have to maintain it like production code. Every time the API changes, the contract changes in the same PR. Every time you find an agent making the same mistake twice, the file gets a "common mistakes" entry the same week. The framework's recommendation is unambiguous: ship AGENTS.md or skip it. Don't ship a file you won't maintain.
 
 ## Why it matters
 
