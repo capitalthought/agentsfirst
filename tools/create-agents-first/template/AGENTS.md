@@ -64,8 +64,17 @@ When you receive `error: not_found`, call the suggested tool. When you receive `
 - **Master keys** — issue scoped tokens per-agent, never share a root credential.
 - **Silent fail** — every tool either succeeds or returns a structured error. Never `return null` on failure.
 - **Single-Model Trust** — for high-stakes writes (billing, deploy, security), fan out to multiple models before acting. See <https://agentsfirst.dev/principles/multi-model-verification/>.
+- **Token Dump** — keep this file lean. The contract is the rules an agent can't infer from the code, not a project tour. ~50 lines, hand-written. A 2026 study (4 agents, 438 tasks) found auto-generated AGENTS.md files measurably *reduced* agent success rates. Length is the failure mode. See <https://agentsfirst.dev/glossary/>.
 
 For full anti-pattern definitions: <https://agentsfirst.dev/glossary/>.
+
+## Tool naming convention
+
+This server's tools are exposed to agent runtimes. When this MCP server is consumed by `openai-agents-python` ≥ v0.16 with `include_server_in_tool_names=True` (added 2026-05-07), tools are namespaced as `<servername>__<toolname>` — e.g. `{{PROJECT_NAME}}__example_create`. To avoid collisions across registries:
+
+- Prefix tool names with verbs (`create_*`, `list_*`, `update_*`, `delete_*`), not nouns.
+- Pick a stable server identifier you control. Don't rename mid-flight — agent state breaks.
+- Avoid generic verbs in isolation (`run`, `do`, `execute`) — they collide with every other server.
 
 ---
 
