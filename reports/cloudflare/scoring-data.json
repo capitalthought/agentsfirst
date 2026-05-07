@@ -3,642 +3,686 @@
     "rubric_source": "https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts",
     "rubric_version": "v0.1.2",
     "scored_at": "2026-05-06",
-    "scorer_endpoint": "https://agentsfirst.dev/mcp"
+    "scorer_endpoint": "https://agentsfirst.dev/mcp",
+    "last_refreshed": "2026-05-07T14:57:31.685Z",
+    "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://blog.cloudflare.com": {
-    "anti_patterns_flagged": [
-      {
-        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected.",
-        "name": "The Invisible Product",
-        "slug": "invisible-product"
-      }
-    ],
+    "score": 15,
+    "level": 1,
+    "level_name": "Agent as Afterthought",
     "dimensions": {
-      "agent-capabilities": {
-        "max": 30,
-        "notes": [
-          "No MCP Server Card",
-          "Homepage does not reference MCP / CLI / SDK",
-          "No OAuth-with-PKCE or ai-plugin discovery"
-        ],
+      "discoverability": {
         "pts": 0,
-        "status": "fail"
-      },
-      "bot-access-control": {
-        "max": 15,
+        "max": 25,
+        "status": "fail",
         "notes": [
-          "Content-Signal directive declared: ai-train=yes, search=yes, ai-input=yes"
-        ],
-        "pts": 10,
-        "status": "partial"
+          "robots.txt exists but does not address AI agents specifically",
+          "No /AGENTS.md or /.well-known/agent-rules — the load-bearing contract artifact",
+          "No /llms.txt (optional belt-and-suspenders artifact)"
+        ]
       },
       "content-accessibility": {
+        "pts": 5,
         "max": 20,
+        "status": "partial",
         "notes": [
           "No markdown content negotiation",
           "sitemap.xml present",
           "No discoverable OpenAPI surface"
-        ],
-        "pts": 5,
-        "status": "partial"
+        ]
       },
-      "discoverability": {
-        "max": 25,
+      "bot-access-control": {
+        "pts": 10,
+        "max": 15,
+        "status": "partial",
         "notes": [
-          "robots.txt exists but does not address AI agents specifically",
-          "No /llms.txt",
-          "No /AGENTS.md or /.well-known/agent-rules"
-        ],
+          "Content-Signal directive declared: ai-train=yes, search=yes, ai-input=yes"
+        ]
+      },
+      "agent-capabilities": {
         "pts": 0,
-        "status": "fail"
+        "max": 30,
+        "status": "fail",
+        "notes": [
+          "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
+          "Homepage does not reference MCP / CLI / SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ]
       },
       "visibility-of-agent-integrations": {
+        "pts": 0,
         "max": 10,
+        "status": "fail",
         "notes": [
           "Homepage hides agent integrations from human-onboarding flow"
-        ],
-        "pts": 0,
-        "status": "fail"
+        ]
       }
     },
-    "level": 1,
-    "level_name": "Agent as Afterthought",
+    "anti_patterns_flagged": [
+      {
+        "slug": "invisible-product",
+        "name": "The Invisible Product",
+        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected."
+      }
+    ],
+    "top_moves": [
+      {
+        "rank": 1,
+        "principle": "agent-capabilities",
+        "gap_pts": 30,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
+      },
+      {
+        "rank": 2,
+        "principle": "discoverability",
+        "gap_pts": 25,
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      },
+      {
+        "rank": 3,
+        "principle": "content-accessibility",
+        "gap_pts": 15,
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json."
+      }
+    ],
     "probe_signals": {
       "mode": "website",
+      "target": "https://blog.cloudflare.com",
+      "timestamp": "2026-05-07T14:57:32.661Z",
       "signals": {
-        "homepage": {
-          "content_type": "text/html; charset=UTF-8",
-          "length": 7231,
-          "ok": false,
-          "status": 429,
-          "url": "https://blog.cloudflare.com"
-        },
-        "homepage_analysis": {
-          "mentions_agents_first": false,
-          "mentions_api": false,
-          "mentions_cli": false,
-          "mentions_mcp": false,
-          "mentions_npx": false,
-          "mentions_oauth": false,
-          "mentions_sdk": false
+        "surfaces": {
+          "robots_txt": {
+            "url": "https://blog.cloudflare.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 2504
+          },
+          "sitemap_index": {
+            "url": "https://blog.cloudflare.com/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain;charset=UTF-8",
+            "length": 9
+          },
+          "sitemap": {
+            "url": "https://blog.cloudflare.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/xml",
+            "length": 2340
+          },
+          "openapi_api": {
+            "url": "https://blog.cloudflare.com/api/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51269
+          },
+          "well_known_ai_plugin": {
+            "url": "https://blog.cloudflare.com/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51865
+          },
+          "llms_txt": {
+            "url": "https://blog.cloudflare.com/llms.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51261
+          },
+          "llms_full_txt": {
+            "url": "https://blog.cloudflare.com/llms-full.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51266
+          },
+          "well_known_mcp_json": {
+            "url": "https://blog.cloudflare.com/.well-known/mcp-server-card.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51871
+          },
+          "well_known_mcp": {
+            "url": "https://blog.cloudflare.com/.well-known/mcp-server-card",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51866
+          },
+          "well_known_oauth": {
+            "url": "https://blog.cloudflare.com/.well-known/oauth-authorization-server",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51877
+          },
+          "openapi_root": {
+            "url": "https://blog.cloudflare.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51851
+          },
+          "agents_md": {
+            "url": "https://blog.cloudflare.com/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51848
+          },
+          "agents_json": {
+            "url": "https://blog.cloudflare.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51850
+          },
+          "well_known_agent_rules": {
+            "url": "https://blog.cloudflare.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51862
+          },
+          "openapi_v1": {
+            "url": "https://blog.cloudflare.com/v1/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51854
+          }
         },
         "markdown_negotiation": {
-          "content_type_returned": "text/html; charset=UTF-8",
           "requested": "text/markdown",
+          "content_type_returned": "text/html; charset=UTF-8",
           "served_markdown": false,
           "status": 429
         },
+        "homepage": {
+          "url": "https://blog.cloudflare.com",
+          "status": 429,
+          "ok": false,
+          "content_type": "text/html; charset=UTF-8",
+          "length": 7338
+        },
         "robots_analysis": {
-          "address_count": 0,
           "ai_agents_addressed": [],
+          "address_count": 0,
           "blanket_disallow": true,
           "content_signal_directives": {
-            "ai-input": "yes",
             "ai-train": "yes",
-            "search": "yes"
+            "search": "yes",
+            "ai-input": "yes"
           }
         },
-        "surfaces": {
-          "agents_md": {
-            "content_type": "text/html",
-            "length": 51848,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.cloudflare.com/AGENTS.md"
-          },
-          "llms_full_txt": {
-            "content_type": "text/html",
-            "length": 51266,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.cloudflare.com/llms-full.txt"
-          },
-          "llms_txt": {
-            "content_type": "text/html",
-            "length": 51261,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.cloudflare.com/llms.txt"
-          },
-          "openapi_api": {
-            "content_type": "text/html",
-            "length": 51269,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.cloudflare.com/api/openapi.json"
-          },
-          "openapi_root": {
-            "content_type": "text/html",
-            "length": 51851,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.cloudflare.com/openapi.json"
-          },
-          "openapi_v1": {
-            "content_type": "text/html",
-            "length": 51854,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.cloudflare.com/v1/openapi.json"
-          },
-          "robots_txt": {
-            "content_type": "text/plain; charset=utf-8",
-            "length": 2504,
-            "ok": true,
-            "status": 200,
-            "url": "https://blog.cloudflare.com/robots.txt"
-          },
-          "sitemap": {
-            "content_type": "application/xml",
-            "length": 2340,
-            "ok": true,
-            "status": 200,
-            "url": "https://blog.cloudflare.com/sitemap.xml"
-          },
-          "well_known_agent_rules": {
-            "content_type": "text/html",
-            "length": 51862,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.cloudflare.com/.well-known/agent-rules"
-          },
-          "well_known_ai_plugin": {
-            "content_type": "text/html",
-            "length": 51865,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.cloudflare.com/.well-known/ai-plugin.json"
-          },
-          "well_known_mcp": {
-            "content_type": "text/html",
-            "length": 51866,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.cloudflare.com/.well-known/mcp-server-card"
-          },
-          "well_known_mcp_json": {
-            "content_type": "text/html",
-            "length": 51871,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.cloudflare.com/.well-known/mcp-server-card.json"
-          },
-          "well_known_oauth": {
-            "content_type": "text/html",
-            "length": 51877,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.cloudflare.com/.well-known/oauth-authorization-server"
-          }
+        "homepage_analysis": {
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_cli": false,
+          "mentions_sdk": false,
+          "mentions_api": false,
+          "mentions_oauth": false,
+          "mentions_agents_first": false
         }
-      },
-      "target": "https://blog.cloudflare.com",
-      "timestamp": "2026-05-06T20:27:39.353Z"
-    },
-    "score": 15,
-    "top_moves": [
-      {
-        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
-        "gap_pts": 30,
-        "principle": "agent-capabilities",
-        "rank": 1
-      },
-      {
-        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
-        "gap_pts": 25,
-        "principle": "discoverability",
-        "rank": 2
-      },
-      {
-        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
-        "gap_pts": 15,
-        "principle": "content-accessibility",
-        "rank": 3
       }
-    ]
+    }
   },
   "https://developers.cloudflare.com": {
-    "anti_patterns_flagged": [
-      {
-        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected.",
-        "name": "The Invisible Product",
-        "slug": "invisible-product"
-      }
-    ],
+    "score": 35,
+    "level": 2,
+    "level_name": "Agent-Aware",
     "dimensions": {
-      "agent-capabilities": {
-        "max": 30,
+      "discoverability": {
+        "pts": 5,
+        "max": 25,
+        "status": "partial",
         "notes": [
-          "No MCP Server Card",
-          "Homepage does not reference MCP / CLI / SDK",
-          "No OAuth-with-PKCE or ai-plugin discovery"
-        ],
-        "pts": 0,
-        "status": "fail"
-      },
-      "bot-access-control": {
-        "max": 15,
-        "notes": [
-          "Content-Signal directive declared: ai-train=yes, search=yes, ai-input=yes"
-        ],
-        "pts": 10,
-        "status": "partial"
+          "robots.txt exists but does not address AI agents specifically",
+          "No /AGENTS.md or /.well-known/agent-rules — the load-bearing contract artifact",
+          "/llms.txt published (useful but optional)"
+        ]
       },
       "content-accessibility": {
+        "pts": 20,
         "max": 20,
+        "status": "pass",
         "notes": [
           "Server responds to text/markdown content negotiation",
           "sitemap.xml present",
           "OpenAPI surface discoverable"
-        ],
-        "pts": 20,
-        "status": "pass"
+        ]
       },
-      "discoverability": {
-        "max": 25,
-        "notes": [
-          "robots.txt exists but does not address AI agents specifically",
-          "/llms.txt published",
-          "No /AGENTS.md or /.well-known/agent-rules"
-        ],
+      "bot-access-control": {
         "pts": 10,
-        "status": "partial"
+        "max": 15,
+        "status": "partial",
+        "notes": [
+          "Content-Signal directive declared: ai-train=yes, search=yes, ai-input=yes"
+        ]
+      },
+      "agent-capabilities": {
+        "pts": 0,
+        "max": 30,
+        "status": "fail",
+        "notes": [
+          "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
+          "Homepage does not reference MCP / CLI / SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ]
       },
       "visibility-of-agent-integrations": {
+        "pts": 0,
         "max": 10,
+        "status": "fail",
         "notes": [
           "Homepage hides agent integrations from human-onboarding flow"
-        ],
-        "pts": 0,
-        "status": "fail"
+        ]
       }
     },
-    "level": 2,
-    "level_name": "Agent-Aware",
+    "anti_patterns_flagged": [
+      {
+        "slug": "invisible-product",
+        "name": "The Invisible Product",
+        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected."
+      }
+    ],
+    "top_moves": [
+      {
+        "rank": 1,
+        "principle": "agent-capabilities",
+        "gap_pts": 30,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
+      },
+      {
+        "rank": 2,
+        "principle": "discoverability",
+        "gap_pts": 20,
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      },
+      {
+        "rank": 3,
+        "principle": "visibility-of-agent-integrations",
+        "gap_pts": 10,
+        "action": "Add an \"Install our MCP server\" or \"Use our CLI\" call-out next to the human-onboarding hero, not buried in /docs."
+      }
+    ],
     "probe_signals": {
       "mode": "website",
+      "target": "https://developers.cloudflare.com",
+      "timestamp": "2026-05-07T14:57:34.260Z",
       "signals": {
-        "homepage": {
-          "content_type": "text/html",
-          "length": 93019,
-          "ok": true,
-          "status": 200,
-          "url": "https://developers.cloudflare.com"
-        },
-        "homepage_analysis": {
-          "mentions_agents_first": false,
-          "mentions_api": true,
-          "mentions_cli": false,
-          "mentions_mcp": false,
-          "mentions_npx": false,
-          "mentions_oauth": false,
-          "mentions_sdk": false
+        "surfaces": {
+          "llms_txt": {
+            "url": "https://developers.cloudflare.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain",
+            "length": 15634
+          },
+          "robots_txt": {
+            "url": "https://developers.cloudflare.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain",
+            "length": 1460
+          },
+          "agents_md": {
+            "url": "https://developers.cloudflare.com/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 30326
+          },
+          "well_known_ai_plugin": {
+            "url": "https://developers.cloudflare.com/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 30326
+          },
+          "well_known_agent_rules": {
+            "url": "https://developers.cloudflare.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 30326
+          },
+          "well_known_oauth": {
+            "url": "https://developers.cloudflare.com/.well-known/oauth-authorization-server",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 30326
+          },
+          "well_known_mcp_json": {
+            "url": "https://developers.cloudflare.com/.well-known/mcp-server-card.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 30326
+          },
+          "well_known_mcp": {
+            "url": "https://developers.cloudflare.com/.well-known/mcp-server-card",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 30326
+          },
+          "sitemap_index": {
+            "url": "https://developers.cloudflare.com/sitemap-index.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/xml",
+            "length": 196
+          },
+          "agents_json": {
+            "url": "https://developers.cloudflare.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 30326
+          },
+          "sitemap": {
+            "url": "https://developers.cloudflare.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/xml",
+            "length": 196
+          },
+          "openapi_v1": {
+            "url": "https://developers.cloudflare.com/v1/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 30326
+          },
+          "openapi_api": {
+            "url": "https://developers.cloudflare.com/api/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 2194945
+          },
+          "llms_full_txt": {
+            "url": "https://developers.cloudflare.com/llms-full.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/markdown; charset=utf-8",
+            "length": 49222034
+          },
+          "openapi_root": {
+            "url": "https://developers.cloudflare.com/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/json; charset=utf-8",
+            "length": 9722828
+          }
         },
         "markdown_negotiation": {
-          "content_type_returned": "text/markdown; charset=utf-8",
           "requested": "text/markdown",
+          "content_type_returned": "text/markdown; charset=utf-8",
           "served_markdown": true,
           "status": 200
         },
+        "homepage": {
+          "url": "https://developers.cloudflare.com",
+          "status": 200,
+          "ok": true,
+          "content_type": "text/html",
+          "length": 93023
+        },
         "robots_analysis": {
-          "address_count": 0,
           "ai_agents_addressed": [],
+          "address_count": 0,
           "blanket_disallow": true,
           "content_signal_directives": {
-            "ai-input": "yes",
             "ai-train": "yes",
-            "search": "yes"
+            "search": "yes",
+            "ai-input": "yes"
           }
         },
-        "surfaces": {
-          "agents_md": {
-            "content_type": "text/html",
-            "length": 30326,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.cloudflare.com/AGENTS.md"
-          },
-          "llms_full_txt": {
-            "content_type": "text/markdown; charset=utf-8",
-            "length": 49187876,
-            "ok": true,
-            "status": 200,
-            "url": "https://developers.cloudflare.com/llms-full.txt"
-          },
-          "llms_txt": {
-            "content_type": "text/plain",
-            "length": 15634,
-            "ok": true,
-            "status": 200,
-            "url": "https://developers.cloudflare.com/llms.txt"
-          },
-          "openapi_api": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 2194310,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.cloudflare.com/api/openapi.json"
-          },
-          "openapi_root": {
-            "content_type": "application/json; charset=utf-8",
-            "length": 9686940,
-            "ok": true,
-            "status": 200,
-            "url": "https://developers.cloudflare.com/openapi.json"
-          },
-          "openapi_v1": {
-            "content_type": "text/html",
-            "length": 30326,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.cloudflare.com/v1/openapi.json"
-          },
-          "robots_txt": {
-            "content_type": "text/plain",
-            "length": 1460,
-            "ok": true,
-            "status": 200,
-            "url": "https://developers.cloudflare.com/robots.txt"
-          },
-          "sitemap": {
-            "content_type": "application/xml",
-            "length": 196,
-            "ok": true,
-            "status": 200,
-            "url": "https://developers.cloudflare.com/sitemap.xml"
-          },
-          "well_known_agent_rules": {
-            "content_type": "text/html",
-            "length": 30326,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.cloudflare.com/.well-known/agent-rules"
-          },
-          "well_known_ai_plugin": {
-            "content_type": "text/html",
-            "length": 30326,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.cloudflare.com/.well-known/ai-plugin.json"
-          },
-          "well_known_mcp": {
-            "content_type": "text/html",
-            "length": 30326,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.cloudflare.com/.well-known/mcp-server-card"
-          },
-          "well_known_mcp_json": {
-            "content_type": "text/html",
-            "length": 30326,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.cloudflare.com/.well-known/mcp-server-card.json"
-          },
-          "well_known_oauth": {
-            "content_type": "text/html",
-            "length": 30326,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.cloudflare.com/.well-known/oauth-authorization-server"
-          }
+        "homepage_analysis": {
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_cli": false,
+          "mentions_sdk": false,
+          "mentions_api": true,
+          "mentions_oauth": false,
+          "mentions_agents_first": false
         }
-      },
-      "target": "https://developers.cloudflare.com",
-      "timestamp": "2026-05-06T20:27:36.143Z"
-    },
-    "score": 40,
-    "top_moves": [
-      {
-        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
-        "gap_pts": 30,
-        "principle": "agent-capabilities",
-        "rank": 1
-      },
-      {
-        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
-        "gap_pts": 15,
-        "principle": "discoverability",
-        "rank": 2
-      },
-      {
-        "action": "Add an \"Install our MCP server\" or \"Use our CLI\" call-out next to the human-onboarding hero, not buried in /docs.",
-        "gap_pts": 10,
-        "principle": "visibility-of-agent-integrations",
-        "rank": 3
       }
-    ]
+    }
   },
   "https://www.cloudflare.com": {
-    "anti_patterns_flagged": [
-      {
-        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected.",
-        "name": "The Invisible Product",
-        "slug": "invisible-product"
-      }
-    ],
+    "score": 20,
+    "level": 1,
+    "level_name": "Agent as Afterthought",
     "dimensions": {
-      "agent-capabilities": {
-        "max": 30,
+      "discoverability": {
+        "pts": 5,
+        "max": 25,
+        "status": "partial",
         "notes": [
-          "No MCP Server Card",
-          "Homepage does not reference MCP / CLI / SDK",
-          "No OAuth-with-PKCE or ai-plugin discovery"
-        ],
-        "pts": 0,
-        "status": "fail"
-      },
-      "bot-access-control": {
-        "max": 15,
-        "notes": [
-          "Content-Signal directive declared: ai-train=yes, search=yes, ai-input=yes"
-        ],
-        "pts": 10,
-        "status": "partial"
+          "robots.txt exists but does not address AI agents specifically",
+          "No /AGENTS.md or /.well-known/agent-rules — the load-bearing contract artifact",
+          "/llms.txt published (useful but optional)"
+        ]
       },
       "content-accessibility": {
+        "pts": 5,
         "max": 20,
+        "status": "partial",
         "notes": [
           "No markdown content negotiation",
           "sitemap.xml present",
           "No discoverable OpenAPI surface"
-        ],
-        "pts": 5,
-        "status": "partial"
+        ]
       },
-      "discoverability": {
-        "max": 25,
-        "notes": [
-          "robots.txt exists but does not address AI agents specifically",
-          "/llms.txt published",
-          "No /AGENTS.md or /.well-known/agent-rules"
-        ],
+      "bot-access-control": {
         "pts": 10,
-        "status": "partial"
+        "max": 15,
+        "status": "partial",
+        "notes": [
+          "Content-Signal directive declared: ai-train=yes, search=yes, ai-input=yes"
+        ]
+      },
+      "agent-capabilities": {
+        "pts": 0,
+        "max": 30,
+        "status": "fail",
+        "notes": [
+          "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
+          "Homepage does not reference MCP / CLI / SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ]
       },
       "visibility-of-agent-integrations": {
+        "pts": 0,
         "max": 10,
+        "status": "fail",
         "notes": [
           "Homepage hides agent integrations from human-onboarding flow"
-        ],
-        "pts": 0,
-        "status": "fail"
+        ]
       }
     },
-    "level": 1,
-    "level_name": "Agent as Afterthought",
+    "anti_patterns_flagged": [
+      {
+        "slug": "invisible-product",
+        "name": "The Invisible Product",
+        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected."
+      }
+    ],
+    "top_moves": [
+      {
+        "rank": 1,
+        "principle": "agent-capabilities",
+        "gap_pts": 30,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
+      },
+      {
+        "rank": 2,
+        "principle": "discoverability",
+        "gap_pts": 20,
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      },
+      {
+        "rank": 3,
+        "principle": "content-accessibility",
+        "gap_pts": 15,
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json."
+      }
+    ],
     "probe_signals": {
       "mode": "website",
+      "target": "https://www.cloudflare.com",
+      "timestamp": "2026-05-07T14:57:34.833Z",
       "signals": {
-        "homepage": {
-          "content_type": "text/html; charset=utf-8",
-          "length": 977948,
-          "ok": true,
-          "status": 200,
-          "url": "https://www.cloudflare.com"
-        },
-        "homepage_analysis": {
-          "mentions_agents_first": false,
-          "mentions_api": true,
-          "mentions_cli": false,
-          "mentions_mcp": false,
-          "mentions_npx": false,
-          "mentions_oauth": false,
-          "mentions_sdk": false
+        "surfaces": {
+          "llms_txt": {
+            "url": "https://www.cloudflare.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 4225
+          },
+          "robots_txt": {
+            "url": "https://www.cloudflare.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 5628
+          },
+          "llms_full_txt": {
+            "url": "https://www.cloudflare.com/llms-full.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain; charset=UTF-8",
+            "length": 12
+          },
+          "well_known_mcp_json": {
+            "url": "https://www.cloudflare.com/.well-known/mcp-server-card.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain; charset=UTF-8",
+            "length": 12
+          },
+          "well_known_ai_plugin": {
+            "url": "https://www.cloudflare.com/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain; charset=UTF-8",
+            "length": 12
+          },
+          "agents_json": {
+            "url": "https://www.cloudflare.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain; charset=UTF-8",
+            "length": 12
+          },
+          "sitemap": {
+            "url": "https://www.cloudflare.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/xml; charset=utf-8",
+            "length": 413066
+          },
+          "sitemap_index": {
+            "url": "https://www.cloudflare.com/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain; charset=UTF-8",
+            "length": 12
+          },
+          "openapi_v1": {
+            "url": "https://www.cloudflare.com/v1/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain; charset=UTF-8",
+            "length": 12
+          },
+          "openapi_root": {
+            "url": "https://www.cloudflare.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain; charset=UTF-8",
+            "length": 12
+          },
+          "openapi_api": {
+            "url": "https://www.cloudflare.com/api/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain; charset=UTF-8",
+            "length": 12
+          },
+          "agents_md": {
+            "url": "https://www.cloudflare.com/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 399364
+          },
+          "well_known_agent_rules": {
+            "url": "https://www.cloudflare.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 399364
+          },
+          "well_known_mcp": {
+            "url": "https://www.cloudflare.com/.well-known/mcp-server-card",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 399364
+          },
+          "well_known_oauth": {
+            "url": "https://www.cloudflare.com/.well-known/oauth-authorization-server",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 399364
+          }
         },
         "markdown_negotiation": {
-          "content_type_returned": "text/html; charset=utf-8",
           "requested": "text/markdown",
+          "content_type_returned": "text/html; charset=utf-8",
           "served_markdown": false,
           "status": 200
         },
+        "homepage": {
+          "url": "https://www.cloudflare.com",
+          "status": 200,
+          "ok": true,
+          "content_type": "text/html; charset=utf-8",
+          "length": 977939
+        },
         "robots_analysis": {
-          "address_count": 0,
           "ai_agents_addressed": [],
+          "address_count": 0,
           "blanket_disallow": true,
           "content_signal_directives": {
-            "ai-input": "yes",
             "ai-train": "yes",
-            "search": "yes"
+            "search": "yes",
+            "ai-input": "yes"
           }
         },
-        "surfaces": {
-          "agents_md": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 399357,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.cloudflare.com/AGENTS.md"
-          },
-          "llms_full_txt": {
-            "content_type": "text/plain; charset=UTF-8",
-            "length": 12,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.cloudflare.com/llms-full.txt"
-          },
-          "llms_txt": {
-            "content_type": "text/plain; charset=utf-8",
-            "length": 4225,
-            "ok": true,
-            "status": 200,
-            "url": "https://www.cloudflare.com/llms.txt"
-          },
-          "openapi_api": {
-            "content_type": "text/plain; charset=UTF-8",
-            "length": 12,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.cloudflare.com/api/openapi.json"
-          },
-          "openapi_root": {
-            "content_type": "text/plain; charset=UTF-8",
-            "length": 12,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.cloudflare.com/openapi.json"
-          },
-          "openapi_v1": {
-            "content_type": "text/plain; charset=UTF-8",
-            "length": 12,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.cloudflare.com/v1/openapi.json"
-          },
-          "robots_txt": {
-            "content_type": "text/plain; charset=utf-8",
-            "length": 5628,
-            "ok": true,
-            "status": 200,
-            "url": "https://www.cloudflare.com/robots.txt"
-          },
-          "sitemap": {
-            "content_type": "application/xml; charset=utf-8",
-            "length": 412528,
-            "ok": true,
-            "status": 200,
-            "url": "https://www.cloudflare.com/sitemap.xml"
-          },
-          "well_known_agent_rules": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 399357,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.cloudflare.com/.well-known/agent-rules"
-          },
-          "well_known_ai_plugin": {
-            "content_type": "text/plain; charset=UTF-8",
-            "length": 12,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.cloudflare.com/.well-known/ai-plugin.json"
-          },
-          "well_known_mcp": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 399357,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.cloudflare.com/.well-known/mcp-server-card"
-          },
-          "well_known_mcp_json": {
-            "content_type": "text/plain; charset=UTF-8",
-            "length": 12,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.cloudflare.com/.well-known/mcp-server-card.json"
-          },
-          "well_known_oauth": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 399357,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.cloudflare.com/.well-known/oauth-authorization-server"
-          }
+        "homepage_analysis": {
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_cli": false,
+          "mentions_sdk": false,
+          "mentions_api": true,
+          "mentions_oauth": false,
+          "mentions_agents_first": false
         }
-      },
-      "target": "https://www.cloudflare.com",
-      "timestamp": "2026-05-06T20:27:37.004Z"
-    },
-    "score": 25,
-    "top_moves": [
-      {
-        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
-        "gap_pts": 30,
-        "principle": "agent-capabilities",
-        "rank": 1
-      },
-      {
-        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
-        "gap_pts": 15,
-        "principle": "discoverability",
-        "rank": 2
-      },
-      {
-        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
-        "gap_pts": 15,
-        "principle": "content-accessibility",
-        "rank": 3
       }
-    ]
+    }
   }
 }

@@ -1,622 +1,668 @@
 {
+  "_meta": {
+    "last_refreshed": "2026-05-07T14:57:52.585Z",
+    "updater": "tools/scoreboard-updater/update.mjs"
+  },
   "https://dashboard.stripe.com": {
-    "anti_patterns_flagged": [],
+    "score": 50,
+    "level": 2,
+    "level_name": "Agent-Aware",
     "dimensions": {
-      "agent-capabilities": {
-        "max": 30,
-        "notes": [
-          "MCP Server Card published at /.well-known/mcp-server-card.json",
-          "Homepage does not reference MCP / CLI / SDK",
-          "OAuth / AI-plugin auth-server discovery present"
-        ],
+      "discoverability": {
         "pts": 20,
-        "status": "partial"
-      },
-      "bot-access-control": {
-        "max": 15,
+        "max": 25,
+        "status": "pass",
         "notes": [
-          "No Content-Signal directive and no per-bot AI policy in robots.txt"
-        ],
-        "pts": 0,
-        "status": "fail"
+          "robots.txt exists but does not address AI agents specifically",
+          "/AGENTS.md or /.well-known/agent-rules published (canonical contract artifact)",
+          "/llms.txt published (useful but optional)"
+        ]
       },
       "content-accessibility": {
+        "pts": 10,
         "max": 20,
+        "status": "partial",
         "notes": [
           "No markdown content negotiation",
           "sitemap.xml present",
           "OpenAPI surface discoverable"
-        ],
-        "pts": 10,
-        "status": "partial"
+        ]
       },
-      "discoverability": {
-        "max": 25,
+      "bot-access-control": {
+        "pts": 0,
+        "max": 15,
+        "status": "fail",
         "notes": [
-          "robots.txt exists but does not address AI agents specifically",
-          "/llms.txt published",
-          "/AGENTS.md or /.well-known/agent-rules published"
-        ],
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ]
+      },
+      "agent-capabilities": {
         "pts": 20,
-        "status": "pass"
+        "max": 30,
+        "status": "partial",
+        "notes": [
+          "MCP Server Card published at /.well-known/mcp-server-card.json",
+          "Homepage does not reference MCP / CLI / SDK",
+          "OAuth / AI-plugin auth-server discovery present"
+        ]
       },
       "visibility-of-agent-integrations": {
+        "pts": 0,
         "max": 10,
+        "status": "fail",
         "notes": [
           "Homepage hides agent integrations from human-onboarding flow"
-        ],
-        "pts": 0,
-        "status": "fail"
+        ]
       }
     },
-    "level": 2,
-    "level_name": "Agent-Aware",
+    "anti_patterns_flagged": [],
+    "top_moves": [
+      {
+        "rank": 1,
+        "principle": "bot-access-control",
+        "gap_pts": 15,
+        "action": "Replace any blanket Disallow with per-bot rules. Cloudflare Content Signals or equivalent declarative AI-policy."
+      },
+      {
+        "rank": 2,
+        "principle": "agent-capabilities",
+        "gap_pts": 10,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
+      },
+      {
+        "rank": 3,
+        "principle": "content-accessibility",
+        "gap_pts": 10,
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json."
+      }
+    ],
     "probe_signals": {
       "mode": "website",
+      "target": "https://dashboard.stripe.com",
+      "timestamp": "2026-05-07T14:57:53.510Z",
       "signals": {
-        "homepage": {
-          "content_type": "text/html;charset=utf-8",
-          "length": 134478,
-          "ok": true,
-          "status": 200,
-          "url": "https://dashboard.stripe.com"
-        },
-        "homepage_analysis": {
-          "mentions_agents_first": false,
-          "mentions_api": true,
-          "mentions_cli": false,
-          "mentions_mcp": false,
-          "mentions_npx": false,
-          "mentions_oauth": true,
-          "mentions_sdk": false
+        "surfaces": {
+          "robots_txt": {
+            "url": "https://dashboard.stripe.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain;charset=utf-8",
+            "length": 110
+          },
+          "openapi_v1": {
+            "url": "https://dashboard.stripe.com/v1/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "application/json",
+            "length": 207
+          },
+          "agents_md": {
+            "url": "https://dashboard.stripe.com/AGENTS.md",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 134566
+          },
+          "well_known_ai_plugin": {
+            "url": "https://dashboard.stripe.com/.well-known/ai-plugin.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 134602
+          },
+          "llms_txt": {
+            "url": "https://dashboard.stripe.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 134564
+          },
+          "llms_full_txt": {
+            "url": "https://dashboard.stripe.com/llms-full.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 134574
+          },
+          "well_known_agent_rules": {
+            "url": "https://dashboard.stripe.com/.well-known/agent-rules",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 134596
+          },
+          "well_known_oauth": {
+            "url": "https://dashboard.stripe.com/.well-known/oauth-authorization-server",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 134626
+          },
+          "sitemap": {
+            "url": "https://dashboard.stripe.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 134570
+          },
+          "well_known_mcp_json": {
+            "url": "https://dashboard.stripe.com/.well-known/mcp-server-card.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 134614
+          },
+          "agents_json": {
+            "url": "https://dashboard.stripe.com/agents.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 134570
+          },
+          "openapi_root": {
+            "url": "https://dashboard.stripe.com/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 134572
+          },
+          "openapi_api": {
+            "url": "https://dashboard.stripe.com/api/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 134582
+          },
+          "well_known_mcp": {
+            "url": "https://dashboard.stripe.com/.well-known/mcp-server-card",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 134604
+          },
+          "sitemap_index": {
+            "url": "https://dashboard.stripe.com/sitemap-index.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 134582
+          }
         },
         "markdown_negotiation": {
-          "content_type_returned": "text/html;charset=utf-8",
           "requested": "text/markdown",
+          "content_type_returned": "text/html;charset=utf-8",
           "served_markdown": false,
           "status": 200
         },
+        "homepage": {
+          "url": "https://dashboard.stripe.com",
+          "status": 200,
+          "ok": true,
+          "content_type": "text/html;charset=utf-8",
+          "length": 134526
+        },
         "robots_analysis": {
-          "address_count": 0,
           "ai_agents_addressed": [],
+          "address_count": 0,
           "blanket_disallow": true
         },
-        "surfaces": {
-          "agents_md": {
-            "content_type": "text/html;charset=utf-8",
-            "length": 134519,
-            "ok": true,
-            "status": 200,
-            "url": "https://dashboard.stripe.com/AGENTS.md"
-          },
-          "llms_full_txt": {
-            "content_type": "text/html;charset=utf-8",
-            "length": 134527,
-            "ok": true,
-            "status": 200,
-            "url": "https://dashboard.stripe.com/llms-full.txt"
-          },
-          "llms_txt": {
-            "content_type": "text/html;charset=utf-8",
-            "length": 134517,
-            "ok": true,
-            "status": 200,
-            "url": "https://dashboard.stripe.com/llms.txt"
-          },
-          "openapi_api": {
-            "content_type": "text/html;charset=utf-8",
-            "length": 134535,
-            "ok": true,
-            "status": 200,
-            "url": "https://dashboard.stripe.com/api/openapi.json"
-          },
-          "openapi_root": {
-            "content_type": "text/html;charset=utf-8",
-            "length": 134525,
-            "ok": true,
-            "status": 200,
-            "url": "https://dashboard.stripe.com/openapi.json"
-          },
-          "openapi_v1": {
-            "content_type": "application/json",
-            "length": 207,
-            "ok": false,
-            "status": 404,
-            "url": "https://dashboard.stripe.com/v1/openapi.json"
-          },
-          "robots_txt": {
-            "content_type": "text/plain;charset=utf-8",
-            "length": 110,
-            "ok": true,
-            "status": 200,
-            "url": "https://dashboard.stripe.com/robots.txt"
-          },
-          "sitemap": {
-            "content_type": "text/html;charset=utf-8",
-            "length": 134523,
-            "ok": true,
-            "status": 200,
-            "url": "https://dashboard.stripe.com/sitemap.xml"
-          },
-          "well_known_agent_rules": {
-            "content_type": "text/html;charset=utf-8",
-            "length": 134548,
-            "ok": true,
-            "status": 200,
-            "url": "https://dashboard.stripe.com/.well-known/agent-rules"
-          },
-          "well_known_ai_plugin": {
-            "content_type": "text/html;charset=utf-8",
-            "length": 134555,
-            "ok": true,
-            "status": 200,
-            "url": "https://dashboard.stripe.com/.well-known/ai-plugin.json"
-          },
-          "well_known_mcp": {
-            "content_type": "text/html;charset=utf-8",
-            "length": 134556,
-            "ok": true,
-            "status": 200,
-            "url": "https://dashboard.stripe.com/.well-known/mcp-server-card"
-          },
-          "well_known_mcp_json": {
-            "content_type": "text/html;charset=utf-8",
-            "length": 134566,
-            "ok": true,
-            "status": 200,
-            "url": "https://dashboard.stripe.com/.well-known/mcp-server-card.json"
-          },
-          "well_known_oauth": {
-            "content_type": "text/html;charset=utf-8",
-            "length": 134579,
-            "ok": true,
-            "status": 200,
-            "url": "https://dashboard.stripe.com/.well-known/oauth-authorization-server"
-          }
+        "homepage_analysis": {
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_cli": false,
+          "mentions_sdk": false,
+          "mentions_api": true,
+          "mentions_oauth": true,
+          "mentions_agents_first": false
         }
-      },
-      "target": "https://dashboard.stripe.com",
-      "timestamp": "2026-05-06T20:38:41.890Z"
-    },
-    "score": 50,
-    "top_moves": [
-      {
-        "action": "Replace any blanket Disallow with per-bot rules. Cloudflare Content Signals or equivalent declarative AI-policy.",
-        "gap_pts": 15,
-        "principle": "bot-access-control",
-        "rank": 1
-      },
-      {
-        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
-        "gap_pts": 10,
-        "principle": "agent-capabilities",
-        "rank": 2
-      },
-      {
-        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
-        "gap_pts": 10,
-        "principle": "content-accessibility",
-        "rank": 3
       }
-    ]
+    }
   },
   "https://docs.stripe.com": {
-    "anti_patterns_flagged": [
-      {
-        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected.",
-        "name": "The Invisible Product",
-        "slug": "invisible-product"
-      }
-    ],
+    "score": 20,
+    "level": 1,
+    "level_name": "Agent as Afterthought",
     "dimensions": {
-      "agent-capabilities": {
-        "max": 30,
+      "discoverability": {
+        "pts": 5,
+        "max": 25,
+        "status": "partial",
         "notes": [
-          "No MCP Server Card",
-          "Homepage does not reference MCP / CLI / SDK",
-          "No OAuth-with-PKCE or ai-plugin discovery"
-        ],
-        "pts": 0,
-        "status": "fail"
-      },
-      "bot-access-control": {
-        "max": 15,
-        "notes": [
-          "Content-Signal directive declared: ai-train=yes, search=yes, ai-input=yes"
-        ],
-        "pts": 10,
-        "status": "partial"
+          "robots.txt exists but does not address AI agents specifically",
+          "No /AGENTS.md or /.well-known/agent-rules — the load-bearing contract artifact",
+          "/llms.txt published (useful but optional)"
+        ]
       },
       "content-accessibility": {
+        "pts": 5,
         "max": 20,
+        "status": "partial",
         "notes": [
           "No markdown content negotiation",
           "sitemap.xml present",
           "No discoverable OpenAPI surface"
-        ],
-        "pts": 5,
-        "status": "partial"
-      },
-      "discoverability": {
-        "max": 25,
-        "notes": [
-          "robots.txt exists but does not address AI agents specifically",
-          "/llms.txt published",
-          "No /AGENTS.md or /.well-known/agent-rules"
-        ],
-        "pts": 10,
-        "status": "partial"
-      },
-      "visibility-of-agent-integrations": {
-        "max": 10,
-        "notes": [
-          "Homepage hides agent integrations from human-onboarding flow"
-        ],
-        "pts": 0,
-        "status": "fail"
-      }
-    },
-    "level": 1,
-    "level_name": "Agent as Afterthought",
-    "probe_signals": {
-      "mode": "website",
-      "signals": {
-        "homepage": {
-          "content_type": "text/html; charset=utf-8",
-          "length": 1201122,
-          "ok": true,
-          "status": 200,
-          "url": "https://docs.stripe.com"
-        },
-        "homepage_analysis": {
-          "mentions_agents_first": false,
-          "mentions_api": false,
-          "mentions_cli": false,
-          "mentions_mcp": false,
-          "mentions_npx": false,
-          "mentions_oauth": false,
-          "mentions_sdk": false
-        },
-        "markdown_negotiation": {
-          "content_type_returned": "text/plain; charset=utf-8",
-          "requested": "text/markdown",
-          "served_markdown": false,
-          "status": 200
-        },
-        "robots_analysis": {
-          "address_count": 0,
-          "ai_agents_addressed": [],
-          "blanket_disallow": true,
-          "content_signal_directives": {
-            "ai-input": "yes",
-            "ai-train": "yes",
-            "search": "yes"
-          }
-        },
-        "surfaces": {
-          "agents_md": {
-            "content_type": "text/html",
-            "length": 23280,
-            "ok": false,
-            "status": 404,
-            "url": "https://docs.stripe.com/AGENTS.md"
-          },
-          "llms_full_txt": {
-            "content_type": "text/html",
-            "length": 23280,
-            "ok": false,
-            "status": 404,
-            "url": "https://docs.stripe.com/llms-full.txt"
-          },
-          "llms_txt": {
-            "content_type": "text/plain; charset=utf-8",
-            "length": 93214,
-            "ok": true,
-            "status": 200,
-            "url": "https://docs.stripe.com/llms.txt"
-          },
-          "openapi_api": {
-            "content_type": "text/html",
-            "length": 23280,
-            "ok": false,
-            "status": 404,
-            "url": "https://docs.stripe.com/api/openapi.json"
-          },
-          "openapi_root": {
-            "content_type": "text/html",
-            "length": 23280,
-            "ok": false,
-            "status": 404,
-            "url": "https://docs.stripe.com/openapi.json"
-          },
-          "openapi_v1": {
-            "content_type": "application/json",
-            "length": 207,
-            "ok": false,
-            "status": 404,
-            "url": "https://docs.stripe.com/v1/openapi.json"
-          },
-          "robots_txt": {
-            "content_type": "text/plain; charset=utf-8",
-            "length": 174,
-            "ok": true,
-            "status": 200,
-            "url": "https://docs.stripe.com/robots.txt"
-          },
-          "sitemap": {
-            "content_type": "application/xml",
-            "length": 413039,
-            "ok": true,
-            "status": 200,
-            "url": "https://docs.stripe.com/sitemap.xml"
-          },
-          "well_known_agent_rules": {
-            "content_type": "text/html",
-            "length": 23280,
-            "ok": false,
-            "status": 404,
-            "url": "https://docs.stripe.com/.well-known/agent-rules"
-          },
-          "well_known_ai_plugin": {
-            "content_type": "text/html",
-            "length": 23280,
-            "ok": false,
-            "status": 404,
-            "url": "https://docs.stripe.com/.well-known/ai-plugin.json"
-          },
-          "well_known_mcp": {
-            "content_type": "text/html",
-            "length": 23280,
-            "ok": false,
-            "status": 404,
-            "url": "https://docs.stripe.com/.well-known/mcp-server-card"
-          },
-          "well_known_mcp_json": {
-            "content_type": "text/html",
-            "length": 23280,
-            "ok": false,
-            "status": 404,
-            "url": "https://docs.stripe.com/.well-known/mcp-server-card.json"
-          },
-          "well_known_oauth": {
-            "content_type": "text/html",
-            "length": 23280,
-            "ok": false,
-            "status": 404,
-            "url": "https://docs.stripe.com/.well-known/oauth-authorization-server"
-          }
-        }
-      },
-      "target": "https://docs.stripe.com",
-      "timestamp": "2026-05-06T20:38:39.964Z"
-    },
-    "score": 25,
-    "top_moves": [
-      {
-        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
-        "gap_pts": 30,
-        "principle": "agent-capabilities",
-        "rank": 1
-      },
-      {
-        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
-        "gap_pts": 15,
-        "principle": "discoverability",
-        "rank": 2
-      },
-      {
-        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
-        "gap_pts": 15,
-        "principle": "content-accessibility",
-        "rank": 3
-      }
-    ]
-  },
-  "https://stripe.com": {
-    "anti_patterns_flagged": [
-      {
-        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected.",
-        "name": "The Invisible Product",
-        "slug": "invisible-product"
-      }
-    ],
-    "dimensions": {
-      "agent-capabilities": {
-        "max": 30,
-        "notes": [
-          "No MCP Server Card",
-          "Homepage does not reference MCP / CLI / SDK",
-          "No OAuth-with-PKCE or ai-plugin discovery"
-        ],
-        "pts": 0,
-        "status": "fail"
+        ]
       },
       "bot-access-control": {
-        "max": 15,
-        "notes": [
-          "No Content-Signal directive and no per-bot AI policy in robots.txt"
-        ],
-        "pts": 0,
-        "status": "fail"
-      },
-      "content-accessibility": {
-        "max": 20,
-        "notes": [
-          "No markdown content negotiation",
-          "No sitemap.xml",
-          "No discoverable OpenAPI surface"
-        ],
-        "pts": 0,
-        "status": "fail"
-      },
-      "discoverability": {
-        "max": 25,
-        "notes": [
-          "robots.txt exists but does not address AI agents specifically",
-          "/llms.txt published",
-          "No /AGENTS.md or /.well-known/agent-rules"
-        ],
         "pts": 10,
-        "status": "partial"
+        "max": 15,
+        "status": "partial",
+        "notes": [
+          "Content-Signal directive declared: ai-train=yes, search=yes, ai-input=yes"
+        ]
+      },
+      "agent-capabilities": {
+        "pts": 0,
+        "max": 30,
+        "status": "fail",
+        "notes": [
+          "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
+          "Homepage does not reference MCP / CLI / SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ]
       },
       "visibility-of-agent-integrations": {
+        "pts": 0,
         "max": 10,
+        "status": "fail",
         "notes": [
           "Homepage hides agent integrations from human-onboarding flow"
-        ],
-        "pts": 0,
-        "status": "fail"
+        ]
       }
     },
-    "level": 0,
-    "level_name": "No agent access",
+    "anti_patterns_flagged": [
+      {
+        "slug": "invisible-product",
+        "name": "The Invisible Product",
+        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected."
+      }
+    ],
+    "top_moves": [
+      {
+        "rank": 1,
+        "principle": "agent-capabilities",
+        "gap_pts": 30,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
+      },
+      {
+        "rank": 2,
+        "principle": "discoverability",
+        "gap_pts": 20,
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      },
+      {
+        "rank": 3,
+        "principle": "content-accessibility",
+        "gap_pts": 15,
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json."
+      }
+    ],
     "probe_signals": {
       "mode": "website",
+      "target": "https://docs.stripe.com",
+      "timestamp": "2026-05-07T14:57:54.547Z",
       "signals": {
-        "homepage": {
-          "content_type": "text/html; charset=utf-8",
-          "length": 580177,
-          "ok": true,
-          "status": 200,
-          "url": "https://stripe.com"
-        },
-        "homepage_analysis": {
-          "mentions_agents_first": false,
-          "mentions_api": false,
-          "mentions_cli": false,
-          "mentions_mcp": false,
-          "mentions_npx": false,
-          "mentions_oauth": true,
-          "mentions_sdk": false
+        "surfaces": {
+          "well_known_ai_plugin": {
+            "url": "https://docs.stripe.com/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 23280
+          },
+          "llms_full_txt": {
+            "url": "https://docs.stripe.com/llms-full.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 23280
+          },
+          "agents_md": {
+            "url": "https://docs.stripe.com/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 23280
+          },
+          "well_known_agent_rules": {
+            "url": "https://docs.stripe.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 23280
+          },
+          "well_known_mcp": {
+            "url": "https://docs.stripe.com/.well-known/mcp-server-card",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 23280
+          },
+          "well_known_oauth": {
+            "url": "https://docs.stripe.com/.well-known/oauth-authorization-server",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 23280
+          },
+          "well_known_mcp_json": {
+            "url": "https://docs.stripe.com/.well-known/mcp-server-card.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 23280
+          },
+          "agents_json": {
+            "url": "https://docs.stripe.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 23280
+          },
+          "sitemap_index": {
+            "url": "https://docs.stripe.com/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 23280
+          },
+          "openapi_root": {
+            "url": "https://docs.stripe.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 23280
+          },
+          "openapi_v1": {
+            "url": "https://docs.stripe.com/v1/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "application/json",
+            "length": 207
+          },
+          "robots_txt": {
+            "url": "https://docs.stripe.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 174
+          },
+          "openapi_api": {
+            "url": "https://docs.stripe.com/api/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 23280
+          },
+          "llms_txt": {
+            "url": "https://docs.stripe.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 93214
+          },
+          "sitemap": {
+            "url": "https://docs.stripe.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/xml",
+            "length": 413039
+          }
         },
         "markdown_negotiation": {
-          "content_type_returned": "text/html; charset=utf-8",
           "requested": "text/markdown",
+          "content_type_returned": "text/plain; charset=utf-8",
           "served_markdown": false,
           "status": 200
         },
-        "robots_analysis": {
-          "address_count": 0,
-          "ai_agents_addressed": [],
-          "blanket_disallow": true
+        "homepage": {
+          "url": "https://docs.stripe.com",
+          "status": 200,
+          "ok": true,
+          "content_type": "text/html; charset=utf-8",
+          "length": 1193925
         },
-        "surfaces": {
-          "agents_md": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 328176,
-            "ok": false,
-            "status": 404,
-            "url": "https://stripe.com/AGENTS.md"
-          },
-          "llms_full_txt": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 328176,
-            "ok": false,
-            "status": 404,
-            "url": "https://stripe.com/llms-full.txt"
-          },
-          "llms_txt": {
-            "content_type": "text/plain; charset=utf-8",
-            "length": 63917,
-            "ok": true,
-            "status": 200,
-            "url": "https://stripe.com/llms.txt"
-          },
-          "openapi_api": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 328176,
-            "ok": false,
-            "status": 404,
-            "url": "https://stripe.com/api/openapi.json"
-          },
-          "openapi_root": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 328176,
-            "ok": false,
-            "status": 404,
-            "url": "https://stripe.com/openapi.json"
-          },
-          "openapi_v1": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 328176,
-            "ok": false,
-            "status": 404,
-            "url": "https://stripe.com/v1/openapi.json"
-          },
-          "robots_txt": {
-            "content_type": "text/plain; charset=utf-8",
-            "length": 643,
-            "ok": true,
-            "status": 200,
-            "url": "https://stripe.com/robots.txt"
-          },
-          "sitemap": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 328176,
-            "ok": false,
-            "status": 404,
-            "url": "https://stripe.com/sitemap.xml"
-          },
-          "well_known_agent_rules": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 328176,
-            "ok": false,
-            "status": 404,
-            "url": "https://stripe.com/.well-known/agent-rules"
-          },
-          "well_known_ai_plugin": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 328176,
-            "ok": false,
-            "status": 404,
-            "url": "https://stripe.com/.well-known/ai-plugin.json"
-          },
-          "well_known_mcp": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 328176,
-            "ok": false,
-            "status": 404,
-            "url": "https://stripe.com/.well-known/mcp-server-card"
-          },
-          "well_known_mcp_json": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 328176,
-            "ok": false,
-            "status": 404,
-            "url": "https://stripe.com/.well-known/mcp-server-card.json"
-          },
-          "well_known_oauth": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 328176,
-            "ok": false,
-            "status": 404,
-            "url": "https://stripe.com/.well-known/oauth-authorization-server"
+        "robots_analysis": {
+          "ai_agents_addressed": [],
+          "address_count": 0,
+          "blanket_disallow": true,
+          "content_signal_directives": {
+            "ai-train": "yes",
+            "search": "yes",
+            "ai-input": "yes"
           }
+        },
+        "homepage_analysis": {
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_cli": false,
+          "mentions_sdk": false,
+          "mentions_api": false,
+          "mentions_oauth": false,
+          "mentions_agents_first": false
         }
+      }
+    }
+  },
+  "https://stripe.com": {
+    "score": 5,
+    "level": 0,
+    "level_name": "No agent access",
+    "dimensions": {
+      "discoverability": {
+        "pts": 5,
+        "max": 25,
+        "status": "partial",
+        "notes": [
+          "robots.txt exists but does not address AI agents specifically",
+          "No /AGENTS.md or /.well-known/agent-rules — the load-bearing contract artifact",
+          "/llms.txt published (useful but optional)"
+        ]
       },
-      "target": "https://stripe.com",
-      "timestamp": "2026-05-06T20:38:38.531Z"
+      "content-accessibility": {
+        "pts": 0,
+        "max": 20,
+        "status": "fail",
+        "notes": [
+          "No markdown content negotiation",
+          "No sitemap.xml / sitemap-index.xml",
+          "No discoverable OpenAPI surface"
+        ]
+      },
+      "bot-access-control": {
+        "pts": 0,
+        "max": 15,
+        "status": "fail",
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ]
+      },
+      "agent-capabilities": {
+        "pts": 0,
+        "max": 30,
+        "status": "fail",
+        "notes": [
+          "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
+          "Homepage does not reference MCP / CLI / SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ]
+      },
+      "visibility-of-agent-integrations": {
+        "pts": 0,
+        "max": 10,
+        "status": "fail",
+        "notes": [
+          "Homepage hides agent integrations from human-onboarding flow"
+        ]
+      }
     },
-    "score": 10,
+    "anti_patterns_flagged": [
+      {
+        "slug": "invisible-product",
+        "name": "The Invisible Product",
+        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected."
+      }
+    ],
     "top_moves": [
       {
-        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
-        "gap_pts": 30,
+        "rank": 1,
         "principle": "agent-capabilities",
-        "rank": 1
+        "gap_pts": 30,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
       },
       {
-        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
-        "gap_pts": 20,
-        "principle": "content-accessibility",
-        "rank": 2
-      },
-      {
-        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
-        "gap_pts": 15,
+        "rank": 2,
         "principle": "discoverability",
-        "rank": 3
+        "gap_pts": 20,
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      },
+      {
+        "rank": 3,
+        "principle": "content-accessibility",
+        "gap_pts": 20,
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json."
       }
-    ]
+    ],
+    "probe_signals": {
+      "mode": "website",
+      "target": "https://stripe.com",
+      "timestamp": "2026-05-07T14:57:55.957Z",
+      "signals": {
+        "surfaces": {
+          "well_known_ai_plugin": {
+            "url": "https://stripe.com/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 328176
+          },
+          "robots_txt": {
+            "url": "https://stripe.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 643
+          },
+          "llms_txt": {
+            "url": "https://stripe.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 63917
+          },
+          "llms_full_txt": {
+            "url": "https://stripe.com/llms-full.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 328176
+          },
+          "agents_md": {
+            "url": "https://stripe.com/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 328176
+          },
+          "well_known_agent_rules": {
+            "url": "https://stripe.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 328176
+          },
+          "well_known_mcp": {
+            "url": "https://stripe.com/.well-known/mcp-server-card",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 328176
+          },
+          "sitemap": {
+            "url": "https://stripe.com/sitemap.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 328176
+          },
+          "agents_json": {
+            "url": "https://stripe.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 328176
+          },
+          "well_known_oauth": {
+            "url": "https://stripe.com/.well-known/oauth-authorization-server",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 328176
+          },
+          "well_known_mcp_json": {
+            "url": "https://stripe.com/.well-known/mcp-server-card.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 328176
+          },
+          "sitemap_index": {
+            "url": "https://stripe.com/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 328176
+          },
+          "openapi_root": {
+            "url": "https://stripe.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 328176
+          },
+          "openapi_api": {
+            "url": "https://stripe.com/api/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 328176
+          },
+          "openapi_v1": {
+            "url": "https://stripe.com/v1/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 328176
+          }
+        },
+        "markdown_negotiation": {
+          "requested": "text/markdown",
+          "content_type_returned": "text/html; charset=utf-8",
+          "served_markdown": false,
+          "status": 200
+        },
+        "homepage": {
+          "url": "https://stripe.com",
+          "status": 200,
+          "ok": true,
+          "content_type": "text/html; charset=utf-8",
+          "length": 578829
+        },
+        "robots_analysis": {
+          "ai_agents_addressed": [],
+          "address_count": 0,
+          "blanket_disallow": true
+        },
+        "homepage_analysis": {
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_cli": false,
+          "mentions_sdk": false,
+          "mentions_api": false,
+          "mentions_oauth": true,
+          "mentions_agents_first": false
+        }
+      }
+    }
   }
 }

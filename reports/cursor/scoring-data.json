@@ -15,7 +15,9 @@
     "notes": [
       "docs.cursor.com surface scoring is partially inflated by a Next.js SPA catchall: every probed well-known path returned 200 with the same 120306-byte HTML shell rather than the requested asset. The /llms.txt, robots.txt, and sitemap on the marketing roots are real (text/plain, 9075 bytes for /llms.txt). Hero homepage analysis on docs (mentions_mcp/cli/sdk/api all true) and on the marketing root (mentions_cli only true) is a real differentiator independent of the SPA loophole.",
       "Body fields stripped from probe surfaces to satisfy secrets-guard hook."
-    ]
+    ],
+    "last_refreshed": "2026-05-07T14:57:37.013Z",
+    "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://docs.cursor.com": {
     "score": 70,
@@ -93,13 +95,127 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://docs.cursor.com",
-      "timestamp": "2026-05-07T14:42:30.208Z",
+      "timestamp": "2026-05-07T14:57:37.427Z",
       "signals": {
+        "surfaces": {
+          "well_known_ai_plugin": {
+            "url": "https://docs.cursor.com/.well-known/ai-plugin.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 120306
+          },
+          "well_known_agent_rules": {
+            "url": "https://docs.cursor.com/.well-known/agent-rules",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 120306
+          },
+          "llms_txt": {
+            "url": "https://docs.cursor.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 120306
+          },
+          "robots_txt": {
+            "url": "https://docs.cursor.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 120306
+          },
+          "well_known_oauth": {
+            "url": "https://docs.cursor.com/.well-known/oauth-authorization-server",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 120306
+          },
+          "agents_md": {
+            "url": "https://docs.cursor.com/AGENTS.md",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 120306
+          },
+          "sitemap": {
+            "url": "https://docs.cursor.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 120306
+          },
+          "well_known_mcp_json": {
+            "url": "https://docs.cursor.com/.well-known/mcp-server-card.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 120306
+          },
+          "agents_json": {
+            "url": "https://docs.cursor.com/agents.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 120306
+          },
+          "well_known_mcp": {
+            "url": "https://docs.cursor.com/.well-known/mcp-server-card",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 120306
+          },
+          "openapi_root": {
+            "url": "https://docs.cursor.com/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 120306
+          },
+          "sitemap_index": {
+            "url": "https://docs.cursor.com/sitemap-index.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 120306
+          },
+          "openapi_api": {
+            "url": "https://docs.cursor.com/api/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 120306
+          },
+          "openapi_v1": {
+            "url": "https://docs.cursor.com/v1/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 120306
+          },
+          "llms_full_txt": {
+            "url": "https://docs.cursor.com/llms-full.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 120306
+          }
+        },
         "markdown_negotiation": {
           "requested": "text/markdown",
           "content_type_returned": "text/html; charset=utf-8",
           "served_markdown": false,
           "status": 200
+        },
+        "homepage": {
+          "url": "https://docs.cursor.com",
+          "status": 200,
+          "ok": true,
+          "content_type": "text/html; charset=utf-8",
+          "length": 120306
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -114,24 +230,6 @@
           "mentions_api": true,
           "mentions_oauth": false,
           "mentions_agents_first": false
-        },
-        "surfaces_summary": {
-          "note": "All probed surfaces returned status 200 with content_type text/html and length 120306 — this is the Next.js SPA catchall returning the same HTML shell. The scorer credits well-known paths as present; in production an agent would receive HTML where it expected JSON or markdown.",
-          "llms_full_txt": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
-          "agents_md": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
-          "llms_txt": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
-          "well_known_ai_plugin": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
-          "well_known_agent_rules": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
-          "robots_txt": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
-          "agents_json": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
-          "well_known_mcp_json": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
-          "sitemap_index": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
-          "well_known_oauth": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
-          "well_known_mcp": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
-          "sitemap": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
-          "openapi_root": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
-          "openapi_api": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
-          "openapi_v1": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306}
         }
       }
     }
@@ -218,13 +316,127 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://cursor.com",
-      "timestamp": "2026-05-07T14:42:30.208Z",
+      "timestamp": "2026-05-07T14:57:37.948Z",
       "signals": {
+        "surfaces": {
+          "llms_full_txt": {
+            "url": "https://cursor.com/llms-full.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 6318
+          },
+          "agents_md": {
+            "url": "https://cursor.com/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 6318
+          },
+          "llms_txt": {
+            "url": "https://cursor.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 9075
+          },
+          "robots_txt": {
+            "url": "https://cursor.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 1106
+          },
+          "well_known_ai_plugin": {
+            "url": "https://cursor.com/.well-known/ai-plugin.json",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 581685
+          },
+          "sitemap_index": {
+            "url": "https://cursor.com/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 6318
+          },
+          "agents_json": {
+            "url": "https://cursor.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 6318
+          },
+          "sitemap": {
+            "url": "https://cursor.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/xml",
+            "length": 16927
+          },
+          "well_known_agent_rules": {
+            "url": "https://cursor.com/.well-known/agent-rules",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 581676
+          },
+          "well_known_mcp": {
+            "url": "https://cursor.com/.well-known/mcp-server-card",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 581688
+          },
+          "well_known_oauth": {
+            "url": "https://cursor.com/.well-known/oauth-authorization-server",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 581721
+          },
+          "well_known_mcp_json": {
+            "url": "https://cursor.com/.well-known/mcp-server-card.json",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 581703
+          },
+          "openapi_root": {
+            "url": "https://cursor.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 6318
+          },
+          "openapi_v1": {
+            "url": "https://cursor.com/v1/openapi.json",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 581634
+          },
+          "openapi_api": {
+            "url": "https://cursor.com/api/openapi.json",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 581639
+          }
+        },
         "markdown_negotiation": {
           "requested": "text/markdown",
           "content_type_returned": "text/html; charset=utf-8",
           "served_markdown": false,
           "status": 200
+        },
+        "homepage": {
+          "url": "https://cursor.com",
+          "status": 200,
+          "ok": true,
+          "content_type": "text/html; charset=utf-8",
+          "length": 709253
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -239,23 +451,6 @@
           "mentions_api": false,
           "mentions_oauth": false,
           "mentions_agents_first": false
-        },
-        "surfaces_summary": {
-          "robots_txt": {"status": 200, "ok": true, "content_type": "text/plain; charset=utf-8", "length": 1106},
-          "llms_txt": {"status": 200, "ok": true, "content_type": "text/plain; charset=utf-8", "length": 9075},
-          "sitemap": {"status": 200, "ok": true, "content_type": "application/xml", "length": 16927},
-          "agents_md": {"status": 404, "ok": false, "content_type": "text/html; charset=utf-8", "length": 6318},
-          "llms_full_txt": {"status": 404, "ok": false, "content_type": "text/html; charset=utf-8", "length": 6318},
-          "agents_json": {"status": 404, "ok": false, "content_type": "text/html; charset=utf-8", "length": 6318},
-          "openapi_root": {"status": 404, "ok": false, "content_type": "text/html; charset=utf-8", "length": 6318},
-          "sitemap_index": {"status": 404, "ok": false, "content_type": "text/html; charset=utf-8", "length": 6318},
-          "well_known_agent_rules": {"status": 500, "ok": false, "content_type": "text/html; charset=utf-8", "length": 581676},
-          "well_known_ai_plugin": {"status": 500, "ok": false, "content_type": "text/html; charset=utf-8", "length": 581685},
-          "well_known_oauth": {"status": 500, "ok": false, "content_type": "text/html; charset=utf-8", "length": 581721},
-          "well_known_mcp": {"status": 500, "ok": false, "content_type": "text/html; charset=utf-8", "length": 581688},
-          "well_known_mcp_json": {"status": 500, "ok": false, "content_type": "text/html; charset=utf-8", "length": 581703},
-          "openapi_api": {"status": 500, "ok": false, "content_type": "text/html; charset=utf-8", "length": 581639},
-          "openapi_v1": {"status": 500, "ok": false, "content_type": "text/html; charset=utf-8", "length": 581634}
         }
       }
     }
@@ -264,13 +459,53 @@
     "score": 30,
     "level": 2,
     "level_name": "Agent-Aware",
-    "note": "Identical surface profile to https://cursor.com — same hosting, same CDN, same probe results. Marketing root duplicate.",
     "dimensions": {
-      "discoverability": {"pts": 5, "max": 25, "status": "partial"},
-      "content-accessibility": {"pts": 5, "max": 20, "status": "partial"},
-      "bot-access-control": {"pts": 0, "max": 15, "status": "fail"},
-      "agent-capabilities": {"pts": 10, "max": 30, "status": "partial"},
-      "visibility-of-agent-integrations": {"pts": 10, "max": 10, "status": "pass"}
+      "discoverability": {
+        "pts": 5,
+        "max": 25,
+        "status": "partial",
+        "notes": [
+          "robots.txt exists but does not address AI agents specifically",
+          "No /AGENTS.md or /.well-known/agent-rules — the load-bearing contract artifact",
+          "/llms.txt published (useful but optional)"
+        ]
+      },
+      "content-accessibility": {
+        "pts": 5,
+        "max": 20,
+        "status": "partial",
+        "notes": [
+          "No markdown content negotiation",
+          "sitemap.xml present",
+          "No discoverable OpenAPI surface"
+        ]
+      },
+      "bot-access-control": {
+        "pts": 0,
+        "max": 15,
+        "status": "fail",
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ]
+      },
+      "agent-capabilities": {
+        "pts": 10,
+        "max": 30,
+        "status": "partial",
+        "notes": [
+          "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
+          "Homepage references agent surfaces: CLI",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ]
+      },
+      "visibility-of-agent-integrations": {
+        "pts": 10,
+        "max": 10,
+        "status": "pass",
+        "notes": [
+          "Homepage promotes agent install / MCP / CLI alongside human onboarding"
+        ]
+      }
     },
     "anti_patterns_flagged": [
       {
@@ -278,6 +513,167 @@
         "name": "Agents Without Rules",
         "evidence": "Agent capabilities advertised but no /AGENTS.md or /.well-known/agent-rules."
       }
-    ]
+    ],
+    "top_moves": [
+      {
+        "rank": 1,
+        "principle": "discoverability",
+        "gap_pts": 20,
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      },
+      {
+        "rank": 2,
+        "principle": "agent-capabilities",
+        "gap_pts": 20,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
+      },
+      {
+        "rank": 3,
+        "principle": "content-accessibility",
+        "gap_pts": 15,
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json."
+      }
+    ],
+    "probe_signals": {
+      "mode": "website",
+      "target": "https://www.cursor.com",
+      "timestamp": "2026-05-07T14:57:38.393Z",
+      "signals": {
+        "surfaces": {
+          "llms_full_txt": {
+            "url": "https://www.cursor.com/llms-full.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 6318
+          },
+          "agents_md": {
+            "url": "https://www.cursor.com/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 6318
+          },
+          "llms_txt": {
+            "url": "https://www.cursor.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 9075
+          },
+          "robots_txt": {
+            "url": "https://www.cursor.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 1106
+          },
+          "agents_json": {
+            "url": "https://www.cursor.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 6318
+          },
+          "sitemap": {
+            "url": "https://www.cursor.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/xml",
+            "length": 16927
+          },
+          "openapi_root": {
+            "url": "https://www.cursor.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 6318
+          },
+          "sitemap_index": {
+            "url": "https://www.cursor.com/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 6318
+          },
+          "well_known_ai_plugin": {
+            "url": "https://www.cursor.com/.well-known/ai-plugin.json",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 581685
+          },
+          "well_known_oauth": {
+            "url": "https://www.cursor.com/.well-known/oauth-authorization-server",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 581721
+          },
+          "well_known_mcp_json": {
+            "url": "https://www.cursor.com/.well-known/mcp-server-card.json",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 581703
+          },
+          "openapi_v1": {
+            "url": "https://www.cursor.com/v1/openapi.json",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 581634
+          },
+          "well_known_mcp": {
+            "url": "https://www.cursor.com/.well-known/mcp-server-card",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 581688
+          },
+          "well_known_agent_rules": {
+            "url": "https://www.cursor.com/.well-known/agent-rules",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 581676
+          },
+          "openapi_api": {
+            "url": "https://www.cursor.com/api/openapi.json",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 581639
+          }
+        },
+        "markdown_negotiation": {
+          "requested": "text/markdown",
+          "content_type_returned": "text/html; charset=utf-8",
+          "served_markdown": false,
+          "status": 200
+        },
+        "homepage": {
+          "url": "https://www.cursor.com",
+          "status": 200,
+          "ok": true,
+          "content_type": "text/html; charset=utf-8",
+          "length": 709247
+        },
+        "robots_analysis": {
+          "ai_agents_addressed": [],
+          "address_count": 0,
+          "blanket_disallow": true
+        },
+        "homepage_analysis": {
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_cli": true,
+          "mentions_sdk": false,
+          "mentions_api": false,
+          "mentions_oauth": false,
+          "mentions_agents_first": false
+        }
+      }
+    }
   }
 }

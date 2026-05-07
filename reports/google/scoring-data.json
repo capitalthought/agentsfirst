@@ -3,834 +3,892 @@
     "rubric_source": "https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts",
     "rubric_version": "v0.1.2",
     "scored_at": "2026-05-06",
-    "scorer_endpoint": "https://agentsfirst.dev/mcp"
+    "scorer_endpoint": "https://agentsfirst.dev/mcp",
+    "last_refreshed": "2026-05-07T14:57:38.639Z",
+    "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://blog.google": {
-    "anti_patterns_flagged": [
-      {
-        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected.",
-        "name": "The Invisible Product",
-        "slug": "invisible-product"
-      }
-    ],
+    "score": 5,
+    "level": 0,
+    "level_name": "No agent access",
     "dimensions": {
-      "agent-capabilities": {
-        "max": 30,
-        "notes": [
-          "No MCP Server Card",
-          "Homepage does not reference MCP / CLI / SDK",
-          "No OAuth-with-PKCE or ai-plugin discovery"
-        ],
+      "discoverability": {
         "pts": 0,
-        "status": "fail"
-      },
-      "bot-access-control": {
-        "max": 15,
+        "max": 25,
+        "status": "fail",
         "notes": [
-          "No Content-Signal directive and no per-bot AI policy in robots.txt"
-        ],
-        "pts": 0,
-        "status": "fail"
+          "robots.txt exists but does not address AI agents specifically",
+          "No /AGENTS.md or /.well-known/agent-rules — the load-bearing contract artifact",
+          "No /llms.txt (optional belt-and-suspenders artifact)"
+        ]
       },
       "content-accessibility": {
+        "pts": 5,
         "max": 20,
+        "status": "partial",
         "notes": [
           "No markdown content negotiation",
           "sitemap.xml present",
           "No discoverable OpenAPI surface"
-        ],
-        "pts": 5,
-        "status": "partial"
+        ]
       },
-      "discoverability": {
-        "max": 25,
-        "notes": [
-          "robots.txt exists but does not address AI agents specifically",
-          "No /llms.txt",
-          "No /AGENTS.md or /.well-known/agent-rules"
-        ],
+      "bot-access-control": {
         "pts": 0,
-        "status": "fail"
+        "max": 15,
+        "status": "fail",
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ]
+      },
+      "agent-capabilities": {
+        "pts": 0,
+        "max": 30,
+        "status": "fail",
+        "notes": [
+          "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
+          "Homepage does not reference MCP / CLI / SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ]
       },
       "visibility-of-agent-integrations": {
+        "pts": 0,
         "max": 10,
+        "status": "fail",
         "notes": [
           "Homepage hides agent integrations from human-onboarding flow"
-        ],
-        "pts": 0,
-        "status": "fail"
+        ]
       }
     },
-    "level": 0,
-    "level_name": "No agent access",
+    "anti_patterns_flagged": [
+      {
+        "slug": "invisible-product",
+        "name": "The Invisible Product",
+        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected."
+      }
+    ],
+    "top_moves": [
+      {
+        "rank": 1,
+        "principle": "agent-capabilities",
+        "gap_pts": 30,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
+      },
+      {
+        "rank": 2,
+        "principle": "discoverability",
+        "gap_pts": 25,
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      },
+      {
+        "rank": 3,
+        "principle": "content-accessibility",
+        "gap_pts": 15,
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json."
+      }
+    ],
     "probe_signals": {
       "mode": "website",
+      "target": "https://blog.google",
+      "timestamp": "2026-05-07T14:57:40.184Z",
       "signals": {
-        "homepage": {
-          "content_type": "text/html; charset=utf-8",
-          "length": 339435,
-          "ok": true,
-          "status": 200,
-          "url": "https://blog.google"
-        },
-        "homepage_analysis": {
-          "mentions_agents_first": false,
-          "mentions_api": false,
-          "mentions_cli": false,
-          "mentions_mcp": false,
-          "mentions_npx": false,
-          "mentions_oauth": false,
-          "mentions_sdk": false
+        "surfaces": {
+          "robots_txt": {
+            "url": "https://blog.google/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain",
+            "length": 153
+          },
+          "llms_txt": {
+            "url": "https://blog.google/llms.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195235
+          },
+          "sitemap": {
+            "url": "https://blog.google/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/xml",
+            "length": 2137
+          },
+          "llms_full_txt": {
+            "url": "https://blog.google/llms-full.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195235
+          },
+          "well_known_mcp_json": {
+            "url": "https://blog.google/.well-known/mcp-server-card.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195235
+          },
+          "agents_json": {
+            "url": "https://blog.google/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195235
+          },
+          "well_known_ai_plugin": {
+            "url": "https://blog.google/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195235
+          },
+          "agents_md": {
+            "url": "https://blog.google/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195235
+          },
+          "sitemap_index": {
+            "url": "https://blog.google/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195235
+          },
+          "openapi_root": {
+            "url": "https://blog.google/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195235
+          },
+          "well_known_oauth": {
+            "url": "https://blog.google/.well-known/oauth-authorization-server",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195235
+          },
+          "well_known_mcp": {
+            "url": "https://blog.google/.well-known/mcp-server-card",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195235
+          },
+          "openapi_api": {
+            "url": "https://blog.google/api/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "application/json",
+            "length": 195235
+          },
+          "well_known_agent_rules": {
+            "url": "https://blog.google/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195235
+          },
+          "openapi_v1": {
+            "url": "https://blog.google/v1/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195235
+          }
         },
         "markdown_negotiation": {
-          "content_type_returned": "text/html; charset=utf-8",
           "requested": "text/markdown",
+          "content_type_returned": "text/html; charset=utf-8",
           "served_markdown": false,
           "status": 200
         },
+        "homepage": {
+          "url": "https://blog.google",
+          "status": 200,
+          "ok": true,
+          "content_type": "text/html; charset=utf-8",
+          "length": 364829
+        },
         "robots_analysis": {
-          "address_count": 0,
           "ai_agents_addressed": [],
+          "address_count": 0,
           "blanket_disallow": true
         },
-        "surfaces": {
-          "agents_md": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 195235,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.google/AGENTS.md"
-          },
-          "llms_full_txt": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 195235,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.google/llms-full.txt"
-          },
-          "llms_txt": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 195235,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.google/llms.txt"
-          },
-          "openapi_api": {
-            "content_type": "application/json",
-            "length": 195235,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.google/api/openapi.json"
-          },
-          "openapi_root": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 195235,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.google/openapi.json"
-          },
-          "openapi_v1": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 195235,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.google/v1/openapi.json"
-          },
-          "robots_txt": {
-            "content_type": "text/plain",
-            "length": 153,
-            "ok": true,
-            "status": 200,
-            "url": "https://blog.google/robots.txt"
-          },
-          "sitemap": {
-            "content_type": "application/xml",
-            "length": 2137,
-            "ok": true,
-            "status": 200,
-            "url": "https://blog.google/sitemap.xml"
-          },
-          "well_known_agent_rules": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 195235,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.google/.well-known/agent-rules"
-          },
-          "well_known_ai_plugin": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 195235,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.google/.well-known/ai-plugin.json"
-          },
-          "well_known_mcp": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 195235,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.google/.well-known/mcp-server-card"
-          },
-          "well_known_mcp_json": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 195235,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.google/.well-known/mcp-server-card.json"
-          },
-          "well_known_oauth": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 195235,
-            "ok": false,
-            "status": 404,
-            "url": "https://blog.google/.well-known/oauth-authorization-server"
-          }
+        "homepage_analysis": {
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_cli": false,
+          "mentions_sdk": false,
+          "mentions_api": false,
+          "mentions_oauth": false,
+          "mentions_agents_first": false
         }
-      },
-      "target": "https://blog.google",
-      "timestamp": "2026-05-06T20:39:45.727Z"
-    },
-    "score": 5,
-    "top_moves": [
-      {
-        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
-        "gap_pts": 30,
-        "principle": "agent-capabilities",
-        "rank": 1
-      },
-      {
-        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
-        "gap_pts": 25,
-        "principle": "discoverability",
-        "rank": 2
-      },
-      {
-        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
-        "gap_pts": 15,
-        "principle": "content-accessibility",
-        "rank": 3
       }
-    ]
+    }
   },
   "https://cloud.google.com": {
-    "anti_patterns_flagged": [
-      {
-        "evidence": "Agent capabilities advertised but no /AGENTS.md or /.well-known/agent-rules.",
-        "name": "Agents Without Rules",
-        "slug": "agents-without-rules"
-      }
-    ],
+    "score": 15,
+    "level": 1,
+    "level_name": "Agent as Afterthought",
     "dimensions": {
-      "agent-capabilities": {
-        "max": 30,
+      "discoverability": {
+        "pts": 0,
+        "max": 25,
+        "status": "fail",
         "notes": [
-          "No MCP Server Card",
+          "robots.txt exists but does not address AI agents specifically",
+          "No /AGENTS.md or /.well-known/agent-rules — the load-bearing contract artifact",
+          "No /llms.txt (optional belt-and-suspenders artifact)"
+        ]
+      },
+      "content-accessibility": {
+        "pts": 5,
+        "max": 20,
+        "status": "partial",
+        "notes": [
+          "No markdown content negotiation",
+          "sitemap.xml present",
+          "No discoverable OpenAPI surface"
+        ]
+      },
+      "bot-access-control": {
+        "pts": 0,
+        "max": 15,
+        "status": "fail",
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ]
+      },
+      "agent-capabilities": {
+        "pts": 10,
+        "max": 30,
+        "status": "partial",
+        "notes": [
+          "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
           "Homepage references agent surfaces: SDK",
           "No OAuth-with-PKCE or ai-plugin discovery"
-        ],
-        "pts": 10,
-        "status": "partial"
-      },
-      "bot-access-control": {
-        "max": 15,
-        "notes": [
-          "No Content-Signal directive and no per-bot AI policy in robots.txt"
-        ],
-        "pts": 0,
-        "status": "fail"
-      },
-      "content-accessibility": {
-        "max": 20,
-        "notes": [
-          "No markdown content negotiation",
-          "sitemap.xml present",
-          "No discoverable OpenAPI surface"
-        ],
-        "pts": 5,
-        "status": "partial"
-      },
-      "discoverability": {
-        "max": 25,
-        "notes": [
-          "robots.txt exists but does not address AI agents specifically",
-          "No /llms.txt",
-          "No /AGENTS.md or /.well-known/agent-rules"
-        ],
-        "pts": 0,
-        "status": "fail"
+        ]
       },
       "visibility-of-agent-integrations": {
+        "pts": 0,
         "max": 10,
+        "status": "fail",
         "notes": [
           "Homepage hides agent integrations from human-onboarding flow"
-        ],
-        "pts": 0,
-        "status": "fail"
+        ]
       }
     },
-    "level": 1,
-    "level_name": "Agent as Afterthought",
+    "anti_patterns_flagged": [
+      {
+        "slug": "agents-without-rules",
+        "name": "Agents Without Rules",
+        "evidence": "Agent capabilities advertised but no /AGENTS.md or /.well-known/agent-rules."
+      }
+    ],
+    "top_moves": [
+      {
+        "rank": 1,
+        "principle": "discoverability",
+        "gap_pts": 25,
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      },
+      {
+        "rank": 2,
+        "principle": "agent-capabilities",
+        "gap_pts": 20,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
+      },
+      {
+        "rank": 3,
+        "principle": "content-accessibility",
+        "gap_pts": 15,
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json."
+      }
+    ],
     "probe_signals": {
       "mode": "website",
+      "target": "https://cloud.google.com",
+      "timestamp": "2026-05-07T14:57:41.993Z",
       "signals": {
-        "homepage": {
-          "content_type": "text/html; charset=utf-8",
-          "length": 2324809,
-          "ok": true,
-          "status": 200,
-          "url": "https://cloud.google.com"
-        },
-        "homepage_analysis": {
-          "mentions_agents_first": false,
-          "mentions_api": true,
-          "mentions_cli": false,
-          "mentions_mcp": false,
-          "mentions_npx": false,
-          "mentions_oauth": false,
-          "mentions_sdk": true
+        "surfaces": {
+          "robots_txt": {
+            "url": "https://cloud.google.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain",
+            "length": 2529
+          },
+          "well_known_ai_plugin": {
+            "url": "https://cloud.google.com/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 680926
+          },
+          "llms_txt": {
+            "url": "https://cloud.google.com/llms.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 680912
+          },
+          "well_known_agent_rules": {
+            "url": "https://cloud.google.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 680923
+          },
+          "well_known_mcp": {
+            "url": "https://cloud.google.com/.well-known/mcp-server-card",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 680931
+          },
+          "agents_md": {
+            "url": "https://cloud.google.com/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 680910
+          },
+          "llms_full_txt": {
+            "url": "https://cloud.google.com/llms-full.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 680913
+          },
+          "well_known_mcp_json": {
+            "url": "https://cloud.google.com/.well-known/mcp-server-card.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 680936
+          },
+          "agents_json": {
+            "url": "https://cloud.google.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 680911
+          },
+          "well_known_oauth": {
+            "url": "https://cloud.google.com/.well-known/oauth-authorization-server",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 680938
+          },
+          "openapi_root": {
+            "url": "https://cloud.google.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 680912
+          },
+          "openapi_v1": {
+            "url": "https://cloud.google.com/v1/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 680919
+          },
+          "sitemap_index": {
+            "url": "https://cloud.google.com/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 680917
+          },
+          "openapi_api": {
+            "url": "https://cloud.google.com/api/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 680916
+          },
+          "sitemap": {
+            "url": "https://cloud.google.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/xml",
+            "length": 24852
+          }
         },
         "markdown_negotiation": {
-          "content_type_returned": "text/html; charset=utf-8",
           "requested": "text/markdown",
+          "content_type_returned": "text/html; charset=utf-8",
           "served_markdown": false,
           "status": 200
         },
+        "homepage": {
+          "url": "https://cloud.google.com",
+          "status": 200,
+          "ok": true,
+          "content_type": "text/html; charset=utf-8",
+          "length": 2324820
+        },
         "robots_analysis": {
-          "address_count": 0,
           "ai_agents_addressed": [],
+          "address_count": 0,
           "blanket_disallow": true
         },
-        "surfaces": {
-          "agents_md": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 680906,
-            "ok": false,
-            "status": 404,
-            "url": "https://cloud.google.com/AGENTS.md"
-          },
-          "llms_full_txt": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 680917,
-            "ok": false,
-            "status": 404,
-            "url": "https://cloud.google.com/llms-full.txt"
-          },
-          "llms_txt": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 680912,
-            "ok": false,
-            "status": 404,
-            "url": "https://cloud.google.com/llms.txt"
-          },
-          "openapi_api": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 680920,
-            "ok": false,
-            "status": 404,
-            "url": "https://cloud.google.com/api/openapi.json"
-          },
-          "openapi_root": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 680916,
-            "ok": false,
-            "status": 404,
-            "url": "https://cloud.google.com/openapi.json"
-          },
-          "openapi_v1": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 680915,
-            "ok": false,
-            "status": 404,
-            "url": "https://cloud.google.com/v1/openapi.json"
-          },
-          "robots_txt": {
-            "content_type": "text/plain",
-            "length": 2529,
-            "ok": true,
-            "status": 200,
-            "url": "https://cloud.google.com/robots.txt"
-          },
-          "sitemap": {
-            "content_type": "application/xml",
-            "length": 24852,
-            "ok": true,
-            "status": 200,
-            "url": "https://cloud.google.com/sitemap.xml"
-          },
-          "well_known_agent_rules": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 680927,
-            "ok": false,
-            "status": 404,
-            "url": "https://cloud.google.com/.well-known/agent-rules"
-          },
-          "well_known_ai_plugin": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 680930,
-            "ok": false,
-            "status": 404,
-            "url": "https://cloud.google.com/.well-known/ai-plugin.json"
-          },
-          "well_known_mcp": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 680927,
-            "ok": false,
-            "status": 404,
-            "url": "https://cloud.google.com/.well-known/mcp-server-card"
-          },
-          "well_known_mcp_json": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 680932,
-            "ok": false,
-            "status": 404,
-            "url": "https://cloud.google.com/.well-known/mcp-server-card.json"
-          },
-          "well_known_oauth": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 680938,
-            "ok": false,
-            "status": 404,
-            "url": "https://cloud.google.com/.well-known/oauth-authorization-server"
-          }
+        "homepage_analysis": {
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_cli": false,
+          "mentions_sdk": true,
+          "mentions_api": true,
+          "mentions_oauth": false,
+          "mentions_agents_first": false
         }
-      },
-      "target": "https://cloud.google.com",
-      "timestamp": "2026-05-06T20:39:43.861Z"
-    },
-    "score": 15,
-    "top_moves": [
-      {
-        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
-        "gap_pts": 25,
-        "principle": "discoverability",
-        "rank": 1
-      },
-      {
-        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
-        "gap_pts": 20,
-        "principle": "agent-capabilities",
-        "rank": 2
-      },
-      {
-        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
-        "gap_pts": 15,
-        "principle": "content-accessibility",
-        "rank": 3
       }
-    ]
+    }
   },
   "https://developers.google.com": {
-    "anti_patterns_flagged": [
-      {
-        "evidence": "Agent capabilities advertised but no /AGENTS.md or /.well-known/agent-rules.",
-        "name": "Agents Without Rules",
-        "slug": "agents-without-rules"
-      }
-    ],
+    "score": 25,
+    "level": 1,
+    "level_name": "Agent as Afterthought",
     "dimensions": {
-      "agent-capabilities": {
-        "max": 30,
-        "notes": [
-          "No MCP Server Card",
-          "Homepage references agent surfaces: CLI",
-          "No OAuth-with-PKCE or ai-plugin discovery"
-        ],
-        "pts": 10,
-        "status": "partial"
-      },
-      "bot-access-control": {
-        "max": 15,
-        "notes": [
-          "No Content-Signal directive and no per-bot AI policy in robots.txt"
-        ],
+      "discoverability": {
         "pts": 0,
-        "status": "fail"
+        "max": 25,
+        "status": "fail",
+        "notes": [
+          "No robots.txt",
+          "No /AGENTS.md or /.well-known/agent-rules — the load-bearing contract artifact",
+          "No /llms.txt (optional belt-and-suspenders artifact)"
+        ]
       },
       "content-accessibility": {
+        "pts": 5,
         "max": 20,
+        "status": "partial",
         "notes": [
           "No markdown content negotiation",
           "sitemap.xml present",
           "No discoverable OpenAPI surface"
-        ],
-        "pts": 5,
-        "status": "partial"
+        ]
       },
-      "discoverability": {
-        "max": 25,
-        "notes": [
-          "robots.txt exists but does not address AI agents specifically",
-          "No /llms.txt",
-          "No /AGENTS.md or /.well-known/agent-rules"
-        ],
+      "bot-access-control": {
         "pts": 0,
-        "status": "fail"
+        "max": 15,
+        "status": "fail",
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ]
+      },
+      "agent-capabilities": {
+        "pts": 10,
+        "max": 30,
+        "status": "partial",
+        "notes": [
+          "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
+          "Homepage references agent surfaces: CLI",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ]
       },
       "visibility-of-agent-integrations": {
+        "pts": 10,
         "max": 10,
+        "status": "pass",
         "notes": [
           "Homepage promotes agent install / MCP / CLI alongside human onboarding"
-        ],
-        "pts": 10,
-        "status": "pass"
+        ]
       }
     },
-    "level": 1,
-    "level_name": "Agent as Afterthought",
+    "anti_patterns_flagged": [
+      {
+        "slug": "agents-without-rules",
+        "name": "Agents Without Rules",
+        "evidence": "Agent capabilities advertised but no /AGENTS.md or /.well-known/agent-rules."
+      }
+    ],
+    "top_moves": [
+      {
+        "rank": 1,
+        "principle": "discoverability",
+        "gap_pts": 25,
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      },
+      {
+        "rank": 2,
+        "principle": "agent-capabilities",
+        "gap_pts": 20,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
+      },
+      {
+        "rank": 3,
+        "principle": "content-accessibility",
+        "gap_pts": 15,
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json."
+      }
+    ],
     "probe_signals": {
       "mode": "website",
+      "target": "https://developers.google.com",
+      "timestamp": "2026-05-07T14:57:45.206Z",
       "signals": {
-        "homepage": {
-          "content_type": "text/html; charset=utf-8",
-          "length": 183405,
-          "ok": true,
-          "status": 200,
-          "url": "https://developers.google.com"
-        },
-        "homepage_analysis": {
-          "mentions_agents_first": false,
-          "mentions_api": true,
-          "mentions_cli": true,
-          "mentions_mcp": false,
-          "mentions_npx": false,
-          "mentions_oauth": false,
-          "mentions_sdk": false
+        "surfaces": {
+          "llms_txt": {
+            "url": "https://developers.google.com/llms.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 91243
+          },
+          "well_known_ai_plugin": {
+            "url": "https://developers.google.com/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 91261
+          },
+          "llms_full_txt": {
+            "url": "https://developers.google.com/llms-full.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 91252
+          },
+          "agents_md": {
+            "url": "https://developers.google.com/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 91241
+          },
+          "well_known_agent_rules": {
+            "url": "https://developers.google.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 91262
+          },
+          "robots_txt": {
+            "url": "https://developers.google.com/robots.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1567
+          },
+          "well_known_mcp": {
+            "url": "https://developers.google.com/.well-known/mcp-server-card",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 91266
+          },
+          "well_known_mcp_json": {
+            "url": "https://developers.google.com/.well-known/mcp-server-card.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 91271
+          },
+          "agents_json": {
+            "url": "https://developers.google.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 91250
+          },
+          "well_known_oauth": {
+            "url": "https://developers.google.com/.well-known/oauth-authorization-server",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 91273
+          },
+          "sitemap_index": {
+            "url": "https://developers.google.com/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 91256
+          },
+          "openapi_v1": {
+            "url": "https://developers.google.com/v1/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 91254
+          },
+          "openapi_root": {
+            "url": "https://developers.google.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 91251
+          },
+          "openapi_api": {
+            "url": "https://developers.google.com/api/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 91255
+          },
+          "sitemap": {
+            "url": "https://developers.google.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/xml",
+            "length": 5752
+          }
         },
         "markdown_negotiation": {
-          "content_type_returned": "text/html; charset=utf-8",
           "requested": "text/markdown",
+          "content_type_returned": "text/html; charset=utf-8",
           "served_markdown": false,
           "status": 200
         },
-        "robots_analysis": {
-          "address_count": 0,
-          "ai_agents_addressed": [],
-          "blanket_disallow": true
+        "homepage": {
+          "url": "https://developers.google.com",
+          "status": 200,
+          "ok": true,
+          "content_type": "text/html; charset=utf-8",
+          "length": 183405
         },
-        "surfaces": {
-          "agents_md": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 91245,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.google.com/AGENTS.md"
-          },
-          "llms_full_txt": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 91248,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.google.com/llms-full.txt"
-          },
-          "llms_txt": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 91243,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.google.com/llms.txt"
-          },
-          "openapi_api": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 91255,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.google.com/api/openapi.json"
-          },
-          "openapi_root": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 91247,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.google.com/openapi.json"
-          },
-          "openapi_v1": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 91250,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.google.com/v1/openapi.json"
-          },
-          "robots_txt": {
-            "content_type": "text/plain",
-            "length": 93,
-            "ok": true,
-            "status": 200,
-            "url": "https://developers.google.com/robots.txt"
-          },
-          "sitemap": {
-            "content_type": "application/xml",
-            "length": 5752,
-            "ok": true,
-            "status": 200,
-            "url": "https://developers.google.com/sitemap.xml"
-          },
-          "well_known_agent_rules": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 91262,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.google.com/.well-known/agent-rules"
-          },
-          "well_known_ai_plugin": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 91261,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.google.com/.well-known/ai-plugin.json"
-          },
-          "well_known_mcp": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 91262,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.google.com/.well-known/mcp-server-card"
-          },
-          "well_known_mcp_json": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 91267,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.google.com/.well-known/mcp-server-card.json"
-          },
-          "well_known_oauth": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 91277,
-            "ok": false,
-            "status": 404,
-            "url": "https://developers.google.com/.well-known/oauth-authorization-server"
-          }
+        "robots_analysis": {
+          "ai_agents_addressed": [],
+          "address_count": 0,
+          "blanket_disallow": false
+        },
+        "homepage_analysis": {
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_cli": true,
+          "mentions_sdk": false,
+          "mentions_api": true,
+          "mentions_oauth": false,
+          "mentions_agents_first": false
         }
-      },
-      "target": "https://developers.google.com",
-      "timestamp": "2026-05-06T20:39:40.616Z"
-    },
-    "score": 25,
-    "top_moves": [
-      {
-        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
-        "gap_pts": 25,
-        "principle": "discoverability",
-        "rank": 1
-      },
-      {
-        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
-        "gap_pts": 20,
-        "principle": "agent-capabilities",
-        "rank": 2
-      },
-      {
-        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
-        "gap_pts": 15,
-        "principle": "content-accessibility",
-        "rank": 3
       }
-    ]
+    }
   },
   "https://www.google.com": {
-    "anti_patterns_flagged": [
-      {
-        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected.",
-        "name": "The Invisible Product",
-        "slug": "invisible-product"
-      }
-    ],
+    "score": 5,
+    "level": 0,
+    "level_name": "No agent access",
     "dimensions": {
-      "agent-capabilities": {
-        "max": 30,
-        "notes": [
-          "No MCP Server Card",
-          "Homepage does not reference MCP / CLI / SDK",
-          "No OAuth-with-PKCE or ai-plugin discovery"
-        ],
+      "discoverability": {
         "pts": 0,
-        "status": "fail"
-      },
-      "bot-access-control": {
-        "max": 15,
+        "max": 25,
+        "status": "fail",
         "notes": [
-          "No Content-Signal directive and no per-bot AI policy in robots.txt"
-        ],
-        "pts": 0,
-        "status": "fail"
+          "robots.txt exists but does not address AI agents specifically",
+          "No /AGENTS.md or /.well-known/agent-rules — the load-bearing contract artifact",
+          "No /llms.txt (optional belt-and-suspenders artifact)"
+        ]
       },
       "content-accessibility": {
+        "pts": 5,
         "max": 20,
+        "status": "partial",
         "notes": [
           "No markdown content negotiation",
           "sitemap.xml present",
           "No discoverable OpenAPI surface"
-        ],
-        "pts": 5,
-        "status": "partial"
+        ]
       },
-      "discoverability": {
-        "max": 25,
-        "notes": [
-          "robots.txt exists but does not address AI agents specifically",
-          "No /llms.txt",
-          "No /AGENTS.md or /.well-known/agent-rules"
-        ],
+      "bot-access-control": {
         "pts": 0,
-        "status": "fail"
+        "max": 15,
+        "status": "fail",
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ]
+      },
+      "agent-capabilities": {
+        "pts": 0,
+        "max": 30,
+        "status": "fail",
+        "notes": [
+          "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
+          "Homepage does not reference MCP / CLI / SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ]
       },
       "visibility-of-agent-integrations": {
+        "pts": 0,
         "max": 10,
+        "status": "fail",
         "notes": [
           "Homepage hides agent integrations from human-onboarding flow"
-        ],
-        "pts": 0,
-        "status": "fail"
+        ]
       }
     },
-    "level": 0,
-    "level_name": "No agent access",
+    "anti_patterns_flagged": [
+      {
+        "slug": "invisible-product",
+        "name": "The Invisible Product",
+        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected."
+      }
+    ],
+    "top_moves": [
+      {
+        "rank": 1,
+        "principle": "agent-capabilities",
+        "gap_pts": 30,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
+      },
+      {
+        "rank": 2,
+        "principle": "discoverability",
+        "gap_pts": 25,
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      },
+      {
+        "rank": 3,
+        "principle": "content-accessibility",
+        "gap_pts": 15,
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json."
+      }
+    ],
     "probe_signals": {
       "mode": "website",
+      "target": "https://www.google.com",
+      "timestamp": "2026-05-07T14:57:46.227Z",
       "signals": {
-        "homepage": {
-          "content_type": "text/html",
-          "length": 3138,
-          "ok": false,
-          "status": 429,
-          "url": "https://www.google.com"
-        },
-        "homepage_analysis": {
-          "mentions_agents_first": false,
-          "mentions_api": false,
-          "mentions_cli": false,
-          "mentions_mcp": false,
-          "mentions_npx": false,
-          "mentions_oauth": false,
-          "mentions_sdk": false
+        "surfaces": {
+          "robots_txt": {
+            "url": "https://www.google.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain",
+            "length": 6519
+          },
+          "agents_md": {
+            "url": "https://www.google.com/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1566
+          },
+          "well_known_agent_rules": {
+            "url": "https://www.google.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1580
+          },
+          "well_known_ai_plugin": {
+            "url": "https://www.google.com/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1583
+          },
+          "llms_txt": {
+            "url": "https://www.google.com/llms.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1565
+          },
+          "llms_full_txt": {
+            "url": "https://www.google.com/llms-full.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1570
+          },
+          "sitemap": {
+            "url": "https://www.google.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/xml",
+            "length": 1799
+          },
+          "well_known_oauth": {
+            "url": "https://www.google.com/.well-known/oauth-authorization-server",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1595
+          },
+          "agents_json": {
+            "url": "https://www.google.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1568
+          },
+          "well_known_mcp_json": {
+            "url": "https://www.google.com/.well-known/mcp-server-card.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1589
+          },
+          "well_known_mcp": {
+            "url": "https://www.google.com/.well-known/mcp-server-card",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1584
+          },
+          "sitemap_index": {
+            "url": "https://www.google.com/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1574
+          },
+          "openapi_root": {
+            "url": "https://www.google.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1569
+          },
+          "openapi_v1": {
+            "url": "https://www.google.com/v1/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1572
+          },
+          "openapi_api": {
+            "url": "https://www.google.com/api/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1573
+          }
         },
         "markdown_negotiation": {
-          "content_type_returned": "text/html",
           "requested": "text/markdown",
+          "content_type_returned": "text/html",
           "served_markdown": false,
           "status": 429
         },
+        "homepage": {
+          "url": "https://www.google.com",
+          "status": 429,
+          "ok": false,
+          "content_type": "text/html",
+          "length": 3139
+        },
         "robots_analysis": {
-          "address_count": 0,
           "ai_agents_addressed": [],
+          "address_count": 0,
           "blanket_disallow": true
         },
-        "surfaces": {
-          "agents_md": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 1566,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.google.com/AGENTS.md"
-          },
-          "llms_full_txt": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 1570,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.google.com/llms-full.txt"
-          },
-          "llms_txt": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 1565,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.google.com/llms.txt"
-          },
-          "openapi_api": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 1573,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.google.com/api/openapi.json"
-          },
-          "openapi_root": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 1569,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.google.com/openapi.json"
-          },
-          "openapi_v1": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 1572,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.google.com/v1/openapi.json"
-          },
-          "robots_txt": {
-            "content_type": "text/plain",
-            "length": 6519,
-            "ok": true,
-            "status": 200,
-            "url": "https://www.google.com/robots.txt"
-          },
-          "sitemap": {
-            "content_type": "text/xml",
-            "length": 1799,
-            "ok": true,
-            "status": 200,
-            "url": "https://www.google.com/sitemap.xml"
-          },
-          "well_known_agent_rules": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 1580,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.google.com/.well-known/agent-rules"
-          },
-          "well_known_ai_plugin": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 1583,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.google.com/.well-known/ai-plugin.json"
-          },
-          "well_known_mcp": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 1584,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.google.com/.well-known/mcp-server-card"
-          },
-          "well_known_mcp_json": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 1589,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.google.com/.well-known/mcp-server-card.json"
-          },
-          "well_known_oauth": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 1595,
-            "ok": false,
-            "status": 404,
-            "url": "https://www.google.com/.well-known/oauth-authorization-server"
-          }
+        "homepage_analysis": {
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_cli": false,
+          "mentions_sdk": false,
+          "mentions_api": false,
+          "mentions_oauth": false,
+          "mentions_agents_first": false
         }
-      },
-      "target": "https://www.google.com",
-      "timestamp": "2026-05-06T20:39:38.528Z"
-    },
-    "score": 5,
-    "top_moves": [
-      {
-        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
-        "gap_pts": 30,
-        "principle": "agent-capabilities",
-        "rank": 1
-      },
-      {
-        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
-        "gap_pts": 25,
-        "principle": "discoverability",
-        "rank": 2
-      },
-      {
-        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
-        "gap_pts": 15,
-        "principle": "content-accessibility",
-        "rank": 3
       }
-    ]
+    }
   }
 }

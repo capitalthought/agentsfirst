@@ -3,513 +3,663 @@
     "notes": [
       "developer.indeed.com (the historical developer portal) 301-redirects to https://partners.indeed.com/, which then returns Cloudflare-mitigated 403 to non-browser user-agents. Effectively no public developer surface remains.",
       "www.indeed.com publishes a real, sophisticated /llms.txt (737 lines, lists ~23 named AI bots) but Indeed's Cloudflare WAF returns 403 to the agentsfirst.dev scorer's default user-agent on /llms.txt, /AGENTS.md, and most other paths. The artifact exists; the agent cannot fetch it. This is the report's core narrative.",
-      "employers.indeed.com /robots.txt is 25 bytes: 'User-agent: *\\nDisallow: /' \u2014 the entire B2B surface declines crawling outright."
+      "employers.indeed.com /robots.txt is 25 bytes: 'User-agent: *\\nDisallow: /' — the entire B2B surface declines crawling outright."
     ],
     "rubric_source": "https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts",
     "rubric_version": "v0.1.2",
     "scored_at": "2026-05-06",
-    "scorer_endpoint": "https://agentsfirst.dev/mcp"
+    "scorer_endpoint": "https://agentsfirst.dev/mcp",
+    "last_refreshed": "2026-05-07T14:57:47.011Z",
+    "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://developer.indeed.com": {
-    "anti_patterns_flagged": [
-      {
-        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected.",
-        "name": "The Invisible Product",
-        "slug": "invisible-product"
-      }
-    ],
+    "score": 0,
+    "level": 0,
+    "level_name": "No agent access",
     "dimensions": {
-      "agent-capabilities": {
-        "max": 30,
-        "notes": [
-          "No MCP Server Card",
-          "Homepage does not reference MCP / CLI / SDK",
-          "No OAuth-with-PKCE or ai-plugin discovery"
-        ],
-        "pts": 0,
-        "status": "fail"
-      },
-      "bot-access-control": {
-        "max": 15,
-        "notes": [
-          "No Content-Signal directive and no per-bot AI policy in robots.txt"
-        ],
-        "pts": 0,
-        "status": "fail"
-      },
-      "content-accessibility": {
-        "max": 20,
-        "notes": [
-          "No markdown content negotiation",
-          "No sitemap.xml",
-          "No discoverable OpenAPI surface"
-        ],
-        "pts": 0,
-        "status": "fail"
-      },
       "discoverability": {
+        "pts": 0,
         "max": 25,
+        "status": "fail",
         "notes": [
           "No robots.txt",
-          "No /llms.txt",
-          "No /AGENTS.md or /.well-known/agent-rules"
-        ],
-        "pts": 0,
-        "status": "fail"
+          "No /AGENTS.md or /.well-known/agent-rules — the load-bearing contract artifact",
+          "No /llms.txt (optional belt-and-suspenders artifact)"
+        ]
       },
-      "visibility-of-agent-integrations": {
-        "max": 10,
+      "content-accessibility": {
+        "pts": 0,
+        "max": 20,
+        "status": "fail",
         "notes": [
-          "Homepage hides agent integrations from human-onboarding flow"
-        ],
-        "pts": 0,
-        "status": "fail"
-      }
-    },
-    "level": 0,
-    "level_name": "No agent access",
-    "probe_signals": {
-      "mode": "website",
-      "signals": {
-        "homepage": {
-          "content_type": "text/html; charset=UTF-8",
-          "length": 7253,
-          "ok": false,
-          "status": 403,
-          "url": "https://developer.indeed.com"
-        },
-        "homepage_analysis": {
-          "mentions_agents_first": false,
-          "mentions_api": false,
-          "mentions_cli": false,
-          "mentions_mcp": false,
-          "mentions_npx": false,
-          "mentions_oauth": false,
-          "mentions_sdk": false
-        },
-        "markdown_negotiation": {
-          "content_type_returned": "text/html; charset=UTF-8",
-          "requested": "text/markdown",
-          "served_markdown": false,
-          "status": 403
-        },
-        "robots_analysis": {
-          "address_count": 0,
-          "ai_agents_addressed": [],
-          "blanket_disallow": false
-        },
-        "surfaces": {
-          "agents_md": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7253,
-            "ok": false,
-            "status": 403,
-            "url": "https://developer.indeed.com/AGENTS.md"
-          },
-          "llms_full_txt": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7253,
-            "ok": false,
-            "status": 403,
-            "url": "https://developer.indeed.com/llms-full.txt"
-          },
-          "llms_txt": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7253,
-            "ok": false,
-            "status": 403,
-            "url": "https://developer.indeed.com/llms.txt"
-          },
-          "openapi_api": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7253,
-            "ok": false,
-            "status": 403,
-            "url": "https://developer.indeed.com/api/openapi.json"
-          },
-          "openapi_root": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7253,
-            "ok": false,
-            "status": 403,
-            "url": "https://developer.indeed.com/openapi.json"
-          },
-          "openapi_v1": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7253,
-            "ok": false,
-            "status": 403,
-            "url": "https://developer.indeed.com/v1/openapi.json"
-          },
-          "robots_txt": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7253,
-            "ok": false,
-            "status": 403,
-            "url": "https://developer.indeed.com/robots.txt"
-          },
-          "sitemap": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7253,
-            "ok": false,
-            "status": 403,
-            "url": "https://developer.indeed.com/sitemap.xml"
-          },
-          "well_known_agent_rules": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7253,
-            "ok": false,
-            "status": 403,
-            "url": "https://developer.indeed.com/.well-known/agent-rules"
-          },
-          "well_known_ai_plugin": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7253,
-            "ok": false,
-            "status": 403,
-            "url": "https://developer.indeed.com/.well-known/ai-plugin.json"
-          },
-          "well_known_mcp": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7253,
-            "ok": false,
-            "status": 403,
-            "url": "https://developer.indeed.com/.well-known/mcp-server-card"
-          },
-          "well_known_mcp_json": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7253,
-            "ok": false,
-            "status": 403,
-            "url": "https://developer.indeed.com/.well-known/mcp-server-card.json"
-          },
-          "well_known_oauth": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7253,
-            "ok": false,
-            "status": 403,
-            "url": "https://developer.indeed.com/.well-known/oauth-authorization-server"
-          }
-        }
-      },
-      "target": "https://developer.indeed.com",
-      "timestamp": "2026-05-06T20:40:20.792Z"
-    },
-    "score": 0,
-    "top_moves": [
-      {
-        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
-        "gap_pts": 30,
-        "principle": "agent-capabilities",
-        "rank": 1
-      },
-      {
-        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
-        "gap_pts": 25,
-        "principle": "discoverability",
-        "rank": 2
-      },
-      {
-        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
-        "gap_pts": 20,
-        "principle": "content-accessibility",
-        "rank": 3
-      }
-    ]
-  },
-  "https://employers.indeed.com": {
-    "anti_patterns_flagged": [
-      {
-        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected.",
-        "name": "The Invisible Product",
-        "slug": "invisible-product"
-      }
-    ],
-    "dimensions": {
-      "agent-capabilities": {
-        "max": 30,
-        "notes": [
-          "No MCP Server Card",
-          "Homepage does not reference MCP / CLI / SDK",
-          "No OAuth-with-PKCE or ai-plugin discovery"
-        ],
-        "pts": 0,
-        "status": "fail"
+          "No markdown content negotiation",
+          "No sitemap.xml / sitemap-index.xml",
+          "No discoverable OpenAPI surface"
+        ]
       },
       "bot-access-control": {
+        "pts": 0,
         "max": 15,
+        "status": "fail",
         "notes": [
           "No Content-Signal directive and no per-bot AI policy in robots.txt"
-        ],
-        "pts": 0,
-        "status": "fail"
+        ]
       },
-      "content-accessibility": {
-        "max": 20,
-        "notes": [
-          "No markdown content negotiation",
-          "No sitemap.xml",
-          "OpenAPI surface discoverable"
-        ],
-        "pts": 5,
-        "status": "partial"
-      },
-      "discoverability": {
-        "max": 25,
-        "notes": [
-          "robots.txt exists but does not address AI agents specifically",
-          "No /llms.txt",
-          "No /AGENTS.md or /.well-known/agent-rules"
-        ],
-        "pts": 0,
-        "status": "fail"
-      },
-      "visibility-of-agent-integrations": {
-        "max": 10,
-        "notes": [
-          "Homepage hides agent integrations from human-onboarding flow"
-        ],
-        "pts": 0,
-        "status": "fail"
-      }
-    },
-    "level": 0,
-    "level_name": "No agent access",
-    "probe_signals": {
-      "mode": "website",
-      "signals": {
-        "homepage": {
-          "content_type": "text/html; charset=UTF-8",
-          "length": 7254,
-          "ok": false,
-          "status": 403,
-          "url": "https://employers.indeed.com"
-        },
-        "homepage_analysis": {
-          "mentions_agents_first": false,
-          "mentions_api": false,
-          "mentions_cli": false,
-          "mentions_mcp": false,
-          "mentions_npx": false,
-          "mentions_oauth": false,
-          "mentions_sdk": false
-        },
-        "markdown_negotiation": {
-          "content_type_returned": "text/html; charset=UTF-8",
-          "requested": "text/markdown",
-          "served_markdown": false,
-          "status": 403
-        },
-        "robots_analysis": {
-          "address_count": 0,
-          "ai_agents_addressed": [],
-          "blanket_disallow": true
-        },
-        "surfaces": {
-          "agents_md": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7281,
-            "ok": false,
-            "status": 403,
-            "url": "https://employers.indeed.com/AGENTS.md"
-          },
-          "llms_full_txt": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7293,
-            "ok": false,
-            "status": 403,
-            "url": "https://employers.indeed.com/llms-full.txt"
-          },
-          "llms_txt": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7278,
-            "ok": false,
-            "status": 403,
-            "url": "https://employers.indeed.com/llms.txt"
-          },
-          "openapi_api": {
-            "content_type": "text/html; charset=utf-8",
-            "length": 270181,
-            "ok": true,
-            "status": 200,
-            "url": "https://employers.indeed.com/api/openapi.json"
-          },
-          "openapi_root": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7290,
-            "ok": false,
-            "status": 403,
-            "url": "https://employers.indeed.com/openapi.json"
-          },
-          "openapi_v1": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7323,
-            "ok": false,
-            "status": 403,
-            "url": "https://employers.indeed.com/v1/openapi.json"
-          },
-          "robots_txt": {
-            "content_type": "application/octet-stream",
-            "length": 25,
-            "ok": true,
-            "status": 200,
-            "url": "https://employers.indeed.com/robots.txt"
-          },
-          "sitemap": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7287,
-            "ok": false,
-            "status": 403,
-            "url": "https://employers.indeed.com/sitemap.xml"
-          },
-          "well_known_agent_rules": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7347,
-            "ok": false,
-            "status": 403,
-            "url": "https://employers.indeed.com/.well-known/agent-rules"
-          },
-          "well_known_ai_plugin": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7356,
-            "ok": false,
-            "status": 403,
-            "url": "https://employers.indeed.com/.well-known/ai-plugin.json"
-          },
-          "well_known_mcp": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7359,
-            "ok": false,
-            "status": 403,
-            "url": "https://employers.indeed.com/.well-known/mcp-server-card"
-          },
-          "well_known_mcp_json": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7396,
-            "ok": false,
-            "status": 403,
-            "url": "https://employers.indeed.com/.well-known/mcp-server-card.json"
-          },
-          "well_known_oauth": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7414,
-            "ok": false,
-            "status": 403,
-            "url": "https://employers.indeed.com/.well-known/oauth-authorization-server"
-          }
-        }
-      },
-      "target": "https://employers.indeed.com",
-      "timestamp": "2026-05-06T20:40:22.180Z"
-    },
-    "score": 5,
-    "top_moves": [
-      {
-        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
-        "gap_pts": 30,
-        "principle": "agent-capabilities",
-        "rank": 1
-      },
-      {
-        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
-        "gap_pts": 25,
-        "principle": "discoverability",
-        "rank": 2
-      },
-      {
-        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
-        "gap_pts": 15,
-        "principle": "content-accessibility",
-        "rank": 3
-      }
-    ]
-  },
-  "https://www.indeed.com": {
-    "anti_patterns_flagged": [
-      {
-        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected.",
-        "name": "The Invisible Product",
-        "slug": "invisible-product"
-      }
-    ],
-    "dimensions": {
       "agent-capabilities": {
+        "pts": 0,
         "max": 30,
+        "status": "fail",
         "notes": [
-          "No MCP Server Card",
+          "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
           "Homepage does not reference MCP / CLI / SDK",
           "No OAuth-with-PKCE or ai-plugin discovery"
-        ],
-        "pts": 0,
-        "status": "fail"
-      },
-      "bot-access-control": {
-        "max": 15,
-        "notes": [
-          "AI policy implicit via 7 per-bot rules \u2014 consider adding a Content-Signal directive for machine-readable, future-proof AI policy",
-          "Names 7 bots but pairs with a global blanket disallow"
-        ],
-        "pts": 5,
-        "status": "partial"
-      },
-      "content-accessibility": {
-        "max": 20,
-        "notes": [
-          "No markdown content negotiation",
-          "No sitemap.xml",
-          "No discoverable OpenAPI surface"
-        ],
-        "pts": 0,
-        "status": "fail"
-      },
-      "discoverability": {
-        "max": 25,
-        "notes": [
-          "robots.txt addresses 7 AI agents: GPTBot, anthropic-ai, ClaudeBot, Google-Extended, PerplexityBot, Bytespider, CCBot",
-          "No /llms.txt",
-          "No /AGENTS.md or /.well-known/agent-rules"
-        ],
-        "pts": 5,
-        "status": "partial"
+        ]
       },
       "visibility-of-agent-integrations": {
+        "pts": 0,
         "max": 10,
+        "status": "fail",
         "notes": [
           "Homepage hides agent integrations from human-onboarding flow"
-        ],
-        "pts": 0,
-        "status": "fail"
+        ]
       }
     },
-    "level": 0,
-    "level_name": "No agent access",
+    "anti_patterns_flagged": [
+      {
+        "slug": "invisible-product",
+        "name": "The Invisible Product",
+        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected."
+      }
+    ],
+    "top_moves": [
+      {
+        "rank": 1,
+        "principle": "agent-capabilities",
+        "gap_pts": 30,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
+      },
+      {
+        "rank": 2,
+        "principle": "discoverability",
+        "gap_pts": 25,
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      },
+      {
+        "rank": 3,
+        "principle": "content-accessibility",
+        "gap_pts": 20,
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json."
+      }
+    ],
     "probe_signals": {
       "mode": "website",
+      "target": "https://developer.indeed.com",
+      "timestamp": "2026-05-07T14:57:47.162Z",
       "signals": {
-        "homepage": {
-          "content_type": "text/html; charset=UTF-8",
-          "length": 7205,
-          "ok": false,
-          "status": 403,
-          "url": "https://www.indeed.com"
-        },
-        "homepage_analysis": {
-          "mentions_agents_first": false,
-          "mentions_api": false,
-          "mentions_cli": false,
-          "mentions_mcp": false,
-          "mentions_npx": false,
-          "mentions_oauth": false,
-          "mentions_sdk": false
+        "surfaces": {
+          "agents_md": {
+            "url": "https://developer.indeed.com/AGENTS.md",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "llms_full_txt": {
+            "url": "https://developer.indeed.com/llms-full.txt",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "well_known_ai_plugin": {
+            "url": "https://developer.indeed.com/.well-known/ai-plugin.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "robots_txt": {
+            "url": "https://developer.indeed.com/robots.txt",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "llms_txt": {
+            "url": "https://developer.indeed.com/llms.txt",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "well_known_oauth": {
+            "url": "https://developer.indeed.com/.well-known/oauth-authorization-server",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "sitemap": {
+            "url": "https://developer.indeed.com/sitemap.xml",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "well_known_agent_rules": {
+            "url": "https://developer.indeed.com/.well-known/agent-rules",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "agents_json": {
+            "url": "https://developer.indeed.com/agents.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "sitemap_index": {
+            "url": "https://developer.indeed.com/sitemap-index.xml",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "openapi_v1": {
+            "url": "https://developer.indeed.com/v1/openapi.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "openapi_api": {
+            "url": "https://developer.indeed.com/api/openapi.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "well_known_mcp_json": {
+            "url": "https://developer.indeed.com/.well-known/mcp-server-card.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "openapi_root": {
+            "url": "https://developer.indeed.com/openapi.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "well_known_mcp": {
+            "url": "https://developer.indeed.com/.well-known/mcp-server-card",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          }
         },
         "markdown_negotiation": {
-          "content_type_returned": "text/html; charset=UTF-8",
           "requested": "text/markdown",
+          "content_type_returned": "text/html; charset=UTF-8",
           "served_markdown": false,
           "status": 403
         },
+        "homepage": {
+          "url": "https://developer.indeed.com",
+          "status": 403,
+          "ok": false,
+          "content_type": "text/html; charset=UTF-8",
+          "length": 7338
+        },
         "robots_analysis": {
-          "address_count": 7,
+          "ai_agents_addressed": [],
+          "address_count": 0,
+          "blanket_disallow": false
+        },
+        "homepage_analysis": {
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_cli": false,
+          "mentions_sdk": false,
+          "mentions_api": false,
+          "mentions_oauth": false,
+          "mentions_agents_first": false
+        }
+      }
+    }
+  },
+  "https://employers.indeed.com": {
+    "score": 5,
+    "level": 0,
+    "level_name": "No agent access",
+    "dimensions": {
+      "discoverability": {
+        "pts": 0,
+        "max": 25,
+        "status": "fail",
+        "notes": [
+          "robots.txt exists but does not address AI agents specifically",
+          "No /AGENTS.md or /.well-known/agent-rules — the load-bearing contract artifact",
+          "No /llms.txt (optional belt-and-suspenders artifact)"
+        ]
+      },
+      "content-accessibility": {
+        "pts": 5,
+        "max": 20,
+        "status": "partial",
+        "notes": [
+          "No markdown content negotiation",
+          "No sitemap.xml / sitemap-index.xml",
+          "OpenAPI surface discoverable"
+        ]
+      },
+      "bot-access-control": {
+        "pts": 0,
+        "max": 15,
+        "status": "fail",
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ]
+      },
+      "agent-capabilities": {
+        "pts": 0,
+        "max": 30,
+        "status": "fail",
+        "notes": [
+          "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
+          "Homepage does not reference MCP / CLI / SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ]
+      },
+      "visibility-of-agent-integrations": {
+        "pts": 0,
+        "max": 10,
+        "status": "fail",
+        "notes": [
+          "Homepage hides agent integrations from human-onboarding flow"
+        ]
+      }
+    },
+    "anti_patterns_flagged": [
+      {
+        "slug": "invisible-product",
+        "name": "The Invisible Product",
+        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected."
+      }
+    ],
+    "top_moves": [
+      {
+        "rank": 1,
+        "principle": "agent-capabilities",
+        "gap_pts": 30,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
+      },
+      {
+        "rank": 2,
+        "principle": "discoverability",
+        "gap_pts": 25,
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      },
+      {
+        "rank": 3,
+        "principle": "content-accessibility",
+        "gap_pts": 15,
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json."
+      }
+    ],
+    "probe_signals": {
+      "mode": "website",
+      "target": "https://employers.indeed.com",
+      "timestamp": "2026-05-07T14:57:47.442Z",
+      "signals": {
+        "surfaces": {
+          "well_known_agent_rules": {
+            "url": "https://employers.indeed.com/.well-known/agent-rules",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7432
+          },
+          "llms_txt": {
+            "url": "https://employers.indeed.com/llms.txt",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7363
+          },
+          "llms_full_txt": {
+            "url": "https://employers.indeed.com/llms-full.txt",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7378
+          },
+          "well_known_ai_plugin": {
+            "url": "https://employers.indeed.com/.well-known/ai-plugin.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7441
+          },
+          "agents_md": {
+            "url": "https://employers.indeed.com/AGENTS.md",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7366
+          },
+          "well_known_mcp": {
+            "url": "https://employers.indeed.com/.well-known/mcp-server-card",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7444
+          },
+          "agents_json": {
+            "url": "https://employers.indeed.com/agents.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7372
+          },
+          "sitemap": {
+            "url": "https://employers.indeed.com/sitemap.xml",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7372
+          },
+          "well_known_mcp_json": {
+            "url": "https://employers.indeed.com/.well-known/mcp-server-card.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7481
+          },
+          "sitemap_index": {
+            "url": "https://employers.indeed.com/sitemap-index.xml",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7411
+          },
+          "openapi_root": {
+            "url": "https://employers.indeed.com/openapi.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7375
+          },
+          "well_known_oauth": {
+            "url": "https://employers.indeed.com/.well-known/oauth-authorization-server",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7499
+          },
+          "openapi_v1": {
+            "url": "https://employers.indeed.com/v1/openapi.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7408
+          },
+          "openapi_api": {
+            "url": "https://employers.indeed.com/api/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 270540
+          },
+          "robots_txt": {
+            "url": "https://employers.indeed.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/octet-stream",
+            "length": 25
+          }
+        },
+        "markdown_negotiation": {
+          "requested": "text/markdown",
+          "content_type_returned": "text/html; charset=UTF-8",
+          "served_markdown": false,
+          "status": 403
+        },
+        "homepage": {
+          "url": "https://employers.indeed.com",
+          "status": 403,
+          "ok": false,
+          "content_type": "text/html; charset=UTF-8",
+          "length": 7339
+        },
+        "robots_analysis": {
+          "ai_agents_addressed": [],
+          "address_count": 0,
+          "blanket_disallow": true
+        },
+        "homepage_analysis": {
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_cli": false,
+          "mentions_sdk": false,
+          "mentions_api": false,
+          "mentions_oauth": false,
+          "mentions_agents_first": false
+        }
+      }
+    }
+  },
+  "https://www.indeed.com": {
+    "score": 10,
+    "level": 0,
+    "level_name": "No agent access",
+    "dimensions": {
+      "discoverability": {
+        "pts": 5,
+        "max": 25,
+        "status": "partial",
+        "notes": [
+          "robots.txt addresses 7 AI agents: GPTBot, anthropic-ai, ClaudeBot, Google-Extended, PerplexityBot, Bytespider, CCBot",
+          "No /AGENTS.md or /.well-known/agent-rules — the load-bearing contract artifact",
+          "No /llms.txt (optional belt-and-suspenders artifact)"
+        ]
+      },
+      "content-accessibility": {
+        "pts": 0,
+        "max": 20,
+        "status": "fail",
+        "notes": [
+          "No markdown content negotiation",
+          "No sitemap.xml / sitemap-index.xml",
+          "No discoverable OpenAPI surface"
+        ]
+      },
+      "bot-access-control": {
+        "pts": 5,
+        "max": 15,
+        "status": "partial",
+        "notes": [
+          "AI policy implicit via 7 per-bot rules — consider adding a Content-Signal directive for machine-readable, future-proof AI policy",
+          "Names 7 bots but pairs with a global blanket disallow"
+        ]
+      },
+      "agent-capabilities": {
+        "pts": 0,
+        "max": 30,
+        "status": "fail",
+        "notes": [
+          "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
+          "Homepage does not reference MCP / CLI / SDK",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ]
+      },
+      "visibility-of-agent-integrations": {
+        "pts": 0,
+        "max": 10,
+        "status": "fail",
+        "notes": [
+          "Homepage hides agent integrations from human-onboarding flow"
+        ]
+      }
+    },
+    "anti_patterns_flagged": [
+      {
+        "slug": "invisible-product",
+        "name": "The Invisible Product",
+        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected."
+      }
+    ],
+    "top_moves": [
+      {
+        "rank": 1,
+        "principle": "agent-capabilities",
+        "gap_pts": 30,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
+      },
+      {
+        "rank": 2,
+        "principle": "discoverability",
+        "gap_pts": 20,
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      },
+      {
+        "rank": 3,
+        "principle": "content-accessibility",
+        "gap_pts": 20,
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json."
+      }
+    ],
+    "probe_signals": {
+      "mode": "website",
+      "target": "https://www.indeed.com",
+      "timestamp": "2026-05-07T14:57:47.553Z",
+      "signals": {
+        "surfaces": {
+          "llms_full_txt": {
+            "url": "https://www.indeed.com/llms-full.txt",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7372
+          },
+          "llms_txt": {
+            "url": "https://www.indeed.com/llms.txt",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7357
+          },
+          "well_known_agent_rules": {
+            "url": "https://www.indeed.com/.well-known/agent-rules",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7426
+          },
+          "well_known_oauth": {
+            "url": "https://www.indeed.com/.well-known/oauth-authorization-server",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7493
+          },
+          "well_known_ai_plugin": {
+            "url": "https://www.indeed.com/.well-known/ai-plugin.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7435
+          },
+          "agents_md": {
+            "url": "https://www.indeed.com/AGENTS.md",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7360
+          },
+          "agents_json": {
+            "url": "https://www.indeed.com/agents.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7366
+          },
+          "well_known_mcp_json": {
+            "url": "https://www.indeed.com/.well-known/mcp-server-card.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7453
+          },
+          "well_known_mcp": {
+            "url": "https://www.indeed.com/.well-known/mcp-server-card",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7438
+          },
+          "sitemap": {
+            "url": "https://www.indeed.com/sitemap.xml",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7366
+          },
+          "sitemap_index": {
+            "url": "https://www.indeed.com/sitemap-index.xml",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7384
+          },
+          "openapi_v1": {
+            "url": "https://www.indeed.com/v1/openapi.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7381
+          },
+          "openapi_api": {
+            "url": "https://www.indeed.com/api/openapi.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7384
+          },
+          "openapi_root": {
+            "url": "https://www.indeed.com/openapi.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7369
+          },
+          "robots_txt": {
+            "url": "https://www.indeed.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain;charset=UTF-8",
+            "length": 14534
+          }
+        },
+        "markdown_negotiation": {
+          "requested": "text/markdown",
+          "content_type_returned": "text/html; charset=UTF-8",
+          "served_markdown": false,
+          "status": 403
+        },
+        "homepage": {
+          "url": "https://www.indeed.com",
+          "status": 403,
+          "ok": false,
+          "content_type": "text/html; charset=UTF-8",
+          "length": 7312
+        },
+        "robots_analysis": {
           "ai_agents_addressed": [
             "GPTBot",
             "anthropic-ai",
@@ -519,125 +669,19 @@
             "Bytespider",
             "CCBot"
           ],
+          "address_count": 7,
           "blanket_disallow": true
         },
-        "surfaces": {
-          "agents_md": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7253,
-            "ok": false,
-            "status": 403,
-            "url": "https://www.indeed.com/AGENTS.md"
-          },
-          "llms_full_txt": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7265,
-            "ok": false,
-            "status": 403,
-            "url": "https://www.indeed.com/llms-full.txt"
-          },
-          "llms_txt": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7250,
-            "ok": false,
-            "status": 403,
-            "url": "https://www.indeed.com/llms.txt"
-          },
-          "openapi_api": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7277,
-            "ok": false,
-            "status": 403,
-            "url": "https://www.indeed.com/api/openapi.json"
-          },
-          "openapi_root": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7262,
-            "ok": false,
-            "status": 403,
-            "url": "https://www.indeed.com/openapi.json"
-          },
-          "openapi_v1": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7274,
-            "ok": false,
-            "status": 403,
-            "url": "https://www.indeed.com/v1/openapi.json"
-          },
-          "robots_txt": {
-            "content_type": "text/plain;charset=UTF-8",
-            "length": 14534,
-            "ok": true,
-            "status": 200,
-            "url": "https://www.indeed.com/robots.txt"
-          },
-          "sitemap": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7259,
-            "ok": false,
-            "status": 403,
-            "url": "https://www.indeed.com/sitemap.xml"
-          },
-          "well_known_agent_rules": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7319,
-            "ok": false,
-            "status": 403,
-            "url": "https://www.indeed.com/.well-known/agent-rules"
-          },
-          "well_known_ai_plugin": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7328,
-            "ok": false,
-            "status": 403,
-            "url": "https://www.indeed.com/.well-known/ai-plugin.json"
-          },
-          "well_known_mcp": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7331,
-            "ok": false,
-            "status": 403,
-            "url": "https://www.indeed.com/.well-known/mcp-server-card"
-          },
-          "well_known_mcp_json": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7346,
-            "ok": false,
-            "status": 403,
-            "url": "https://www.indeed.com/.well-known/mcp-server-card.json"
-          },
-          "well_known_oauth": {
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7386,
-            "ok": false,
-            "status": 403,
-            "url": "https://www.indeed.com/.well-known/oauth-authorization-server"
-          }
+        "homepage_analysis": {
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_cli": false,
+          "mentions_sdk": false,
+          "mentions_api": false,
+          "mentions_oauth": false,
+          "mentions_agents_first": false
         }
-      },
-      "target": "https://www.indeed.com",
-      "timestamp": "2026-05-06T20:40:19.653Z"
-    },
-    "score": 10,
-    "top_moves": [
-      {
-        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero.",
-        "gap_pts": 30,
-        "principle": "agent-capabilities",
-        "rank": 1
-      },
-      {
-        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly.",
-        "gap_pts": 20,
-        "principle": "discoverability",
-        "rank": 2
-      },
-      {
-        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json.",
-        "gap_pts": 20,
-        "principle": "content-accessibility",
-        "rank": 3
       }
-    ]
+    }
   }
 }
