@@ -6,3 +6,6 @@ Gemfile.lock
 node_modules/
 .claude/settings.local.json
 og-image.old.png
+# CF Portfolio Campaign — contains POC emails (PII)
+docs/campaigns/cf-portfolio-eligible.json
+docs/campaigns/cf-portfolio-pilot-emails.csv
