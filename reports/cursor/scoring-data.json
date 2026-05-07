@@ -1,0 +1,283 @@
+{
+  "_meta": {
+    "rubric_version": "0.2.0",
+    "scored_at": "2026-05-07T14:42:30Z",
+    "scorer": "https://agentsfirst.dev/mcp",
+    "headline_score": 70,
+    "headline_level": 3,
+    "headline_level_name": "Agents First",
+    "headline_surface": "https://docs.cursor.com",
+    "surfaces_scored": [
+      "https://cursor.com",
+      "https://www.cursor.com",
+      "https://docs.cursor.com"
+    ],
+    "notes": [
+      "docs.cursor.com surface scoring is partially inflated by a Next.js SPA catchall: every probed well-known path returned 200 with the same 120306-byte HTML shell rather than the requested asset. The /llms.txt, robots.txt, and sitemap on the marketing roots are real (text/plain, 9075 bytes for /llms.txt). Hero homepage analysis on docs (mentions_mcp/cli/sdk/api all true) and on the marketing root (mentions_cli only true) is a real differentiator independent of the SPA loophole.",
+      "Body fields stripped from probe surfaces to satisfy secrets-guard hook."
+    ]
+  },
+  "https://docs.cursor.com": {
+    "score": 70,
+    "level": 3,
+    "level_name": "Agents First",
+    "dimensions": {
+      "discoverability": {
+        "pts": 20,
+        "max": 25,
+        "status": "pass",
+        "notes": [
+          "robots.txt exists but does not address AI agents specifically",
+          "/AGENTS.md or /.well-known/agent-rules published (canonical contract artifact)",
+          "/llms.txt published (useful but optional)"
+        ]
+      },
+      "content-accessibility": {
+        "pts": 10,
+        "max": 20,
+        "status": "partial",
+        "notes": [
+          "No markdown content negotiation",
+          "sitemap.xml present",
+          "OpenAPI surface discoverable"
+        ]
+      },
+      "bot-access-control": {
+        "pts": 0,
+        "max": 15,
+        "status": "fail",
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ]
+      },
+      "agent-capabilities": {
+        "pts": 30,
+        "max": 30,
+        "status": "pass",
+        "notes": [
+          "MCP Server Card published at /.well-known/mcp-server-card.json",
+          "Homepage references agent surfaces: MCP, CLI, SDK",
+          "OAuth / AI-plugin auth-server discovery present"
+        ]
+      },
+      "visibility-of-agent-integrations": {
+        "pts": 10,
+        "max": 10,
+        "status": "pass",
+        "notes": [
+          "Homepage promotes agent install / MCP / CLI alongside human onboarding"
+        ]
+      }
+    },
+    "anti_patterns_flagged": [],
+    "top_moves": [
+      {
+        "rank": 1,
+        "principle": "bot-access-control",
+        "gap_pts": 15,
+        "action": "Replace any blanket Disallow with per-bot rules. Cloudflare Content Signals or equivalent declarative AI-policy."
+      },
+      {
+        "rank": 2,
+        "principle": "content-accessibility",
+        "gap_pts": 10,
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json."
+      },
+      {
+        "rank": 3,
+        "principle": "discoverability",
+        "gap_pts": 5,
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      }
+    ],
+    "probe_signals": {
+      "mode": "website",
+      "target": "https://docs.cursor.com",
+      "timestamp": "2026-05-07T14:42:30.208Z",
+      "signals": {
+        "markdown_negotiation": {
+          "requested": "text/markdown",
+          "content_type_returned": "text/html; charset=utf-8",
+          "served_markdown": false,
+          "status": 200
+        },
+        "robots_analysis": {
+          "ai_agents_addressed": [],
+          "address_count": 0,
+          "blanket_disallow": false
+        },
+        "homepage_analysis": {
+          "mentions_mcp": true,
+          "mentions_npx": false,
+          "mentions_cli": true,
+          "mentions_sdk": true,
+          "mentions_api": true,
+          "mentions_oauth": false,
+          "mentions_agents_first": false
+        },
+        "surfaces_summary": {
+          "note": "All probed surfaces returned status 200 with content_type text/html and length 120306 — this is the Next.js SPA catchall returning the same HTML shell. The scorer credits well-known paths as present; in production an agent would receive HTML where it expected JSON or markdown.",
+          "llms_full_txt": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
+          "agents_md": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
+          "llms_txt": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
+          "well_known_ai_plugin": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
+          "well_known_agent_rules": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
+          "robots_txt": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
+          "agents_json": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
+          "well_known_mcp_json": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
+          "sitemap_index": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
+          "well_known_oauth": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
+          "well_known_mcp": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
+          "sitemap": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
+          "openapi_root": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
+          "openapi_api": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306},
+          "openapi_v1": {"status": 200, "ok": true, "content_type": "text/html; charset=utf-8", "length": 120306}
+        }
+      }
+    }
+  },
+  "https://cursor.com": {
+    "score": 30,
+    "level": 2,
+    "level_name": "Agent-Aware",
+    "dimensions": {
+      "discoverability": {
+        "pts": 5,
+        "max": 25,
+        "status": "partial",
+        "notes": [
+          "robots.txt exists but does not address AI agents specifically",
+          "No /AGENTS.md or /.well-known/agent-rules — the load-bearing contract artifact",
+          "/llms.txt published (useful but optional)"
+        ]
+      },
+      "content-accessibility": {
+        "pts": 5,
+        "max": 20,
+        "status": "partial",
+        "notes": [
+          "No markdown content negotiation",
+          "sitemap.xml present",
+          "No discoverable OpenAPI surface"
+        ]
+      },
+      "bot-access-control": {
+        "pts": 0,
+        "max": 15,
+        "status": "fail",
+        "notes": [
+          "No Content-Signal directive and no per-bot AI policy in robots.txt"
+        ]
+      },
+      "agent-capabilities": {
+        "pts": 10,
+        "max": 30,
+        "status": "partial",
+        "notes": [
+          "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
+          "Homepage references agent surfaces: CLI",
+          "No OAuth-with-PKCE or ai-plugin discovery"
+        ]
+      },
+      "visibility-of-agent-integrations": {
+        "pts": 10,
+        "max": 10,
+        "status": "pass",
+        "notes": [
+          "Homepage promotes agent install / MCP / CLI alongside human onboarding"
+        ]
+      }
+    },
+    "anti_patterns_flagged": [
+      {
+        "slug": "agents-without-rules",
+        "name": "Agents Without Rules",
+        "evidence": "Agent capabilities advertised but no /AGENTS.md or /.well-known/agent-rules."
+      }
+    ],
+    "top_moves": [
+      {
+        "rank": 1,
+        "principle": "discoverability",
+        "gap_pts": 20,
+        "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      },
+      {
+        "rank": 2,
+        "principle": "agent-capabilities",
+        "gap_pts": 20,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
+      },
+      {
+        "rank": 3,
+        "principle": "content-accessibility",
+        "gap_pts": 15,
+        "action": "Serve text/markdown when the Accept header asks for it. Publish sitemap.xml and an OpenAPI document at /openapi.json."
+      }
+    ],
+    "probe_signals": {
+      "mode": "website",
+      "target": "https://cursor.com",
+      "timestamp": "2026-05-07T14:42:30.208Z",
+      "signals": {
+        "markdown_negotiation": {
+          "requested": "text/markdown",
+          "content_type_returned": "text/html; charset=utf-8",
+          "served_markdown": false,
+          "status": 200
+        },
+        "robots_analysis": {
+          "ai_agents_addressed": [],
+          "address_count": 0,
+          "blanket_disallow": true
+        },
+        "homepage_analysis": {
+          "mentions_mcp": false,
+          "mentions_npx": false,
+          "mentions_cli": true,
+          "mentions_sdk": false,
+          "mentions_api": false,
+          "mentions_oauth": false,
+          "mentions_agents_first": false
+        },
+        "surfaces_summary": {
+          "robots_txt": {"status": 200, "ok": true, "content_type": "text/plain; charset=utf-8", "length": 1106},
+          "llms_txt": {"status": 200, "ok": true, "content_type": "text/plain; charset=utf-8", "length": 9075},
+          "sitemap": {"status": 200, "ok": true, "content_type": "application/xml", "length": 16927},
+          "agents_md": {"status": 404, "ok": false, "content_type": "text/html; charset=utf-8", "length": 6318},
+          "llms_full_txt": {"status": 404, "ok": false, "content_type": "text/html; charset=utf-8", "length": 6318},
+          "agents_json": {"status": 404, "ok": false, "content_type": "text/html; charset=utf-8", "length": 6318},
+          "openapi_root": {"status": 404, "ok": false, "content_type": "text/html; charset=utf-8", "length": 6318},
+          "sitemap_index": {"status": 404, "ok": false, "content_type": "text/html; charset=utf-8", "length": 6318},
+          "well_known_agent_rules": {"status": 500, "ok": false, "content_type": "text/html; charset=utf-8", "length": 581676},
+          "well_known_ai_plugin": {"status": 500, "ok": false, "content_type": "text/html; charset=utf-8", "length": 581685},
+          "well_known_oauth": {"status": 500, "ok": false, "content_type": "text/html; charset=utf-8", "length": 581721},
+          "well_known_mcp": {"status": 500, "ok": false, "content_type": "text/html; charset=utf-8", "length": 581688},
+          "well_known_mcp_json": {"status": 500, "ok": false, "content_type": "text/html; charset=utf-8", "length": 581703},
+          "openapi_api": {"status": 500, "ok": false, "content_type": "text/html; charset=utf-8", "length": 581639},
+          "openapi_v1": {"status": 500, "ok": false, "content_type": "text/html; charset=utf-8", "length": 581634}
+        }
+      }
+    }
+  },
+  "https://www.cursor.com": {
+    "score": 30,
+    "level": 2,
+    "level_name": "Agent-Aware",
+    "note": "Identical surface profile to https://cursor.com — same hosting, same CDN, same probe results. Marketing root duplicate.",
+    "dimensions": {
+      "discoverability": {"pts": 5, "max": 25, "status": "partial"},
+      "content-accessibility": {"pts": 5, "max": 20, "status": "partial"},
+      "bot-access-control": {"pts": 0, "max": 15, "status": "fail"},
+      "agent-capabilities": {"pts": 10, "max": 30, "status": "partial"},
+      "visibility-of-agent-integrations": {"pts": 10, "max": 10, "status": "pass"}
+    },
+    "anti_patterns_flagged": [
+      {
+        "slug": "agents-without-rules",
+        "name": "Agents Without Rules",
+        "evidence": "Agent capabilities advertised but no /AGENTS.md or /.well-known/agent-rules."
+      }
+    ]
+  }
+}
