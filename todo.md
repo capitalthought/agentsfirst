@@ -95,6 +95,33 @@ Items not yet attempted or needing a fresh approach after failed verification.
 
 ### Improvements
 
+#### From `/agentsfirst-check` 2026-05-07 (recommendations)
+
+> Source: `docs/checks/2026-05-07.md`. Twelve recs, none yet accepted/dismissed. Recommended bundle: 498d3294 + 9eced7e5 + 1be408d3 + 8e8791ba into one PR labeled "v0.6 → v0.7 — AGENTS.md quality clause + a14y citation + SEP-2567 rubric update".
+
+**🎯 Document lane (`index.md` + `~/icloud/Documents/agents-first.md`):**
+
+- **[498d3294] Add nuance to Principle 2: minimal hand-authored AGENTS.md > LLM-generated bloat.** Cite oliviscusAI / logic_star_ai 4-agent / 438-task research (2026-05-07) showing LLM-generated AGENTS.md *hurt* agent success rates. Suggested edit drafted in report. (added 2026-05-07)
+- **[8e8791ba] Add a14y.dev v0.2.0 to "Comparison" section** alongside Cloudflare ARS. a14y is the closest parallel project — 38 versioned web checks, runnable scorecard. Frame as complementary layers (their spec, our framework). Suggested subsection drafted in report. (added 2026-05-07)
+- **[f7e47197] Cite AWS Bedrock AgentCore Payments + x402/AP2/MPP/ACP** in Principle 5 (Visible Outputs) or "The shift" section. AWS launch 2026-05-07 makes the agent economy concrete. (added 2026-05-07)
+- **[b2616e45] Add AGENTS.md research bullet to "What Agents First gets wrong" section** (`index.md:170`). Owning the empirical pushback on home turf > letting amplifiers find it as the gotcha. Lands in same PR as 498d3294. (added 2026-05-07)
+
+**🛠️ Product lane (rubric / probe / scorer / scaffold):**
+
+- **[1be408d3] Update rubric for MCP SEP-2567 (sessionless MCP).** SEP-2567 merged to spec main 2026-05-07T17:34Z. `tools/list` MUST NOT depend on per-connection state. Add: -2pts if server requires `Mcp-Session-Id`; +3pts for stateless `tools/list` (verify by comparing two cold connections at same `(deployment, auth)`). Bump rubric v0.1.4 → v0.1.5. ~half-day. (added 2026-05-07)
+- **[9eced7e5] Penalize bloated AGENTS.md (>2000 tokens) in rubric.** Token tiers: 0–1500 +5pts, 1500–3000 +3pts, 3000–6000 +1pt, >6000 0pts + warning. Probe counts char/4. ~1h. (added 2026-05-07)
+- **[3e5abed1] Reference (don't reimplement) a14y's 38 checks in `score_website`.** Spike: shell out to `npx a14y <url> --json` from the Worker (cache 1h), surface a14y's per-check pass/fail next to our 8-principle score. Coordinate with Timothy Jordan (ccd0c45e) before wiring. ~1h spike, ~half-day to wire. (added 2026-05-07)
+- **[2dd9dc6e] Probe heuristic to detect LLM-generated AGENTS.md.** Flag if has all of `## Project Structure / Commands / Code Style / Testing` + >50% generic 1-line bullets + no project-specific identifiers in first 500 tokens. Defer if 9eced7e5 ships first. ~1h. (added 2026-05-07)
+- **[d2e9952b] Add openai-agents-python v0.16 server-prefixed tool naming guidance to AGENTS.md scaffold template** (`@capitalthought/create-agents-first`). One paragraph append on tool-name collision avoidance. ~10 min. (added 2026-05-07)
+
+**📢 Marketing lane:**
+
+- **[ccd0c45e] DM Timothy Jordan (a14y maintainer) proposing mutual citation.** Window ~14 days before SEO graph hardens. Pitch as peer + complementary layers, single ask (mutual link). Verify handle first. ~30 min. (added 2026-05-07)
+- **[c76cfba8] Reply to oliviscusAI X thread on AGENTS.md skepticism** — agree with research, layer on Principle 2 framing. Only post AFTER 498d3294 ships (the reply claims "updates today"). Draft in report. ~15 min. (added 2026-05-07)
+- **[61c273f6] Quick-take post: "AWS just shipped Principle 5 (Visible Outputs)"** — X thread + LinkedIn. 24–48h window from AWS launch (2026-05-07). Draft tweet in report. Schedule for AM Pacific to catch West Coast tech-news cycle. ~30 min. (added 2026-05-07)
+
+#### Other improvements
+
 - **Add web traffic report to `/agentsfirst-check`** — once GA4 + CF Web Analytics tokens are wired (placeholders in `_includes/head-custom.html`), extend the weekly check skill to pull a traffic snapshot for the window: GA4 sessions / users / top pages via `mcp__google-analytics__run_report`, plus CF Web Analytics aggregates (visits, requests, top countries, top referrers) via the CF GraphQL Analytics API. Surface as a new "📈 Traffic since last check" section in the dated report so we see week-over-week movement on agentsfirst.dev alongside ecosystem signal. (added 2026-05-07)
 - **Redo `og-image.png`** — current 1200×630 visually still says "Agent First." Needs new card with "Agents First" + the two-customers tagline. Binary file, can't sed. ~5-min Figma job. (added 2026-05-05)
 - **Delete orphan `agentsfirst-mcp` Worker in Capital Factory CF account.** First two `wrangler deploy` attempts during the Layer C ship landed in account `8d9591939eb1efd797959aa9c68afd64` (cloudflare@capitalfactory.com OAuth), with no route binding. Harmless (no traffic, no charges) but messy. Cleanup needs Josh's hands because `op item get --reveal` and `op read` for the capitalfactory CF token both time out silently in Claude Code's bash subshell — Touch ID prompt doesn't surface. Two paths:
