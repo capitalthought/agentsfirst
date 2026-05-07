@@ -50,7 +50,7 @@ Second: **the Agent Readiness rubric is a public-surface measurement.** It can s
 
 Two URLs were probed via the live scorer at `https://agentsfirst.dev/mcp` on 2026-05-06: `www.wsj.com` (10/100, Level 0) and `api.dowjones.com` (0/100, Level 0). Headline is the higher of the two — and the one a human would type. Raw probe data — robots.txt body, surface checks, content-negotiation responses — is in [the report directory](https://github.com/capitalthought/agentsfirst/tree/main/reports/wsj).
 
-Methodology note: this score uses the v0.1.2 rubric, which credits `GPTBot` as a named AI agent in robots.txt but doesn't yet recognize `ChatGPT-User` or `OAI-SearchBot`. v0.1.3 will broaden the AI-bot recognizer and add a `licensing_posture` field so reports like this one can distinguish "closed by negligence" from "closed by editorial choice with a bilateral license." Source: <https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts>.
+Methodology note: re-scored 2026-05-07 against rubric **v0.2.0** — `/AGENTS.md` promoted from 10pts → 15pts (canonical contract artifact); `/llms.txt` demoted from 10pts → 5pts (10% adoption per SE Ranking, Google declined to support); `/agents.json` and `/sitemap-index.xml` now credited equally with their canonical equivalents. Section totals unchanged.txt but doesn't yet recognize `ChatGPT-User` or `OAI-SearchBot`. v0.1.3 will broaden the AI-bot recognizer and add a `licensing_posture` field so reports like this one can distinguish "closed by negligence" from "closed by editorial choice with a bilateral license." Source: <https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts>.
 
 ---
 

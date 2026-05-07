@@ -1,0 +1,25 @@
+{
+  "_meta": {
+    "rubric_version": "0.2.0",
+    "scored_at": "2026-05-07T03:55:00Z",
+    "scorer": "https://agentsfirst.dev/mcp",
+    "headline_score": 50,
+    "headline_level": 2,
+    "headline_surface": "https://builder.aws.com"
+  },
+  "https://aws.amazon.com": {
+    "score": 20,
+    "level": 1,
+    "level_name": "Agent as Afterthought"
+  },
+  "https://docs.aws.amazon.com": {
+    "score": 5,
+    "level": 0,
+    "level_name": "No Agent Access"
+  },
+  "https://builder.aws.com": {
+    "score": 50,
+    "level": 2,
+    "level_name": "Agent-Aware"
+  }
+}

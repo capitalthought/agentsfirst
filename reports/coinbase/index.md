@@ -1,18 +1,18 @@
 ---
 title: "Agent Readiness Report: Coinbase"
-description: "Coinbase scored 35/100 (Level 2) on docs.cdp.coinbase.com. The Developer Platform ships AgentKit, x402, and three MCP servers — but the marketing site lands at 10/100, Level 0."
+description: "Coinbase scored 50/100 (Level 2 — Agent-Aware) on docs.cdp.coinbase.com after re-scoring against rubric v0.2.0. The Developer Platform ships AgentKit, x402, and three MCP servers."
 image: /reports/coinbase/og.png
 author: Joshua Baer
 permalink: /reports/coinbase/
 report_target: Coinbase
-report_score: 35
+report_score: 50
 report_level: 2
-report_date: 2026-05-06
+report_date: 2026-05-07
 ---
 
 # Agent Readiness Report: Coinbase
 
-**Score: 35/100 · Level 2 (Agent-Aware)** · scored across www.coinbase.com / developers.coinbase.com / docs.cdp.coinbase.com — 2026-05-06. Highest surface: `docs.cdp.coinbase.com` at 35/100. Developer Platform legacy entry: 20/100. Marketing root: 10/100.
+**Score: 50/100 · Level 2 (Agent-Aware)** · scored across www.coinbase.com / developers.coinbase.com / docs.cdp.coinbase.com — re-scored 2026-05-07 against rubric v0.2.0. Highest surface: `docs.cdp.coinbase.com` at 50/100 (was 35/100 under v0.1.2). Developers entry: 30/100, Level 2. Marketing root: 5/100, Level 0. Coinbase gained 15 points in this re-scoring — v0.2.0 promoted `/AGENTS.md` (which Coinbase's CDP docs ships) from 10pts to 15pts and credits `/sitemap-index.xml` and `/agents.json`. Same product, more accurate score.
 
 Coinbase has built more agent infrastructure than almost anyone we've scored. AgentKit. The Agentic Wallet, with its own MCP server for autonomous payments. The CDP CLI exposed as an MCP server for typed access to every CDP API operation. [x402](https://x402.org), the HTTP-402 spec Coinbase has been pushing for agent-native payments. Three MCP servers in production. The infrastructure for autonomous agents to *spend money* exists.
 
@@ -54,7 +54,7 @@ The other lesson, for anyone shipping MCP servers in production: ship a `/.well-
 
 Three URLs were probed via the live scorer at `https://agentsfirst.dev/mcp` on 2026-05-06: `www.coinbase.com` (10/100, Level 0), `developers.coinbase.com` (20/100, Level 1), `docs.cdp.coinbase.com` (35/100, Level 2). Headline is the highest of the three. Raw probe data — robots.txt bodies, llms.txt contents, capability checks — is in [the report directory](https://github.com/capitalthought/agentsfirst/tree/main/reports/coinbase).
 
-Methodology note: this score uses the v0.1.2 rubric, which credits the `Content-Signal` directive in `robots.txt` alongside per-named-bot blocks. Source: <https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts>. The `developers.coinbase.com` score is generous — the rubric credits surfaces that returned 200, but several of those 200s are the catch-all CDP HTML page rather than real files. Practical readiness on that subdomain is lower than the score suggests.
+Methodology note: re-scored 2026-05-07 against rubric **v0.2.0** — `/AGENTS.md` promoted to canonical contract artifact (15pts), `/llms.txt` demoted to optional (5pts), `/agents.json` and `/sitemap-index.xml` credited equally with their canonical equivalents. Source: <https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts>. The `developers.coinbase.com` score remains generous — the rubric credits surfaces that returned 200, but several of those 200s are the catch-all CDP HTML page rather than real files. Practical readiness on that subdomain is lower than the score suggests.
 
 ---
 

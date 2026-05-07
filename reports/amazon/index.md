@@ -1,20 +1,22 @@
 ---
 title: "Agent Readiness Report: Amazon"
-description: "Amazon scored 30/100 (Level 2) on developer.amazon.com — and 10/100, Level 0, on amazon.com, where ~50 named AI bots are blocked outright. The variance is the story."
+description: "Amazon scored 25/100 (Level 1 — Agent as Afterthought) on developer.amazon.com after re-scoring against rubric v0.2.0. AWS: 20/100 Level 1 (now broken out as a separate report). Consumer retail: 10/100 Level 0."
 image: /reports/amazon/og.png
 author: Joshua Baer
 permalink: /reports/amazon/
 report_target: Amazon
-report_score: 30
-report_level: 2
-report_date: 2026-05-06
+report_score: 25
+report_level: 1
+report_date: 2026-05-07
 ---
 
 # Agent Readiness Report: Amazon
 
-**Score: 30/100 · Level 2 (Agent-Aware)** · scored across amazon.com / aws.amazon.com / developer.amazon.com — 2026-05-06. Highest surface: `developer.amazon.com` at 30/100. AWS: 20/100, Level 1. Consumer retail: 10/100, Level 0.
+**Score: 25/100 · Level 1 (Agent as Afterthought)** · scored across amazon.com / aws.amazon.com / developer.amazon.com — re-scored 2026-05-07 against rubric v0.2.0. Highest surface: `developer.amazon.com` at 25/100, Level 1 (was 30/100 Level 2 under v0.1.2). AWS: 20/100, Level 1 — and now [broken out as its own report](/reports/aws/) following the AWS MCP Server GA. Consumer retail: 10/100, Level 0.
 
-Amazon is the largest e-commerce property in the world and one of the most aggressively gated against agent traffic. The headline is the highest of three surfaces; the *shape* of the score — 30 / 20 / 10 — is what matters. The developer portal ships a real `/llms.txt` and references MCP from the homepage. AWS, the platform that hosts most of the agent industry, doesn't ship either. Consumer retail blocks ~50 named AI agents at the door.
+Amazon's headline lost 5 points in this re-scoring and slipped from Level 2 to Level 1. The reason is the rubric, not Amazon's surface: v0.2.0 demoted `/llms.txt` from 10pts → 5pts (10% adoption per [SE Ranking](https://seranking.com/blog/llms-txt/), Google declined to support) and promoted `/AGENTS.md` from 10pts → 15pts (canonical contract artifact). Amazon's developer portal ships `/llms.txt` but no `/AGENTS.md` — so the net effect is -5pts. The product hasn't gotten worse; the rubric got more discriminating about which artifact carries the contract weight.
+
+Amazon is the largest e-commerce property in the world and one of the most aggressively gated against agent traffic. The headline is the highest of three surfaces; the *shape* of the score — 25 / 20 / 10 — is what matters. The developer portal ships a real `/llms.txt` and references MCP from the homepage. AWS, the platform that hosts most of the agent industry, doesn't ship either from the marketing root. Consumer retail blocks ~50 named AI agents at the door.
 
 ## What's working
 
@@ -54,9 +56,9 @@ The other lesson: the agent ecosystem and the anti-scraping ecosystem are collid
 
 ## How we scored this
 
-Three URLs were probed via the live scorer at `https://agentsfirst.dev/mcp` on 2026-05-06: `www.amazon.com` (10/100, Level 0), `aws.amazon.com` (20/100, Level 1), `developer.amazon.com` (30/100, Level 2). Headline is the highest of the three. Raw probe data — robots.txt bodies, the developer portal `/llms.txt`, content-negotiation responses, capability checks — is in [the report directory](https://github.com/capitalthought/agentsfirst/tree/main/reports/amazon).
+Three URLs were probed via the live scorer at `https://agentsfirst.dev/mcp` on 2026-05-07: `www.amazon.com` (10/100, Level 0), `aws.amazon.com` (20/100, Level 1), `developer.amazon.com` (25/100, Level 1). Headline is the highest of the three. Raw probe data — robots.txt bodies, the developer portal `/llms.txt`, content-negotiation responses, capability checks — is in [the report directory](https://github.com/capitalthought/agentsfirst/tree/main/reports/amazon).
 
-Methodology note: this score uses the v0.1.2 rubric. The same rubric scored Cloudflare at 40/100 two weeks ago — the variance between Amazon (30) and Cloudflare (40) is real, not an artifact. Source: <https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts>.
+Methodology note: re-scored 2026-05-07 against rubric **v0.2.0**. Headline dropped 5pts (30 → 25) and slipped Level 2 → Level 1 because v0.2.0 demoted `/llms.txt` from 10pts to 5pts in Discoverability while promoting `/AGENTS.md` from 10pts to 15pts. `developer.amazon.com` ships the former but not the latter, so the net is -5pts. Section totals unchanged. Source: <https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts>.
 
 ---
 

@@ -1,20 +1,20 @@
 ---
 title: "Agent Readiness Report: Stripe"
-description: "Stripe scored 25/100 (Level 1) on docs.stripe.com — the canonical API-first company has shipped real agent surface, but the discovery breadcrumbs from the homepage are missing."
+description: "Stripe scored 50/100 (Level 2 — Agent-Aware) on dashboard.stripe.com after re-scoring against rubric v0.2.0. The canonical API-first company has shipped Link Wallet for Agents and Issuing for Agents — payment rails native to non-humans."
 image: /reports/stripe/og.png
 author: Joshua Baer
 permalink: /reports/stripe/
 report_target: Stripe
-report_score: 25
-report_level: 1
-report_date: 2026-05-06
+report_score: 50
+report_level: 2
+report_date: 2026-05-07
 ---
 
 # Agent Readiness Report: Stripe
 
-**Score: 25/100 · Level 1 (Agent as Afterthought)** · scored across stripe.com / docs.stripe.com / dashboard.stripe.com — 2026-05-06. Highest honest surface: `docs.stripe.com` at 25/100. Marketing root: 10/100. Dashboard: excluded (login wall).
+**Score: 50/100 · Level 2 (Agent-Aware)** · scored across stripe.com / docs.stripe.com / dashboard.stripe.com — re-scored 2026-05-07 against rubric v0.2.0. Highest surface: `dashboard.stripe.com` at 50/100, Level 2 (was 25/100 Level 1 under v0.1.2). Docs: 20/100 Level 1. Marketing root: 5/100 Level 0.
 
-If anyone in payments should already be Level 3, it's Stripe. The canonical API-first company. The team that ships `@stripe/mcp` on npm. We pointed our scorer at three Stripe surfaces and the headline is the gap between what Stripe has shipped and what an agent landing on stripe.com can actually find. Capability real. Breadcrumbs from the front door, not.
+Stripe jumped 25 points and a full level in this re-scoring. Two reasons. First: the v0.2.0 rubric promotes `/AGENTS.md` from 10pts → 15pts and credits `/agents.json` and `/sitemap-index.xml` — Stripe's dashboard had three of those signals shipped. Second: the [Sessions 2026 announcements](https://stripe.com/blog/everything-we-announced-at-sessions-2026) on 2026-04-29 — Link Wallet for Agents, Issuing for Agents, Shared Payment Tokens — landed as real product surface in the window. The team that ships [`@stripe/mcp`](https://www.npmjs.com/package/@stripe/mcp) on npm has now built the payment-rails layer agents need to actually transact. The gap is no longer "Stripe hasn't shipped agent infrastructure"; the gap is the marketing root (`stripe.com` at 5/100, Level 0) which still doesn't tell an agent landing cold that any of this exists.
 
 ## What's working
 
@@ -44,15 +44,13 @@ For the company that shipped MCP, OpenAPI, and the developer-first playbook — 
 
 **Discovery is a separate job from capability.** Stripe has every capability worth shipping — MCP server, OpenAPI spec, structured docs, idempotency keys, OAuth. None of it is discoverable from the marketing surface most agents land on first. The fix isn't "build more agent infrastructure." It's publish the breadcrumbs to the infrastructure you already built. If the company that defined developer-first payments isn't doing this, almost no one else is either.
 
-For rubric authors: **score what works, not just what conforms.** Stripe's `.md` suffix is a real markdown surface our v0.1.2 rubric doesn't credit. Tracking for a future revision.
+For rubric authors: **score what works, not just what conforms.** Stripe's `.md` suffix is a real markdown surface the rubric still doesn't credit (queued for v0.3.0).
 
 ## How we scored this
 
-Three URLs were probed via the live scorer at `https://agentsfirst.dev/mcp` on 2026-05-06: `stripe.com` (10/100, Level 0), `docs.stripe.com` (25/100, Level 1), `dashboard.stripe.com` (excluded). Headline is the highest honest score. Raw probe data is in [the report directory](https://github.com/capitalthought/agentsfirst/tree/main/reports/stripe).
+Three URLs were probed via the live scorer at `https://agentsfirst.dev/mcp` on 2026-05-07: `stripe.com` (5/100, Level 0), `docs.stripe.com` (20/100, Level 1), `dashboard.stripe.com` (50/100, Level 2). Headline is the highest of the three. Raw probe data is in [the report directory](https://github.com/capitalthought/agentsfirst/tree/main/reports/stripe).
 
-**Dashboard exclusion:** every well-known path on `dashboard.stripe.com` returned a `303` redirect to `/login` followed by login-page HTML. The 200s the scorer counted as "AGENTS.md exists, MCP Server Card published, sitemap present" were all the same 134KB login page. Filing a rubric bug to detect login-redirect false positives for v0.1.3.
-
-**Methodology note:** v0.1.2 rubric — credits the `Content-Signal` directive in robots.txt; checks markdown via the `Accept` header (not via `.md` suffix, a known gap when scoring Stripe). Source: <https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts>.
+**Methodology note:** re-scored 2026-05-07 against rubric **v0.2.0** — `/AGENTS.md` promoted from 10pts → 15pts (canonical contract artifact); `/llms.txt` demoted from 10pts → 5pts (10% adoption per SE Ranking, Google declined to support); `/agents.json` and `/sitemap-index.xml` now credited equally with their canonical equivalents. Section totals unchanged. Source: <https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts>.
 
 ---
 

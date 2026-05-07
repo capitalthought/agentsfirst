@@ -1,20 +1,20 @@
 ---
 title: "Agent Readiness Report: Cloudflare"
-description: "Cloudflare scored 40/100 (Level 2) on developers.cloudflare.com — even after we shipped a rubric fix to credit the Content-Signal directive Cloudflare invented. The blog hosting their original Agent Readiness Score post lands at 15/100, Level 1."
+description: "Cloudflare scored 35/100 (Level 2 — Agent-Aware) on developers.cloudflare.com after re-scoring against rubric v0.2.0. The blog hosting their original Agent Readiness Score post lands at 15/100, Level 1."
 image: /reports/cloudflare/og.png
 author: Joshua Baer
 permalink: /reports/cloudflare/
-report_date: 2026-05-06
+report_date: 2026-05-07
 report_target: Cloudflare
-report_score: 40
+report_score: 35
 report_level: 2
 ---
 
 # Agent Readiness Report: Cloudflare
 
-**Score: 40/100 · Level 2 (Agent-Aware)** · scored across cloudflare.com / blog.cloudflare.com / developers.cloudflare.com — 2026-05-06. Highest surface: `developers.cloudflare.com` at 40/100. Marketing root: 25/100. Blog: 15/100.
+**Score: 35/100 · Level 2 (Agent-Aware)** · scored across cloudflare.com / blog.cloudflare.com / developers.cloudflare.com — re-scored 2026-05-07 against rubric v0.2.0. Highest surface: `developers.cloudflare.com` at 35/100 (was 40/100 under v0.1.2). Marketing root: 20/100, Level 1. Blog: 15/100, Level 1.
 
-Cloudflare wrote [the Agent Readiness Score post](https://blog.cloudflare.com/agent-readiness/) in April 2026 — the piece this thesis cites. We pointed our scorer at theirs first. While probing, we found a bug in our rubric: it didn't credit the `Content-Signal` directive Cloudflare itself invented. We shipped v0.1.2 to fix that. Even after crediting their innovation, Cloudflare lands at **40/100**. The story is the variance — 40 / 25 / 15 — and a blog hosting Cloudflare's own agent-readiness post that scores Level 1 against the rubric the post helped popularize.
+Cloudflare wrote [the Agent Readiness Score post](https://blog.cloudflare.com/agent-readiness/) in April 2026 — the piece this thesis cites. We pointed our scorer at theirs first. While probing, we found a bug in our rubric: it didn't credit the `Content-Signal` directive Cloudflare itself invented. We shipped v0.1.2 to fix that. Cloudflare lost 5 points in the v0.2.0 re-scoring because v0.2.0 demoted `/llms.txt` from 10pts → 5pts (10% adoption per [SE Ranking](https://seranking.com/blog/llms-txt/), Google declined to support) and Cloudflare ships `/llms.txt` but no `/AGENTS.md`. Same level (Level 2 spans 26-60). Same story: variance — 35 / 20 / 15 — and a blog hosting Cloudflare's own agent-readiness post that scores Level 1 against the rubric the post helped popularize.
 
 ## What's working
 
@@ -48,9 +48,9 @@ The other lesson, for rubric authors: credit the conventions the people you're s
 
 ## How we scored this
 
-Three URLs were probed via the live scorer at `https://agentsfirst.dev/mcp` on 2026-05-06: `www.cloudflare.com` (25/100, Level 1), `blog.cloudflare.com` (15/100, Level 1), `developers.cloudflare.com` (40/100, Level 2). Headline is the highest of the three. Raw probe data — robots.txt bodies, content-negotiation responses, capability checks — is in [the report directory](https://github.com/capitalthought/agentsfirst/tree/main/reports/cloudflare).
+Three URLs were probed via the live scorer at `https://agentsfirst.dev/mcp` on 2026-05-07: `www.cloudflare.com` (20/100, Level 1), `blog.cloudflare.com` (15/100, Level 1), `developers.cloudflare.com` (35/100, Level 2). Headline is the highest of the three. Raw probe data — robots.txt bodies, content-negotiation responses, capability checks — is in [the report directory](https://github.com/capitalthought/agentsfirst/tree/main/reports/cloudflare).
 
-Methodology note: this score uses the v0.1.2 rubric, which credits the `Content-Signal` directive in `robots.txt` — the convention Cloudflare itself invented. Earlier rubric versions missed it; v0.1.2 fixed the bug. Source: <https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts>.
+Methodology note: re-scored 2026-05-07 against rubric **v0.2.0** — `/AGENTS.md` promoted from 10pts → 15pts (canonical contract artifact); `/llms.txt` demoted from 10pts → 5pts (10% adoption per SE Ranking, Google declined to support); `/agents.json` and `/sitemap-index.xml` now credited equally with their canonical equivalents. Section totals unchanged. v0.1.2 (which we shipped to credit Cloudflare's `Content-Signal` invention) is preserved in v0.2.0. Source: <https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts>.
 
 ---
 

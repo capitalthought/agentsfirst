@@ -14,22 +14,23 @@ The framework only matters if it's measurable. These reports are how we keep our
 
 ## Reports
 
-The first batch (10 scorecards) shipped 2026-05-06 against rubric v0.1.2. Subsequent reports land every other Thursday — sorted by score descending.
+11 scorecards. First batch shipped 2026-05-06 against rubric v0.1.2; **all re-scored 2026-05-07 against rubric v0.2.0** (AGENTS.md promoted to canonical contract artifact at 15pts, llms.txt demoted to optional at 5pts, /agents.json + /sitemap-index.xml now credited equally with their canonical equivalents). Subsequent reports land every other Thursday. Sorted by score descending.
 
 | Date | Target | Score | Level | Read |
 |---|---|---:|---:|---|
-| 2026-05-06 | Vercel | **75** | 3 — Agents First | [Read →](/reports/vercel/) |
-| 2026-05-06 | Anthropic | **60** | 2 — Agent-Aware | [Read →](/reports/anthropic/) |
-| 2026-05-06 | Cloudflare | **40** | 2 — Agent-Aware | [Read →](/reports/cloudflare/) |
-| 2026-05-06 | Coinbase | **35** | 2 — Agent-Aware | [Read →](/reports/coinbase/) |
-| 2026-05-06 | Amazon | **30** | 2 — Agent-Aware | [Read →](/reports/amazon/) |
-| 2026-05-06 | Linear | **30** | 2 — Agent-Aware | [Read →](/reports/linear/) |
-| 2026-05-06 | Google | **25** | 1 — Agent as Afterthought | [Read →](/reports/google/) |
-| 2026-05-06 | Stripe | **25** | 1 — Agent as Afterthought | [Read →](/reports/stripe/) |
-| 2026-05-06 | The Wall Street Journal | **10** | 0 — No agent access | [Read →](/reports/wsj/) |
-| 2026-05-06 | Indeed | **10** | 0 — No agent access | [Read →](/reports/indeed/) |
+| 2026-05-07 | Vercel | **90** 🏆 | 4 — Agent-Driven | [Read →](/reports/vercel/) |
+| 2026-05-07 | Anthropic | **60** | 2 — Agent-Aware | [Read →](/reports/anthropic/) |
+| 2026-05-07 | Linear | **60** | 2 — Agent-Aware | [Read →](/reports/linear/) |
+| 2026-05-07 | Coinbase | **50** | 2 — Agent-Aware | [Read →](/reports/coinbase/) |
+| 2026-05-07 | Stripe | **50** ↑25 | 2 — Agent-Aware | [Read →](/reports/stripe/) |
+| 2026-05-07 | AWS *(new)* | **50** | 2 — Agent-Aware | [Read →](/reports/aws/) |
+| 2026-05-07 | Cloudflare | **35** | 2 — Agent-Aware | [Read →](/reports/cloudflare/) |
+| 2026-05-07 | Google | **25** | 1 — Agent as Afterthought | [Read →](/reports/google/) |
+| 2026-05-07 | Amazon | **25** ↓5 | 1 — Agent as Afterthought | [Read →](/reports/amazon/) |
+| 2026-05-07 | The Wall Street Journal | **10** | 0 — No agent access | [Read →](/reports/wsj/) |
+| 2026-05-07 | Indeed | **10** | 0 — No agent access | [Read →](/reports/indeed/) |
 
-**Distribution across the first batch:** 1 at Level 3, 5 at Level 2, 2 at Level 1, 2 at Level 0. The mid is Level 2, the spread is 65 points (Vercel 75 → WSJ/Indeed 10). The framework holds at the extremes; the middle is where most companies live and where the discovery breadcrumbs matter most.
+**Distribution after the v0.2.0 re-score:** 1 at Level 4 (new), 6 at Level 2, 2 at Level 1, 2 at Level 0. Vercel becomes the first product in this series to crack Level 4 (Agent-Driven). Stripe jumped 25 points and a full level (L1 → L2) on the strength of the Sessions 2026 trifecta. Amazon slipped 5 points (L2 → L1) because its `/llms.txt`-without-`/AGENTS.md` posture lost weight in the rubric refresh. The mid is now Level 2; the spread is 80 points (Vercel 90 → WSJ/Indeed 10).
 
 ## How we score
 

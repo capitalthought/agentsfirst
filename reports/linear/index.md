@@ -54,7 +54,7 @@ For SPA-heavy dev portals: **a 200 OK on every URL is not a feature.** `/.well-k
 
 Three URLs probed via the live scorer at `https://agentsfirst.dev/mcp` on 2026-05-06: `linear.app` (30/100, Level 2), `developers.linear.app` (60/100, Level 2 — but see SPA caveat above), `linear.app/docs` (30/100, Level 2). Headline is the highest of the three. Raw probe data is in [the report directory](https://github.com/capitalthought/agentsfirst/tree/main/reports/linear).
 
-Methodology note: this score uses the v0.1.2 rubric. The developers.linear.app SPA false-positive surfaced a v0.1.3 fix we'll ship this week — credit "MCP Server Card published" only when the response is `application/json` and parses as the expected schema, not on `status: 200` alone. Source: <https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts>.
+Methodology note: re-scored 2026-05-07 against rubric **v0.2.0** — `/AGENTS.md` promoted from 10pts → 15pts (canonical contract artifact); `/llms.txt` demoted from 10pts → 5pts (10% adoption per SE Ranking, Google declined to support); `/agents.json` and `/sitemap-index.xml` now credited equally with their canonical equivalents. Section totals unchanged. The developers.linear.app SPA false-positive surfaced a v0.1.3 fix we'll ship this week — credit "MCP Server Card published" only when the response is `application/json` and parses as the expected schema, not on `status: 200` alone. Source: <https://github.com/capitalthought/agentsfirst/blob/main/tools/agentsfirst-mcp/src/score.ts>.
 
 ---
 
