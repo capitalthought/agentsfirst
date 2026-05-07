@@ -95,6 +95,7 @@ Items not yet attempted or needing a fresh approach after failed verification.
 
 ### Improvements
 
+- **Add web traffic report to `/agentsfirst-check`** — once GA4 + CF Web Analytics tokens are wired (placeholders in `_includes/head-custom.html`), extend the weekly check skill to pull a traffic snapshot for the window: GA4 sessions / users / top pages via `mcp__google-analytics__run_report`, plus CF Web Analytics aggregates (visits, requests, top countries, top referrers) via the CF GraphQL Analytics API. Surface as a new "📈 Traffic since last check" section in the dated report so we see week-over-week movement on agentsfirst.dev alongside ecosystem signal. (added 2026-05-07)
 - **Redo `og-image.png`** — current 1200×630 visually still says "Agent First." Needs new card with "Agents First" + the two-customers tagline. Binary file, can't sed. ~5-min Figma job. (added 2026-05-05)
 - **Delete orphan `agentsfirst-mcp` Worker in Capital Factory CF account.** First two `wrangler deploy` attempts during the Layer C ship landed in account `8d9591939eb1efd797959aa9c68afd64` (cloudflare@capitalfactory.com OAuth), with no route binding. Harmless (no traffic, no charges) but messy. Cleanup needs Josh's hands because `op item get --reveal` and `op read` for the capitalfactory CF token both time out silently in Claude Code's bash subshell — Touch ID prompt doesn't surface. Two paths:
   - **A.** `npx wrangler logout && npx wrangler login` (browser → pick Capital Factory) → `npx wrangler delete agentsfirst-mcp --force` → log back into joshshop. ~30 sec.
