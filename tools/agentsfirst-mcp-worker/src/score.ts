@@ -157,6 +157,20 @@ function scoreInterfaceFirst(signals: CodebaseSignals): PrincipleScore {
     notes.push('Zod present but not clearly bound to tool params');
   }
 
+  // SEP-2567 (sessionless MCP), merged 2026-05-07: penalize servers that
+  // depend on per-connection session state. tools/list / resources/list /
+  // prompts/list MUST NOT vary by session at the same (deployment, auth).
+  const sessionHits = mcp.indicators.uses_session_state ?? 0;
+  if (mcp.detected && sessionHits === 0) {
+    pts += 2;
+    notes.push('Stateless transport — no session-id usage detected (SEP-2567 ✓)');
+  } else if (sessionHits > 0) {
+    pts = Math.max(0, pts - 2);
+    notes.push(
+      `${sessionHits} reference(s) to session APIs (Mcp-Session-Id / session/create / session/destroy / sessionId). SEP-2567 deprecates session-scoped state — migrate to explicit handles (create_*() → handle).`,
+    );
+  }
+
   return { pts: Math.min(pts, max), max, status: statusFor(pts, max), notes };
 }
 
@@ -166,8 +180,33 @@ function scoreContractFirst(signals: CodebaseSignals): PrincipleScore {
   const notes: string[] = [];
   const md = signals.signals.agents_md;
   if (md.exists) {
-    pts += 10;
+    // Base presence: 5pts. Quality (length + sections) earns up to 10 more.
+    // Rationale (rubric v0.3.0, May 2026): 4-agent / 438-task study found
+    // LLM-generated AGENTS.md files measurably reduced agent success rates
+    // vs. no file at all. Length is the failure mode, not absence.
+    pts += 5;
     notes.push(`AGENTS.md found at ${md.path}`);
+
+    // Length tier — token estimate = bytes / 4 (rough, matches Anthropic counter ±15%).
+    const tokens = Math.round((md.size_bytes ?? 0) / 4);
+    if (tokens > 0 && tokens <= 1500) {
+      pts += 5;
+      notes.push(`~${tokens} tokens — lean, hand-authored signal (+5)`);
+    } else if (tokens <= 3000) {
+      pts += 3;
+      notes.push(`~${tokens} tokens — acceptable (+3)`);
+    } else if (tokens <= 6000) {
+      pts += 1;
+      notes.push(
+        `~${tokens} tokens — borderline (+1). Length correlates with auto-generation. Consider trimming.`,
+      );
+    } else {
+      // > 6000 tokens: penalty + warning. The Token Dump anti-pattern.
+      notes.push(
+        `~${tokens} tokens — likely auto-generated bloat (0pts). See "The Token Dump" anti-pattern: hand-authored AGENTS.md outperformed LLM-generated dumps in a 2026 study (4 agents, 438 tasks).`,
+      );
+    }
+
     const sections = md.sections;
     if (sections) {
       const covered = (

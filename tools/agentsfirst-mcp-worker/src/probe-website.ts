@@ -72,7 +72,8 @@ export interface CodebaseSignals {
         visible_outputs: boolean; anti_patterns: boolean } };
     mcp_server: { detected: boolean; indicators: { package_json_dep?: string;
       matching_files?: Record<string, number>; tool_names_sampled?: string[];
-      verb_first_ratio?: number; uses_zod_for_params?: boolean } };
+      verb_first_ratio?: number; uses_zod_for_params?: boolean;
+      uses_session_state?: number } };
     cli: { detected: boolean; indicators: { package_json_bin?: string[]; pyproject_scripts?: boolean;
       cargo_bins?: boolean; bin_dir_entries?: string[]; argv_handling?: boolean } };
     typed_sdk: { detected: boolean; indicators: { declared_types_entry?: string;

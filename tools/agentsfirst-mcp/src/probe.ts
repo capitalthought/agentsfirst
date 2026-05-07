@@ -36,6 +36,9 @@ export interface McpServerSignals {
     tool_names_sampled?: string[];
     verb_first_ratio?: number;
     uses_zod_for_params?: boolean;
+    /** Per SEP-2567 (merged 2026-05-07): MCP servers should not require session state.
+     *  Counts grep hits for the deprecated session APIs in source files. */
+    uses_session_state?: number;
   };
 }
 
@@ -334,6 +337,11 @@ async function probeMcpServer(root: string): Promise<McpServerSignals> {
     out.indicators.verb_first_ratio = verbFirst.length ? verbCount / verbFirst.length : 0;
   }
   out.indicators.uses_zod_for_params = grepCount(root, /from ['"]zod['"]/) > 0;
+  // SEP-2567 (sessionless MCP): count references to deprecated session APIs.
+  // Mcp-Session-Id header / session/create / session/destroy / sessionId in MCP context.
+  out.indicators.uses_session_state =
+    grepCount(root, /Mcp-Session-Id|session\/create|session\/destroy/) +
+    grepCount(root, /\bsessionId\s*[:=]/);
   return out;
 }
 

@@ -7,7 +7,7 @@ author: Joshua Baer
 
 # Agents First
 
-*by Joshua Baer · v0.7, May 2026*
+*by Joshua Baer · v0.8, May 2026*
 
 ---
 
@@ -185,6 +185,8 @@ Name these before the principles. Knowing what's broken is more useful than know
 
 **The God Server** — An agent interface that exposes 200 tools because it wraps an entire platform. Agents choke on tool selection when there are too many options. Ten well-chosen tools beat two hundred exhaustive ones.
 
+**The Token Dump** — Generating a 6,000-token AGENTS.md by asking an LLM to "describe this repo." A 2026 study across 4 agents and 438 tasks found auto-generated AGENTS.md files measurably *reduced* agent success rates compared to no file at all. The contract artifact isn't a context dump; it's the constraints an agent can't infer from the code. Sequencing rules. Hidden invariants. Recurring failure modes. ~50 lines, hand-written. Length is the failure mode, not absence.
+
 ---
 
 ## The implementation principles
@@ -207,6 +209,8 @@ Some are genuinely new. Others are established practices — health checks, type
 ### What's genuinely new vs. applied
 
 **Interface First** and **Contract First** are new. Designing a tool interface for an AI consumer that has no prior context about your product — and writing usage rules an LLM will actually follow — has no clean pre-agent analog.
+
+For Contract First, quality matters more than presence. Recent empirical work across [4 agents and 438 tasks](https://x.com/oliviscusAI/status/2052337431291244986) found that auto-generated AGENTS.md files often *hurt* agent performance — token bloat, irrelevant context, hallucinated invariants. Hand-authored files that list only the non-obvious (build commands, sequencing constraints, recurring pitfalls) outperformed LLM-generated dumps and matched no-AGENTS.md baselines on cost. The principle is the rules an agent can't infer from the code — everything else is noise. See "The Token Dump" anti-pattern above.
 
 **Prep Gates** is health checks applied to agent sessions. Not new, but dramatically more important when the operator can't improvise around stale data.
 
@@ -237,6 +241,10 @@ Most companies today are at Level 0 or 1. The opportunity is Level 3.
 ### Versus Cloudflare's Agent Readiness Score
 
 Cloudflare's Agent Readiness Score uses a 5-level adoption ladder (Level 0–4) that mirrors this one in shape and numbering. Both are useful; they measure different things. **Cloudflare ARS is outside-in** — it scores the discoverable signals an external crawler can verify (robots.txt, llms.txt, MCP Server Cards, OAuth discovery). **Agents First is inside-out** — it scores the eight implementation principles that determine whether your product *thinks correctly* about agents as customers, regardless of what an external probe can see. A site can score Level 4 on Cloudflare ARS by publishing all the right artifacts and still ship a Lazy Wrapper underneath. A product can be deeply Agents First in mindset (verb-first tools, typed contracts, prep gates, visible outputs) while underinvesting in marketing-root discovery. Use both. They're complementary; the same way TDD and API First are complementary. Fivetran's [2026 Agentic AI Readiness Index](https://www.morningstar.com/news/business-wire/20260505250301/fivetran-launches-2026-agentic-ai-readiness-index-revealing-gap-between-enterprise-investment-and-data-preparedness-for-agentic-ai) covers a third axis — enterprise data foundation. Three labels, three lenses. None of them obsoletes the others.
+
+### Versus a14y (Agent Readability for the Web)
+
+[a14y.dev](https://a14y.dev) is the closest parallel project — an open spec with **38 versioned checks** (14 site-level, 24 page-level) covering canonical Markdown mirrors, llms.txt presence, JSON-LD breadcrumbs, content-negotiation, and code-block language tags. It ships as a CLI (`npx a14y your-site.com`), a Chrome extension, and a Claude Code skill. a14y is narrower than this framework: it scores how readable a *web page* is to an agent, while Agents First scores whether a *product* is built for an agent customer at all (Levels 0–4, 8 design principles). The two compose well — a Level-3 product should score 90+ on a14y for its public surfaces. If you only have time for one tool, a14y is the runnable web scorecard; this thesis is the design framework that motivates running it.
 
 **The smallest experiment.** Don't start with the full framework. Pick your most-used API endpoint. Wrap it as a single agent tool — an MCP tool, a CLI command, or a typed function — with a clear name, typed parameters, and a structured error response. Ship it. Measure time to first agent action and tool success rate. If agents use it reliably, you've validated the thesis. Build from there.
 
@@ -296,7 +304,7 @@ The maturity gap matters. TDD and API First have decades of evidence. Agents Fir
 
 ## What we don't know yet
 
-This is a v0.6 framework. Some important questions don't have answers yet:
+This is a v0.8 framework. Some important questions don't have answers yet:
 
 **What's the real adoption curve?** We don't have the Agents First equivalent of "mobile traffic crossed 50%." Agent-mediated product interactions are growing, but nobody has published reliable numbers on what percentage of SaaS usage flows through agents today. If agent-mediated interactions reach 10% of SaaS usage by 2028, Agents First is a two-year head start. If it takes until 2030, it's a four-year head start. If it stalls at 2%, the implementation principles still improve your API design — you just don't get the distribution leverage. Downside case: you built a better API. Upside case: you built the next platform.
 
@@ -326,7 +334,7 @@ Design accordingly.
 
 ---
 
-*Framework v0.7. May 2026.*
+*Framework v0.8. May 2026.*
 
 ---
 
