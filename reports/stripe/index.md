@@ -1,7 +1,7 @@
 ---
 title: "Agent Readiness Report: Stripe"
 description: "Stripe scored 25/100 (Level 1) on docs.stripe.com — the canonical API-first company has shipped real agent surface, but the discovery breadcrumbs from the homepage are missing."
-image: /og-image.png
+image: /reports/stripe/og.png
 author: Joshua Baer
 permalink: /reports/stripe/
 report_target: Stripe

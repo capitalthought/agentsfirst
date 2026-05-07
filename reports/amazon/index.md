@@ -1,7 +1,7 @@
 ---
 title: "Agent Readiness Report: Amazon"
 description: "Amazon scored 30/100 (Level 2) on developer.amazon.com — and 10/100, Level 0, on amazon.com, where ~50 named AI bots are blocked outright. The variance is the story."
-image: /og-image.png
+image: /reports/amazon/og.png
 author: Joshua Baer
 permalink: /reports/amazon/
 report_target: Amazon

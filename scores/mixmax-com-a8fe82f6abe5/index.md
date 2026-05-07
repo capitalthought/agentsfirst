@@ -3,7 +3,7 @@ title: "Agents First Score — mixmax.com"
 description: "Score: 10/100 · Level 0 (No agent access). Mixmax has all the parts of an agent-callable product but none of the discovery breadcrumbs — developer portal exists, marketing root is silent."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/mixmax-com-a8fe82f6abe5/og.png
 author: Joshua Baer
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Agent Readiness Report: Coinbase"
 description: "Coinbase scored 35/100 (Level 2) on docs.cdp.coinbase.com. The Developer Platform ships AgentKit, x402, and three MCP servers — but the marketing site lands at 10/100, Level 0."
-image: /og-image.png
+image: /reports/coinbase/og.png
 author: Joshua Baer
 permalink: /reports/coinbase/
 report_target: Coinbase

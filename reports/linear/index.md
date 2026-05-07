@@ -1,7 +1,7 @@
 ---
 title: "Agent Readiness Report: Linear"
 description: "Linear scored 60/100 (Level 2) — and the 60 is overstated. The most agent-loved planning tool of 2026 lacks the discovery breadcrumbs."
-image: /og-image.png
+image: /reports/linear/og.png
 author: Joshua Baer
 permalink: /reports/linear/
 report_target: Linear

@@ -1,7 +1,7 @@
 ---
 title: "Agent Readiness Report: Anthropic"
 description: "Anthropic — the company that wrote MCP — scored 60/100 (Level 2) on docs.anthropic.com. The marketing root scored 5/100, Level 0. The variance is the story."
-image: /og-image.png
+image: /reports/anthropic/og.png
 author: Joshua Baer
 permalink: /reports/anthropic/
 report_target: Anthropic

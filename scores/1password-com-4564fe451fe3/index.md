@@ -3,7 +3,7 @@ title: "Agents First Score — 1password.com"
 description: "Score: 22/100 · Level 1 (Agent as Afterthought). 1Password ships the most agent-essential primitives in security — op CLI, Service Accounts, official SDK, 4 community MCPs — none discoverable from the marketing root."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/1password-com-4564fe451fe3/og.png
 author: Joshua Baer
 ---
 

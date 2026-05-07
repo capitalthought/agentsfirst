@@ -1,7 +1,7 @@
 ---
 title: "Agent Readiness Report: The Wall Street Journal"
 description: "WSJ scored 10/100 (Level 0) on www.wsj.com. The Invisible Product — but on purpose. The robots.txt allow-lists OpenAI's three crawlers (the News Corp deal) and disallows everyone else by default."
-image: /og-image.png
+image: /reports/wsj/og.png
 author: Joshua Baer
 permalink: /reports/wsj/
 report_target: The Wall Street Journal

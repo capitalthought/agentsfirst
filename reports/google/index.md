@@ -1,7 +1,7 @@
 ---
 title: "Agent Readiness Report: Google"
 description: "Google scored 25/100 (Level 1) on developers.google.com — the highest of four surfaces. google.com and blog.google land at 5/100, Level 0. Google invented the Google-Extended user-agent and doesn't use it on any of these four surfaces."
-image: /og-image.png
+image: /reports/google/og.png
 author: Joshua Baer
 permalink: /reports/google/
 report_target: Google

@@ -1,7 +1,7 @@
 ---
 title: "Agent Readiness Report: Vercel"
 description: "Vercel scored 75/100 (Level 3) on vercel.com/docs — first product in this series to reach Agents First. Marketing root: 55. The AI SDK home: 25, Level 1."
-image: /og-image.png
+image: /reports/vercel/og.png
 author: Joshua Baer
 permalink: /reports/vercel/
 report_target: Vercel

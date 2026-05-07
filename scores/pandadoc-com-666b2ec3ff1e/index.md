@@ -3,7 +3,7 @@ title: "Agents First Score — pandadoc.com"
 description: "Score: 15/100 · Level 1 (Agent as Afterthought). PandaDoc has the agent-shaped product underneath — SDK, API, developer portal — but the discovery breadcrumbs from pandadoc.com are missing entirely."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/pandadoc-com-666b2ec3ff1e/og.png
 author: Joshua Baer
 ---
 

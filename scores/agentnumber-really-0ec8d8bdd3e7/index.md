@@ -3,7 +3,7 @@ title: "Agents First Score — sandbox.agentnumber.really.com"
 description: "Score: 84/100 · Level 3 (Agents First). The agentnumber sandbox is what an agents-first product actually looks like — JSON manifest homepage, MCP endpoint, OpenAPI, four well-known plugin descriptors, and per-bot robots.txt. One point shy of Level 4."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/agentnumber-really-0ec8d8bdd3e7/og.png
 author: Joshua Baer
 ---
 

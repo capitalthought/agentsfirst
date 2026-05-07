@@ -3,7 +3,7 @@ title: "Agents First Score — bizzabo.com"
 description: "Score: 15/100 · Level 1 (Agent as Afterthought). Ships a real /llms.txt — more than most consumer-marketing sites — but every other surface an agent looks for comes back 404."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/bizzabo-9bafd56bb7bd/og.png
 author: Joshua Baer
 ---
 

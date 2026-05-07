@@ -1,7 +1,7 @@
 ---
 title: "Agent Readiness Report: Cloudflare"
 description: "Cloudflare scored 40/100 (Level 2) on developers.cloudflare.com — even after we shipped a rubric fix to credit the Content-Signal directive Cloudflare invented. The blog hosting their original Agent Readiness Score post lands at 15/100, Level 1."
-image: /og-image.png
+image: /reports/cloudflare/og.png
 author: Joshua Baer
 permalink: /reports/cloudflare/
 report_date: 2026-05-06

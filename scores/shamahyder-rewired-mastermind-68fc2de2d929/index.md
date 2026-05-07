@@ -3,7 +3,7 @@ title: "Agents First Score — shamahyder.com/rewired-mastermind/"
 description: "Score: 25/100 · Level 1 (Agent as Afterthought). A personal-brand keynote-speaker site that's done real discovery work — llms.txt, per-bot robots.txt, clean sitemap — but capped by category against the agent-capabilities axis."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/shamahyder-rewired-mastermind-68fc2de2d929/og.png
 author: Joshua Baer
 ---
 

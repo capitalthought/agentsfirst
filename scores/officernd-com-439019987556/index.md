@@ -3,7 +3,7 @@ title: "Agents First Score — officernd.com"
 description: "Score: 13/100 · Level 1 (Agent as Afterthought). OfficeRnD is the third coworking-platform scoring low for the same reason: agent-callable product exists, marketing root has no discovery breadcrumbs."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/officernd-com-439019987556/og.png
 author: Joshua Baer
 ---
 

@@ -3,7 +3,7 @@ title: "Agents First Score — agentmail.to"
 description: "Score: 50/100 · Level 2 (Agent-Aware). Built for agents in spirit; the discovery surfaces an outside agent uses to find them haven't kept up with the product mission."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/agentmail-to-db5578bf8dd3/og.png
 author: Joshua Baer
 ---
 

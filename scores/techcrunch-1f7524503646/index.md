@@ -3,7 +3,7 @@ title: "Agents First Score — techcrunch.com"
 description: "Score: 20/100 · Level 1 (Agent as Afterthought). TechCrunch isn't at Level 1 by negligence — it's at Level 1 by editorial choice; robots.txt explicitly disallows 14 named AI agents."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/techcrunch-1f7524503646/og.png
 author: Joshua Baer
 ---
 

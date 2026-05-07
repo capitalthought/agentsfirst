@@ -1,7 +1,7 @@
 ---
 title: "Agent Readiness Report: Indeed"
 description: "Indeed scored 10/100 (Level 0) — the most-relevant target for autonomous job-search agents publishes a real /llms.txt and then 403s anyone who tries to fetch it. The developer portal is gone."
-image: /og-image.png
+image: /reports/indeed/og.png
 author: Joshua Baer
 permalink: /reports/indeed/
 report_target: Indeed

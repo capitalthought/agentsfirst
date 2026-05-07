@@ -3,7 +3,7 @@ title: "Agents First Score — gatsby.events"
 description: "Score: 15/100 · Level 1 (Agent as Afterthought). Gatsby Events ships the best /llms.txt of any site I've scored — 612KB of complete docs. But the docs tell agents how Gatsby works without a way to actually use Gatsby."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/gatsby-events-181521d65e43/og.png
 author: Joshua Baer
 ---
 

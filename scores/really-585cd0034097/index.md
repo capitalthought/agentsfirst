@@ -3,7 +3,7 @@ title: "Agents First Score — really.com"
 description: "Score: 0/100 · Level 0 (No agent access). really.com is the maximum-strength version of the Invisible Product anti-pattern: not just absent from the agent surface, but actively hostile to it."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/really-585cd0034097/og.png
 author: Joshua Baer
 ---
 
