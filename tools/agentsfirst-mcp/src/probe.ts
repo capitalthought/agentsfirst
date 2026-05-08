@@ -26,6 +26,17 @@ export interface AgentsMdSignals {
     visible_outputs: boolean;
     anti_patterns: boolean;
   };
+  /** Heuristic markers of LLM-generated AGENTS.md (added rubric v0.3.0).
+   *  Common LLM scaffolds emit `## Project Structure / ## Commands /
+   *  ## Code Style / ## Testing`. 3+ of these in a >1500-token file
+   *  is a strong "auto-generated" signal — see the Token Dump anti-pattern. */
+  llm_gen_signals?: {
+    has_project_structure: boolean;
+    has_commands: boolean;
+    has_code_style: boolean;
+    has_testing: boolean;
+    template_match_count: number;
+  };
 }
 
 export interface McpServerSignals {
@@ -277,6 +288,19 @@ async function probeAgentsMd(root: string): Promise<AgentsMdSignals> {
     if (existsSync(full)) {
       const content = readFileSync(full, 'utf8');
       const lower = content.toLowerCase();
+      const llmGen = {
+        has_project_structure: /## *project[- ]?structure\b/i.test(content),
+        has_commands: /## *(common )?commands?\b/i.test(content),
+        has_code_style: /## *code[- ]?style\b/i.test(content),
+        has_testing: /## *testing\b|## *running tests\b/i.test(content),
+        template_match_count: 0,
+      };
+      llmGen.template_match_count = [
+        llmGen.has_project_structure,
+        llmGen.has_commands,
+        llmGen.has_code_style,
+        llmGen.has_testing,
+      ].filter(Boolean).length;
       return {
         exists: true,
         path: rel,
@@ -291,6 +315,7 @@ async function probeAgentsMd(root: string): Promise<AgentsMdSignals> {
           visible_outputs: /## *visible outputs?|human[- ]?readable/i.test(lower),
           anti_patterns: /## *anti[- ]?patterns?|lazy wrapper|god server/i.test(lower),
         },
+        llm_gen_signals: llmGen,
       };
     }
   }
@@ -338,10 +363,28 @@ async function probeMcpServer(root: string): Promise<McpServerSignals> {
   }
   out.indicators.uses_zod_for_params = grepCount(root, /from ['"]zod['"]/) > 0;
   // SEP-2567 (sessionless MCP): count references to deprecated session APIs.
-  // Mcp-Session-Id header / session/create / session/destroy / sessionId in MCP context.
+  //
+  // Strict patterns — designed to match real *usage*, not strings inside
+  // documentation, rationale comments, or regex literals (such as the
+  // ones in this very probe). Three independent signals:
+  //
+  //   1. HTTP header writes — server-side `setHeader` or `headers.set`
+  //      manipulation of `Mcp-Session-Id`. Excludes CORS allow-headers
+  //      lists (which advertise support but don't actually USE state).
+  //   2. JSON-RPC method strings — quoted `session/create` and
+  //      `session/destroy` literals (real RPC dispatch, not prose).
+  //   3. Variable assignment — `sessionId = <value>` (actual storage),
+  //      not type declarations or regex sources.
+  //
+  // False positives the previous v1 pattern caught and this one doesn't:
+  //   - `notes.push('... session/create ...')` (rationale strings)
+  //   - `// Mcp-Session-Id header / session/create ...` (comments)
+  //   - `grepCount(root, /Mcp-Session-Id|session\/create/)` (regex literal)
+  //   - `'Content-Type, Authorization, Mcp-Session-Id'` (CORS advertisement)
   out.indicators.uses_session_state =
-    grepCount(root, /Mcp-Session-Id|session\/create|session\/destroy/) +
-    grepCount(root, /\bsessionId\s*[:=]/);
+    grepCount(root, /(?:setHeader|headers?\.(?:set|append))\([^)]*Mcp-Session-Id/i) +
+    grepCount(root, /['"]session\/(?:create|destroy)['"]/) +
+    grepCount(root, /\bsessionId\s*=\s*[a-zA-Z_$"'`]/);
   return out;
 }
 

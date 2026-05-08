@@ -69,7 +69,9 @@ export interface CodebaseSignals {
   signals: {
     agents_md: { exists: boolean; path?: string; size_bytes?: number; line_count?: number;
       sections?: { permissions: boolean; sequence: boolean; identifiers: boolean; errors: boolean;
-        visible_outputs: boolean; anti_patterns: boolean } };
+        visible_outputs: boolean; anti_patterns: boolean };
+      llm_gen_signals?: { has_project_structure: boolean; has_commands: boolean;
+        has_code_style: boolean; has_testing: boolean; template_match_count: number } };
     mcp_server: { detected: boolean; indicators: { package_json_dep?: string;
       matching_files?: Record<string, number>; tool_names_sampled?: string[];
       verb_first_ratio?: number; uses_zod_for_params?: boolean;

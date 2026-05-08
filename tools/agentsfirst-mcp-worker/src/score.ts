@@ -218,6 +218,24 @@ function scoreContractFirst(signals: CodebaseSignals): PrincipleScore {
         `${covered}/4 required sections (permissions/sequence/identifiers/errors) → +${sectionPts}`,
       );
     }
+
+    // LLM-gen template heuristic (no extra penalty — bloat tier already
+    // covers the score impact). Surfaces a flag so the user can see *why*
+    // their AGENTS.md was tagged Token Dump.
+    const llmGen = md.llm_gen_signals;
+    if (llmGen && llmGen.template_match_count >= 3) {
+      const matched = [
+        llmGen.has_project_structure && '## Project Structure',
+        llmGen.has_commands && '## Commands',
+        llmGen.has_code_style && '## Code Style',
+        llmGen.has_testing && '## Testing',
+      ]
+        .filter(Boolean)
+        .join(', ');
+      notes.push(
+        `Likely LLM-generated structure: ${llmGen.template_match_count}/4 generic template sections present (${matched}). Consider hand-rewriting around the rules an agent can't infer from the code.`,
+      );
+    }
   } else {
     notes.push('No AGENTS.md');
   }
