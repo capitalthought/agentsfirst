@@ -7,7 +7,7 @@ permalink: /reports/cursor/
 report_target: Cursor
 report_score: 70
 report_level: 3
-report_date: 2026-05-07
+report_date: 2026-05-08
 ---
 
 # Agent Readiness Report: Cursor

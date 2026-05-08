@@ -5,7 +5,7 @@
     "scored_at": "2026-05-06",
     "scorer_endpoint": "https://agentsfirst.dev/mcp",
     "scorer_tool": "score_website",
-    "last_refreshed": "2026-05-07T14:57:35.323Z",
+    "last_refreshed": "2026-05-08T00:18:30.179Z",
     "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://developers.coinbase.com": {
@@ -46,7 +46,7 @@
         "max": 30,
         "status": "partial",
         "notes": [
-          "MCP Server Card published at /.well-known/mcp-server-card.json",
+          "MCP Server Card published at /.well-known/mcp-server-card",
           "Homepage does not reference MCP / CLI / SDK",
           "OAuth / AI-plugin auth-server discovery present"
         ]
@@ -84,43 +84,50 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://developers.coinbase.com",
-      "timestamp": "2026-05-07T14:57:35.796Z",
+      "timestamp": "2026-05-08T00:18:30.795Z",
       "signals": {
         "surfaces": {
-          "well_known_ai_plugin": {
-            "url": "https://developers.coinbase.com/.well-known/ai-plugin.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 340002
-          },
           "agents_md": {
             "url": "https://developers.coinbase.com/AGENTS.md",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 340002
+            "length": 340026
           },
           "llms_full_txt": {
             "url": "https://developers.coinbase.com/llms-full.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 340002
+            "length": 340026
           },
-          "well_known_oauth": {
-            "url": "https://developers.coinbase.com/.well-known/oauth-authorization-server",
+          "well_known_ai_plugin": {
+            "url": "https://developers.coinbase.com/.well-known/ai-plugin.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 340002
+            "length": 340017
           },
-          "llms_txt": {
-            "url": "https://developers.coinbase.com/llms.txt",
+          "robots_txt": {
+            "url": "https://developers.coinbase.com/robots.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 340002
+            "length": 340017
+          },
+          "well_known_mcp_json": {
+            "url": "https://developers.coinbase.com/.well-known/mcp-server-card.json",
+            "status": 429,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7389
+          },
+          "openapi_root": {
+            "url": "https://developers.coinbase.com/openapi.json",
+            "status": 429,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7410
           },
           "agents_json": {
             "url": "https://developers.coinbase.com/agents.json",
@@ -129,8 +136,29 @@
             "content_type": "text/html; charset=UTF-8",
             "length": 7410
           },
+          "well_known_oauth": {
+            "url": "https://developers.coinbase.com/.well-known/oauth-authorization-server",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 340026
+          },
+          "well_known_agent_rules": {
+            "url": "https://developers.coinbase.com/.well-known/agent-rules",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 340026
+          },
           "well_known_mcp": {
             "url": "https://developers.coinbase.com/.well-known/mcp-server-card",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 340026
+          },
+          "sitemap_index": {
+            "url": "https://developers.coinbase.com/sitemap-index.xml",
             "status": 429,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
@@ -143,34 +171,6 @@
             "content_type": "text/html; charset=UTF-8",
             "length": 7410
           },
-          "sitemap_index": {
-            "url": "https://developers.coinbase.com/sitemap-index.xml",
-            "status": 429,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7410
-          },
-          "well_known_mcp_json": {
-            "url": "https://developers.coinbase.com/.well-known/mcp-server-card.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 340002
-          },
-          "robots_txt": {
-            "url": "https://developers.coinbase.com/robots.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 340002
-          },
-          "openapi_root": {
-            "url": "https://developers.coinbase.com/openapi.json",
-            "status": 429,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7410
-          },
           "openapi_v1": {
             "url": "https://developers.coinbase.com/v1/openapi.json",
             "status": 429,
@@ -178,19 +178,19 @@
             "content_type": "text/html; charset=UTF-8",
             "length": 7410
           },
-          "well_known_agent_rules": {
-            "url": "https://developers.coinbase.com/.well-known/agent-rules",
+          "llms_txt": {
+            "url": "https://developers.coinbase.com/llms.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 340002
+            "length": 340017
           },
           "openapi_api": {
             "url": "https://developers.coinbase.com/api/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 1030008
+            "length": 1029780
           }
         },
         "markdown_negotiation": {
@@ -299,15 +299,15 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://docs.cdp.coinbase.com",
-      "timestamp": "2026-05-07T14:57:36.615Z",
+      "timestamp": "2026-05-08T00:18:31.788Z",
       "signals": {
         "surfaces": {
-          "agents_md": {
-            "url": "https://docs.cdp.coinbase.com/AGENTS.md",
+          "llms_txt": {
+            "url": "https://docs.cdp.coinbase.com/llms.txt",
             "status": 200,
             "ok": true,
-            "content_type": "text/markdown; charset=utf-8",
-            "length": 5255
+            "content_type": "text/plain; charset=utf-8",
+            "length": 7871
           },
           "robots_txt": {
             "url": "https://docs.cdp.coinbase.com/robots.txt",
@@ -316,20 +316,6 @@
             "content_type": "text/plain",
             "length": 102
           },
-          "llms_txt": {
-            "url": "https://docs.cdp.coinbase.com/llms.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain; charset=utf-8",
-            "length": 7871
-          },
-          "llms_full_txt": {
-            "url": "https://docs.cdp.coinbase.com/llms-full.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain; charset=utf-8",
-            "length": 12322079
-          },
           "well_known_oauth": {
             "url": "https://docs.cdp.coinbase.com/.well-known/oauth-authorization-server",
             "status": 200,
@@ -337,12 +323,12 @@
             "content_type": "application/json",
             "length": 579
           },
-          "sitemap": {
-            "url": "https://docs.cdp.coinbase.com/sitemap.xml",
+          "llms_full_txt": {
+            "url": "https://docs.cdp.coinbase.com/llms-full.txt",
             "status": 200,
             "ok": true,
-            "content_type": "text/xml",
-            "length": 349466
+            "content_type": "text/plain; charset=utf-8",
+            "length": 12322801
           },
           "well_known_ai_plugin": {
             "url": "https://docs.cdp.coinbase.com/.well-known/ai-plugin.json",
@@ -351,6 +337,20 @@
             "content_type": "text/plain;charset=UTF-8",
             "length": 15
           },
+          "agents_md": {
+            "url": "https://docs.cdp.coinbase.com/AGENTS.md",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/markdown; charset=utf-8",
+            "length": 5255
+          },
+          "sitemap": {
+            "url": "https://docs.cdp.coinbase.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/xml",
+            "length": 349466
+          },
           "well_known_mcp_json": {
             "url": "https://docs.cdp.coinbase.com/.well-known/mcp-server-card.json",
             "status": 404,
@@ -358,22 +358,15 @@
             "content_type": "text/plain;charset=UTF-8",
             "length": 15
           },
-          "well_known_agent_rules": {
-            "url": "https://docs.cdp.coinbase.com/.well-known/agent-rules",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 1029939
-          },
-          "well_known_mcp": {
-            "url": "https://docs.cdp.coinbase.com/.well-known/mcp-server-card",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 1029741
-          },
           "agents_json": {
             "url": "https://docs.cdp.coinbase.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain;charset=UTF-8",
+            "length": 15
+          },
+          "sitemap_index": {
+            "url": "https://docs.cdp.coinbase.com/sitemap-index.xml",
             "status": 404,
             "ok": false,
             "content_type": "text/plain;charset=UTF-8",
@@ -386,13 +379,6 @@
             "content_type": "text/plain;charset=UTF-8",
             "length": 15
           },
-          "openapi_api": {
-            "url": "https://docs.cdp.coinbase.com/api/openapi.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/plain;charset=UTF-8",
-            "length": 15
-          },
           "openapi_v1": {
             "url": "https://docs.cdp.coinbase.com/v1/openapi.json",
             "status": 404,
@@ -400,12 +386,26 @@
             "content_type": "text/plain;charset=UTF-8",
             "length": 15
           },
-          "sitemap_index": {
-            "url": "https://docs.cdp.coinbase.com/sitemap-index.xml",
+          "openapi_api": {
+            "url": "https://docs.cdp.coinbase.com/api/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/plain;charset=UTF-8",
             "length": 15
+          },
+          "well_known_mcp": {
+            "url": "https://docs.cdp.coinbase.com/.well-known/mcp-server-card",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 1029727
+          },
+          "well_known_agent_rules": {
+            "url": "https://docs.cdp.coinbase.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 1029707
           }
         },
         "markdown_negotiation": {
@@ -419,7 +419,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 1293031
+          "length": 1292799
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -520,7 +520,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://www.coinbase.com",
-      "timestamp": "2026-05-07T14:57:36.962Z",
+      "timestamp": "2026-05-08T00:18:32.169Z",
       "signals": {
         "surfaces": {
           "agents_md": {
@@ -530,12 +530,26 @@
             "content_type": "text/html; charset=UTF-8",
             "length": 7362
           },
+          "well_known_oauth": {
+            "url": "https://www.coinbase.com/.well-known/oauth-authorization-server",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 209213
+          },
           "robots_txt": {
             "url": "https://www.coinbase.com/robots.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/plain",
             "length": 3282
+          },
+          "llms_full_txt": {
+            "url": "https://www.coinbase.com/llms-full.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 209213
           },
           "llms_txt": {
             "url": "https://www.coinbase.com/llms.txt",
@@ -544,33 +558,19 @@
             "content_type": "text/plain; charset=utf-8",
             "length": 5070
           },
-          "well_known_agent_rules": {
-            "url": "https://www.coinbase.com/.well-known/agent-rules",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 209189
-          },
-          "well_known_ai_plugin": {
-            "url": "https://www.coinbase.com/.well-known/ai-plugin.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 209189
-          },
-          "llms_full_txt": {
-            "url": "https://www.coinbase.com/llms-full.txt",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 209189
-          },
           "agents_json": {
             "url": "https://www.coinbase.com/agents.json",
             "status": 429,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
             "length": 7368
+          },
+          "well_known_ai_plugin": {
+            "url": "https://www.coinbase.com/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 209213
           },
           "sitemap": {
             "url": "https://www.coinbase.com/sitemap.xml",
@@ -586,13 +586,6 @@
             "content_type": "text/html; charset=UTF-8",
             "length": 7407
           },
-          "well_known_oauth": {
-            "url": "https://www.coinbase.com/.well-known/oauth-authorization-server",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 209189
-          },
           "openapi_root": {
             "url": "https://www.coinbase.com/openapi.json",
             "status": 429,
@@ -607,26 +600,33 @@
             "content_type": "text/html; charset=UTF-8",
             "length": 7404
           },
+          "well_known_agent_rules": {
+            "url": "https://www.coinbase.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 209213
+          },
           "well_known_mcp": {
             "url": "https://www.coinbase.com/.well-known/mcp-server-card",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 209189
+            "length": 209213
           },
           "well_known_mcp_json": {
             "url": "https://www.coinbase.com/.well-known/mcp-server-card.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 209189
+            "length": 209213
           },
           "openapi_api": {
             "url": "https://www.coinbase.com/api/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 209189
+            "length": 209213
           }
         },
         "markdown_negotiation": {

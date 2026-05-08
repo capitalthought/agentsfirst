@@ -7,7 +7,7 @@
     "headline_level": 3,
     "headline_surface": "https://browserbase.com",
     "notes": "Browserbase shows the inverted variance pattern: marketing root (70) scores higher than docs subdomain (45). This is unusual across the report series. Both browserbase.com and www.browserbase.com return identical scores (70). Same SPA-catchall caveat as Vercel: AGENTS.md, mcp-server-card.json, OAuth discovery, and openapi.json on the www marketing root return 200 with Next.js HTML shells, not actual content. Will be tightened in rubric v0.1.3.",
-    "last_refreshed": "2026-05-07T14:57:28.335Z",
+    "last_refreshed": "2026-05-08T00:18:22.686Z",
     "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://browserbase.com": {
@@ -86,7 +86,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://browserbase.com",
-      "timestamp": "2026-05-07T14:57:28.979Z",
+      "timestamp": "2026-05-08T00:18:23.403Z",
       "signals": {
         "surfaces": {
           "robots_txt": {
@@ -110,19 +110,26 @@
             "content_type": "application/xml",
             "length": 44286
           },
+          "well_known_mcp_json": {
+            "url": "https://browserbase.com/.well-known/mcp-server-card.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 36641
+          },
+          "well_known_agent_rules": {
+            "url": "https://browserbase.com/.well-known/agent-rules",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 36641
+          },
           "llms_full_txt": {
             "url": "https://browserbase.com/llms-full.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 36596
-          },
-          "well_known_ai_plugin": {
-            "url": "https://browserbase.com/.well-known/ai-plugin.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 36652
+            "length": 36561
           },
           "well_known_oauth": {
             "url": "https://browserbase.com/.well-known/oauth-authorization-server",
@@ -131,40 +138,19 @@
             "content_type": "text/html; charset=utf-8",
             "length": 36701
           },
-          "agents_json": {
-            "url": "https://browserbase.com/agents.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 36549
-          },
-          "well_known_mcp_json": {
-            "url": "https://browserbase.com/.well-known/mcp-server-card.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 36675
-          },
-          "agents_md": {
-            "url": "https://browserbase.com/AGENTS.md",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 36539
-          },
-          "well_known_mcp": {
-            "url": "https://browserbase.com/.well-known/mcp-server-card",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 36657
-          },
           "openapi_root": {
             "url": "https://browserbase.com/openapi.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 36589
+            "length": 36553
+          },
+          "agents_json": {
+            "url": "https://browserbase.com/agents.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 36584
           },
           "openapi_v1": {
             "url": "https://browserbase.com/v1/openapi.json",
@@ -173,26 +159,40 @@
             "content_type": "text/html; charset=utf-8",
             "length": 36573
           },
-          "well_known_agent_rules": {
-            "url": "https://browserbase.com/.well-known/agent-rules",
+          "well_known_ai_plugin": {
+            "url": "https://browserbase.com/.well-known/ai-plugin.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 36640
+            "length": 36617
+          },
+          "agents_md": {
+            "url": "https://browserbase.com/AGENTS.md",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 36576
           },
           "openapi_api": {
             "url": "https://browserbase.com/api/openapi.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 36611
+            "length": 36577
+          },
+          "well_known_mcp": {
+            "url": "https://browserbase.com/.well-known/mcp-server-card",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 36621
           },
           "sitemap_index": {
             "url": "https://browserbase.com/sitemap-index.xml",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 36612
+            "length": 36577
           }
         },
         "markdown_negotiation": {
@@ -307,22 +307,22 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://docs.browserbase.com",
-      "timestamp": "2026-05-07T14:57:30.529Z",
+      "timestamp": "2026-05-08T00:18:24.939Z",
       "signals": {
         "surfaces": {
-          "llms_txt": {
-            "url": "https://docs.browserbase.com/llms.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain; charset=utf-8",
-            "length": 25252
-          },
           "llms_full_txt": {
             "url": "https://docs.browserbase.com/llms-full.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/plain; charset=utf-8",
             "length": 834628
+          },
+          "llms_txt": {
+            "url": "https://docs.browserbase.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 25195
           },
           "robots_txt": {
             "url": "https://docs.browserbase.com/robots.txt",
@@ -331,13 +331,6 @@
             "content_type": "text/plain",
             "length": 121
           },
-          "well_known_agent_rules": {
-            "url": "https://docs.browserbase.com/.well-known/agent-rules",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 151521
-          },
           "well_known_oauth": {
             "url": "https://docs.browserbase.com/.well-known/oauth-authorization-server",
             "status": 200,
@@ -345,12 +338,12 @@
             "content_type": "application/json",
             "length": 571
           },
-          "well_known_mcp": {
-            "url": "https://docs.browserbase.com/.well-known/mcp-server-card",
+          "well_known_ai_plugin": {
+            "url": "https://docs.browserbase.com/.well-known/ai-plugin.json",
             "status": 404,
             "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 151533
+            "content_type": "text/plain;charset=UTF-8",
+            "length": 15
           },
           "agents_md": {
             "url": "https://docs.browserbase.com/AGENTS.md",
@@ -359,19 +352,19 @@
             "content_type": "application/json",
             "length": 4
           },
+          "well_known_mcp_json": {
+            "url": "https://docs.browserbase.com/.well-known/mcp-server-card.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain;charset=UTF-8",
+            "length": 15
+          },
           "sitemap": {
             "url": "https://docs.browserbase.com/sitemap.xml",
             "status": 200,
             "ok": true,
             "content_type": "text/xml",
             "length": 23432
-          },
-          "well_known_ai_plugin": {
-            "url": "https://docs.browserbase.com/.well-known/ai-plugin.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/plain;charset=UTF-8",
-            "length": 15
           },
           "agents_json": {
             "url": "https://docs.browserbase.com/agents.json",
@@ -387,15 +380,15 @@
             "content_type": "text/plain;charset=UTF-8",
             "length": 15
           },
-          "openapi_v1": {
-            "url": "https://docs.browserbase.com/v1/openapi.json",
+          "openapi_root": {
+            "url": "https://docs.browserbase.com/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/plain;charset=UTF-8",
             "length": 15
           },
-          "openapi_root": {
-            "url": "https://docs.browserbase.com/openapi.json",
+          "openapi_v1": {
+            "url": "https://docs.browserbase.com/v1/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/plain;charset=UTF-8",
@@ -408,12 +401,19 @@
             "content_type": "text/plain;charset=UTF-8",
             "length": 15
           },
-          "well_known_mcp_json": {
-            "url": "https://docs.browserbase.com/.well-known/mcp-server-card.json",
+          "well_known_agent_rules": {
+            "url": "https://docs.browserbase.com/.well-known/agent-rules",
             "status": 404,
             "ok": false,
-            "content_type": "text/plain;charset=UTF-8",
-            "length": 15
+            "content_type": "text/html; charset=utf-8",
+            "length": 148368
+          },
+          "well_known_mcp": {
+            "url": "https://docs.browserbase.com/.well-known/mcp-server-card",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 148376
           }
         },
         "markdown_negotiation": {
@@ -427,7 +427,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 385317
+          "length": 375147
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -522,7 +522,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://www.browserbase.com",
-      "timestamp": "2026-05-07T14:57:31.577Z",
+      "timestamp": "2026-05-08T00:18:26.337Z",
       "signals": {
         "surfaces": {
           "robots_txt": {
@@ -532,13 +532,6 @@
             "content_type": "text/plain",
             "length": 73
           },
-          "sitemap": {
-            "url": "https://www.browserbase.com/sitemap.xml",
-            "status": 200,
-            "ok": true,
-            "content_type": "application/xml",
-            "length": 44286
-          },
           "llms_txt": {
             "url": "https://www.browserbase.com/llms.txt",
             "status": 404,
@@ -546,47 +539,47 @@
             "content_type": "text/html; charset=utf-8",
             "length": 50907
           },
-          "well_known_oauth": {
-            "url": "https://www.browserbase.com/.well-known/oauth-authorization-server",
+          "sitemap": {
+            "url": "https://www.browserbase.com/sitemap.xml",
             "status": 200,
             "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 36665
-          },
-          "agents_md": {
-            "url": "https://www.browserbase.com/AGENTS.md",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 36577
-          },
-          "well_known_agent_rules": {
-            "url": "https://www.browserbase.com/.well-known/agent-rules",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 36641
+            "content_type": "application/xml",
+            "length": 44286
           },
           "llms_full_txt": {
             "url": "https://www.browserbase.com/llms-full.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 36596
+            "length": 36560
           },
-          "well_known_mcp": {
-            "url": "https://www.browserbase.com/.well-known/mcp-server-card",
+          "well_known_agent_rules": {
+            "url": "https://www.browserbase.com/.well-known/agent-rules",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 36621
+            "length": 36640
+          },
+          "agents_md": {
+            "url": "https://www.browserbase.com/AGENTS.md",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 36541
+          },
+          "well_known_oauth": {
+            "url": "https://www.browserbase.com/.well-known/oauth-authorization-server",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 36701
           },
           "well_known_mcp_json": {
             "url": "https://www.browserbase.com/.well-known/mcp-server-card.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 36641
+            "length": 36677
           },
           "agents_json": {
             "url": "https://www.browserbase.com/agents.json",
@@ -595,12 +588,12 @@
             "content_type": "text/html; charset=utf-8",
             "length": 36549
           },
-          "well_known_ai_plugin": {
-            "url": "https://www.browserbase.com/.well-known/ai-plugin.json",
+          "sitemap_index": {
+            "url": "https://www.browserbase.com/sitemap-index.xml",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 36617
+            "length": 36613
           },
           "openapi_root": {
             "url": "https://www.browserbase.com/openapi.json",
@@ -614,21 +607,28 @@
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 36611
-          },
-          "sitemap_index": {
-            "url": "https://www.browserbase.com/sitemap-index.xml",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 36612
+            "length": 36577
           },
           "openapi_v1": {
             "url": "https://www.browserbase.com/v1/openapi.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 36609
+            "length": 36573
+          },
+          "well_known_mcp": {
+            "url": "https://www.browserbase.com/.well-known/mcp-server-card",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 36620
+          },
+          "well_known_ai_plugin": {
+            "url": "https://www.browserbase.com/.well-known/ai-plugin.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 36617
           }
         },
         "markdown_negotiation": {

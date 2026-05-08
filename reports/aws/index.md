@@ -7,7 +7,7 @@ permalink: /reports/aws/
 report_target: AWS
 report_score: 50
 report_level: 2
-report_date: 2026-05-07
+report_date: 2026-05-08
 ---
 
 # Agent Readiness Report: AWS
