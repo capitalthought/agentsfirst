@@ -185,9 +185,10 @@ export function createServer(): McpServer {
             'slow-chatbot',
             'ship-and-forget',
             'god-server',
+            'token-dump',
           ])
           .describe(
-            'Anti-pattern slug. One of: lazy-wrapper, invisible-product, agents-without-rules, single-model-trust, slow-chatbot, ship-and-forget, god-server.',
+            'Anti-pattern slug. One of: lazy-wrapper, invisible-product, agents-without-rules, single-model-trust, slow-chatbot, ship-and-forget, god-server, token-dump.',
           ),
       },
     },

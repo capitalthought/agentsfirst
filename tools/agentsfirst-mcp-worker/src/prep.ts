@@ -34,7 +34,7 @@ const ENDPOINT = 'https://agentsfirst.dev/mcp';
 export async function runPrep(): Promise<PrepResult> {
   const checks: CheckResult[] = [];
 
-  // 1. Rubric loaded — 8 principles, 7 anti-patterns
+  // 1. Rubric loaded — 8 principles, 8 anti-patterns
   checks.push({
     name: 'rubric:principles',
     ok: PRINCIPLE_SLUGS.length === 8,
@@ -45,11 +45,11 @@ export async function runPrep(): Promise<PrepResult> {
   });
   checks.push({
     name: 'rubric:anti-patterns',
-    ok: ANTI_PATTERN_SLUGS.length === 7,
+    ok: ANTI_PATTERN_SLUGS.length === 8,
     message:
-      ANTI_PATTERN_SLUGS.length === 7
-        ? `7 anti-patterns loaded`
-        : `expected 7 anti-patterns, found ${ANTI_PATTERN_SLUGS.length}`,
+      ANTI_PATTERN_SLUGS.length === 8
+        ? `8 anti-patterns loaded`
+        : `expected 8 anti-patterns, found ${ANTI_PATTERN_SLUGS.length}`,
   });
 
   // 2. Runtime identifier — Workers V8 isolate. fetch + AbortController are

@@ -1,6 +1,6 @@
 {
   "name": "@capitalthought/agentsfirst-mcp",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "description": "MCP server that scores websites and codebases against the Agents First framework. Use it to check how agent-ready any product is. https://agentsfirst.dev",
   "license": "MIT",
   "author": "Joshua Baer <josh@capitalfactory.com>",

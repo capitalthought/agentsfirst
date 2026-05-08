@@ -1,6 +1,6 @@
 {
   "name": "@capitalthought/agentsfirst-mcp-worker",
-  "version": "0.3.0",
+  "version": "0.3.2",
   "private": true,
   "description": "Cloudflare Worker hosting the Agents First MCP scorer at https://agentsfirst.dev/mcp. Remote MCP server — no install required.",
   "license": "MIT",

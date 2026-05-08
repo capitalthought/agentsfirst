@@ -1,4 +1,4 @@
-// Canonical Agents First definitions — the 8 principles + 7 anti-patterns.
+// Canonical Agents First definitions — the 8 principles + 8 anti-patterns.
 //
 // Source of truth: https://agentsfirst.dev/principles/ and https://agentsfirst.dev/glossary/
 // These constants power get_principle and get_anti_pattern. Summaries are tight (~60 words)
@@ -25,7 +25,8 @@ export type AntiPatternSlug =
   | 'single-model-trust'
   | 'slow-chatbot'
   | 'ship-and-forget'
-  | 'god-server';
+  | 'god-server'
+  | 'token-dump';
 
 export interface Principle {
   slug: PrincipleSlug;
@@ -58,7 +59,7 @@ export const PRINCIPLES: Record<PrincipleSlug, Principle> = {
     summary:
       'Write the usage rules — permissions, sequences, identifiers, formatting — in AGENTS.md before implementation. Tool definitions tell the agent what is possible; the contract tells it what is allowed. Without a contract agents hallucinate IDs, violate constraints, and create duplicates. Cost: one markdown file. Skip it and trust collapses on the first wrong action.',
     full_url: 'https://agentsfirst.dev/principles/contract-first/',
-    anti_patterns_defended: ['agents-without-rules'],
+    anti_patterns_defended: ['agents-without-rules', 'token-dump'],
   },
   'prep-gates': {
     slug: 'prep-gates',
@@ -166,6 +167,14 @@ export const ANTI_PATTERNS: Record<AntiPatternSlug, AntiPattern> = {
       'An agent interface exposing 200 tools because it wraps an entire platform. Agents choke on tool selection when there are too many options, and the tool definitions alone can consume 50%+ of a context window before any work happens. Ten well-chosen tools beat two hundred exhaustive ones.',
     opposes_principle: 'interface-first',
     glossary_url: 'https://agentsfirst.dev/glossary/#god-server',
+  },
+  'token-dump': {
+    slug: 'token-dump',
+    name: 'The Token Dump',
+    definition:
+      'Generating a 6,000-token AGENTS.md by asking an LLM to "describe this repo." A 2026 study across 4 agents and 438 tasks found auto-generated AGENTS.md files measurably reduced agent success rates compared to no file at all. The contract artifact is the constraints an agent can\'t infer from the code — sequencing rules, hidden invariants, recurring failure modes — not a project tour. ~50 lines, hand-written. Length is the failure mode, not absence.',
+    opposes_principle: 'contract-first',
+    glossary_url: 'https://agentsfirst.dev/glossary/#token-dump',
   },
 };
 
