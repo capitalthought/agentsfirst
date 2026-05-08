@@ -2,7 +2,7 @@
 
 Joshua Baer's "Agents First" thesis — a design framework for products built for both humans and AI agents. Live at https://agentsfirst.dev. Repo deployed via GitHub Pages on `main`, custom domain via Cloudflare (joshshop zone, proxied, Universal SSL).
 
-The canonical source for the thesis lives at `~/icloud/Documents/agents-first.md` (v0.6, May 2026). `index.md` here is the published Jekyll-rendered copy.
+The canonical source for the thesis is the published website at <https://agentsfirst.dev> (rendered from `index.md` in this repo). The old iCloud doc at `~/icloud/Documents/agents-first.md` is now a stub pointer — don't edit there, edit `index.md` here and push. Pages auto-deploys on push to `main`. (Inverted 2026-05-07 to eliminate dual-edit drift.)
 
 ## Architecture
 
