@@ -35,6 +35,8 @@ Most companies build a web UI, maybe expose a REST API, then — if a customer a
 
 This is protocol-agnostic. The agent interface might be an MCP server, a CLI, a typed SDK, or a set of function definitions. The principle is the same: design for the computer consumer first.
 
+The agent economy isn't theoretical. AWS shipped [Bedrock AgentCore Payments](https://aws.amazon.com/blogs/machine-learning/agents-that-transact-introducing-amazon-bedrock-agentcore-payments-built-with-coinbase-and-stripe/) on 2026-05-07, built with Coinbase and Stripe — agents now discover, evaluate, and pay for APIs, MCP servers, and content within a single execution loop. Early protocols (x402, ACP, MPP, AP2) are pioneering fractional-cent pricing and real-time billing. When AWS ships transactional infrastructure for the agent layer, you've moved past "is this real?" and into "are you in their tool list?".
+
 ---
 
 ## The strategic case
