@@ -1,6 +1,6 @@
 {
   "name": "@capitalthought/create-agents-first",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Scaffold an Agents-First project — MCP server + AGENTS.md + prep gate + typed state. See https://agentsfirst.dev",
   "license": "MIT",
   "author": "Joshua Baer <josh@capitalfactory.com>",

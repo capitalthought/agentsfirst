@@ -14,7 +14,7 @@ A design framework for products built for both humans and AI agents.
 
 | Path | What's there |
 |---|---|
-| `index.md` | The published thesis (v0.5, April 2026) — rendered by GitHub Pages via Jekyll Cayman theme |
+| `index.md` | The published thesis (v0.7, May 2026) — rendered by GitHub Pages via Jekyll Cayman theme |
 | `og-image.png` | 1200×630 OG / Twitter card |
 | `_config.yml` | Jekyll config — site title, description, plugins, social links |
 | `_includes/head-custom.html` | Extra `<head>` content the Cayman theme can't generate (JSON-LD, author meta) |

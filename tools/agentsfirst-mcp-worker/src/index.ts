@@ -102,7 +102,7 @@ const INFO_HTML = `<!doctype html>
 <ul>
   <li><code>agentsfirst_prep</code> — Prep Gate. Call first. Verifies rubric loaded + canonical API reachable.</li>
   <li><code>score_website</code> — HTTP-probes a public URL across 5 dimensions, returns 0–100 score + level + top moves.</li>
-  <li><code>get_principle</code> — Returns the canonical definition of one of the 8 principles.</li>
+  <li><code>get_principle</code> — Returns the canonical definition of one of the 9 principles.</li>
   <li><code>get_anti_pattern</code> — Returns the canonical definition of one of the 8 anti-patterns.</li>
   <li><code>score_codebase</code> — Deferred-to-local. The Worker can't read your filesystem; use <code>npx -y @capitalthought/agentsfirst-mcp</code> for codebase scoring.</li>
 </ul>

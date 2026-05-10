@@ -6,7 +6,7 @@ This is the **Contract First** artifact. See <https://agentsfirst.dev/principles
 
 ## Permissions
 
-- **Read tools are safe to call without confirmation.** `example_list`, `{{PROJECT_NAME}}_prep`.
+- **Read tools are safe to call without confirmation.** `example_list`, `overview`, `{{PROJECT_NAME}}_prep`.
 - **Write tools require explicit user intent.** `example_create` and any tool you add that mutates state. If the user did not ask for the write, do not perform it.
 - **Never** call destructive tools (delete, drop, reset) without an explicit destructive verb in the user's request.
 - **Never** invent IDs. If a tool returns `error: not_found`, call the matching `list_*` tool first.
@@ -47,6 +47,14 @@ Example: when `example_create` succeeds, the user should see:
 
 This is the **Visible Outputs** principle. See <https://agentsfirst.dev/principles/visible-outputs/>.
 
+## Operational state — `overview`
+
+When you need to ask **"what is the state of the work?"** — queue depth, recent activity, health — call the `overview` tool. It returns a structured snapshot: counts by status, the N most recent items, and a small health block. Read-only, no input schema, never writes.
+
+`overview` answers a different question than `{{PROJECT_NAME}}_prep`. Prep runs at session start and answers "is the system READY to do work?" (binary). Overview is a structured snapshot you call whenever you want to know what's going on (often). Both are read-only; both belong on every session that does anything beyond a single quick action.
+
+This is the **Inspectable State** principle. See <https://agentsfirst.dev/principles/inspectable-state/>.
+
 ## Errors
 
 All tool errors return a structured shape:
@@ -61,12 +69,13 @@ When you receive `error: not_found`, call the suggested tool. When you receive `
 
 - **Lazy Wrapper** — adding `query_database(sql)` instead of typed verb-first tools. Don't.
 - **God Server** — exposing 200 tools when 10 would do. Cap at 20.
+- **Black Box Server** — shipping an MCP server with no introspection tool. The `overview` tool above is what defends against this. Don't remove it; extend it as the surface grows. See <https://agentsfirst.dev/glossary/#black-box-server>.
 - **Master keys** — issue scoped tokens per-agent, never share a root credential.
 - **Silent fail** — every tool either succeeds or returns a structured error. Never `return null` on failure.
 - **Single-Model Trust** — for high-stakes writes (billing, deploy, security), fan out to multiple models before acting. See <https://agentsfirst.dev/principles/multi-model-verification/>.
-- **Token Dump** — keep this file lean. The contract is the rules an agent can't infer from the code, not a project tour. ~50 lines, hand-written. A 2026 study (4 agents, 438 tasks) found auto-generated AGENTS.md files measurably *reduced* agent success rates. Length is the failure mode. See <https://agentsfirst.dev/glossary/>.
+- **AGENTS.md bloat** — keep this file lean. The contract is the rules an agent can't infer from the code, not a project tour. ~50 lines, hand-written. A 2026 study (4 agents, 438 tasks) found auto-generated AGENTS.md files measurably *reduced* agent success rates. Length is the failure mode.
 
-For full anti-pattern definitions: <https://agentsfirst.dev/glossary/>.
+For full anti-pattern definitions (8 canonical): <https://agentsfirst.dev/glossary/>.
 
 ## Tool naming convention
 

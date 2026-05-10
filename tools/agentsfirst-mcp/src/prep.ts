@@ -33,14 +33,14 @@ const CANONICAL_API = 'https://agentsfirst.dev/api/principles.json';
 export async function runPrep(): Promise<PrepResult> {
   const checks: CheckResult[] = [];
 
-  // 1. Rubric loaded — 8 principles, 8 anti-patterns
+  // 1. Rubric loaded — 9 principles, 8 anti-patterns
   checks.push({
     name: 'rubric:principles',
-    ok: PRINCIPLE_SLUGS.length === 8,
+    ok: PRINCIPLE_SLUGS.length === 9,
     message:
-      PRINCIPLE_SLUGS.length === 8
-        ? `8 principles loaded`
-        : `expected 8 principles, found ${PRINCIPLE_SLUGS.length}`,
+      PRINCIPLE_SLUGS.length === 9
+        ? `9 principles loaded`
+        : `expected 9 principles, found ${PRINCIPLE_SLUGS.length}`,
   });
   checks.push({
     name: 'rubric:anti-patterns',

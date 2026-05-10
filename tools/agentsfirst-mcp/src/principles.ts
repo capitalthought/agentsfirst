@@ -1,10 +1,10 @@
-// Canonical Agents First definitions — the 8 principles + 8 anti-patterns.
+// Canonical Agents First definitions — the 9 principles + 8 anti-patterns.
 //
 // Source of truth: https://agentsfirst.dev/principles/ and https://agentsfirst.dev/glossary/
 // These constants power get_principle and get_anti_pattern. Summaries are tight (~60 words)
 // — for the full argument, link out to the canonical URLs.
 
-export const RUBRIC_VERSION = '0.6';
+export const RUBRIC_VERSION = '0.7';
 export const PRINCIPLES_URL = 'https://agentsfirst.dev/principles/';
 export const GLOSSARY_URL = 'https://agentsfirst.dev/glossary/';
 
@@ -16,7 +16,8 @@ export type PrincipleSlug =
   | 'visible-outputs'
   | 'multi-model-verification'
   | 'perspective-dispatch'
-  | 'autonomous-recovery';
+  | 'autonomous-recovery'
+  | 'inspectable-state';
 
 export type AntiPatternSlug =
   | 'lazy-wrapper'
@@ -26,7 +27,7 @@ export type AntiPatternSlug =
   | 'slow-chatbot'
   | 'ship-and-forget'
   | 'god-server'
-  | 'token-dump';
+  | 'black-box-server';
 
 export interface Principle {
   slug: PrincipleSlug;
@@ -59,7 +60,7 @@ export const PRINCIPLES: Record<PrincipleSlug, Principle> = {
     summary:
       'Write the usage rules — permissions, sequences, identifiers, formatting — in AGENTS.md before implementation. Tool definitions tell the agent what is possible; the contract tells it what is allowed. Without a contract agents hallucinate IDs, violate constraints, and create duplicates. Cost: one markdown file. Skip it and trust collapses on the first wrong action.',
     full_url: 'https://agentsfirst.dev/principles/contract-first/',
-    anti_patterns_defended: ['agents-without-rules', 'token-dump'],
+    anti_patterns_defended: ['agents-without-rules'],
   },
   'prep-gates': {
     slug: 'prep-gates',
@@ -108,6 +109,14 @@ export const PRINCIPLES: Record<PrincipleSlug, Principle> = {
       'Retry transient errors with exponential backoff and a budget; do not retry permanent ones. Make every operation idempotent. Do not alert on the first failure — alert on a sustained pattern. When self-healing genuinely fails, escalate with what happened, what was tried, and a direct link to take manual action. Failing well is the discipline.',
     full_url: 'https://agentsfirst.dev/principles/autonomous-recovery/',
     anti_patterns_defended: ['slow-chatbot'],
+  },
+  'inspectable-state': {
+    slug: 'inspectable-state',
+    name: 'Inspectable State',
+    summary:
+      'Every agent server exposes its own operational state — queue depth, throughput, recent activity, trends, health — via a typed agent tool, not just a human dashboard. The complement to Visible Outputs: results to humans where they already are, system state to agents where they already are. Where Prep Gates answers "is the system READY?", Inspectable State answers "what is the STATE of the work?". Ship one tool (overview/status), no input schema, read-only, returns rolled-up rates plus recent tails.',
+    full_url: 'https://agentsfirst.dev/principles/inspectable-state/',
+    anti_patterns_defended: ['black-box-server', 'ship-and-forget'],
   },
 };
 
@@ -168,13 +177,13 @@ export const ANTI_PATTERNS: Record<AntiPatternSlug, AntiPattern> = {
     opposes_principle: 'interface-first',
     glossary_url: 'https://agentsfirst.dev/glossary/#god-server',
   },
-  'token-dump': {
-    slug: 'token-dump',
-    name: 'The Token Dump',
+  'black-box-server': {
+    slug: 'black-box-server',
+    name: 'The Black Box Server',
     definition:
-      'Generating a 6,000-token AGENTS.md by asking an LLM to "describe this repo." A 2026 study across 4 agents and 438 tasks found auto-generated AGENTS.md files measurably reduced agent success rates compared to no file at all. The contract artifact is the constraints an agent can\'t infer from the code — sequencing rules, hidden invariants, recurring failure modes — not a project tour. ~50 lines, hand-written. Length is the failure mode, not absence.',
-    opposes_principle: 'contract-first',
-    glossary_url: 'https://agentsfirst.dev/glossary/#token-dump',
+      'An agent server with no introspection tool. The only way to ask "what is the state of the work?" is to shell into the database or scrape application logs. The dashboard you didn\'t build will get built — either by you (and it\'ll lag the truth) or by every operator agent rolling its own (and they\'ll diverge). Inverse of Inspectable State.',
+    opposes_principle: 'inspectable-state',
+    glossary_url: 'https://agentsfirst.dev/glossary/#black-box-server',
   },
 };
 
@@ -202,4 +211,6 @@ export const SMALLEST_EXPERIMENT: Record<PrincipleSlug, string> = {
     'Add three reviewer personas (security, UX, new-user) with constrained system prompts. Run them in parallel against your next design doc; aggregate by severity.',
   'autonomous-recovery':
     'Wrap every external call in a withRetry() helper with exponential backoff (1s, 2s, 4s, 8s, jitter) and a 5-attempt budget. On exhaustion, escalate with what/tried/manual-action.',
+  'inspectable-state':
+    'Ship one read-only `overview` MCP tool. No input schema. Returns {generated_at, inventory, recent_activity, health}. Counts + recent tails in one shape. The first time you ask "what is the system doing?" you\'ll wish you had it.',
 };

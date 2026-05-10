@@ -96,7 +96,10 @@ export function scoreCodebase(signals: CodebaseSignals): CodebaseScore {
   principles['perspective-dispatch'] = scorePerspectiveDispatch(signals);
   // Autonomous Recovery (10)
   principles['autonomous-recovery'] = scoreRecovery(signals);
-  // Discoverability bonus (15)
+  // Inspectable State (10) — added rubric v0.7
+  principles['inspectable-state'] = scoreInspectableState(signals);
+  // Discoverability bonus (5) — was 15 in v0.6, reduced to 5 in v0.7 to make
+  // room for Inspectable State while keeping the 100pt total.
   principles['discoverability'] = scoreDiscoverability(signals);
 
   const score = Object.values(principles).reduce((a, b) => a + b.pts, 0);
@@ -375,7 +378,10 @@ function scoreRecovery(signals: CodebaseSignals): PrincipleScore {
 }
 
 function scoreDiscoverability(signals: CodebaseSignals): PrincipleScore {
-  const max = 15;
+  // Reduced from 15 → 5 in rubric v0.7 to make room for Inspectable State.
+  // Only the most load-bearing signal (publishable npm package) is scored
+  // here now; the README + homepage signals get surfaced as notes only.
+  const max = 5;
   let pts = 0;
   const notes: string[] = [];
   const d = signals.signals.discoverability.indicators;
@@ -386,20 +392,48 @@ function scoreDiscoverability(signals: CodebaseSignals): PrincipleScore {
     notes.push('Not a publishable npm package (private or no name)');
   }
   if (d.readme_mentions_install && d.readme_mentions_mcp) {
-    pts += 5;
-    notes.push('README documents agent install (MCP + install command)');
+    notes.push('README documents agent install (MCP + install command) — informational');
   } else if (d.readme_mentions_install) {
-    pts += 2;
-    notes.push('README documents install but no MCP framing');
+    notes.push('README documents install but no MCP framing — informational');
   } else {
     notes.push('README missing agent-install instructions');
   }
-  // Public registry signal — proxy: homepage + repository fields populated
   if (d.has_homepage && d.has_repository_field) {
-    pts += 5;
-    notes.push('Homepage + repository fields populated (registry-discoverable)');
+    notes.push('Homepage + repository fields populated — informational');
   } else {
     notes.push('Missing homepage and/or repository field');
+  }
+  return { pts: Math.min(pts, max), max, status: statusFor(pts, max), notes };
+}
+
+function scoreInspectableState(signals: CodebaseSignals): PrincipleScore {
+  // Inspectable State (Principle 9, added rubric v0.7).
+  // The complement to Visible Outputs: results to humans where they already
+  // are, system state to agents where they already are. Detects the presence
+  // of an introspection tool (overview/status/state/snapshot/health/inspect)
+  // exposed via the MCP surface. Not applicable to projects without an MCP
+  // server (those should ship the agent interface first; Inspectable State
+  // composes on top).
+  const max = 10;
+  let pts = 0;
+  const notes: string[] = [];
+  const mcp = signals.signals.mcp_server;
+  if (!mcp.detected) {
+    notes.push(
+      'No MCP server detected — Inspectable State applies to MCP/agent surfaces; ship Interface First (Principle 1) first.',
+    );
+    return { pts: 0, max, status: statusFor(0, max), notes };
+  }
+  if (mcp.indicators.has_overview_tool) {
+    pts += 10;
+    const name = mcp.indicators.overview_tool_name ?? 'overview';
+    notes.push(
+      `Overview/status tool detected (\`${name}\`). Agents can read system state without scraping the database — defends against Black Box Server.`,
+    );
+  } else {
+    notes.push(
+      'No overview/status/state/snapshot tool registered. Operator agents have nowhere to read queue depth, throughput, recent activity, or health — see [The Black Box Server](https://agentsfirst.dev/glossary/#black-box-server).',
+    );
   }
   return { pts: Math.min(pts, max), max, status: statusFor(pts, max), notes };
 }
@@ -457,6 +491,18 @@ function flagAntiPatterns(signals: CodebaseSignals): AntiPatternFlag[] {
       slug: 'ship-and-forget',
       name: 'Ship and Forget',
       evidence: `Agent files untouched for 180+ days: ${oldAgentFiles.map(([f, a]) => `${f} (${a.days_ago}d)`).join(', ')}`,
+    });
+  }
+
+  // Black Box Server: MCP server exposed but no overview/status tool to read
+  // operational state. Added rubric v0.7 (Principle 9 / anti-pattern 8).
+  const mcp = signals.signals.mcp_server;
+  if (mcp.detected && mcp.indicators.has_overview_tool === false) {
+    flags.push({
+      slug: 'black-box-server',
+      name: 'The Black Box Server',
+      evidence:
+        'MCP server detected but no overview/status/state tool registered. Operator agents cannot inspect system state without scraping the database or grepping logs.',
     });
   }
 

@@ -50,6 +50,13 @@ export interface McpServerSignals {
     /** Per SEP-2567 (merged 2026-05-07): MCP servers should not require session state.
      *  Counts grep hits for the deprecated session APIs in source files. */
     uses_session_state?: number;
+    /** Inspectable State (Principle 9, rubric v0.7) — does the server expose
+     *  an introspection tool? Detected by a registerTool call naming any of
+     *  the canonical overview-tool slugs (see overviewToolPattern below)
+     *  OR an exported gatherOverview / gatherSnapshot / runOverview
+     *  function. */
+    has_overview_tool?: boolean;
+    overview_tool_name?: string;
   };
 }
 
@@ -362,6 +369,29 @@ async function probeMcpServer(root: string): Promise<McpServerSignals> {
     out.indicators.verb_first_ratio = verbFirst.length ? verbCount / verbFirst.length : 0;
   }
   out.indicators.uses_zod_for_params = grepCount(root, /from ['"]zod['"]/) > 0;
+  // Inspectable State (Principle 9, rubric v0.7): does the server expose an
+  // introspection tool? Look for a registerTool call naming any of the
+  // canonical overview-tool slugs (overviewToolPattern below) first; fall
+  // back to an exported gather* / runOverview function name (covers servers
+  // that wire the tool in a different file from the gather logic).
+  const overviewToolPattern =
+    /registerTool\(['"](overview|status|state|snapshot|health|inspect)['"]/;
+  const overviewToolMatches = grepRegex(root, overviewToolPattern);
+  if (overviewToolMatches.length) {
+    out.indicators.has_overview_tool = true;
+    out.indicators.overview_tool_name = overviewToolMatches[0];
+  } else {
+    const overviewFn = grepCount(
+      root,
+      /\bexport\s+(async\s+)?function\s+(gatherOverview|gatherSnapshot|runOverview|getOverview|gatherStatus)\b/,
+    );
+    if (overviewFn > 0) {
+      out.indicators.has_overview_tool = true;
+      out.indicators.overview_tool_name = '<function-only — wire as MCP tool>';
+    } else {
+      out.indicators.has_overview_tool = false;
+    }
+  }
   // SEP-2567 (sessionless MCP): count references to deprecated session APIs.
   //
   // Strict patterns — designed to match real *usage*, not strings inside

@@ -16,6 +16,7 @@ import { z } from 'zod';
 import { runPrep } from './prep.js';
 import { addTask, listTasks, STATE_SCHEMA_VERSION } from './state.js';
 import { withRetry, escalate } from './recovery.js';
+import { gatherOverview } from './overview.js';
 
 const server = new McpServer({
   name: '{{PROJECT_NAME}}',
@@ -132,6 +133,39 @@ server.registerTool(
         isError: true,
       };
     }
+  },
+);
+
+// ---------------------------------------------------------------------------
+// overview — Inspectable State (Principle 9). Read-only operational snapshot.
+//
+// Operator agents call this to ask "what is the state of the work?". Returns
+// counts by status + recent tails + a small health block. No input schema —
+// the answer has no parameters. Never writes. See AGENTS.md for the rule
+// that distinguishes overview (system state for agents) from {{PROJECT_NAME}}_prep
+// (system readiness check at session start).
+//
+// Defends against the Black Box Server anti-pattern.
+// ---------------------------------------------------------------------------
+server.registerTool(
+  'overview',
+  {
+    title: 'Operational snapshot — what is the state of the work?',
+    description:
+      'Read-only structured snapshot of {{PROJECT_NAME}} state — inventory by status, recent activity, health. Call when you need to know "what is happening?". Never writes. See https://agentsfirst.dev/principles/inspectable-state/',
+    inputSchema: {},
+  },
+  async () => {
+    const snap = gatherOverview();
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(snap, null, 2),
+        },
+      ],
+      isError: !snap.health.state_readable,
+    };
   },
 );
 

@@ -148,9 +148,10 @@ export function createServer(): McpServer {
             'multi-model-verification',
             'perspective-dispatch',
             'autonomous-recovery',
+            'inspectable-state',
           ])
           .describe(
-            'Principle slug. One of: interface-first, contract-first, prep-gates, typed-state, visible-outputs, multi-model-verification, perspective-dispatch, autonomous-recovery.',
+            'Principle slug. One of: interface-first, contract-first, prep-gates, typed-state, visible-outputs, multi-model-verification, perspective-dispatch, autonomous-recovery, inspectable-state.',
           ),
       },
     },
@@ -185,10 +186,10 @@ export function createServer(): McpServer {
             'slow-chatbot',
             'ship-and-forget',
             'god-server',
-            'token-dump',
+            'black-box-server',
           ])
           .describe(
-            'Anti-pattern slug. One of: lazy-wrapper, invisible-product, agents-without-rules, single-model-trust, slow-chatbot, ship-and-forget, god-server, token-dump.',
+            'Anti-pattern slug. One of: lazy-wrapper, invisible-product, agents-without-rules, single-model-trust, slow-chatbot, ship-and-forget, god-server, black-box-server.',
           ),
       },
     },
