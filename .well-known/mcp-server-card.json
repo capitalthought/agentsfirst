@@ -1,7 +1,7 @@
 {
   "$schema": "https://agentsfirst.dev/schemas/mcp-server-card.v0.json",
   "name": "Agents First",
-  "version": "0.6",
+  "version": "0.7",
   "description": "The Agents First thesis website — a design framework for products built for both humans and AI agents. This card declares the agent-callable surfaces an agent will find here.",
   "homepage": "https://agentsfirst.dev",
   "documentation": "https://agentsfirst.dev/principles/",

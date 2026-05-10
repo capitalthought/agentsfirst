@@ -1,9 +1,9 @@
 {
   "$schema": "https://agentsfirst.dev/schemas/principles.v0.json",
   "framework": "Agents First",
-  "version": "0.6",
+  "version": "0.7",
   "framework_url": "https://agentsfirst.dev",
-  "updated": "2026-05-05",
+  "updated": "2026-05-10",
   "principles": [
     {
       "slug": "interface-first",
@@ -76,6 +76,15 @@
       "url": "https://agentsfirst.dev/principles/autonomous-recovery/",
       "category": "applied",
       "anti_patterns_defended": ["slow-chatbot"]
+    },
+    {
+      "slug": "inspectable-state",
+      "number": 9,
+      "name": "Inspectable State",
+      "summary": "Every agent server exposes its own operational state — queue depth, throughput, recent activity, trends, health — via a typed agent tool, not just a human dashboard. The complement to Visible Outputs: results to humans where they already are, system state to agents where they already are. Where Prep Gates answers 'is the system READY?', Inspectable State answers 'what is the STATE of the work?'.",
+      "url": "https://agentsfirst.dev/principles/inspectable-state/",
+      "category": "new",
+      "anti_patterns_defended": ["black-box-server", "ship-and-forget"]
     }
   ],
   "adoption_levels": [

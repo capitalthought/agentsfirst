@@ -1,10 +1,10 @@
 {
   "$schema": "https://agentsfirst.dev/schemas/glossary.v0.json",
   "framework": "Agents First",
-  "version": "0.6",
+  "version": "0.7",
   "framework_url": "https://agentsfirst.dev",
   "glossary_url": "https://agentsfirst.dev/glossary/",
-  "updated": "2026-05-05",
+  "updated": "2026-05-10",
   "anti_patterns": [
     {
       "slug": "lazy-wrapper",
@@ -54,6 +54,13 @@
       "definition": "An agent interface that exposes 200 tools because it wraps an entire platform. Agents choke on tool selection when there are too many options. Ten well-chosen tools beat two hundred exhaustive ones.",
       "url": "https://agentsfirst.dev/glossary/#god-server",
       "opposes_principle": "interface-first"
+    },
+    {
+      "slug": "black-box-server",
+      "name": "The Black Box Server",
+      "definition": "An agent server with no introspection tool. The only way to ask 'what is the state of the work?' is to shell into the database or scrape application logs. Operator agents go blind, and the dashboard you didn't build gets built by every consumer rolling its own.",
+      "url": "https://agentsfirst.dev/glossary/#black-box-server",
+      "opposes_principle": "inspectable-state"
     }
   ],
   "principles": [
@@ -112,6 +119,13 @@
       "definition": "The system retries with backoff before alerting. Humans only get pulled in when self-healing has already failed — and the alert includes what happened, what was tried, and a direct link to take manual action.",
       "url": "https://agentsfirst.dev/glossary/#autonomous-recovery",
       "deep_dive": "https://agentsfirst.dev/principles/autonomous-recovery/"
+    },
+    {
+      "slug": "inspectable-state",
+      "name": "Inspectable State",
+      "definition": "Every agent server exposes its own operational state — queue depth, throughput, recent activity, trends, health — via a typed agent tool, not just a human dashboard. The complement to Visible Outputs. Where Prep Gates answers 'is the system READY?', Inspectable State answers 'what is the STATE of the work?'.",
+      "url": "https://agentsfirst.dev/glossary/#inspectable-state",
+      "deep_dive": "https://agentsfirst.dev/principles/inspectable-state/"
     }
   ],
   "concepts": [

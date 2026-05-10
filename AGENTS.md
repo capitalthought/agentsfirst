@@ -12,7 +12,7 @@ Most companies build a web UI, expose a REST API, and bolt on agent support as a
 
 Protocol-agnostic. The interface might be an MCP server, a CLI, a typed SDK, or function definitions.
 
-## The 8 implementation principles
+## The 9 implementation principles
 
 | # | Slug | Summary |
 |---|---|---|
@@ -24,12 +24,13 @@ Protocol-agnostic. The interface might be an MCP server, a CLI, a typed SDK, or 
 | 6 | `multi-model-verification` | High-stakes decisions fan out to multiple models. Trust agreement. A finding three models flag is almost certainly real. |
 | 7 | `perspective-dispatch` | Complex reviews dispatch multiple constrained perspectives (security, UX, performance) against the same artifact. |
 | 8 | `autonomous-recovery` | Retry with backoff before paging a human. When self-healing fails, escalate with what happened, what was tried, and a direct link to take manual action. |
+| 9 | `inspectable-state` | Every agent server exposes its own operational state — queue depth, throughput, recent activity, trends, health — via a typed agent tool, not just a human dashboard. The complement to Visible Outputs. |
 
 Deep dives: <https://agentsfirst.dev/principles/>
 
 JSON catalog (machine-readable): <https://agentsfirst.dev/api/principles.json>
 
-## The 7 anti-patterns
+## The 8 anti-patterns
 
 | Slug | Definition |
 |---|---|
@@ -40,6 +41,7 @@ JSON catalog (machine-readable): <https://agentsfirst.dev/api/principles.json>
 | `slow-chatbot` | Every agent action requires explicit human approval. That's a chatbot with extra steps, not an agent. |
 | `ship-and-forget` | Agent integration shipped for the press release, never maintained. Worse than no integration. |
 | `god-server` | 200 tools because the API surface was wrapped exhaustively. Agents choke on tool selection. 10 sharp tools beat 200 exhaustive ones. |
+| `black-box-server` | Agent server with no introspection tool. Operators must shell into the database or scrape application logs to ask "what is the state of the work?". Inverse of Inspectable State. |
 
 Glossary (anchored definitions): <https://agentsfirst.dev/glossary/>
 
@@ -71,7 +73,7 @@ Most companies are at Level 0 or 1. The opportunity is Level 3.
 
 ## Stable JSON endpoints
 
-- `https://agentsfirst.dev/api/principles.json` — all 8 principles with slug, name, summary, full URL, anti-patterns defended.
+- `https://agentsfirst.dev/api/principles.json` — all 9 principles with slug, name, summary, full URL, anti-patterns defended.
 - `https://agentsfirst.dev/api/glossary.json` — all glossary terms with slug, name, definition, related principle.
 - `https://agentsfirst.dev/.well-known/mcp-server-card.json` — declares the available MCP tools and how to install them.
 - `https://agentsfirst.dev/llms.txt` — llms.txt-format index of all reading-and-tool surfaces.

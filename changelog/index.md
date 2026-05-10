@@ -11,6 +11,23 @@ Agents First is versioned like a piece of software. Each release notes substanti
 
 ---
 
+## v0.7 — May 2026
+
+The introspection pass.
+
+### Added
+
+- **Principle 9 — [Inspectable State](/principles/inspectable-state/).** Every agent server should expose its own operational state — queue depth, throughput, recent activity, trends, health — via a typed agent tool, not just a human dashboard. The complement to Visible Outputs (which surfaces *results* to humans where they already are): Inspectable State surfaces *system state* to agents where they already are. Where Prep Gates answers "is the system READY to do work?", Inspectable State answers "what is the STATE of the work?". Pattern: ship one `overview` tool alongside the action verbs — same MCP server, no input schema, returns counts plus tail plus health. Driven by real production experience: every operator agent that lacked one ended up reaching for raw SQL or scraping logs to answer routine introspection questions, both anti-patterns.
+- **Anti-pattern — [The Black Box Server](/glossary/#black-box-server).** The inverse of Inspectable State. Agent server with no introspection tool; the only way to ask "what's the state of the work?" is to break the abstraction.
+- **Per-principle deep dive at `/principles/inspectable-state/`** — lead, why it matters, how to apply it (7 specific patterns), what it prevents, smallest experiment, related principles. Same template as the other eight.
+- **JSON catalogs bumped to v0.7** — `/api/principles.json` now contains 9 entries; `/api/glossary.json` adds the `black-box-server` anti-pattern and the `inspectable-state` principle definition.
+
+### Status
+
+Still pre-1.0. The framework continues to settle. Prior counts (8 principles, 7 anti-patterns) updated everywhere they appeared in the canonical surfaces; downstream consumers (portfolio scoring tool, score reports, scaffold) will be updated separately and may briefly trail.
+
+---
+
 ## v0.6 — May 2026
 
 Voice pass + the long tail.
@@ -80,4 +97,4 @@ The directional roadmap, subject to change based on feedback:
 
 ---
 
-*Part of [Agents First](/) — see [the canonical thesis](/) or [the eight principles](/principles/).*
+*Part of [Agents First](/) — see [the canonical thesis](/) or [the nine principles](/principles/).*

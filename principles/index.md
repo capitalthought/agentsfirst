@@ -1,15 +1,15 @@
 ---
-title: "The 8 Implementation Principles"
-description: "Eight implementation principles for building Agents-First products — what to design first, what to write down, what to verify, and what to make visible."
+title: "The 9 Implementation Principles"
+description: "Nine implementation principles for building Agents-First products — what to design first, what to write down, what to verify, what to make visible, and what to make inspectable."
 image: /og-image.png
 author: Joshua Baer
 ---
 
-# The Eight Implementation Principles
+# The Nine Implementation Principles
 
-[Agents First](/) tells you what to prioritize: design for the agent before the human. These eight principles tell you how.
+[Agents First](/) tells you what to prioritize: design for the agent before the human. These nine principles tell you how.
 
-Some are genuinely new. Interface First and Contract First have no pre-agent analog — designing a tool for an LLM consumer and writing rules an LLM will actually follow are both new problems. The other six are established practices — health checks, typed schemas, observability, retries, code review, distributed consensus — that become critical when an agent is your primary operator and can't improvise around your gaps.
+Some are genuinely new. Interface First, Contract First, and Inspectable State have no clean pre-agent analog — designing a tool for an LLM consumer, writing rules an LLM will actually follow, and exposing system state to operator agents instead of human dashboards are all new problems. The other six are established practices — health checks, typed schemas, observability, retries, code review, distributed consensus — that become critical when an agent is your primary operator and can't improvise around your gaps.
 
 The novelty isn't in the individual practices. It's in recognizing which ones matter most when the operator on the other end of your API doesn't know your product, hasn't read your docs, and won't ask follow-up questions before acting.
 
@@ -62,6 +62,12 @@ Complex reviews dispatch multiple constrained perspectives — security, UX, acc
 Retry with backoff before alerting. Humans only get involved when self-healing has already failed — and when they do, the alert includes what happened, what was tried, and a direct link to take manual action. An agent that pages a human for a transient API timeout is a bad agent. An agent that retries silently for two hours, then sends "data sync failed 3x, last error: upstream 503, click here to retry manually," is a good one. Straight from the SRE playbook. Most agent systems skip it entirely and either fail silently or page on every blip.
 
 **[Read more →](/principles/autonomous-recovery/)**
+
+## 9. Inspectable State
+
+Every agent server exposes its own operational state — queue depth, throughput, recent activity, trends, health — via a typed agent tool, not just via a human dashboard. The complement to Visible Outputs: that surfaces *results* to humans where they already are; this surfaces *system state* to agents where they already are. Where Prep Gates answers "is the system READY to do work?", Inspectable State answers "what is the STATE of the work?". Without it, an operator agent that's supposed to triage your queue, audit your sends, or escalate stuck records has nowhere to look short of raw SQL or log scraping. The pattern: ship one `overview` tool alongside the action verbs — same MCP server, no input schema, returns counts plus tail plus health.
+
+**[Read more →](/principles/inspectable-state/)**
 
 ---
 

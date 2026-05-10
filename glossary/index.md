@@ -7,7 +7,7 @@ author: Joshua Baer
 
 # Agents First Glossary
 
-Definitions for the vocabulary in the [Agents First thesis](/) — the anti-patterns to avoid, the eight implementation principles, the protocols and metrics that show up in real production systems. Every term below is anchored for stable linking. Definitions are tight on purpose. For the full argument and the case studies behind each term, read [the canonical thesis](/) or the [per-principle deep dives](/principles/).
+Definitions for the vocabulary in the [Agents First thesis](/) — the anti-patterns to avoid, the nine implementation principles, the protocols and metrics that show up in real production systems. Every term below is anchored for stable linking. Definitions are tight on purpose. For the full argument and the case studies behind each term, read [the canonical thesis](/) or the [per-principle deep dives](/principles/).
 
 **Jump to:** [Anti-Patterns](#anti-patterns) · [Implementation Principles](#implementation-principles) · [Concepts and Metrics](#concepts-and-metrics)
 
@@ -15,7 +15,7 @@ Definitions for the vocabulary in the [Agents First thesis](/) — the anti-patt
 
 ## Anti-patterns
 
-The seven failure modes that make agent integrations worse than not having one. Knowing what's broken is more useful than knowing what's ideal.
+The eight failure modes that make agent integrations worse than not having one. Knowing what's broken is more useful than knowing what's ideal.
 
 ### The Lazy Wrapper {#lazy-wrapper}
 
@@ -45,11 +45,15 @@ Launch an agent integration for the press release, then never maintain it. Agent
 
 An agent interface exposing 200 tools because it wraps an entire platform. Agents choke on tool selection when there are too many options, and the tool definitions alone can consume 50%+ of a context window before any work happens. Ten well-chosen tools beat two hundred exhaustive ones. Resolved by [Interface First](/principles/interface-first/) discipline plus [Progressive Discovery](#progressive-discovery) or [Code Mode](#code-mode) for large API surfaces.
 
+### The Black Box Server {#black-box-server}
+
+An agent server with no introspection tool. The only way to ask "what is the state of the work?" is to shell into the database or scrape application logs. Operator agents go blind, every routine "is this still working?" question becomes a SQL exercise, and the dashboard you didn't build gets built — either by you (and it'll lag the truth) or by every consumer agent rolling its own (and they'll diverge). Solved by [Inspectable State](/principles/inspectable-state/).
+
 ---
 
 ## Implementation principles
 
-The eight principles that turn the Agents First thesis into a buildable system. Apply them in order. Each links to a deep dive.
+The nine principles that turn the Agents First thesis into a buildable system. Apply them in order. Each links to a deep dive.
 
 ### Interface First {#interface-first}
 
@@ -84,6 +88,10 @@ Complex reviews dispatch multiple constrained perspectives — security, UX, new
 ### Autonomous Recovery {#autonomous-recovery}
 
 The system retries with backoff before paging a human. Don't alert on transient API timeouts. When self-healing fails, escalate with what happened, what was tried, and a direct link to take manual action. [Read more →](/principles/autonomous-recovery/)
+
+### Inspectable State {#inspectable-state}
+
+Every agent server exposes its own operational state — queue depth, throughput, recent activity, trends, health — via a typed agent tool, not just via a human dashboard. The complement to [Visible Outputs](#visible-outputs): that surfaces results to humans where they already are; this surfaces system state to agents where they already are. Where Prep Gates answers "is the system READY?", Inspectable State answers "what is the STATE of the work?". Pattern: one `overview` tool, no input schema, structured snapshot. [Read more →](/principles/inspectable-state/)
 
 ---
 
@@ -157,4 +165,4 @@ The minimum viable Agents First adoption: pick the single most-used operation in
 
 ---
 
-*Part of [Agents First](/) — see [the canonical thesis](/) or [the eight principles](/principles/).*
+*Part of [Agents First](/) — see [the canonical thesis](/) or [the nine principles](/principles/).*

@@ -4,15 +4,15 @@
 
 ## Read
 
-- [Canonical thesis](https://agentsfirst.dev/): the full ~4,000-word framework — strategic case, eight implementation principles, seven anti-patterns, security model, levels of adoption.
-- [The eight principles](https://agentsfirst.dev/principles/): index of deep-dive pages — Interface First, Contract First, Prep Gates, Typed State, Visible Outputs, Multi-Model Verification, Perspective Dispatch, Autonomous Recovery.
-- [Glossary](https://agentsfirst.dev/glossary/): 32 anchored definitions covering anti-patterns, principles, and the supporting vocabulary (MCP, Code Mode, AGENTS.md, Two Customers, Adoption Levels, metrics).
-- [Changelog](https://agentsfirst.dev/changelog/): version history. Current: v0.6 (May 2026).
+- [Canonical thesis](https://agentsfirst.dev/): the full ~4,000-word framework — strategic case, nine implementation principles, eight anti-patterns, security model, levels of adoption.
+- [The nine principles](https://agentsfirst.dev/principles/): index of deep-dive pages — Interface First, Contract First, Prep Gates, Typed State, Visible Outputs, Multi-Model Verification, Perspective Dispatch, Autonomous Recovery, Inspectable State.
+- [Glossary](https://agentsfirst.dev/glossary/): anchored definitions covering anti-patterns, principles, and the supporting vocabulary (MCP, Code Mode, AGENTS.md, Two Customers, Adoption Levels, metrics).
+- [Changelog](https://agentsfirst.dev/changelog/): version history. Current: v0.7 (May 2026).
 - [AGENTS.md](https://agentsfirst.dev/AGENTS.md): tight machine-readable summary of the framework, principles, anti-patterns, and the JSON catalogs.
 
 ## API (machine-readable)
 
-- [Principles JSON](https://agentsfirst.dev/api/principles.json): all eight principles with slug, name, one-line summary, full URL, anti-patterns defended.
+- [Principles JSON](https://agentsfirst.dev/api/principles.json): all nine principles with slug, name, one-line summary, full URL, anti-patterns defended.
 - [Glossary JSON](https://agentsfirst.dev/api/glossary.json): all glossary terms with slug, name, definition, related principle, glossary anchor URL.
 - [MCP Server Card](https://agentsfirst.dev/.well-known/mcp-server-card.json): declares the official Agents First tools and how to install them.
 
