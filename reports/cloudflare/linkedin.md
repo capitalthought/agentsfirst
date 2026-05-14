@@ -1,35 +1,33 @@
-# LinkedIn post — Agent Readiness Report: Cloudflare
+# LinkedIn — Cloudflare report
 
-Single post, ~340 words. More polished than the X thread; opens with the score, closes with a polite tag of the post's authors.
+~340 words. Polite tags at the end (verify before posting). Hashtags at the bottom. Full report URL in the body, not just the footer.
 
 ---
 
-**Agent Readiness Report: Cloudflare scored 40/100. Level 2 (Agent-Aware).**
+**Cloudflare scored 85/100 (Level 3 — Agents First) on the rubric they basically invented.**
 
-In April 2026, Cloudflare published the Agent Readiness Score post that became the reference point for "how few sites are actually addressable by AI agents." We pointed our scorer at Cloudflare first — you peer-review the company that wrote the rubric you built on top of.
+Three Cloudflare surfaces probed against the Agents First framework on 2026-05-14:
 
-While probing, we found a bug in our own rubric — it didn't credit the `Content-Signal` directive Cloudflare itself invented. We shipped v0.1.2 to fix it, re-ran the scorer, and Cloudflare still lands at 40/100 on its developer subdomain even after crediting their innovation.
+• **www.cloudflare.com**: 85/100 — Level 3 (Agents First)
+• **developers.cloudflare.com**: 35/100 — Level 2 (Agent-Aware)
+• **blog.cloudflare.com**: 15/100 — Level 1 (Agent as Afterthought)
 
-Across three surfaces:
-- developers.cloudflare.com — 40/100, Level 2 (the high water mark)
-- cloudflare.com — 25/100, Level 1
-- blog.cloudflare.com — 15/100, Level 1
+**What's working** — the marketing root ships the full agent-readability stack: a real /AGENTS.md, /agents.json (A2A registry), /llms.txt mapping 30+ products, a robots.txt that names 7 AI bots with affirmative `Allow: /` (opt-in posture, not blanket-deny), Content-Signal directives, markdown content negotiation, an OpenAPI surface. Discoverability scores a perfect 25/25. Bot-access-control 15/15. Content-accessibility 20/20. This is what a Level 3 marketing root looks like when the team that wrote the [Agent Readiness Score post](https://blog.cloudflare.com/agent-readiness/) practices what they ship.
 
-The story is the variance, not the headline. A blog hosting Cloudflare's own agent-readiness post scores Level 1 against the rubric the post helped popularize.
+**What's missing** — the developer portal lags by 50 points. developers.cloudflare.com — the surface where agents actually go to learn how to ship a Worker — has no /AGENTS.md, no /agents.json, no named-bot robots.txt, no MCP Server Card. Same engineering culture, demonstrably the same playbook one subdomain over. The Invisible Product anti-pattern fires. The blog hosting Cloudflare's original ARS post lands at 15/100.
 
-What's working: the developer subdomain ships a real /llms.txt (per-product split + a full-archive file), passes markdown content negotiation, and exposes its OpenAPI surface — clean 20/20 on content-accessibility. Cloudflare's `Content-Signal: ai-train=yes, search=yes, ai-input=yes` directive is present on all three surfaces, earning each 10/15 in bot-access-control. Cleanest signal in the report.
+**Top three fixes**:
 
-What's missing: agent-capabilities scores 0/30 on every surface. No MCP Server Card. No homepage reference to MCP, the CLI, or any SDK install path. Cloudflare ships Code Mode — exposing 2,500 endpoints to an agent in 1,000 tokens — but a model reading cloudflare.com cannot tell the capability exists. The Invisible Product anti-pattern: the capability is real, the signal isn't.
+1. Replicate the marketing-root pattern on developers.cloudflare.com — flat-file edit, ~30 minutes, +50 points on the surface that matters most. Closes the Invisible Product flag.
+2. Add a homepage MCP/Agents callout to www.cloudflare.com — the only 10 points missing on the best surface. Cloudflare ships an MCP server; the hero doesn't reference it.
+3. Upgrade /AGENTS.md from a 21-line auto-gen stub to a hand-authored constraint contract. Same canonical path; load-bearing content.
 
-Top three fixes:
-1. Publish an MCP Server Card from cloudflare.com and reference it from the homepage hero.
-2. Lift /llms.txt to the blog (cloudflare.com already has it; the blog still doesn't) and ship /AGENTS.md on all three surfaces.
-3. Keep the Content-Signal directive AND add per-named-bot blocks (GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot) for belt-and-suspenders coverage.
+**The bigger pattern**: marketing-root vs dev-portal score gaps are the most-repeated finding in this report series. Notion 65 vs 10, Anthropic 60 vs 5, Linear 60 vs lower. Cloudflare inverts it (marketing leads, dev portal lags) but the cause is the same — one team's surface got the agent-readiness shipment; the adjacent team's didn't. The fix is treating these as repo templates that propagate across every public hostname.
 
-The lesson for everyone else: a Level 3 product is Level 3 across every surface an agent might land on. Score your three most-trafficked subdomains; the variance is the bug.
+Self-grading the framework you wrote — and shipping the artifacts — is a credibility move, not a vanity move. Other companies should do this.
 
-Full report, raw probe data, and rubric (v0.1.2): https://agentsfirst.dev/reports/cloudflare/
+Full report (per-surface scoring, methodology, raw probe data): https://agentsfirst.dev/reports/cloudflare/
 
-First in a bi-weekly Agent Readiness Reports series. Polite tags to the authors of the post we're peer-reviewing — Vance Morrison, André Jesus — and to Matthew Prince. Replies and "we just shipped the fix" notes welcome.
+Polite tags to the team who shipped this: Matthew Prince, John Graham-Cumming, Brendan Irvine-Broque (verify handles before tagging).
 
-#AgentsFirst #MCP #AIAgents #Cloudflare
+#AgentsFirst #MCP #AIAgents #Cloudflare #DevTools

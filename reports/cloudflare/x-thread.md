@@ -1,93 +1,84 @@
-# X thread — Agent Readiness Report: Cloudflare
+# X thread — Cloudflare report
 
-7 tweets. Tweet 1 leads with score + dominant theme + tags. NO link in tweet 1 (X throttles link-leading threads). Link lands in tweet 7. Tags `@Cloudflare` and `@CloudflareDev` on tweet 1.
-
----
-
-**Tweet 1** (271 chars)
-
-> @Cloudflare wrote the Agent Readiness Score post the industry now cites.
->
-> We pointed our scorer at theirs first.
->
-> 40/100. Level 2.
->
-> One subdomain works. Two don't. The blog hosting that very post lands at Level 1.
->
-> The story is the variance: 40 / 25 / 15.
->
-> @CloudflareDev
+7 tweets. Tweet 1 has no link (X throttles link-leading threads). Tag `@Cloudflare` and `@CloudflareDev` on tweet 1 only — verify both handles before posting. Tweet 7 carries the full report URL. All tweet bodies ≤280 chars. Char counts shown next to each header.
 
 ---
 
-**Tweet 2** (254 chars)
+### Tweet 1 (264 chars) — hook + tags + headline
 
-> developers.cloudflare.com is the high water mark.
->
-> Real /llms.txt, structured, per-product split + a full-archive file for large-context models.
->
-> Hit any docs URL with Accept: text/markdown and you get markdown. Not HTML.
->
-> 20/20 on content-accessibility.
+@Cloudflare just scored 85/100 on the Agent Readiness rubric they basically invented.
 
----
+3rd Agent Readiness Report from agentsfirst.dev — and the variance is the story.
 
-**Tweet 3** (264 chars)
+www.cloudflare.com: 85/100 (Level 3, Agents First)
+developers.cloudflare.com: 35/100 (Level 2)
 
-> Cloudflare's robots.txt declares Content-Signal: ai-train=yes, search=yes, ai-input=yes — their own protocol.
->
-> Our rubric didn't credit it. We shipped v0.1.2 to fix that.
->
-> Even after the fix: blog.cloudflare.com lands at 15/100. Same protocol, almost nothing else.
+🧵
 
 ---
 
-**Tweet 4** (276 chars)
+### Tweet 2 (272 chars) — what the marketing root ships
 
-> Fix #1: ship an MCP Server Card from cloudflare.com. Reference it from the homepage hero.
->
-> Cloudflare already runs MCP servers in prod.
->
-> An agent reading cloudflare.com cannot tell. The capability is real. The signal isn't.
->
-> Worth 30 points across every surface.
+What @Cloudflare shipped on www.cloudflare.com:
 
----
-
-**Tweet 5** (265 chars)
-
-> Fix #2: lift /llms.txt to the blog and ship /AGENTS.md on all three surfaces.
->
-> The dev subdomain has the pattern. cloudflare.com publishes /llms.txt. The blog still doesn't.
->
-> Same hosting, same robots.txt. Add the file. Add the rules.
->
-> Lowest-effort fix.
+✅ /AGENTS.md (canonical contract artifact)
+✅ /agents.json (A2A registry)
+✅ /llms.txt (30 products mapped)
+✅ robots.txt naming 7 AI bots — opt-in Allow: /
+✅ Content-Signal: ai-train=yes
+✅ Markdown content negotiation
+✅ OpenAPI
 
 ---
 
-**Tweet 6** (267 chars)
+### Tweet 3 (271 chars) — what the dev portal didn't ship
 
-> Fix #3: keep Content-Signal AND add per-named-bot blocks.
->
-> GPTBot. ClaudeBot. anthropic-ai. Google-Extended. PerplexityBot. CCBot.
->
-> Belt and suspenders. Content Signals is good. While adoption is early, the named-bot block is what other rubrics still score.
+developers.cloudflare.com — where agents actually go to learn how to ship a Worker — is at 35/100.
 
----
+No /AGENTS.md.
+No /agents.json.
+No named-bot robots.txt.
 
-**Tweet 7** (240 chars)
-
-> First in a bi-weekly Agent Readiness Reports series. Scoring named products against the Agents First framework.
->
-> Full report — rubric, raw probe data, top fixes:
->
-> https://agentsfirst.dev/reports/cloudflare/
+The exact same playbook, one subdomain over, hasn't landed yet. 50-point gap between two CF-owned surfaces.
 
 ---
 
-**Tweet count**: 7. All tweets under 280 chars.
+### Tweet 4 (260 chars) — the inverse-Notion observation
 
-**Tags**: `@Cloudflare` and `@CloudflareDev` on tweet 1; report URL only on tweet 7 (X throttles link-leading threads ~40%).
+Most products in this report series are inverted: dev portal does the work, marketing root is bare.
 
-**Note**: tweet body is the text shown to the reader between `>` lines, including blank lines as `\n` chars. The `>` markdown markers and "Tweet N" labels are NOT part of the tweet.
+Notion: docs 65, marketing 10.
+Anthropic: docs 60, marketing 5.
+Cloudflare: marketing 85, docs 35.
+
+Same org-chart symptom. Cloudflare's marketing got the memo first.
+
+---
+
+### Tweet 5 (273 chars) — top 3 fixes
+
+3 moves to climb to ~95+ across surfaces:
+
+1. Copy /AGENTS.md + /agents.json + named-bot robots.txt to developers.cloudflare.com (~30 min, +50 pts on the surface that matters)
+2. Homepage hero callout: "Install our MCP server" (+10 pts on www)
+3. Make /AGENTS.md load-bearing
+
+---
+
+### Tweet 6 (262 chars) — the credibility line
+
+The fact that Cloudflare scores 85/100 on a rubric implied by their own April post — instead of 100/100 — is the proof that the rubric is honest.
+
+Self-grading the framework you wrote is a credibility move, not a vanity move.
+
+Other companies should do this.
+
+---
+
+### Tweet 7 (78 chars) — link
+
+Full report:
+
+https://agentsfirst.dev/reports/cloudflare/
+
+Methodology + per-surface breakdown + raw probe data inside.
