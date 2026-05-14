@@ -4,10 +4,10 @@ description: "Cloudflare scored 35/100 (Level 2 — Agent-Aware) on developers.c
 image: /reports/cloudflare/og.png
 author: Joshua Baer
 permalink: /reports/cloudflare/
-report_date: 2026-05-08
+report_date: 2026-05-14
 report_target: Cloudflare
-report_score: 35
-report_level: 2
+report_score: 85
+report_level: 3
 ---
 
 # Agent Readiness Report: Cloudflare

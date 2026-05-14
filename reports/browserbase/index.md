@@ -7,7 +7,7 @@ permalink: /reports/browserbase/
 report_target: Browserbase
 report_score: 70
 report_level: 3
-report_date: 2026-05-08
+report_date: 2026-05-14
 ---
 
 # Agent Readiness Report: Browserbase

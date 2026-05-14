@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "last_refreshed": "2026-05-08T00:18:48.140Z",
+    "last_refreshed": "2026-05-14T14:53:48.226Z",
     "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://dashboard.stripe.com": {
@@ -79,7 +79,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://dashboard.stripe.com",
-      "timestamp": "2026-05-08T00:18:48.809Z",
+      "timestamp": "2026-05-14T14:53:48.961Z",
       "signals": {
         "surfaces": {
           "robots_txt": {
@@ -96,96 +96,96 @@
             "content_type": "application/json",
             "length": 207
           },
-          "agents_md": {
-            "url": "https://dashboard.stripe.com/AGENTS.md",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html;charset=utf-8",
-            "length": 134675
-          },
           "well_known_ai_plugin": {
             "url": "https://dashboard.stripe.com/.well-known/ai-plugin.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html;charset=utf-8",
-            "length": 134711
+            "length": 135461
           },
-          "llms_txt": {
-            "url": "https://dashboard.stripe.com/llms.txt",
+          "agents_md": {
+            "url": "https://dashboard.stripe.com/AGENTS.md",
             "status": 200,
             "ok": true,
             "content_type": "text/html;charset=utf-8",
-            "length": 134673
-          },
-          "llms_full_txt": {
-            "url": "https://dashboard.stripe.com/llms-full.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html;charset=utf-8",
-            "length": 134683
-          },
-          "well_known_agent_rules": {
-            "url": "https://dashboard.stripe.com/.well-known/agent-rules",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html;charset=utf-8",
-            "length": 134705
+            "length": 135425
           },
           "well_known_oauth": {
             "url": "https://dashboard.stripe.com/.well-known/oauth-authorization-server",
             "status": 200,
             "ok": true,
             "content_type": "text/html;charset=utf-8",
-            "length": 134735
+            "length": 135485
+          },
+          "well_known_agent_rules": {
+            "url": "https://dashboard.stripe.com/.well-known/agent-rules",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 135455
+          },
+          "llms_full_txt": {
+            "url": "https://dashboard.stripe.com/llms-full.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 135433
+          },
+          "llms_txt": {
+            "url": "https://dashboard.stripe.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 135423
           },
           "well_known_mcp": {
             "url": "https://dashboard.stripe.com/.well-known/mcp-server-card",
             "status": 200,
             "ok": true,
             "content_type": "text/html;charset=utf-8",
-            "length": 134713
-          },
-          "well_known_mcp_json": {
-            "url": "https://dashboard.stripe.com/.well-known/mcp-server-card.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html;charset=utf-8",
-            "length": 134723
-          },
-          "sitemap": {
-            "url": "https://dashboard.stripe.com/sitemap.xml",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html;charset=utf-8",
-            "length": 134679
+            "length": 135463
           },
           "agents_json": {
             "url": "https://dashboard.stripe.com/agents.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html;charset=utf-8",
-            "length": 134679
+            "length": 135429
           },
           "sitemap_index": {
             "url": "https://dashboard.stripe.com/sitemap-index.xml",
             "status": 200,
             "ok": true,
             "content_type": "text/html;charset=utf-8",
-            "length": 134691
+            "length": 135441
+          },
+          "well_known_mcp_json": {
+            "url": "https://dashboard.stripe.com/.well-known/mcp-server-card.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 135473
+          },
+          "sitemap": {
+            "url": "https://dashboard.stripe.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html;charset=utf-8",
+            "length": 135429
           },
           "openapi_root": {
             "url": "https://dashboard.stripe.com/openapi.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html;charset=utf-8",
-            "length": 134681
+            "length": 135431
           },
           "openapi_api": {
             "url": "https://dashboard.stripe.com/api/openapi.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html;charset=utf-8",
-            "length": 134691
+            "length": 135441
           }
         },
         "markdown_negotiation": {
@@ -199,7 +199,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html;charset=utf-8",
-          "length": 134635
+          "length": 135385
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -300,18 +300,11 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://docs.stripe.com",
-      "timestamp": "2026-05-08T00:18:49.845Z",
+      "timestamp": "2026-05-14T14:53:50.024Z",
       "signals": {
         "surfaces": {
           "well_known_agent_rules": {
             "url": "https://docs.stripe.com/.well-known/agent-rules",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 23280
-          },
-          "well_known_oauth": {
-            "url": "https://docs.stripe.com/.well-known/oauth-authorization-server",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
@@ -324,13 +317,6 @@
             "content_type": "text/html",
             "length": 23280
           },
-          "agents_md": {
-            "url": "https://docs.stripe.com/AGENTS.md",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 23280
-          },
           "llms_full_txt": {
             "url": "https://docs.stripe.com/llms-full.txt",
             "status": 404,
@@ -338,15 +324,8 @@
             "content_type": "text/html",
             "length": 23280
           },
-          "agents_json": {
-            "url": "https://docs.stripe.com/agents.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 23280
-          },
-          "well_known_mcp_json": {
-            "url": "https://docs.stripe.com/.well-known/mcp-server-card.json",
+          "well_known_oauth": {
+            "url": "https://docs.stripe.com/.well-known/oauth-authorization-server",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
@@ -359,15 +338,36 @@
             "content_type": "text/plain; charset=utf-8",
             "length": 174
           },
-          "well_known_mcp": {
-            "url": "https://docs.stripe.com/.well-known/mcp-server-card",
+          "agents_md": {
+            "url": "https://docs.stripe.com/AGENTS.md",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
             "length": 23280
           },
-          "openapi_root": {
-            "url": "https://docs.stripe.com/openapi.json",
+          "well_known_mcp_json": {
+            "url": "https://docs.stripe.com/.well-known/mcp-server-card.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 23280
+          },
+          "llms_txt": {
+            "url": "https://docs.stripe.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 93225
+          },
+          "agents_json": {
+            "url": "https://docs.stripe.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 23280
+          },
+          "sitemap_index": {
+            "url": "https://docs.stripe.com/sitemap-index.xml",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
@@ -380,8 +380,8 @@
             "content_type": "application/json",
             "length": 207
           },
-          "sitemap_index": {
-            "url": "https://docs.stripe.com/sitemap-index.xml",
+          "well_known_mcp": {
+            "url": "https://docs.stripe.com/.well-known/mcp-server-card",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
@@ -394,19 +394,19 @@
             "content_type": "text/html",
             "length": 23280
           },
-          "llms_txt": {
-            "url": "https://docs.stripe.com/llms.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain; charset=utf-8",
-            "length": 93149
+          "openapi_root": {
+            "url": "https://docs.stripe.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 23280
           },
           "sitemap": {
             "url": "https://docs.stripe.com/sitemap.xml",
             "status": 200,
             "ok": true,
             "content_type": "application/xml",
-            "length": 413133
+            "length": 413943
           }
         },
         "markdown_negotiation": {
@@ -420,7 +420,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 1193802
+          "length": 1194329
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -526,9 +526,30 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://stripe.com",
-      "timestamp": "2026-05-08T00:18:51.046Z",
+      "timestamp": "2026-05-14T14:53:51.394Z",
       "signals": {
         "surfaces": {
+          "robots_txt": {
+            "url": "https://stripe.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 643
+          },
+          "well_known_agent_rules": {
+            "url": "https://stripe.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 330109
+          },
+          "llms_full_txt": {
+            "url": "https://stripe.com/llms-full.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 330109
+          },
           "llms_txt": {
             "url": "https://stripe.com/llms.txt",
             "status": 200,
@@ -541,98 +562,77 @@
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 328176
-          },
-          "robots_txt": {
-            "url": "https://stripe.com/robots.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain; charset=utf-8",
-            "length": 643
-          },
-          "llms_full_txt": {
-            "url": "https://stripe.com/llms-full.txt",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 328176
-          },
-          "well_known_agent_rules": {
-            "url": "https://stripe.com/.well-known/agent-rules",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 328176
+            "length": 330109
           },
           "well_known_ai_plugin": {
             "url": "https://stripe.com/.well-known/ai-plugin.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 328176
-          },
-          "well_known_oauth": {
-            "url": "https://stripe.com/.well-known/oauth-authorization-server",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 328176
-          },
-          "sitemap": {
-            "url": "https://stripe.com/sitemap.xml",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 328176
+            "length": 330109
           },
           "agents_json": {
             "url": "https://stripe.com/agents.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 328176
+            "length": 330109
           },
           "sitemap_index": {
             "url": "https://stripe.com/sitemap-index.xml",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 328176
+            "length": 330109
           },
-          "well_known_mcp_json": {
-            "url": "https://stripe.com/.well-known/mcp-server-card.json",
+          "well_known_oauth": {
+            "url": "https://stripe.com/.well-known/oauth-authorization-server",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 328176
+            "length": 330109
           },
           "well_known_mcp": {
             "url": "https://stripe.com/.well-known/mcp-server-card",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 328176
+            "length": 330109
           },
-          "openapi_root": {
-            "url": "https://stripe.com/openapi.json",
+          "well_known_mcp_json": {
+            "url": "https://stripe.com/.well-known/mcp-server-card.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 328176
+            "length": 330109
+          },
+          "sitemap": {
+            "url": "https://stripe.com/sitemap.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 330109
           },
           "openapi_api": {
             "url": "https://stripe.com/api/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 328176
+            "length": 330109
+          },
+          "openapi_root": {
+            "url": "https://stripe.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 330109
           },
           "openapi_v1": {
             "url": "https://stripe.com/v1/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 328176
+            "length": 330109
           }
         },
         "markdown_negotiation": {
@@ -646,7 +646,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 580177
+          "length": 579676
         },
         "robots_analysis": {
           "ai_agents_addressed": [],

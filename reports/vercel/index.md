@@ -7,7 +7,7 @@ permalink: /reports/vercel/
 report_target: Vercel
 report_score: 90
 report_level: 4
-report_date: 2026-05-08
+report_date: 2026-05-14
 ---
 
 # Agent Readiness Report: Vercel

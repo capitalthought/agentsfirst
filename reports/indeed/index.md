@@ -7,7 +7,7 @@ permalink: /reports/indeed/
 report_target: Indeed
 report_score: 10
 report_level: 0
-report_date: 2026-05-08
+report_date: 2026-05-14
 ---
 
 # Agent Readiness Report: Indeed

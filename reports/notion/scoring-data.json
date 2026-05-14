@@ -13,7 +13,7 @@
       "https://developers.notion.com"
     ],
     "note": "Probe `body` fields stripped (replaced with `body_length`) — secrets-guard pre-commit hook blocks files with PII. See report directory README for the live scorer URL if you want fresh probe data.",
-    "last_refreshed": "2026-05-08T00:18:43.525Z",
+    "last_refreshed": "2026-05-14T14:53:41.732Z",
     "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://notion.so": {
@@ -98,7 +98,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://notion.so",
-      "timestamp": "2026-05-08T00:18:44.120Z",
+      "timestamp": "2026-05-14T14:53:42.125Z",
       "signals": {
         "surfaces": {
           "robots_txt": {
@@ -108,22 +108,15 @@
             "content_type": "text/plain; charset=utf-8",
             "length": 1136
           },
-          "llms_txt": {
-            "url": "https://notion.so/llms.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain; charset=utf-8",
-            "length": 6914
-          },
-          "well_known_ai_plugin": {
-            "url": "https://notion.so/.well-known/ai-plugin.json",
+          "well_known_oauth": {
+            "url": "https://notion.so/.well-known/oauth-authorization-server",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
             "length": 9
           },
-          "well_known_oauth": {
-            "url": "https://notion.so/.well-known/oauth-authorization-server",
+          "well_known_ai_plugin": {
+            "url": "https://notion.so/.well-known/ai-plugin.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
@@ -136,13 +129,6 @@
             "content_type": "text/html; charset=utf-8",
             "length": 9
           },
-          "llms_full_txt": {
-            "url": "https://notion.so/llms-full.txt",
-            "status": 404,
-            "ok": false,
-            "content_type": "application/json; charset=utf-8",
-            "length": 28
-          },
           "agents_md": {
             "url": "https://notion.so/AGENTS.md",
             "status": 404,
@@ -150,12 +136,12 @@
             "content_type": "application/json; charset=utf-8",
             "length": 28
           },
-          "well_known_mcp_json": {
-            "url": "https://notion.so/.well-known/mcp-server-card.json",
+          "llms_full_txt": {
+            "url": "https://notion.so/llms-full.txt",
             "status": 404,
             "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 9
+            "content_type": "application/json; charset=utf-8",
+            "length": 28
           },
           "well_known_mcp": {
             "url": "https://notion.so/.well-known/mcp-server-card",
@@ -164,12 +150,19 @@
             "content_type": "text/html; charset=utf-8",
             "length": 9
           },
-          "openapi_root": {
-            "url": "https://notion.so/openapi.json",
+          "llms_txt": {
+            "url": "https://notion.so/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 6914
+          },
+          "well_known_mcp_json": {
+            "url": "https://notion.so/.well-known/mcp-server-card.json",
             "status": 404,
             "ok": false,
-            "content_type": "application/json; charset=utf-8",
-            "length": 28
+            "content_type": "text/html; charset=utf-8",
+            "length": 9
           },
           "sitemap_index": {
             "url": "https://notion.so/sitemap-index.xml",
@@ -178,15 +171,22 @@
             "content_type": "application/json; charset=utf-8",
             "length": 28
           },
-          "openapi_v1": {
-            "url": "https://notion.so/v1/openapi.json",
+          "agents_json": {
+            "url": "https://notion.so/agents.json",
             "status": 404,
             "ok": false,
             "content_type": "application/json; charset=utf-8",
             "length": 28
           },
-          "agents_json": {
-            "url": "https://notion.so/agents.json",
+          "openapi_root": {
+            "url": "https://notion.so/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "application/json; charset=utf-8",
+            "length": 28
+          },
+          "openapi_v1": {
+            "url": "https://notion.so/v1/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "application/json; charset=utf-8",
@@ -218,7 +218,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 256642
+          "length": 257604
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -319,7 +319,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://notion.com",
-      "timestamp": "2026-05-08T00:18:45.587Z",
+      "timestamp": "2026-05-14T14:53:43.579Z",
       "signals": {
         "surfaces": {
           "robots_txt": {
@@ -329,12 +329,19 @@
             "content_type": "text/plain",
             "length": 1246
           },
+          "well_known_ai_plugin": {
+            "url": "https://notion.com/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 85839
+          },
           "well_known_agent_rules": {
             "url": "https://notion.com/.well-known/agent-rules",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 84642
+            "length": 85839
           },
           "llms_txt": {
             "url": "https://notion.com/llms.txt",
@@ -343,47 +350,33 @@
             "content_type": "text/plain; charset=utf-8",
             "length": 6926
           },
-          "well_known_ai_plugin": {
-            "url": "https://notion.com/.well-known/ai-plugin.json",
+          "well_known_oauth": {
+            "url": "https://notion.com/.well-known/oauth-authorization-server",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 84642
+            "length": 85839
           },
           "well_known_mcp": {
             "url": "https://notion.com/.well-known/mcp-server-card",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 84642
+            "length": 85839
           },
           "well_known_mcp_json": {
             "url": "https://notion.com/.well-known/mcp-server-card.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 84642
-          },
-          "well_known_oauth": {
-            "url": "https://notion.com/.well-known/oauth-authorization-server",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 84642
+            "length": 85839
           },
           "openapi_api": {
             "url": "https://notion.com/api/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 84642
-          },
-          "llms_full_txt": {
-            "url": "https://notion.com/llms-full.txt",
-            "status": 404,
-            "ok": false,
-            "content_type": "application/json; charset=utf-8",
-            "length": 28
+            "length": 85839
           },
           "sitemap": {
             "url": "https://notion.com/sitemap.xml",
@@ -391,6 +384,13 @@
             "ok": true,
             "content_type": "application/xml",
             "length": 15820
+          },
+          "sitemap_index": {
+            "url": "https://notion.com/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "application/json; charset=utf-8",
+            "length": 28
           },
           "openapi_v1": {
             "url": "https://notion.com/v1/openapi.json",
@@ -406,15 +406,8 @@
             "content_type": "application/json; charset=utf-8",
             "length": 28
           },
-          "sitemap_index": {
-            "url": "https://notion.com/sitemap-index.xml",
-            "status": 404,
-            "ok": false,
-            "content_type": "application/json; charset=utf-8",
-            "length": 28
-          },
-          "openapi_root": {
-            "url": "https://notion.com/openapi.json",
+          "llms_full_txt": {
+            "url": "https://notion.com/llms-full.txt",
             "status": 404,
             "ok": false,
             "content_type": "application/json; charset=utf-8",
@@ -422,6 +415,13 @@
           },
           "agents_md": {
             "url": "https://notion.com/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "application/json; charset=utf-8",
+            "length": 28
+          },
+          "openapi_root": {
+            "url": "https://notion.com/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "application/json; charset=utf-8",
@@ -439,7 +439,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 256643
+          "length": 257604
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -497,7 +497,7 @@
         "status": "partial",
         "notes": [
           "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
-          "Homepage references agent surfaces: MCP",
+          "Homepage references agent surfaces: MCP, CLI",
           "OAuth / AI-plugin auth-server discovery present"
         ]
       },
@@ -534,7 +534,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://developers.notion.com",
-      "timestamp": "2026-05-08T00:18:47.804Z",
+      "timestamp": "2026-05-14T14:53:47.927Z",
       "signals": {
         "surfaces": {
           "llms_txt": {
@@ -542,28 +542,21 @@
             "status": 200,
             "ok": true,
             "content_type": "text/plain; charset=utf-8",
-            "length": 25090
+            "length": 27617
           },
           "llms_full_txt": {
             "url": "https://developers.notion.com/llms-full.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/plain; charset=utf-8",
-            "length": 1471294
-          },
-          "robots_txt": {
-            "url": "https://developers.notion.com/robots.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain",
-            "length": 122
+            "length": 1642990
           },
           "well_known_oauth": {
             "url": "https://developers.notion.com/.well-known/oauth-authorization-server",
             "status": 200,
             "ok": true,
             "content_type": "application/json",
-            "length": 571
+            "length": 607
           },
           "well_known_ai_plugin": {
             "url": "https://developers.notion.com/.well-known/ai-plugin.json",
@@ -571,6 +564,13 @@
             "ok": false,
             "content_type": "text/plain;charset=UTF-8",
             "length": 15
+          },
+          "well_known_agent_rules": {
+            "url": "https://developers.notion.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 149235
           },
           "agents_md": {
             "url": "https://developers.notion.com/AGENTS.md",
@@ -584,7 +584,14 @@
             "status": 200,
             "ok": true,
             "content_type": "text/xml",
-            "length": 22785
+            "length": 25248
+          },
+          "openapi_root": {
+            "url": "https://developers.notion.com/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/octet-stream, application/json",
+            "length": 1080082
           },
           "well_known_mcp_json": {
             "url": "https://developers.notion.com/.well-known/mcp-server-card.json",
@@ -592,13 +599,6 @@
             "ok": false,
             "content_type": "text/plain;charset=UTF-8",
             "length": 15
-          },
-          "openapi_root": {
-            "url": "https://developers.notion.com/openapi.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "application/octet-stream, application/json",
-            "length": 1080075
           },
           "agents_json": {
             "url": "https://developers.notion.com/agents.json",
@@ -612,10 +612,10 @@
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 148971
+            "length": 149247
           },
-          "openapi_api": {
-            "url": "https://developers.notion.com/api/openapi.json",
+          "sitemap_index": {
+            "url": "https://developers.notion.com/sitemap-index.xml",
             "status": 404,
             "ok": false,
             "content_type": "text/plain;charset=UTF-8",
@@ -628,19 +628,19 @@
             "content_type": "text/plain;charset=UTF-8",
             "length": 15
           },
-          "sitemap_index": {
-            "url": "https://developers.notion.com/sitemap-index.xml",
+          "openapi_api": {
+            "url": "https://developers.notion.com/api/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/plain;charset=UTF-8",
             "length": 15
           },
-          "well_known_agent_rules": {
-            "url": "https://developers.notion.com/.well-known/agent-rules",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 148963
+          "robots_txt": {
+            "url": "https://developers.notion.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain",
+            "length": 122
           }
         },
         "markdown_negotiation": {
@@ -654,7 +654,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 460513
+          "length": 496263
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -664,7 +664,7 @@
         "homepage_analysis": {
           "mentions_mcp": true,
           "mentions_npx": false,
-          "mentions_cli": false,
+          "mentions_cli": true,
           "mentions_sdk": false,
           "mentions_api": true,
           "mentions_oauth": false,
