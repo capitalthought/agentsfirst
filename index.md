@@ -27,7 +27,7 @@ It looks at the tools already wired up — MCP servers, CLIs, typed SDKs — and
 
 In 2009, Luke Wroblewski published "Mobile First." Stop designing for the desktop and shrinking it. Design for the phone first, because the constraints breed better design. The industry resisted. Then mobile traffic crossed 50% and the holdouts got left behind.
 
-Same curve, earlier in it. Agent-mediated product interactions are small today. The trajectory is clear. The companies designing for agents now will have a multi-year head start on tool quality and distribution by the time everyone else notices.
+Same curve, but the inflection arrived faster than mobile's. By April 2026, Vercel's [AI Gateway production index](https://vercel.com/blog/ai-gateway-production-index) — seven months of data across 200,000+ teams — reported that **58.9% of all tokens already flow through tool-call requests**, with 22.2% of requests ending in a tool call. Agentic workloads aren't the future case anymore; they're the majority case at the LLM-traffic layer. The companies designing for agents now will have a multi-year head start on tool quality and distribution by the time everyone else catches up at the SaaS-workflow layer.
 
 Most companies build a web UI, maybe expose a REST API, then — if a customer asks — bolt on agent support as an afterthought.
 
@@ -65,6 +65,8 @@ The window is closing fast. In a single week (April 29–30, 2026), three of the
 Agents First doesn't kill the need for distribution. It compresses what happens *after* distribution. The install-to-value gap drops from days to seconds. That's the leverage.
 
 The pre-activation funnel: Discovery (the agent or developer learns your tool exists) → Evaluation (reads the description, checks trust signals) → Installation (runs the install command) → First agent action (a tool call succeeds) → Repeat usage (the agent comes back). Drop-off happens at every step. Measure each one.
+
+A note on counting: "I have N agents" is a shallow metric — closer to "I have N browser tabs" than "I have N customers." What matters isn't roster size; it's the jobs-to-be-done each agent can complete and the tools it reaches for. Measure tool-selection accuracy and first-attempt success, not headcount.
 
 ### The protocol landscape
 
@@ -313,7 +315,7 @@ The maturity gap matters. TDD and API First have decades of evidence. Agents Fir
 
 This is a v0.8 framework. Some important questions don't have answers yet:
 
-**What's the real adoption curve?** We don't have the Agents First equivalent of "mobile traffic crossed 50%." Agent-mediated product interactions are growing, but nobody has published reliable numbers on what percentage of SaaS usage flows through agents today. If agent-mediated interactions reach 10% of SaaS usage by 2028, Agents First is a two-year head start. If it takes until 2030, it's a four-year head start. If it stalls at 2%, the implementation principles still improve your API design — you just don't get the distribution leverage. Downside case: you built a better API. Upside case: you built the next platform.
+**What's the real adoption curve?** We have a first data point at the LLM-traffic layer. Vercel's [AI Gateway production index](https://vercel.com/blog/ai-gateway-production-index) (April 2026, 200,000+ teams, seven months of data): **58.9% of all tokens are in tool-call requests; 22.2% of requests end with a tool call.** That's the AI-traffic equivalent of "mobile crossed 50%" — but for the SaaS-workflow layer specifically (what % of business workflows route through agents end-to-end) we still don't have a number. Treat the LLM-traffic data as a leading indicator, not a final read. If agent-mediated SaaS workflows reach 10% by 2028, Agents First is a two-year head start. If they stall at 2%, the implementation principles still improve your API design — you just don't get the distribution leverage. Downside case: you built a better API. Upside case: you built the next platform.
 
 **Is MCP the right protocol?** Active industry debate. MCP has massive adoption (110M+ monthly downloads) and broad support (Anthropic, OpenAI, Google, Microsoft). Critics point to token bloat, immature auth, and the question of whether tool-calling is even the right abstraction. Cloudflare's Code Mode and CLI-first approaches are compelling alternatives for specific use cases. David Soria Parra, MCP's creator, acknowledges the context-bloat problem and says the protocol is shifting toward progressive discovery, stateless transport, and code-based tool composition. **The spec is actively iterating** — the draft schema saw 20+ commits in the two weeks before this revision (including a breaking `IncompleteResult` → `InputRequiredResult` rename and a newly-merged SDK Working Group charter). When you build, validate against a specific draft date or release tag and re-validate before each ship. The framework here is deliberately protocol-agnostic. The principles hold regardless of which protocol wins.
 
@@ -354,6 +356,8 @@ Three layers fixed it. Each is reusable on its own.
 **Layer A — the site itself.** agentsfirst.dev now serves `/AGENTS.md`, `/llms.txt`, `/.well-known/mcp-server-card.json`, `/api/principles.json`, `/api/glossary.json`, and a `robots.txt` that explicitly addresses 14 named AI agents. After the fixes, the site re-scored at 80/100 — Level 3. An agent landing here cold finds a complete machine-readable picture of the framework.
 
 **Layer B — `npx @capitalthought/create-agents-first`.** Scaffold that generates a starter MCP server with all nine principles wired in: Interface First (the MCP server itself), Contract First (an `AGENTS.md` template), Prep Gates (a `<project>_prep` tool), Typed State (Zod-validated), Visible Outputs (sink markers), Autonomous Recovery (retry-with-backoff helpers), Inspectable State (an `overview` tool returning the operational snapshot). Read it in five minutes, ship a Level-2 starter in another five. Source: <https://github.com/capitalthought/agentsfirst>.
+
+For comparison, Anthropic itself ships a reference implementation: the [Claude Managed Agents Sessions MCP server](https://github.com/anthropics/anthropic-cookbook/tree/main/managed_agents/cma-mcp) (2026-05-13). Nine verb-first tools (`list_agents`, `create_session`, `send_message`, `interrupt`, `wait_for_idle`, etc.), stdio + Streamable HTTP transports, and — notably — it **deliberately omits destructive endpoints** (`agents.archive`, `vaults.*`, `credentials.*`) to avoid the Slow-Chatbot anti-pattern. Read it before designing yours; it shows what "wrap a Sessions API as MCP" looks like when the protocol authors do it.
 
 **Layer C — `agentsfirst.dev/mcp`.** The scoring logic, hosted as a callable MCP server. Three ways to use it:
 
