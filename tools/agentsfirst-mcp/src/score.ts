@@ -605,8 +605,11 @@ function scoreWebDiscoverability(signals: WebsiteSignals): PrincipleScore {
   }
   // v0.2.0: AGENTS.md is the load-bearing contract artifact (15pts), llms.txt downgraded to optional (5pts).
   // Rationale: SE Ranking (May 2026) found /llms.txt at 10% adoption with no AI-citation correlation;
-  // Google publicly declined to support it. Meanwhile AGENTS.md is winning HN front-page conversation
-  // and shipping in Linear, Bun (PORTING.md), GitHub Copilot. Section total stays at 25pts.
+  // Google's official AI Optimization Guide (2026-05-15) confirmed publicly: "You don't need to create
+  // new machine readable files, AI text files, markup, or Markdown to appear in generative AI search."
+  // https://developers.google.com/search/docs/fundamentals/ai-optimization-guide
+  // Meanwhile AGENTS.md is winning HN front-page conversation and shipping in Linear, Bun (PORTING.md),
+  // GitHub Copilot. Section total stays at 25pts.
   if (surfaces['agents_md']?.ok || surfaces['well_known_agent_rules']?.ok) {
     pts += 15;
     notes.push('/AGENTS.md or /.well-known/agent-rules published (canonical contract artifact)');
