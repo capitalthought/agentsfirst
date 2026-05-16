@@ -89,6 +89,15 @@ _3 amplifier DMs (patio11, cramforce, mappletons) moved to **## Deferred to Rada
 
 _All 4 cascade pitches (Stratechery, The Information, AI Engineer Newsletter, Lenny's) moved to **## Deferred to Radar** on 2026-05-16 — radar's Other-lane will propose press/newsletter pitches when an adjacent ecosystem signal warrants it._
 
+#### Strategic partnerships (multi-month BD)
+
+- **get us design office and airbnb founder to endorse and use agentsfirst for a government service** (added 2026-05-16 via /todo) — Two-pronged BD wedge that, if landed, jumps the framework from "adopted by Cloudflare and a few devtool vendors" to "adopted by the federal government's design org with an Airbnb-founder endorsement attached." Mechanics:
+  - **US Design Office:** likely target = [USDS](https://www.usds.gov/) (US Digital Service, OMB) or [18F](https://18f.gsa.gov/) (GSA) or both. Both already run AI/agent pilots. The ask: pick one federal-facing service (FAFSA renewal? IRS Free File? VA benefits portal?) and design it agent-first against the Agents First rubric. The government-service endorsement is the highest-trust adopter signal we could get.
+  - **Brian Chesky (Airbnb):** Chesky's design background + the "design-led AI" framing he's been pushing publicly makes Agents First a natural fit. The ask: a one-quote endorsement we can publish ("Designing for AI customers is the next discipline"), or co-author a piece. His name on the thesis page is a force-multiplier for the design-org enterprise pitch.
+  - **Why pair them:** the Chesky endorsement gives Agents First design-credibility that opens the USDS door. The USDS engagement gives Chesky a concrete govt-service case study to point at. Each ask is more landable when the other is in motion.
+  - **First moves (your call):** (a) draft a one-pager pitch for both, (b) figure out warm-intro paths — Capital Factory portfolio companies that have USDS contracts? Y Combinator alumni network for Chesky? (c) decide whether to lead with Chesky (faster, smaller commit) or USDS (slower, bigger payoff).
+  - **Why this is NOT a radar item:** multi-month BD strategy with judgment calls only Josh can make. Radar can't propose this; it lives here until acted on.
+
 #### Recurring distribution
 
 - **Agent Readiness Reports — bi-weekly Thursday scorecards.** Run `npx -y @capitalthought/agentsfirst-mcp` against a notable product, publish the score + report at `agentsfirst.dev/reports/<slug>/`, X thread + LinkedIn article + courtesy DM to the company. Cadence: every other Thursday. Goal: weaponize the scorer as a distribution engine; canonize the principles + anti-patterns vocabulary one named company at a time. Full strategy in `docs/marketing-plan.md` "Agent Readiness Reports" section. First 10 targets ranked there. (added 2026-05-05)
