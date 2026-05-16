@@ -83,8 +83,6 @@ Items not yet attempted or needing a fresh approach after failed verification.
 #### Amplifier outreach (Week 1 of marketing plan)
 
 - **Submit AI Engineer World's Fair CFP** — Title: `Agents First: Designing Products When Your User Is a Tool Call`. Abstract drawn from `docs/marketing-plan.md` Week 1 plan: 8 implementation principles + 7 anti-patterns + 545 CF startups. Closes ~6 weeks pre-event (June 2026). (added 2026-05-05)
-- **DM swyx (Latent Space)** — pitch podcast booking + day-of quote-tweet ask. Highest-leverage single DM per marketing plan; once swyx canonizes the vocabulary, downstream coverage cascades. ~200 words. (added 2026-05-05)
-- **DM Simon Willison** — substantive cold note, ask for "60 seconds of skepticism." Single blog mention by him bootstraps the thesis into technical canon. (added 2026-05-05)
 - **DM Patrick McKenzie (@patio11)** — pitch HN seeded comment + RT. (added 2026-05-05)
 - **DM David Cramer (Sentry, @cramforce)** — Austin warm path, devtools peer endorsement. (added 2026-05-05)
 - **DM Maggie Appleton (@Mappletons)** — has the right audience for the "two customers" framing. (added 2026-05-05)
@@ -114,15 +112,13 @@ Items not yet attempted or needing a fresh approach after failed verification.
 
 > Source: commit `8b0f5ac`. Cloudflare scored 85/100 Level 3 on www.cloudflare.com (re-score against rubric v0.3.2; original 2026-05-06 probe was 35/100). Real movement — they shipped /AGENTS.md, /agents.json, named-bot robots.txt, Content-Signal between probes. Variance is the story: dev portal lags at 35/100, blog at 15/100. Live at <https://agentsfirst.dev/reports/cloudflare/>. Full launch package staged in `reports/cloudflare/` — index.md, x-thread.md, linkedin.md, courtesy-dm.md.
 
-- **Send courtesy DM to Brendan Irvine-Broque (Cloudflare) on LinkedIn** — body in `reports/cloudflare/courtesy-dm.md`. Send 12-24h BEFORE public posts (not after — recipient hearing about the score from Josh privately first is the difference between "courtesy" and "ambush"). **Verify @-handle before sending.** Fallback recipients in priority order: Matt Prince (CEO, reach tier — `linkedin.com/in/eastdakota`), John Graham-Cumming (CTO), Sam Rhea (Cloudflare Workers product). Wait 5 business days between sends; don't double-send to same person. (added 2026-05-14)
-- **Post the Cloudflare X thread** — 7 tweets at `reports/cloudflare/x-thread.md`. Tweet 1 has NO link (X throttles); tag `@Cloudflare` and `@CloudflareDev` on tweet 1 only — **verify both handles before posting**. Tweet 7 carries the report URL. Daily X cap is 1; if you posted today already, ship tomorrow morning. Send AFTER the courtesy DM lands (12-24h gap). Use `/social-send` with the verbatim body from the file. (added 2026-05-14)
-- **Post the Cloudflare LinkedIn version** — ~340 words at `reports/cloudflare/linkedin.md`. Polite tags Matt Prince / John Graham-Cumming / Brendan Irvine-Broque at the end — **verify all 3 LinkedIn handles before posting**. Send same day or +1 from the X thread. (added 2026-05-14)
+_3 launch-packet items (Brendan LI DM, X thread, LinkedIn post) moved to **## Deferred to Radar** on 2026-05-16 — radar's Social lane will re-propose with current context (the 2026-05-16 regen surfaced blog 15→0 which the original packet didn't reflect)._
 
 #### From `/agentsfirst-check` 2026-05-14 (1 of 6 recs still in flight)
 
 > Source: `docs/checks/2026-05-14.md`. 5 of 6 recs auto-verified live (see Needs Verification / Improvements above). The 6th — Vercel-receipts X thread — shipped tweet 1 only; daily X cap (1/1) blocks the rest until tomorrow.
 
-- **Send tweets 2/3/4 of the Vercel-receipts thread** (rec `bbef43d0`) — tweet 1 shipped 2026-05-14 to <https://x.com/i/web/status/2054993868693594317> ("The receipts are in. @vercel just published…"). The thread plan from the check report: (2) frame what 58.9% tool-call tokens means; (3) so-what — tool-call success rate becomes the new conversion metric; (4) CTA to agentsfirst.dev. **X cap is 1/day**; ship tweets 2/3/4 starting tomorrow morning while the parent thread is still warm. Use `/social-draft` per tweet, link them as a reply chain. Generation lineage: `gen_mp5teurj_j0q95pfj`. (added 2026-05-14)
+_Vercel tweets 2/3/4 moved to **## Deferred to Radar** on 2026-05-16 — though radar coverage is partial here: it'll propose new Vercel social on new signal, but won't natively pick up an in-flight thread mid-flight. Worth a follow-up: teach radar to detect in-flight threads via `state.recommendations` lookup before proposing a fresh Vercel rec._
 
 #### From `/agentsfirst-check` 2026-05-07 (ALL 12 recs shipped)
 
@@ -130,8 +126,8 @@ Items not yet attempted or needing a fresh approach after failed verification.
 
 **Items still pending Josh action (drafts ready; require human send):**
 
-- **Send AWS AgentCore quick-take X thread + LI post** — draft at `docs/drafts/2026-05-07-x-aws-agentcore-quicktake.md`. 48h launch window from 2026-05-07. Best timing: AM Pacific.
-- **Send DM to Timothy Jordan (a14y maintainer)** — draft at `docs/drafts/2026-05-07-dm-timothy-jordan-a14y.md`. Verify handle first. Two variants prepared (X DM + GitHub issue).
+_AWS quick-take + Timothy DM moved to **## Deferred to Radar** on 2026-05-16 — both have pre-staged drafts in `docs/drafts/`. Radar coverage is partial (no draft-dir scanner yet); follow-up filed below. The 48h launch window on AWS has lapsed — radar may decide it's stale and dismiss._
+
 - **Wire a14y integration into `score_website`** — feasibility confirmed (spike at `docs/drafts/2026-05-07-a14y-integration-spike.md`). Wait until Timothy responds before implementing — Path C (their hosted endpoint) is best.
 
 #### From `/multipov-plan` pass-2 on radar design 2026-05-15 (3 sprawl nits — watch for sprawl after v1)
@@ -147,6 +143,42 @@ Items not yet attempted or needing a fresh approach after failed verification.
 - [x] **Fix `tools/scoreboard-updater/update.mjs` to regenerate prose when scores move** ✅ (resolved 2026-05-16 via /todo yours) — shipped option (b): updater calls Anthropic API (opus-4-7) to regenerate `index.md` body + `x-thread.md` + `linkedin.md` + `courtesy-dm.md` when ANY surface score moves (not just headline — the previous bug skipped regen when blog drifted but headline held). Added: per-URL movement detection, `max_tokens=16384` with `stop_reason='max_tokens'` truncation guard, static-trailer carve-out (Giscus widget + methodology footer preserved verbatim), `--force-regen` ops flag, prose-regen count in workflow commit subject. Smoke-tested against cloudflare: caught blog 15→0 movement that the old code would have missed; all 4 files regenerated cleanly with trailer intact. Cost: ~$0.40 per moved report (Opus). (added 2026-05-14)
 - **Add web traffic report to `/agentsfirst-check`** — once GA4 + CF Web Analytics tokens are wired (placeholders in `_includes/head-custom.html`), extend the weekly check skill to pull a traffic snapshot for the window: GA4 sessions / users / top pages via `mcp__google-analytics__run_report`, plus CF Web Analytics aggregates (visits, requests, top countries, top referrers) via the CF GraphQL Analytics API. Surface as a new "📈 Traffic since last check" section in the dated report so we see week-over-week movement on agentsfirst.dev alongside ecosystem signal. (added 2026-05-07)
 - [x] **Delete orphan `agentsfirst-mcp` Worker in Capital Factory CF account** ✅ (resolved 2026-05-16 via /todo yours) — deleted via path B (CF API DELETE) using token from 1P item `e2o365g6hobmxl3b4pql4nsiie`. Response: `{success: true, id: 0c3911951a8245b292e291c6378661b8}`. The "Touch ID doesn't surface" hypothesis was wrong — per the new `op-cli-just-try-it` learning, `op item get --reveal` works directly without a `signin`. Live joshshop deploy at `agentsfirst.dev/mcp` unaffected (independent account). (added 2026-05-05)
+
+---
+
+## Deferred to Radar
+
+Items the `agentsfirst-radar` (private companion repo at `capitalthought/agentsfirst-radar`) is now expected to re-propose with current context. The radar's morning briefing surfaces these into iMessage when the underlying signal is fresh enough to warrant action; if a deferred item ages out without the radar re-surfacing it, the signal has gone stale and we shouldn't act on it from a manual checklist either.
+
+**Caveats:**
+- Radar isn't producing real signal yet — 5 source-integration bugs (gh PATH · grok env · Bluesky auth · CF ARS · RSSHub) blocking the first real briefing. Tracked in the private repo's `/todo`.
+- Pre-staged drafts in `docs/drafts/` are radar-blind until a draft-dir scanner lands (follow-up filed below).
+- In-flight social threads (where one tweet shipped + 2-3 are pending) are radar-blind until the planner learns to read `state.recommendations` for shipped-but-incomplete chains (follow-up filed below).
+
+### Deferred items (moved 2026-05-16)
+
+#### Amplifier outreach (radar Social-lane native)
+- **DM swyx (Latent Space)** — pitch podcast booking + day-of quote-tweet ask. Highest-leverage single DM per marketing plan. Radar will re-propose when a swyx signal fires (LinkedIn cross-post, Latent Space episode launch, X thread on adjacent topic). (added 2026-05-05, deferred 2026-05-16)
+- **DM Simon Willison** — substantive cold note, ask for "60 seconds of skepticism." Single blog mention by him bootstraps the thesis into technical canon. Radar will re-propose on Simon signal (he posts on llms.txt / agents weekly). (added 2026-05-05, deferred 2026-05-16)
+
+#### Launch packets — wait for radar's next probe
+- **Cloudflare report 3-message launch** (DM Brendan → X thread → LinkedIn post, files at `reports/cloudflare/{courtesy-dm,x-thread,linkedin}.md`). Radar will detect the next CF surface movement (blog 15→0 already caught on 2026-05-16) and either propose re-shipping the packet or surface a new finding worth packaging. (added 2026-05-14, deferred 2026-05-16)
+
+#### In-flight threads (radar partial coverage)
+- **Send tweets 2/3/4 of the Vercel-receipts thread** (rec `bbef43d0`, tweet 1 shipped to <https://x.com/i/web/status/2054993868693594317> on 2026-05-14). Generation lineage: `gen_mp5teurj_j0q95pfj`. Radar today wouldn't natively pick this up mid-flight — see follow-up below. If a new Vercel signal lands, radar may propose a fresh thread instead. (added 2026-05-14, deferred 2026-05-16)
+
+#### Pre-staged drafts (radar-blind until draft-dir scanner lands)
+- **Send AWS AgentCore quick-take X thread + LI post** — draft at `docs/drafts/2026-05-07-x-aws-agentcore-quicktake.md`. Original 48h launch window from 2026-05-07 has lapsed. Radar would only propose a fresh AWS take if new AWS-side signal hits — the staged draft is likely stale at this point. (added 2026-05-07, deferred 2026-05-16)
+- **Send DM to Timothy Jordan (a14y maintainer)** — draft at `docs/drafts/2026-05-07-dm-timothy-jordan-a14y.md`. Two variants prepared (X DM + GitHub issue). Radar would re-propose a Timothy outreach only if a fresh a14y signal hits. (added 2026-05-07, deferred 2026-05-16)
+
+### Follow-ups for the private radar repo (not for this repo's queue)
+
+The two coverage gaps above should land in `capitalthought/agentsfirst-radar`'s todo, not here:
+
+1. **draft-dir scanner** — Add a source kind `local_drafts` that scans `docs/drafts/*.md` on the public agentsfirst repo via raw.githubusercontent.com. Treat each draft as a TriagedItem with freshness gating (drafts >14 days old are auto-classified as `noise`). Unblocks the AWS / Timothy class of items.
+2. **In-flight thread detector** — Before the planner proposes a fresh social rec, query `state.recommendations` for any open/in_flight rec whose `parent_event_id` overlaps the new signal's source URLs. If found, generate a "continue the thread" rec instead of a fresh one (preserves `generation_id` lineage). Unblocks the Vercel-tweets class.
+
+(File those in the radar repo's todo.md when you do the next `cd ~/Xcode/agentsfirst-radar && /todo`.)
 
 ---
 
