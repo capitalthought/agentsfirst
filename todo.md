@@ -83,16 +83,11 @@ Items not yet attempted or needing a fresh approach after failed verification.
 #### Amplifier outreach (Week 1 of marketing plan)
 
 - **Submit AI Engineer World's Fair CFP** — Title: `Agents First: Designing Products When Your User Is a Tool Call`. Abstract drawn from `docs/marketing-plan.md` Week 1 plan: 8 implementation principles + 7 anti-patterns + 545 CF startups. Closes ~6 weeks pre-event (June 2026). (added 2026-05-05)
-- **DM Patrick McKenzie (@patio11)** — pitch HN seeded comment + RT. (added 2026-05-05)
-- **DM David Cramer (Sentry, @cramforce)** — Austin warm path, devtools peer endorsement. (added 2026-05-05)
-- **DM Maggie Appleton (@Mappletons)** — has the right audience for the "two customers" framing. (added 2026-05-05)
+_3 amplifier DMs (patio11, cramforce, mappletons) moved to **## Deferred to Radar** on 2026-05-16 — same Social-lane native coverage as swyx/Simon deferred above._
 
 #### Cascade pitches (Week 3–4 of marketing plan)
 
-- **Stratechery citation pitch (Ben Thompson)** — 200-word note: "Adoption Levels 0–4 give you the same analytical scaffold for agents that 'aggregator vs platform' did for the 2010s." Send the levels table + the 99.9% Cloudflare Code Mode stat. No exclusive needed. (added 2026-05-05)
-- **The Information pitch** — angle: "Austin VC to portfolio: ship an agent interface or you're invisible by 2028." Offer exclusive first-print + Josh on record with portfolio data. (added 2026-05-05)
-- **AI Engineer Newsletter** — pitch as a checklist issue: "the 7 things to audit in your MCP server this week." Exclusive standalone artifact. (added 2026-05-05)
-- **Lenny's Newsletter guest post** (NOT interview — cheaper) — reframe for PMs: "two customers" + Visible Outputs + Prep Gates as PM discipline. (added 2026-05-05)
+_All 4 cascade pitches (Stratechery, The Information, AI Engineer Newsletter, Lenny's) moved to **## Deferred to Radar** on 2026-05-16 — radar's Other-lane will propose press/newsletter pitches when an adjacent ecosystem signal warrants it._
 
 #### Recurring distribution
 
@@ -160,6 +155,15 @@ Items the `agentsfirst-radar` (private companion repo at `capitalthought/agentsf
 #### Amplifier outreach (radar Social-lane native)
 - **DM swyx (Latent Space)** — pitch podcast booking + day-of quote-tweet ask. Highest-leverage single DM per marketing plan. Radar will re-propose when a swyx signal fires (LinkedIn cross-post, Latent Space episode launch, X thread on adjacent topic). (added 2026-05-05, deferred 2026-05-16)
 - **DM Simon Willison** — substantive cold note, ask for "60 seconds of skepticism." Single blog mention by him bootstraps the thesis into technical canon. Radar will re-propose on Simon signal (he posts on llms.txt / agents weekly). (added 2026-05-05, deferred 2026-05-16)
+- **DM Patrick McKenzie (@patio11)** — pitch HN seeded comment + RT. Radar will re-propose when patio11 posts on adjacent territory (distribution / pricing for agent products is in his sources.json `x_handles` list). (added 2026-05-05, deferred 2026-05-16)
+- **DM David Cramer (Sentry, @cramforce)** — Austin warm path, devtools peer endorsement. Radar will re-propose on Sentry / agent-observability signal. (added 2026-05-05, deferred 2026-05-16)
+- **DM Maggie Appleton (@Mappletons)** — right audience for the "two customers" framing. Radar tracks Maggie's LinkedIn + Bluesky in sources.json; will re-propose on her next post about agent-as-customer or concept-essay territory. (added 2026-05-05, deferred 2026-05-16)
+
+#### Cascade pitches (radar Other-lane will propose when adjacent signal hits)
+- **Stratechery citation pitch (Ben Thompson)** — 200-word note: "Adoption Levels 0–4 give you the same analytical scaffold for agents that 'aggregator vs platform' did for the 2010s." Send the levels table + the 99.9% Cloudflare Code Mode stat. No exclusive needed. Radar Other-lane will surface as a `conference-cfp`-adjacent rec when a Ben Thompson essay touches AI-agent territory. (added 2026-05-05, deferred 2026-05-16)
+- **The Information pitch** — angle: "Austin VC to portfolio: ship an agent interface or you're invisible by 2028." Offer exclusive first-print + Josh on record with portfolio data. Radar will surface when an enterprise-agent story breaks worth attaching to. (added 2026-05-05, deferred 2026-05-16)
+- **AI Engineer Newsletter pitch** — pitch as a checklist issue: "the 7 things to audit in your MCP server this week." Exclusive standalone artifact. Radar will surface when a new MCP-adjacent rubric movement gives the checklist fresh material. (added 2026-05-05, deferred 2026-05-16)
+- **Lenny's Newsletter guest post** (NOT interview — cheaper) — reframe for PMs: "two customers" + Visible Outputs + Prep Gates as PM discipline. Radar will surface when a Lenny-audience signal hits (PM-tooling launch, product-as-API trend post). (added 2026-05-05, deferred 2026-05-16)
 
 #### Launch packets — wait for radar's next probe
 - **Cloudflare report 3-message launch** (DM Brendan → X thread → LinkedIn post, files at `reports/cloudflare/{courtesy-dm,x-thread,linkedin}.md`). Radar will detect the next CF surface movement (blog 15→0 already caught on 2026-05-16) and either propose re-shipping the packet or surface a new finding worth packaging. (added 2026-05-14, deferred 2026-05-16)
