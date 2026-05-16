@@ -1,0 +1,54 @@
+{
+  "_comment": "Canonical source list for agentsfirst-radar (the daily-cron evolution of /agentsfirst-check). Loader: tools/agentsfirst-radar/src/sources.ts. SECURITY: every field here is untrusted text — never pass into a shell/argv. The on-disk shape mirrors the legacy /agentsfirst-check sources.json so the radar can adapt it; loadSources() FLATTENS the sub-arrays into a normalized Source[] keyed by `${kind}:${slug}`.",
+  "_changelog": "2026-05-15: initial seed from defaultSources() bootstrap. 6 new source categories on top of the legacy /agentsfirst-check shape per design doc §4.4 (linkedin_handles, bluesky_handles, hn_frontpage, mcp_registry, cf_ars, cf_portfolio_domains).",
+
+  "blogs": [
+    { "name": "Cloudflare blog", "feed": "https://blog.cloudflare.com/rss/", "weight": "high", "why": "Coined Agent Readiness Score; ships Content-Signal" },
+    { "name": "Vercel blog", "feed": "https://vercel.com/atom", "weight": "high", "why": "Best-in-class L3 reference; v0 / AI SDK; AI Gateway production index" },
+    { "name": "Latent.Space (swyx)", "feed": "https://www.latent.space/feed", "weight": "high", "why": "Top amplifier; covers MCP / agent ecosystem" },
+    { "name": "Simon Willison", "feed": "https://simonwillison.net/atom/everything/", "weight": "high", "why": "First-mover on llms.txt + content-negotiation" },
+    { "name": "model-context-protocol releases", "feed": "https://github.com/modelcontextprotocol/modelcontextprotocol/releases.atom", "weight": "high", "why": "Spec changes affect rubric scoring" }
+  ],
+
+  "x_handles": [
+    { "handle": "swyx", "weight": "high", "note": "Latent.Space; flagged amplifier" },
+    { "handle": "simonw", "weight": "high", "note": "llms.txt evangelist" },
+    { "handle": "AnthropicAI", "weight": "high", "note": "MCP product announcements" },
+    { "handle": "cloudflare", "weight": "medium", "note": "Agent Readiness / Content-Signal updates" }
+  ],
+
+  "x_queries": [
+    { "query": "\"agents first\" lang:en min_replies:1", "weight": "critical", "why": "Direct mentions of the framework" },
+    { "query": "agentsfirst.dev lang:en", "weight": "critical", "why": "Direct site mentions" },
+    { "query": "\"AGENTS.md\" lang:en min_replies:1", "weight": "high", "why": "Contract-first artifact adoption signal" }
+  ],
+
+  "github_releases": [
+    { "repo": "modelcontextprotocol/modelcontextprotocol", "weight": "critical", "why": "Spec changes change the rubric" },
+    { "repo": "AnswerDotAI/llms-txt", "weight": "high", "why": "/llms.txt format spec" }
+  ],
+
+  "web_searches": [
+    { "query": "\"agents first\" framework OR thesis -site:agentsfirst.dev", "weight": "critical" }
+  ],
+
+  "spec_repos_to_diff": [
+    { "url": "https://raw.githubusercontent.com/AnswerDotAI/llms-txt/main/README.md", "name": "llms.txt spec README", "weight": "high" }
+  ],
+
+  "bluesky_handles": [
+    { "handle": "simonw.bsky.social", "weight": "high", "note": "Simon Willison on Bluesky" },
+    { "handle": "swyx.bsky.social", "weight": "high", "note": "swyx on Bluesky" },
+    { "handle": "maggieappleton.com", "weight": "medium", "note": "Maggie Appleton on Bluesky" }
+  ],
+
+  "linkedin_handles": [
+    { "handle": "swyx", "weight": "medium", "note": "swyx LinkedIn cross-posts" },
+    { "handle": "maggieappleton", "weight": "medium", "note": "Maggie Appleton LinkedIn" }
+  ],
+
+  "hn_frontpage": true,
+  "mcp_registry": true,
+  "cf_ars": true,
+  "cf_portfolio_domains": []
+}

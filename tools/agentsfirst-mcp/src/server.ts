@@ -6,6 +6,10 @@
 //
 // See https://agentsfirst.dev/principles/
 
+import { promises as fs } from 'node:fs';
+import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
@@ -22,8 +26,15 @@ import {
   type PrincipleSlug,
 } from './principles.js';
 
-const VERSION = '0.1.0';
-const TOOL_COUNT = 5;
+const VERSION = '0.5.0';
+// 6 tools — approaching God Server (anti-pattern). At 7+ tools, audit hard:
+// every new tool needs an exceptional justification or it should be folded
+// into an existing one. https://agentsfirst.dev/glossary/god-server/
+const TOOL_COUNT = 6;
+
+const SERVER_DIR = fileURLToPath(new URL('.', import.meta.url));
+// src/ → mcp pkg root → tools/ → repo root → state/radar-state.json
+const RADAR_STATE_PATH = resolve(SERVER_DIR, '..', '..', '..', 'state', 'radar-state.json');
 
 const server = new McpServer({
   name: 'agentsfirst-mcp',
@@ -204,6 +215,167 @@ server.registerTool(
     return jsonContent(a);
   },
 );
+
+// ─── radar_overview ───────────────────────────────────────────────────────────
+server.registerTool(
+  'radar_overview',
+  {
+    title: 'Inspect agentsfirst-radar operational state',
+    description: `Returns the agentsfirst-radar's Inspectable State (Principle 9). Includes acceptance rate (7d/30d), open recommendations, source health, cron freshness, paused status, and multipov spend. Read-only — never mutates state. Companion to the daily morning briefing. ${AGENTS_MD_REF}`,
+    inputSchema: {},
+  },
+  async () => {
+    try {
+      const overview = await renderRadarOverview();
+      return {
+        content: [{ type: 'text' as const, text: overview }],
+      };
+    } catch (err) {
+      return jsonContent(
+        {
+          error: 'radar_overview_failed',
+          suggestion:
+            'verify state/radar-state.json exists and is valid; the radar refuses to mutate from invalid state',
+          detail: (err as Error).message,
+        },
+        true,
+      );
+    }
+  },
+);
+
+async function renderRadarOverview(): Promise<string> {
+  let raw: string;
+  try {
+    raw = await fs.readFile(RADAR_STATE_PATH, 'utf8');
+  } catch {
+    return [
+      '# Agentsfirst Radar — Inspectable State',
+      '',
+      '⚠️ Radar has not run yet — no state file at `state/radar-state.json`.',
+      '',
+      'Run `npm run state:init` in `tools/agentsfirst-radar/` to bootstrap.',
+    ].join('\n');
+  }
+
+  let state: unknown;
+  try {
+    state = JSON.parse(raw);
+  } catch (err) {
+    return [
+      '# Agentsfirst Radar — Inspectable State',
+      '',
+      '🚨 Radar state file is malformed:',
+      `\`${(err as Error).message}\``,
+      '',
+      'Inspect `state/radar-state.json` manually; the radar refuses to mutate from invalid state per AGENTS.md §Errors.',
+    ].join('\n');
+  }
+
+  return renderOverviewInline(state as Record<string, unknown>);
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function renderOverviewInline(state: any): string {
+  const nowIso = new Date().toISOString();
+  const now = Date.now();
+  const day = 24 * 3600 * 1000;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const recs: any[] = Object.values(state.recommendations ?? {});
+  const SHIPPED = new Set(['accepted', 'in_flight', 'shipped']);
+  const ACT_ALL = new Set(['accepted', 'in_flight', 'shipped', 'dismissed', 'auto_dismissed']);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function within(rec: any, days: number) {
+    return now - Date.parse(rec.created_iso) < days * day;
+  }
+  const accept7d = recs.filter((r) => within(r, 7));
+  const accept30d = recs.filter((r) => within(r, 30));
+  const num7 = accept7d.filter((r) => SHIPPED.has(r.status)).length;
+  const den7 = accept7d.filter((r) => ACT_ALL.has(r.status)).length;
+  const num30 = accept30d.filter((r) => SHIPPED.has(r.status)).length;
+  const den30 = accept30d.filter((r) => ACT_ALL.has(r.status)).length;
+  const autoDismissed30 = recs.filter(
+    (r) => r.status === 'auto_dismissed' && now - Date.parse(r.status_changed_iso) < 30 * day,
+  ).length;
+  const openGt24h = recs.filter(
+    (r) => r.status === 'open' && now - Date.parse(r.created_iso) > day,
+  ).length;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const sources: any[] = Object.values(state.sources_health ?? {});
+  const healthy = sources.filter((s) => s.consecutive_failures === 0).length;
+  const degraded = sources.filter(
+    (s) => s.consecutive_failures >= 1 && s.consecutive_failures < 3,
+  ).length;
+  const dead = sources.filter((s) => s.consecutive_failures >= 3).length;
+  const lastRun = state.last_run_iso;
+  const ageH = lastRun ? Math.round((now - Date.parse(lastRun)) / 3600 / 1000) : Infinity;
+  const cronEmoji = ageH <= 26 ? '✅' : '🚨';
+
+  const lines: string[] = [
+    '# Agentsfirst Radar — Inspectable State',
+    '',
+    `**As of:** ${nowIso}`,
+    '',
+    '## Acceptance',
+    `- 7d:  ${num7}/${den7}${den7 > 0 ? ` (${Math.round((num7 / den7) * 100)}%)` : ''}`,
+    `- 30d: ${num30}/${den30}${den30 > 0 ? ` (${Math.round((num30 / den30) * 100)}%)` : ''}`,
+    '',
+    '## Stale / pending',
+    `- Auto-dismissed (30d): ${autoDismissed30}`,
+    `- Open >24h (not yet decided): ${openGt24h}`,
+    '',
+    '## Sources',
+    `- Healthy: ${healthy}  ·  Degraded: ${degraded}  ·  Dead: ${dead}`,
+    '',
+    '## Cron',
+    `- ${cronEmoji} Last run: ${lastRun ?? 'never'}${isFinite(ageH) ? ` (${ageH}h ago)` : ''}`,
+  ];
+
+  if (state.agent_paused) {
+    lines.push('', `⏸️ **PAUSED:** ${state.pause_reason ?? '(no reason)'}`);
+  }
+
+  const spend = state.multipov_spend_today_usd ?? 0;
+  const cap = 10; // matches MULTIPOV_DAILY_CAP_USD default
+  if (spend > cap * 0.5) {
+    lines.push('', `💸 Multipov spend today: $${spend.toFixed(2)} of $${cap.toFixed(2)} cap`);
+  }
+
+  const recentRecs = recs
+    .slice()
+    .sort((a, b) => Date.parse(b.created_iso) - Date.parse(a.created_iso))
+    .slice(0, 10);
+  if (recentRecs.length > 0) {
+    lines.push('', '## Recent recommendations (last 10)', '');
+    lines.push('| ID | Lane | Status | Age (h) | Headline |');
+    lines.push('|----|------|--------|---------|----------|');
+    for (const r of recentRecs) {
+      const ageRecH = Math.round((now - Date.parse(r.created_iso)) / 3600 / 1000);
+      const truncated =
+        String(r.headline).length > 60
+          ? String(r.headline).slice(0, 57) + '...'
+          : r.headline;
+      lines.push(`| ${r.id} | ${r.lane} | ${r.status} | ${ageRecH} | ${truncated} |`);
+    }
+  } else {
+    lines.push('', '## Recent recommendations', '', '_No recommendations on file yet._');
+  }
+
+  const degradedSorted = sources
+    .filter((s) => s.consecutive_failures > 0)
+    .sort((a, b) => Date.parse(b.last_attempt_iso) - Date.parse(a.last_attempt_iso))
+    .slice(0, 5);
+  if (degradedSorted.length > 0) {
+    lines.push('', '## Degraded sources (5 most recent)');
+    for (const s of degradedSorted) {
+      const err = s.last_error ? ` — last error: ${String(s.last_error).slice(0, 80)}` : '';
+      lines.push(`- \`${s.source_id}\` — ${s.consecutive_failures} consecutive failures${err}`);
+    }
+  }
+
+  return lines.join('\n');
+}
 
 // ─── Boot ─────────────────────────────────────────────────────────────────────
 const transport = new StdioServerTransport();

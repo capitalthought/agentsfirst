@@ -8,6 +8,7 @@ This is the **Contract First** artifact. See <https://agentsfirst.dev/principles
 
 - **Every tool in this server is read-only.** The server probes filesystems and HTTP surfaces; it never writes, never mutates, never sends.
 - `agentsfirst_prep`, `score_codebase`, `score_website`, `get_principle`, `get_anti_pattern` — all safe to call without confirmation.
+- `radar_overview` — read-only filesystem access to `state/radar-state.json` only; never mutates.
 - The server never opens network connections except (a) the optional canonical-API ping during `agentsfirst_prep` and (b) explicit `score_website` probes against the URL the caller provided.
 - The server never reads `.env`, secrets files, or anything outside the directory passed to `score_codebase`. Only run it against directories the user already trusts you to inspect.
 
@@ -34,6 +35,7 @@ The typical flow:
 1. **Prep** — `agentsfirst_prep`.
 2. **Score** — `score_codebase` (for a local directory) or `score_website` (for a URL).
 3. **Explain (optional)** — `get_principle` or `get_anti_pattern` for any slug surfaced in the score, to give the human or downstream agent the canonical context.
+4. **Inspect (optional)** — `radar_overview` for the agentsfirst-radar's operational state (acceptance rate, source health, cron freshness). Call when checking on the radar specifically; not part of the score-a-product flow.
 
 `score_*` is the only step that needs to happen for a meaningful answer. The explain step is for follow-up — don't call it preemptively against all 8 principles; only fetch the ones the score surfaced.
 

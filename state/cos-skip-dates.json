@@ -1,0 +1,5 @@
+{
+  "_doc": "COS-maintained list of dates the radar should skip (SXSW prep, board prep, family travel, etc). Read by Prep Gate Step A. Format: array of { date: YYYY-MM-DD, reason: string }.",
+  "_owner": "COS team — radar reads, never writes",
+  "skip_dates": []
+}

@@ -1,0 +1,32 @@
+{
+  "name": "@capitalthought/agentsfirst-radar",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Autonomous daily-cron evolution of /agentsfirst-check. Monitors the AI-agent ecosystem and proposes 3 lanes of action (website / social / other) to Josh via iMessage. See docs/plans/2026-05-15-agentsfirst-radar-design.md.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "agentsfirst-radar": "dist/radar.js",
+    "agentsfirst-radar-listener": "dist/bin/imsg-listener.js"
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "radar": "tsx src/radar.ts",
+    "radar:dry-run": "tsx src/radar.ts --dry-run",
+    "listener": "tsx bin/imsg-listener.ts",
+    "state:init": "tsx src/bin/state-init.ts",
+    "test": "node --test --import tsx ./src/**/*.test.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
