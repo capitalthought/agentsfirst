@@ -10,12 +10,7 @@ og-image.old.png
 # CF Portfolio Campaign — contains POC emails (PII)
 docs/campaigns/cf-portfolio-eligible.json
 docs/campaigns/cf-portfolio-pilot-emails.csv
-# agentsfirst-radar runtime state — mutable, gitignored.
-# Committed-state allowlist: snapshot-weekly.json, last-run.txt, cos-skip-dates.json.
-state/radar-state.json
-state/radar-state.json.*
-state/mutations.jsonl
-state/imsg-unparsed.jsonl
-state/llm-anomalies.jsonl
 # TypeScript build artifacts inside tools/
 tools/*/dist/
+# agentsfirst-radar moved to capitalthought/agentsfirst-radar (private companion repo).
+# This .gitignore no longer needs the radar's state allowlist.
