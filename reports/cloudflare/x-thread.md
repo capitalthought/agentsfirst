@@ -4,7 +4,7 @@
 
 ---
 
-### Tweet 1 (264 chars) — hook + tags + headline
+### Tweet 1 (267 chars) — hook + tags + headline
 
 @Cloudflare just scored 85/100 on the Agent Readiness rubric they basically invented.
 
@@ -12,6 +12,7 @@
 
 www.cloudflare.com: 85/100 (Level 3, Agents First)
 developers.cloudflare.com: 35/100 (Level 2)
+blog: 0/100
 
 🧵
 
@@ -43,31 +44,41 @@ The exact same playbook, one subdomain over, hasn't landed yet. 50-point gap bet
 
 ---
 
-### Tweet 4 (260 chars) — the inverse-Notion observation
+### Tweet 4 (278 chars) — the blog blind spot
 
-Most products in this report series are inverted: dev portal does the work, marketing root is bare.
+And blog.cloudflare.com — the surface that publishes Cloudflare's agent-era thought leadership — scored 0/100.
+
+No agent contract. No machine-readable feed surfaced. No bot policy. Level 0.
+
+The company writing the rubric has a surface that fails it entirely. Worth fixing.
+
+---
+
+### Tweet 5 (267 chars) — the inverse-Notion observation
+
+Most products in this series are inverted: dev portal does the work, marketing root is bare.
 
 Notion: docs 65, marketing 10.
 Anthropic: docs 60, marketing 5.
-Cloudflare: marketing 85, docs 35.
+Cloudflare: marketing 85, docs 35, blog 0.
 
 Same org-chart symptom. Cloudflare's marketing got the memo first.
 
 ---
 
-### Tweet 5 (273 chars) — top 3 fixes
+### Tweet 6 (276 chars) — top 3 fixes
 
-3 moves to climb to ~95+ across surfaces:
+3 moves to climb across surfaces:
 
-1. Copy /AGENTS.md + /agents.json + named-bot robots.txt to developers.cloudflare.com (~30 min, +50 pts on the surface that matters)
-2. Homepage hero callout: "Install our MCP server" (+10 pts on www)
-3. Make /AGENTS.md load-bearing
+1. Copy /AGENTS.md + /agents.json + named-bot robots.txt to developers.cloudflare.com (~30 min, +50 pts where it matters)
+2. Same playbook on blog.cloudflare.com (0 → 60+)
+3. Homepage callout: "Install our MCP server" (+10 on www)
 
 ---
 
-### Tweet 6 (262 chars) — the credibility line
+### Tweet 7 (272 chars) — the credibility line
 
-The fact that Cloudflare scores 85/100 on a rubric implied by their own April post — instead of 100/100 — is the proof that the rubric is honest.
+The fact that Cloudflare scores 85/35/0 on a rubric implied by their own April post — instead of a clean sweep — is the proof that the rubric is honest.
 
 Self-grading the framework you wrote is a credibility move, not a vanity move.
 
@@ -75,7 +86,7 @@ Other companies should do this.
 
 ---
 
-### Tweet 7 (78 chars) — link
+### Tweet 8 (78 chars) — link
 
 Full report:
 

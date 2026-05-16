@@ -22,20 +22,11 @@ Auto-updated weekly via the live scorer at <https://agentsfirst.dev/mcp>. Last r
 
 Auto-updated weekly via the live scorer at <https://agentsfirst.dev/mcp>. Last refresh: **2026-05-14**. Sorted by score descending.
 
+Auto-updated weekly via the live scorer at <https://agentsfirst.dev/mcp>. Last refresh: **2026-05-16**. Sorted by score descending.
+
 | Date | Target | Score | Level | Read |
 |---|---|---:|---:|---|
-| 2026-05-14 | Vercel | **90** | 4 — Agent-Driven | [Read →](/reports/vercel/) |
-| 2026-05-14 | Cloudflare | **85** | 3 — Agents First | [Read →](/reports/cloudflare/) |
-| 2026-05-14 | Browserbase | **70** | 3 — Agents First | [Read →](/reports/browserbase/) |
-| 2026-05-14 | Cursor | **70** | 3 — Agents First | [Read →](/reports/cursor/) |
-| 2026-05-14 | Notion | **65** | 3 — Agents First | [Read →](/reports/notion/) |
-| 2026-05-14 | Anthropic | **60** | 2 — Agent-Aware | [Read →](/reports/anthropic/) |
-| 2026-05-14 | AWS | **50** | 2 — Agent-Aware | [Read →](/reports/aws/) |
-| 2026-05-14 | Coinbase | **50** | 2 — Agent-Aware | [Read →](/reports/coinbase/) |
-| 2026-05-14 | Stripe | **50** | 2 — Agent-Aware | [Read →](/reports/stripe/) |
-| 2026-05-14 | Amazon | **25** | 1 — Agent as Afterthought | [Read →](/reports/amazon/) |
-| 2026-05-14 | Google | **25** | 1 — Agent as Afterthought | [Read →](/reports/google/) |
-| 2026-05-14 | Indeed | **10** | 0 — No agent access | [Read →](/reports/indeed/) |
+| 2026-05-16 | Cloudflare | **85** | 3 — Agents First | [Read →](/reports/cloudflare/) |
 
 **Distribution after the celebration batch:** 1 at Level 4, **3 at Level 3 (new)**, 6 at Level 2, 2 at Level 1, 2 at Level 0. Vercel remains the only Level 4 (Agent-Driven). Cursor, Browserbase, and Notion join the Level 3 club — products that ship like they mean it. Browserbase has the rare "marketing root carries the score" pattern; Notion has the largest variance gap in the series (developers.notion.com 65 vs. notion.so 10 — 55 points). Spread is 80 points (Vercel 90 → WSJ/Indeed 10).
 

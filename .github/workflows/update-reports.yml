@@ -41,6 +41,13 @@ jobs:
 
       - name: Run scoreboard updater
         id: update
+        env:
+          # When a score moves, the updater regenerates the body of index.md
+          # plus x-thread.md / linkedin.md / courtesy-dm.md via Anthropic API
+          # so per-file score references don't drift from the front matter
+          # (the prose-drift bug surfaced by /scorecard cloudflare 2026-05-14).
+          # If the secret is unset the updater skips regen with a warning.
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           set -euo pipefail
           ARGS=""
@@ -68,18 +75,32 @@ jobs:
           fi
 
           MOVED=$(jq -r '.moved' /tmp/_update_summary.json)
+          PROSE_REGEN=$(jq -r '.prose_regenerated' /tmp/_update_summary.json)
+          PROSE_ERRORS=$(jq -r '.prose_errors' /tmp/_update_summary.json)
           MOVEMENTS=$(jq -r '
             .movements[] |
-            "  - \(.slug): \(.from.score // "—") → \(.to.score) (Level \(.from.level // "—") → \(.to.level))"
+            "  - \(.slug): \(.from.score // "—") → \(.to.score) (Level \(.from.level // "—") → \(.to.level))" +
+            (if .prose_regenerated > 0 then " 🪄 \(.prose_regenerated) prose file(s) regen" else "" end)
           ' /tmp/_update_summary.json)
 
           if [ -z "$MOVEMENTS" ]; then
             BODY="No score movements; refresh of front-matter dates + scoring-data.json metadata only."
           else
             BODY=$(printf 'Score movements:\n%s\n' "$MOVEMENTS")
+            if [ "$PROSE_ERRORS" -gt 0 ]; then
+              BODY=$(printf '%s\n\n⚠️  %s prose-regen error(s) — inspect reports/ manually.' "$BODY" "$PROSE_ERRORS")
+            fi
           fi
 
-          git commit -m "chore(reports): weekly auto-refresh — ${MOVED} score movement(s)
+          # Surface prose regen in the subject line so Josh sees it in git log
+          # and can quickly revert if the LLM produced garbage.
+          if [ "$PROSE_REGEN" -gt 0 ]; then
+            SUBJECT="chore(reports): weekly auto-refresh — ${MOVED} score change(s), 🪄 ${PROSE_REGEN} prose regen"
+          else
+            SUBJECT="chore(reports): weekly auto-refresh — ${MOVED} score movement(s)"
+          fi
+
+          git commit -m "$SUBJECT
 
           $BODY
 
