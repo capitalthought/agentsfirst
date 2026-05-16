@@ -7,7 +7,7 @@ permalink: /reports/anthropic/
 report_target: Anthropic
 report_score: 60
 report_level: 2
-report_date: 2026-05-14
+report_date: 2026-05-16
 ---
 
 # Agent Readiness Report: Anthropic
