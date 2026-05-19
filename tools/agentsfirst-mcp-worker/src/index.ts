@@ -18,7 +18,10 @@ const ENDPOINT_URL = 'https://agentsfirst.dev/mcp';
 const SUPPORTED_BY_WORKER = ['agentsfirst_prep', 'score_website', 'get_principle', 'get_anti_pattern'];
 
 interface Env {
-  // Reserved for future bindings. None required for v0.1.0.
+  // Anonymized usage telemetry — see wrangler.toml. Optional at runtime so the
+  // Worker still scores in environments where the binding isn't configured
+  // (e.g. local `wrangler dev` with no datasets attached).
+  SCORE_EVENTS?: AnalyticsEngineDataset;
   [key: string]: unknown;
 }
 
@@ -147,7 +150,7 @@ function infoResponse(accept: string | null): Response {
   });
 }
 
-async function handleMcpRequest(request: Request): Promise<Response> {
+async function handleMcpRequest(request: Request, env: Env): Promise<Response> {
   // Stateless mode — each request gets its own short-lived transport + server.
   // Works because all 4 callable tools are stateless reads. JSON response mode
   // (enableJsonResponse=true) keeps the wire format simple and avoids the SSE
@@ -156,14 +159,14 @@ async function handleMcpRequest(request: Request): Promise<Response> {
     sessionIdGenerator: undefined, // stateless
     enableJsonResponse: true,
   });
-  const server = createServer();
+  const server = createServer(env);
   await server.connect(transport);
   const response = await transport.handleRequest(request);
   return withCors(response);
 }
 
 export default {
-  async fetch(request: Request, _env: Env, _ctx: ExecutionContext): Promise<Response> {
+  async fetch(request: Request, env: Env, _ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
     const { pathname } = url;
 
@@ -195,7 +198,7 @@ export default {
         return infoResponse(request.headers.get('Accept'));
       }
       if (request.method === 'POST' || request.method === 'DELETE') {
-        return handleMcpRequest(request);
+        return handleMcpRequest(request, env);
       }
       return json({ error: 'method_not_allowed', allowed: ['GET', 'POST', 'DELETE'] }, 405);
     }

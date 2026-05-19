@@ -49,7 +49,44 @@ function jsonContent(payload: unknown, isError = false) {
   };
 }
 
-export function createServer(): McpServer {
+// Minimal Env shape — only the bindings this module touches. Kept local so
+// server.ts doesn't depend on the worker entry's full Env interface.
+interface ServerEnv {
+  SCORE_EVENTS?: AnalyticsEngineDataset;
+}
+
+// Anonymized hostname digest for SCORE_EVENTS.blob1. Hostname-only, never the
+// full URL, query string, or path. Returns hex SHA-256.
+async function sha256Hex(input: string): Promise<string> {
+  const bytes = new TextEncoder().encode(input);
+  const digest = await crypto.subtle.digest('SHA-256', bytes);
+  return Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
+}
+
+// Fire-and-forget telemetry. Wrapped in a try/catch so a binding outage or a
+// bad input never breaks the score path. writeDataPoint is synchronous on the
+// worker side, but defending against any future shape change is cheap.
+function recordScoreEvent(
+  env: ServerEnv | undefined,
+  hostnameHash: string,
+  level: number,
+  score: number,
+): void {
+  if (!env?.SCORE_EVENTS) return;
+  try {
+    env.SCORE_EVENTS.writeDataPoint({
+      indexes: [new Date().toISOString().slice(0, 10)], // YYYY-MM-DD
+      blobs: [hostnameHash, String(level)],
+      doubles: [score],
+    });
+  } catch {
+    // Telemetry failure must never affect scoring.
+  }
+}
+
+export function createServer(env?: ServerEnv): McpServer {
   const server = new McpServer({
     name: SERVER_NAME,
     version: VERSION,
@@ -87,6 +124,16 @@ export function createServer(): McpServer {
       try {
         const signals = await probeWebsite(url);
         const score = scoreWebsite(signals);
+        // Anonymized usage telemetry — hostname-only SHA-256, level bucket,
+        // and score. Indexed by date. Skipped silently if SCORE_EVENTS isn't
+        // bound (local dev, tests).
+        try {
+          const hostname = new URL(url).hostname.toLowerCase();
+          const hostnameHash = await sha256Hex(hostname);
+          recordScoreEvent(env, hostnameHash, score.level, score.score);
+        } catch {
+          // never break scoring on telemetry failure
+        }
         return jsonContent(score);
       } catch (err) {
         return jsonContent(

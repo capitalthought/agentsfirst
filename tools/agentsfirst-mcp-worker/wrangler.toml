@@ -21,3 +21,11 @@ zone_name = "agentsfirst.dev"
 
 [observability]
 enabled = true
+
+# Anonymized usage telemetry — one event per successful score_website call.
+# Blob1 = SHA-256(hostname), blob2 = level_bucket ("0".."4"). Indexed by date
+# so we can answer "N unique scorers per day at level X" without retaining
+# the scored URL. No PII captured; full URLs and query strings never leave
+# the request scope.
+[[analytics_engine_datasets]]
+binding = "SCORE_EVENTS"
