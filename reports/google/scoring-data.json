@@ -4,7 +4,7 @@
     "rubric_version": "v0.1.2",
     "scored_at": "2026-05-06",
     "scorer_endpoint": "https://agentsfirst.dev/mcp",
-    "last_refreshed": "2026-05-21T15:08:27.433Z",
+    "last_refreshed": "2026-05-21T15:10:21.786Z",
     "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://blog.google": {
@@ -89,7 +89,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://blog.google",
-      "timestamp": "2026-05-21T15:08:30.838Z",
+      "timestamp": "2026-05-21T15:10:23.622Z",
       "signals": {
         "surfaces": {
           "robots_txt": {
@@ -99,8 +99,8 @@
             "content_type": "text/plain",
             "length": 153
           },
-          "llms_txt": {
-            "url": "https://blog.google/llms.txt",
+          "agents_md": {
+            "url": "https://blog.google/AGENTS.md",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
@@ -112,6 +112,20 @@
             "ok": true,
             "content_type": "application/xml",
             "length": 2137
+          },
+          "well_known_ai_plugin": {
+            "url": "https://blog.google/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195218
+          },
+          "llms_txt": {
+            "url": "https://blog.google/llms.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195218
           },
           "llms_full_txt": {
             "url": "https://blog.google/llms-full.txt",
@@ -127,29 +141,15 @@
             "content_type": "text/html; charset=utf-8",
             "length": 195218
           },
-          "agents_json": {
-            "url": "https://blog.google/agents.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 195218
-          },
-          "well_known_ai_plugin": {
-            "url": "https://blog.google/.well-known/ai-plugin.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 195218
-          },
-          "openapi_root": {
-            "url": "https://blog.google/openapi.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 195218
-          },
           "sitemap_index": {
             "url": "https://blog.google/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195218
+          },
+          "agents_json": {
+            "url": "https://blog.google/agents.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
@@ -162,15 +162,22 @@
             "content_type": "application/json",
             "length": 195218
           },
-          "well_known_agent_rules": {
-            "url": "https://blog.google/.well-known/agent-rules",
+          "openapi_v1": {
+            "url": "https://blog.google/v1/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
             "length": 195218
           },
-          "agents_md": {
-            "url": "https://blog.google/AGENTS.md",
+          "openapi_root": {
+            "url": "https://blog.google/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 195218
+          },
+          "well_known_agent_rules": {
+            "url": "https://blog.google/.well-known/agent-rules",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
@@ -185,13 +192,6 @@
           },
           "well_known_oauth": {
             "url": "https://blog.google/.well-known/oauth-authorization-server",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 195218
-          },
-          "openapi_v1": {
-            "url": "https://blog.google/v1/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
@@ -310,7 +310,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://cloud.google.com",
-      "timestamp": "2026-05-21T15:08:32.694Z",
+      "timestamp": "2026-05-21T15:10:25.740Z",
       "signals": {
         "surfaces": {
           "robots_txt": {
@@ -320,12 +320,12 @@
             "content_type": "text/plain",
             "length": 2529
           },
-          "agents_md": {
-            "url": "https://cloud.google.com/AGENTS.md",
+          "well_known_agent_rules": {
+            "url": "https://cloud.google.com/.well-known/agent-rules",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 685340
+            "length": 685353
           },
           "llms_txt": {
             "url": "https://cloud.google.com/llms.txt",
@@ -334,26 +334,26 @@
             "content_type": "text/html; charset=utf-8",
             "length": 685342
           },
+          "llms_full_txt": {
+            "url": "https://cloud.google.com/llms-full.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 685343
+          },
+          "agents_md": {
+            "url": "https://cloud.google.com/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 685340
+          },
           "well_known_ai_plugin": {
             "url": "https://cloud.google.com/.well-known/ai-plugin.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
             "length": 685360
-          },
-          "llms_full_txt": {
-            "url": "https://cloud.google.com/llms-full.txt",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 685347
-          },
-          "well_known_agent_rules": {
-            "url": "https://cloud.google.com/.well-known/agent-rules",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 685357
           },
           "well_known_mcp": {
             "url": "https://cloud.google.com/.well-known/mcp-server-card",
@@ -362,12 +362,12 @@
             "content_type": "text/html; charset=utf-8",
             "length": 685361
           },
-          "well_known_oauth": {
-            "url": "https://cloud.google.com/.well-known/oauth-authorization-server",
+          "agents_json": {
+            "url": "https://cloud.google.com/agents.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 685372
+            "length": 685345
           },
           "well_known_mcp_json": {
             "url": "https://cloud.google.com/.well-known/mcp-server-card.json",
@@ -381,21 +381,28 @@
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 685351
-          },
-          "agents_json": {
-            "url": "https://cloud.google.com/agents.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 685341
+            "length": 685347
           },
           "openapi_root": {
             "url": "https://cloud.google.com/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 685342
+            "length": 685346
+          },
+          "openapi_v1": {
+            "url": "https://cloud.google.com/v1/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 685345
+          },
+          "well_known_oauth": {
+            "url": "https://cloud.google.com/.well-known/oauth-authorization-server",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 685372
           },
           "sitemap": {
             "url": "https://cloud.google.com/sitemap.xml",
@@ -409,14 +416,7 @@
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 685346
-          },
-          "openapi_v1": {
-            "url": "https://cloud.google.com/v1/openapi.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 685345
+            "length": 685350
           }
         },
         "markdown_negotiation": {
@@ -430,7 +430,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 2326783
+          "length": 2326768
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -531,7 +531,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://developers.google.com",
-      "timestamp": "2026-05-21T15:08:34.570Z",
+      "timestamp": "2026-05-21T15:10:27.868Z",
       "signals": {
         "surfaces": {
           "robots_txt": {
@@ -540,6 +540,13 @@
             "ok": true,
             "content_type": "text/plain",
             "length": 93
+          },
+          "well_known_ai_plugin": {
+            "url": "https://developers.google.com/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 45686
           },
           "agents_md": {
             "url": "https://developers.google.com/AGENTS.md",
@@ -555,54 +562,12 @@
             "content_type": "text/html; charset=utf-8",
             "length": 45672
           },
-          "well_known_ai_plugin": {
-            "url": "https://developers.google.com/.well-known/ai-plugin.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 45686
-          },
-          "llms_full_txt": {
-            "url": "https://developers.google.com/llms-full.txt",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 45677
-          },
-          "well_known_agent_rules": {
-            "url": "https://developers.google.com/.well-known/agent-rules",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 45687
-          },
-          "agents_json": {
-            "url": "https://developers.google.com/agents.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 45671
-          },
           "well_known_mcp": {
             "url": "https://developers.google.com/.well-known/mcp-server-card",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 45691
-          },
-          "sitemap_index": {
-            "url": "https://developers.google.com/sitemap-index.xml",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 45681
-          },
-          "openapi_v1": {
-            "url": "https://developers.google.com/v1/openapi.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 45675
+            "length": 45687
           },
           "well_known_oauth": {
             "url": "https://developers.google.com/.well-known/oauth-authorization-server",
@@ -611,12 +576,26 @@
             "content_type": "text/html; charset=utf-8",
             "length": 45698
           },
+          "agents_json": {
+            "url": "https://developers.google.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 45671
+          },
           "well_known_mcp_json": {
             "url": "https://developers.google.com/.well-known/mcp-server-card.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
             "length": 45692
+          },
+          "llms_full_txt": {
+            "url": "https://developers.google.com/llms-full.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 45677
           },
           "openapi_root": {
             "url": "https://developers.google.com/openapi.json",
@@ -625,12 +604,33 @@
             "content_type": "text/html; charset=utf-8",
             "length": 45676
           },
+          "openapi_v1": {
+            "url": "https://developers.google.com/v1/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 45679
+          },
+          "well_known_agent_rules": {
+            "url": "https://developers.google.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 45683
+          },
           "openapi_api": {
             "url": "https://developers.google.com/api/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 45680
+            "length": 45676
+          },
+          "sitemap_index": {
+            "url": "https://developers.google.com/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 45677
           },
           "sitemap": {
             "url": "https://developers.google.com/sitemap.xml",
@@ -752,7 +752,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://www.google.com",
-      "timestamp": "2026-05-21T15:08:35.643Z",
+      "timestamp": "2026-05-21T15:10:28.882Z",
       "signals": {
         "surfaces": {
           "robots_txt": {
@@ -762,26 +762,12 @@
             "content_type": "text/plain",
             "length": 6549
           },
-          "llms_txt": {
-            "url": "https://www.google.com/llms.txt",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 1565
-          },
           "agents_md": {
             "url": "https://www.google.com/AGENTS.md",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
             "length": 1566
-          },
-          "well_known_agent_rules": {
-            "url": "https://www.google.com/.well-known/agent-rules",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 1580
           },
           "llms_full_txt": {
             "url": "https://www.google.com/llms-full.txt",
@@ -790,12 +776,26 @@
             "content_type": "text/html; charset=UTF-8",
             "length": 1570
           },
+          "llms_txt": {
+            "url": "https://www.google.com/llms.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1565
+          },
           "well_known_ai_plugin": {
             "url": "https://www.google.com/.well-known/ai-plugin.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
             "length": 1583
+          },
+          "well_known_agent_rules": {
+            "url": "https://www.google.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1580
           },
           "sitemap": {
             "url": "https://www.google.com/sitemap.xml",
@@ -811,12 +811,12 @@
             "content_type": "text/html; charset=UTF-8",
             "length": 1595
           },
-          "agents_json": {
-            "url": "https://www.google.com/agents.json",
+          "well_known_mcp_json": {
+            "url": "https://www.google.com/.well-known/mcp-server-card.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
-            "length": 1568
+            "length": 1589
           },
           "well_known_mcp": {
             "url": "https://www.google.com/.well-known/mcp-server-card",
@@ -825,19 +825,12 @@
             "content_type": "text/html; charset=UTF-8",
             "length": 1584
           },
-          "well_known_mcp_json": {
-            "url": "https://www.google.com/.well-known/mcp-server-card.json",
+          "agents_json": {
+            "url": "https://www.google.com/agents.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
-            "length": 1589
-          },
-          "sitemap_index": {
-            "url": "https://www.google.com/sitemap-index.xml",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 1574
+            "length": 1568
           },
           "openapi_root": {
             "url": "https://www.google.com/openapi.json",
@@ -845,6 +838,13 @@
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
             "length": 1569
+          },
+          "sitemap_index": {
+            "url": "https://www.google.com/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 1574
           },
           "openapi_v1": {
             "url": "https://www.google.com/v1/openapi.json",
@@ -863,16 +863,16 @@
         },
         "markdown_negotiation": {
           "requested": "text/markdown",
-          "content_type_returned": "text/html",
+          "content_type_returned": "text/html; charset=ISO-8859-1",
           "served_markdown": false,
-          "status": 429
+          "status": 200
         },
         "homepage": {
           "url": "https://www.google.com",
-          "status": 429,
-          "ok": false,
-          "content_type": "text/html",
-          "length": 3137
+          "status": 200,
+          "ok": true,
+          "content_type": "text/html; charset=ISO-8859-1",
+          "length": 80572
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -884,7 +884,7 @@
           "mentions_npx": false,
           "mentions_cli": false,
           "mentions_sdk": false,
-          "mentions_api": false,
+          "mentions_api": true,
           "mentions_oauth": false,
           "mentions_agents_first": false
         }

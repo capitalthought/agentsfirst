@@ -6,7 +6,7 @@
     "headline_score": 50,
     "headline_level": 2,
     "headline_surface": "https://builder.aws.com",
-    "last_refreshed": "2026-05-21T15:08:14.863Z",
+    "last_refreshed": "2026-05-21T15:10:03.181Z",
     "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://aws.amazon.com": {
@@ -91,15 +91,15 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://aws.amazon.com",
-      "timestamp": "2026-05-21T15:08:14.963Z",
+      "timestamp": "2026-05-21T15:10:03.465Z",
       "signals": {
         "surfaces": {
-          "llms_txt": {
-            "url": "https://aws.amazon.com/llms.txt",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html;charset=UTF-8",
-            "length": 43001
+          "robots_txt": {
+            "url": "https://aws.amazon.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain;charset=UTF-8",
+            "length": 13955
           },
           "llms_full_txt": {
             "url": "https://aws.amazon.com/llms-full.txt",
@@ -108,13 +108,6 @@
             "content_type": "text/html;charset=UTF-8",
             "length": 43001
           },
-          "robots_txt": {
-            "url": "https://aws.amazon.com/robots.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain;charset=UTF-8",
-            "length": 13955
-          },
           "sitemap": {
             "url": "https://aws.amazon.com/sitemap.xml",
             "status": 404,
@@ -122,22 +115,8 @@
             "content_type": "text/html;charset=UTF-8",
             "length": 43001
           },
-          "sitemap_index": {
-            "url": "https://aws.amazon.com/sitemap-index.xml",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html;charset=UTF-8",
-            "length": 43001
-          },
-          "well_known_agent_rules": {
-            "url": "https://aws.amazon.com/.well-known/agent-rules",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html;charset=UTF-8",
-            "length": 43001
-          },
-          "agents_md": {
-            "url": "https://aws.amazon.com/AGENTS.md",
+          "llms_txt": {
+            "url": "https://aws.amazon.com/llms.txt",
             "status": 404,
             "ok": false,
             "content_type": "text/html;charset=UTF-8",
@@ -150,22 +129,15 @@
             "content_type": "text/html;charset=UTF-8",
             "length": 43001
           },
-          "well_known_mcp": {
-            "url": "https://aws.amazon.com/.well-known/mcp-server-card",
+          "agents_md": {
+            "url": "https://aws.amazon.com/AGENTS.md",
             "status": 404,
             "ok": false,
             "content_type": "text/html;charset=UTF-8",
             "length": 43001
           },
-          "agents_json": {
-            "url": "https://aws.amazon.com/agents.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html;charset=UTF-8",
-            "length": 43001
-          },
-          "well_known_oauth": {
-            "url": "https://aws.amazon.com/.well-known/oauth-authorization-server",
+          "sitemap_index": {
+            "url": "https://aws.amazon.com/sitemap-index.xml",
             "status": 404,
             "ok": false,
             "content_type": "text/html;charset=UTF-8",
@@ -178,15 +150,8 @@
             "content_type": "text/html;charset=UTF-8",
             "length": 43001
           },
-          "openapi_root": {
-            "url": "https://aws.amazon.com/openapi.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html;charset=UTF-8",
-            "length": 43001
-          },
-          "openapi_v1": {
-            "url": "https://aws.amazon.com/v1/openapi.json",
+          "well_known_oauth": {
+            "url": "https://aws.amazon.com/.well-known/oauth-authorization-server",
             "status": 404,
             "ok": false,
             "content_type": "text/html;charset=UTF-8",
@@ -194,6 +159,41 @@
           },
           "openapi_api": {
             "url": "https://aws.amazon.com/api/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001
+          },
+          "openapi_root": {
+            "url": "https://aws.amazon.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001
+          },
+          "agents_json": {
+            "url": "https://aws.amazon.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001
+          },
+          "well_known_agent_rules": {
+            "url": "https://aws.amazon.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001
+          },
+          "well_known_mcp": {
+            "url": "https://aws.amazon.com/.well-known/mcp-server-card",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001
+          },
+          "openapi_v1": {
+            "url": "https://aws.amazon.com/v1/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html;charset=UTF-8",
@@ -312,30 +312,9 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://docs.aws.amazon.com",
-      "timestamp": "2026-05-21T15:08:15.939Z",
+      "timestamp": "2026-05-21T15:10:04.560Z",
       "signals": {
         "surfaces": {
-          "llms_txt": {
-            "url": "https://docs.aws.amazon.com/llms.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain",
-            "length": 289546
-          },
-          "llms_full_txt": {
-            "url": "https://docs.aws.amazon.com/llms-full.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain",
-            "length": 585087
-          },
-          "agents_md": {
-            "url": "https://docs.aws.amazon.com/AGENTS.md",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 1711
-          },
           "well_known_agent_rules": {
             "url": "https://docs.aws.amazon.com/.well-known/agent-rules",
             "status": 404,
@@ -350,12 +329,40 @@
             "content_type": "text/html",
             "length": 1711
           },
+          "llms_full_txt": {
+            "url": "https://docs.aws.amazon.com/llms-full.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain",
+            "length": 585087
+          },
+          "llms_txt": {
+            "url": "https://docs.aws.amazon.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain",
+            "length": 289546
+          },
+          "agents_md": {
+            "url": "https://docs.aws.amazon.com/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 1711
+          },
           "robots_txt": {
             "url": "https://docs.aws.amazon.com/robots.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/plain",
             "length": 3567
+          },
+          "well_known_mcp": {
+            "url": "https://docs.aws.amazon.com/.well-known/mcp-server-card",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 1711
           },
           "well_known_mcp_json": {
             "url": "https://docs.aws.amazon.com/.well-known/mcp-server-card.json",
@@ -378,22 +385,8 @@
             "content_type": "text/html",
             "length": 1711
           },
-          "well_known_mcp": {
-            "url": "https://docs.aws.amazon.com/.well-known/mcp-server-card",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 1711
-          },
           "agents_json": {
             "url": "https://docs.aws.amazon.com/agents.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 1711
-          },
-          "openapi_root": {
-            "url": "https://docs.aws.amazon.com/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
@@ -406,6 +399,13 @@
             "content_type": "text/html",
             "length": 1711
           },
+          "openapi_v1": {
+            "url": "https://docs.aws.amazon.com/v1/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 1711
+          },
           "openapi_api": {
             "url": "https://docs.aws.amazon.com/api/openapi.json",
             "status": 404,
@@ -413,8 +413,8 @@
             "content_type": "text/html",
             "length": 1711
           },
-          "openapi_v1": {
-            "url": "https://docs.aws.amazon.com/v1/openapi.json",
+          "openapi_root": {
+            "url": "https://docs.aws.amazon.com/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
@@ -527,22 +527,29 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://builder.aws.com",
-      "timestamp": "2026-05-21T15:08:16.907Z",
+      "timestamp": "2026-05-21T15:10:05.403Z",
       "signals": {
         "surfaces": {
-          "agents_md": {
-            "url": "https://builder.aws.com/AGENTS.md",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html",
-            "length": 2482
-          },
           "robots_txt": {
             "url": "https://builder.aws.com/robots.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/plain",
             "length": 97
+          },
+          "llms_full_txt": {
+            "url": "https://builder.aws.com/llms-full.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html",
+            "length": 2482
+          },
+          "llms_txt": {
+            "url": "https://builder.aws.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html",
+            "length": 2482
           },
           "well_known_ai_plugin": {
             "url": "https://builder.aws.com/.well-known/ai-plugin.json",
@@ -558,15 +565,15 @@
             "content_type": "text/html",
             "length": 2482
           },
-          "llms_txt": {
-            "url": "https://builder.aws.com/llms.txt",
+          "agents_md": {
+            "url": "https://builder.aws.com/AGENTS.md",
             "status": 200,
             "ok": true,
             "content_type": "text/html",
             "length": 2482
           },
-          "llms_full_txt": {
-            "url": "https://builder.aws.com/llms-full.txt",
+          "sitemap": {
+            "url": "https://builder.aws.com/sitemap.xml",
             "status": 200,
             "ok": true,
             "content_type": "text/html",
@@ -607,6 +614,13 @@
             "content_type": "text/html",
             "length": 2482
           },
+          "openapi_root": {
+            "url": "https://builder.aws.com/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html",
+            "length": 2482
+          },
           "openapi_api": {
             "url": "https://builder.aws.com/api/openapi.json",
             "status": 200,
@@ -614,22 +628,8 @@
             "content_type": "text/html",
             "length": 2482
           },
-          "sitemap": {
-            "url": "https://builder.aws.com/sitemap.xml",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html",
-            "length": 2482
-          },
           "openapi_v1": {
             "url": "https://builder.aws.com/v1/openapi.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html",
-            "length": 2482
-          },
-          "openapi_root": {
-            "url": "https://builder.aws.com/openapi.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html",

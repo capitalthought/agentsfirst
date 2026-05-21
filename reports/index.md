@@ -28,6 +28,8 @@ Auto-updated weekly via the live scorer at <https://agentsfirst.dev/mcp>. Last r
 
 Auto-updated weekly via the live scorer at <https://agentsfirst.dev/mcp>. Last refresh: **2026-05-21**. Sorted by score descending.
 
+Auto-updated weekly via the live scorer at <https://agentsfirst.dev/mcp>. Last refresh: **2026-05-21**. Sorted by score descending.
+
 | Date | Target | Score | Level | Read |
 |---|---|---:|---:|---|
 | 2026-05-21 | Vercel | **90** | 4 — Agent-Driven | [Read →](/reports/vercel/) |
@@ -37,8 +39,8 @@ Auto-updated weekly via the live scorer at <https://agentsfirst.dev/mcp>. Last r
 | 2026-05-21 | Notion | **65** | 3 — Agents First | [Read →](/reports/notion/) |
 | 2026-05-21 | Anthropic | **60** | 2 — Agent-Aware | [Read →](/reports/anthropic/) |
 | 2026-05-21 | AWS | **50** | 2 — Agent-Aware | [Read →](/reports/aws/) |
+| 2026-05-21 | Coinbase | **50** | 2 — Agent-Aware | [Read →](/reports/coinbase/) |
 | 2026-05-21 | Stripe | **50** | 2 — Agent-Aware | [Read →](/reports/stripe/) |
-| 2026-05-21 | Coinbase | **40** | 2 — Agent-Aware | [Read →](/reports/coinbase/) |
 | 2026-05-21 | Amazon | **25** | 1 — Agent as Afterthought | [Read →](/reports/amazon/) |
 | 2026-05-21 | Google | **15** | 1 — Agent as Afterthought | [Read →](/reports/google/) |
 | 2026-05-21 | Indeed | **10** | 0 — No agent access | [Read →](/reports/indeed/) |
