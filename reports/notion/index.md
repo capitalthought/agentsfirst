@@ -7,7 +7,7 @@ permalink: /reports/notion/
 report_target: Notion
 report_score: 65
 report_level: 3
-report_date: 2026-05-14
+report_date: 2026-05-21
 ---
 
 # Agent Readiness Report: Notion

@@ -5,9 +5,9 @@ image: /reports/coinbase/og.png
 author: Joshua Baer
 permalink: /reports/coinbase/
 report_target: Coinbase
-report_score: 50
+report_score: 40
 report_level: 2
-report_date: 2026-05-14
+report_date: 2026-05-21
 ---
 
 # Agent Readiness Report: Coinbase

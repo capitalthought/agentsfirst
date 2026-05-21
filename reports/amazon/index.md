@@ -7,7 +7,7 @@ permalink: /reports/amazon/
 report_target: Amazon
 report_score: 25
 report_level: 1
-report_date: 2026-05-14
+report_date: 2026-05-21
 ---
 
 # Agent Readiness Report: Amazon

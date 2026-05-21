@@ -9,7 +9,7 @@
     "rubric_version": "v0.1.2",
     "scored_at": "2026-05-06",
     "scorer_endpoint": "https://agentsfirst.dev/mcp",
-    "last_refreshed": "2026-05-14T14:53:40.997Z",
+    "last_refreshed": "2026-05-21T15:08:36.598Z",
     "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://developer.indeed.com": {
@@ -94,74 +94,11 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://developer.indeed.com",
-      "timestamp": "2026-05-14T14:53:41.179Z",
+      "timestamp": "2026-05-21T15:08:36.706Z",
       "signals": {
         "surfaces": {
-          "llms_full_txt": {
-            "url": "https://developer.indeed.com/llms-full.txt",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7338
-          },
-          "agents_md": {
-            "url": "https://developer.indeed.com/AGENTS.md",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7338
-          },
-          "well_known_mcp": {
-            "url": "https://developer.indeed.com/.well-known/mcp-server-card",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7338
-          },
           "well_known_ai_plugin": {
             "url": "https://developer.indeed.com/.well-known/ai-plugin.json",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7338
-          },
-          "robots_txt": {
-            "url": "https://developer.indeed.com/robots.txt",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7338
-          },
-          "well_known_agent_rules": {
-            "url": "https://developer.indeed.com/.well-known/agent-rules",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7338
-          },
-          "well_known_mcp_json": {
-            "url": "https://developer.indeed.com/.well-known/mcp-server-card.json",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7317
-          },
-          "sitemap": {
-            "url": "https://developer.indeed.com/sitemap.xml",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7317
-          },
-          "sitemap_index": {
-            "url": "https://developer.indeed.com/sitemap-index.xml",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7317
-          },
-          "well_known_oauth": {
-            "url": "https://developer.indeed.com/.well-known/oauth-authorization-server",
             "status": 403,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
@@ -174,8 +111,71 @@
             "content_type": "text/html; charset=UTF-8",
             "length": 7338
           },
-          "openapi_v1": {
-            "url": "https://developer.indeed.com/v1/openapi.json",
+          "llms_full_txt": {
+            "url": "https://developer.indeed.com/llms-full.txt",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "well_known_agent_rules": {
+            "url": "https://developer.indeed.com/.well-known/agent-rules",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "robots_txt": {
+            "url": "https://developer.indeed.com/robots.txt",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "well_known_mcp_json": {
+            "url": "https://developer.indeed.com/.well-known/mcp-server-card.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "sitemap": {
+            "url": "https://developer.indeed.com/sitemap.xml",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "well_known_mcp": {
+            "url": "https://developer.indeed.com/.well-known/mcp-server-card",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "well_known_oauth": {
+            "url": "https://developer.indeed.com/.well-known/oauth-authorization-server",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "agents_json": {
+            "url": "https://developer.indeed.com/agents.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "sitemap_index": {
+            "url": "https://developer.indeed.com/sitemap-index.xml",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7338
+          },
+          "openapi_api": {
+            "url": "https://developer.indeed.com/api/openapi.json",
             "status": 403,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
@@ -186,17 +186,17 @@
             "status": 403,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
-            "length": 7317
+            "length": 7338
           },
-          "openapi_api": {
-            "url": "https://developer.indeed.com/api/openapi.json",
+          "openapi_v1": {
+            "url": "https://developer.indeed.com/v1/openapi.json",
             "status": 403,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
             "length": 7338
           },
-          "agents_json": {
-            "url": "https://developer.indeed.com/agents.json",
+          "agents_md": {
+            "url": "https://developer.indeed.com/AGENTS.md",
             "status": 403,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
@@ -315,16 +315,9 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://employers.indeed.com",
-      "timestamp": "2026-05-14T14:53:41.508Z",
+      "timestamp": "2026-05-21T15:08:36.949Z",
       "signals": {
         "surfaces": {
-          "well_known_ai_plugin": {
-            "url": "https://employers.indeed.com/.well-known/ai-plugin.json",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7441
-          },
           "well_known_agent_rules": {
             "url": "https://employers.indeed.com/.well-known/agent-rules",
             "status": 403,
@@ -338,6 +331,13 @@
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
             "length": 7366
+          },
+          "well_known_ai_plugin": {
+            "url": "https://employers.indeed.com/.well-known/ai-plugin.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7441
           },
           "llms_txt": {
             "url": "https://employers.indeed.com/llms.txt",
@@ -367,8 +367,22 @@
             "content_type": "text/html; charset=UTF-8",
             "length": 7444
           },
+          "well_known_mcp_json": {
+            "url": "https://employers.indeed.com/.well-known/mcp-server-card.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7481
+          },
           "agents_json": {
             "url": "https://employers.indeed.com/agents.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7372
+          },
+          "sitemap": {
+            "url": "https://employers.indeed.com/sitemap.xml",
             "status": 403,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
@@ -380,20 +394,6 @@
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
             "length": 7411
-          },
-          "well_known_mcp_json": {
-            "url": "https://employers.indeed.com/.well-known/mcp-server-card.json",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7481
-          },
-          "sitemap": {
-            "url": "https://employers.indeed.com/sitemap.xml",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7372
           },
           "openapi_v1": {
             "url": "https://employers.indeed.com/v1/openapi.json",
@@ -409,19 +409,19 @@
             "content_type": "text/html; charset=UTF-8",
             "length": 7375
           },
+          "openapi_api": {
+            "url": "https://employers.indeed.com/api/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 272362
+          },
           "robots_txt": {
             "url": "https://employers.indeed.com/robots.txt",
             "status": 200,
             "ok": true,
             "content_type": "application/octet-stream",
             "length": 25
-          },
-          "openapi_api": {
-            "url": "https://employers.indeed.com/api/openapi.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 270089
           }
         },
         "markdown_negotiation": {
@@ -537,106 +537,106 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://www.indeed.com",
-      "timestamp": "2026-05-14T14:53:41.682Z",
+      "timestamp": "2026-05-21T15:08:37.046Z",
       "signals": {
         "surfaces": {
-          "well_known_agent_rules": {
-            "url": "https://www.indeed.com/.well-known/agent-rules",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7405
-          },
-          "well_known_oauth": {
-            "url": "https://www.indeed.com/.well-known/oauth-authorization-server",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7472
-          },
-          "well_known_ai_plugin": {
-            "url": "https://www.indeed.com/.well-known/ai-plugin.json",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7414
-          },
           "agents_md": {
             "url": "https://www.indeed.com/AGENTS.md",
             "status": 403,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
-            "length": 7339
-          },
-          "well_known_mcp": {
-            "url": "https://www.indeed.com/.well-known/mcp-server-card",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7417
-          },
-          "well_known_mcp_json": {
-            "url": "https://www.indeed.com/.well-known/mcp-server-card.json",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7432
+            "length": 7360
           },
           "llms_txt": {
             "url": "https://www.indeed.com/llms.txt",
             "status": 403,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
-            "length": 7336
+            "length": 7357
           },
           "llms_full_txt": {
             "url": "https://www.indeed.com/llms-full.txt",
             "status": 403,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
-            "length": 7351
+            "length": 7372
+          },
+          "well_known_agent_rules": {
+            "url": "https://www.indeed.com/.well-known/agent-rules",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7426
+          },
+          "well_known_ai_plugin": {
+            "url": "https://www.indeed.com/.well-known/ai-plugin.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7435
+          },
+          "well_known_oauth": {
+            "url": "https://www.indeed.com/.well-known/oauth-authorization-server",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7493
+          },
+          "well_known_mcp_json": {
+            "url": "https://www.indeed.com/.well-known/mcp-server-card.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7453
           },
           "agents_json": {
             "url": "https://www.indeed.com/agents.json",
             "status": 403,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
-            "length": 7345
+            "length": 7366
           },
-          "sitemap": {
-            "url": "https://www.indeed.com/sitemap.xml",
+          "well_known_mcp": {
+            "url": "https://www.indeed.com/.well-known/mcp-server-card",
             "status": 403,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
-            "length": 7345
-          },
-          "openapi_root": {
-            "url": "https://www.indeed.com/openapi.json",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7348
-          },
-          "openapi_v1": {
-            "url": "https://www.indeed.com/v1/openapi.json",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7360
-          },
-          "openapi_api": {
-            "url": "https://www.indeed.com/api/openapi.json",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 7363
+            "length": 7438
           },
           "sitemap_index": {
             "url": "https://www.indeed.com/sitemap-index.xml",
             "status": 403,
             "ok": false,
             "content_type": "text/html; charset=UTF-8",
-            "length": 7363
+            "length": 7384
+          },
+          "openapi_root": {
+            "url": "https://www.indeed.com/openapi.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7369
+          },
+          "openapi_v1": {
+            "url": "https://www.indeed.com/v1/openapi.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7381
+          },
+          "sitemap": {
+            "url": "https://www.indeed.com/sitemap.xml",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7366
+          },
+          "openapi_api": {
+            "url": "https://www.indeed.com/api/openapi.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 7384
           },
           "robots_txt": {
             "url": "https://www.indeed.com/robots.txt",
@@ -657,7 +657,7 @@
           "status": 403,
           "ok": false,
           "content_type": "text/html; charset=UTF-8",
-          "length": 7291
+          "length": 7312
         },
         "robots_analysis": {
           "ai_agents_addressed": [

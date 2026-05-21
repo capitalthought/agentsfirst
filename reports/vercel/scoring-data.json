@@ -4,7 +4,7 @@
     "rubric_version": "v0.1.2",
     "scored_at": "2026-05-06",
     "scorer_endpoint": "https://agentsfirst.dev/mcp",
-    "last_refreshed": "2026-05-14T14:53:51.608Z",
+    "last_refreshed": "2026-05-21T15:08:44.704Z",
     "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://sdk.vercel.ai": {
@@ -89,18 +89,25 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://sdk.vercel.ai",
-      "timestamp": "2026-05-14T14:53:52.987Z",
+      "timestamp": "2026-05-21T15:08:45.129Z",
       "signals": {
         "surfaces": {
-          "well_known_ai_plugin": {
-            "url": "https://sdk.vercel.ai/.well-known/ai-plugin.json",
+          "well_known_agent_rules": {
+            "url": "https://sdk.vercel.ai/.well-known/agent-rules",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
             "length": 34500
           },
-          "well_known_agent_rules": {
-            "url": "https://sdk.vercel.ai/.well-known/agent-rules",
+          "well_known_mcp_json": {
+            "url": "https://sdk.vercel.ai/.well-known/mcp-server-card.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 34500
+          },
+          "well_known_ai_plugin": {
+            "url": "https://sdk.vercel.ai/.well-known/ai-plugin.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
@@ -113,43 +120,8 @@
             "content_type": "text/html; charset=utf-8",
             "length": 34500
           },
-          "llms_txt": {
-            "url": "https://sdk.vercel.ai/llms.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain; charset=utf-8",
-            "length": 5003803
-          },
-          "robots_txt": {
-            "url": "https://sdk.vercel.ai/robots.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain; charset=utf-8",
-            "length": 139
-          },
-          "well_known_mcp_json": {
-            "url": "https://sdk.vercel.ai/.well-known/mcp-server-card.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 34500
-          },
           "well_known_mcp": {
             "url": "https://sdk.vercel.ai/.well-known/mcp-server-card",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 34500
-          },
-          "llms_full_txt": {
-            "url": "https://sdk.vercel.ai/llms-full.txt",
-            "status": 500,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 10296
-          },
-          "openapi_api": {
-            "url": "https://sdk.vercel.ai/api/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
@@ -162,6 +134,13 @@
             "content_type": "text/html; charset=utf-8",
             "length": 10296
           },
+          "llms_full_txt": {
+            "url": "https://sdk.vercel.ai/llms-full.txt",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 10296
+          },
           "openapi_v1": {
             "url": "https://sdk.vercel.ai/v1/openapi.json",
             "status": 404,
@@ -169,15 +148,22 @@
             "content_type": "text/html; charset=utf-8",
             "length": 34500
           },
-          "agents_json": {
-            "url": "https://sdk.vercel.ai/agents.json",
-            "status": 500,
+          "llms_txt": {
+            "url": "https://sdk.vercel.ai/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 5188247
+          },
+          "openapi_api": {
+            "url": "https://sdk.vercel.ai/api/openapi.json",
+            "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 10296
+            "length": 34500
           },
-          "sitemap_index": {
-            "url": "https://sdk.vercel.ai/sitemap-index.xml",
+          "agents_json": {
+            "url": "https://sdk.vercel.ai/agents.json",
             "status": 500,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
@@ -195,7 +181,21 @@
             "status": 200,
             "ok": true,
             "content_type": "application/xml; charset=utf-8",
-            "length": 116012
+            "length": 116408
+          },
+          "robots_txt": {
+            "url": "https://sdk.vercel.ai/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 139
+          },
+          "sitemap_index": {
+            "url": "https://sdk.vercel.ai/sitemap-index.xml",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 10296
           }
         },
         "markdown_negotiation": {
@@ -209,7 +209,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 447614
+          "length": 447618
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -304,7 +304,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://vercel.com",
-      "timestamp": "2026-05-14T14:53:53.723Z",
+      "timestamp": "2026-05-21T15:08:46.024Z",
       "signals": {
         "surfaces": {
           "robots_txt": {
@@ -314,8 +314,22 @@
             "content_type": "text/plain; charset=utf-8",
             "length": 482
           },
+          "llms_txt": {
+            "url": "https://vercel.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 169186
+          },
           "well_known_ai_plugin": {
             "url": "https://vercel.com/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain;charset=UTF-8",
+            "length": 9
+          },
+          "well_known_mcp": {
+            "url": "https://vercel.com/.well-known/mcp-server-card",
             "status": 404,
             "ok": false,
             "content_type": "text/plain;charset=UTF-8",
@@ -335,20 +349,6 @@
             "content_type": "text/plain;charset=UTF-8",
             "length": 9
           },
-          "well_known_mcp": {
-            "url": "https://vercel.com/.well-known/mcp-server-card",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/plain;charset=UTF-8",
-            "length": 9
-          },
-          "openapi_api": {
-            "url": "https://vercel.com/api/openapi.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "application/json; charset=utf-8",
-            "length": 84
-          },
           "well_known_oauth": {
             "url": "https://vercel.com/.well-known/oauth-authorization-server",
             "status": 200,
@@ -361,56 +361,56 @@
             "status": 200,
             "ok": true,
             "content_type": "application/xml; charset=utf-8",
-            "length": 1003214
+            "length": 975983
           },
-          "agents_md": {
-            "url": "https://vercel.com/AGENTS.md",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 240095
-          },
-          "llms_full_txt": {
-            "url": "https://vercel.com/llms-full.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 240113
-          },
-          "sitemap_index": {
-            "url": "https://vercel.com/sitemap-index.xml",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 240135
-          },
-          "openapi_root": {
-            "url": "https://vercel.com/openapi.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 240112
+          "openapi_api": {
+            "url": "https://vercel.com/api/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "application/json; charset=utf-8",
+            "length": 84
           },
           "agents_json": {
             "url": "https://vercel.com/agents.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 240105
+            "length": 240246
+          },
+          "sitemap_index": {
+            "url": "https://vercel.com/sitemap-index.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 240276
+          },
+          "openapi_root": {
+            "url": "https://vercel.com/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 240251
+          },
+          "llms_full_txt": {
+            "url": "https://vercel.com/llms-full.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 240256
+          },
+          "agents_md": {
+            "url": "https://vercel.com/AGENTS.md",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 240236
           },
           "openapi_v1": {
             "url": "https://vercel.com/v1/openapi.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 1062461
-          },
-          "llms_txt": {
-            "url": "https://vercel.com/llms.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain; charset=utf-8",
-            "length": 167798
+            "length": 1066634
           }
         },
         "markdown_negotiation": {
@@ -424,7 +424,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 940670
+          "length": 999972
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -518,7 +518,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://vercel.com/docs",
-      "timestamp": "2026-05-14T14:53:54.511Z",
+      "timestamp": "2026-05-21T15:08:46.843Z",
       "signals": {
         "surfaces": {
           "robots_txt": {
@@ -528,13 +528,6 @@
             "content_type": "text/plain; charset=utf-8",
             "length": 482
           },
-          "well_known_agent_rules": {
-            "url": "https://vercel.com/.well-known/agent-rules",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/plain;charset=UTF-8",
-            "length": 9
-          },
           "well_known_oauth": {
             "url": "https://vercel.com/.well-known/oauth-authorization-server",
             "status": 200,
@@ -542,8 +535,22 @@
             "content_type": "application/json",
             "length": 1476
           },
-          "well_known_mcp_json": {
-            "url": "https://vercel.com/.well-known/mcp-server-card.json",
+          "llms_txt": {
+            "url": "https://vercel.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 169186
+          },
+          "well_known_ai_plugin": {
+            "url": "https://vercel.com/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain;charset=UTF-8",
+            "length": 9
+          },
+          "well_known_agent_rules": {
+            "url": "https://vercel.com/.well-known/agent-rules",
             "status": 404,
             "ok": false,
             "content_type": "text/plain;charset=UTF-8",
@@ -556,22 +563,8 @@
             "content_type": "text/plain;charset=UTF-8",
             "length": 9
           },
-          "llms_txt": {
-            "url": "https://vercel.com/llms.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain; charset=utf-8",
-            "length": 167798
-          },
-          "openapi_api": {
-            "url": "https://vercel.com/api/openapi.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "application/json; charset=utf-8",
-            "length": 84
-          },
-          "well_known_ai_plugin": {
-            "url": "https://vercel.com/.well-known/ai-plugin.json",
+          "well_known_mcp_json": {
+            "url": "https://vercel.com/.well-known/mcp-server-card.json",
             "status": 404,
             "ok": false,
             "content_type": "text/plain;charset=UTF-8",
@@ -582,49 +575,56 @@
             "status": 200,
             "ok": true,
             "content_type": "application/xml; charset=utf-8",
-            "length": 1003214
+            "length": 975983
+          },
+          "openapi_api": {
+            "url": "https://vercel.com/api/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "application/json; charset=utf-8",
+            "length": 84
           },
           "agents_md": {
             "url": "https://vercel.com/AGENTS.md",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 240097
-          },
-          "sitemap_index": {
-            "url": "https://vercel.com/sitemap-index.xml",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 240135
-          },
-          "openapi_root": {
-            "url": "https://vercel.com/openapi.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 240110
-          },
-          "llms_full_txt": {
-            "url": "https://vercel.com/llms-full.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 240115
+            "length": 240236
           },
           "agents_json": {
             "url": "https://vercel.com/agents.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 240105
+            "length": 240246
+          },
+          "llms_full_txt": {
+            "url": "https://vercel.com/llms-full.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 240256
+          },
+          "openapi_root": {
+            "url": "https://vercel.com/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 240251
+          },
+          "sitemap_index": {
+            "url": "https://vercel.com/sitemap-index.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 240276
           },
           "openapi_v1": {
             "url": "https://vercel.com/v1/openapi.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 1071896
+            "length": 1071269
           }
         },
         "markdown_negotiation": {
