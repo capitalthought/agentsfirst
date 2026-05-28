@@ -7,7 +7,7 @@ permalink: /reports/cloudflare/
 report_target: Cloudflare
 report_score: 85
 report_level: 3
-report_date: 2026-05-21
+report_date: 2026-05-28
 ---
 # Agent Readiness Report: Cloudflare
 

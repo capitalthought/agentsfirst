@@ -16,7 +16,7 @@
       "docs.cursor.com surface scoring is partially inflated by a Next.js SPA catchall: every probed well-known path returned 200 with the same 120306-byte HTML shell rather than the requested asset. The /llms.txt, robots.txt, and sitemap on the marketing roots are real (text/plain, 9075 bytes for /llms.txt). Hero homepage analysis on docs (mentions_mcp/cli/sdk/api all true) and on the marketing root (mentions_cli only true) is a real differentiator independent of the SPA loophole.",
       "Body fields stripped from probe surfaces to satisfy secrets-guard hook."
     ],
-    "last_refreshed": "2026-05-21T15:10:19.088Z",
+    "last_refreshed": "2026-05-28T15:09:40.242Z",
     "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://docs.cursor.com": {
@@ -95,113 +95,113 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://docs.cursor.com",
-      "timestamp": "2026-05-21T15:10:19.777Z",
+      "timestamp": "2026-05-28T15:09:41.097Z",
       "signals": {
         "surfaces": {
-          "llms_txt": {
-            "url": "https://docs.cursor.com/llms.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 123816
-          },
           "llms_full_txt": {
             "url": "https://docs.cursor.com/llms-full.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 123816
-          },
-          "robots_txt": {
-            "url": "https://docs.cursor.com/robots.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 123816
-          },
-          "well_known_ai_plugin": {
-            "url": "https://docs.cursor.com/.well-known/ai-plugin.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 123816
-          },
-          "well_known_mcp": {
-            "url": "https://docs.cursor.com/.well-known/mcp-server-card",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 123816
-          },
-          "agents_json": {
-            "url": "https://docs.cursor.com/agents.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 123816
-          },
-          "well_known_oauth": {
-            "url": "https://docs.cursor.com/.well-known/oauth-authorization-server",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 123816
-          },
-          "sitemap": {
-            "url": "https://docs.cursor.com/sitemap.xml",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 123816
+            "length": 124010
           },
           "well_known_agent_rules": {
             "url": "https://docs.cursor.com/.well-known/agent-rules",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 123816
-          },
-          "sitemap_index": {
-            "url": "https://docs.cursor.com/sitemap-index.xml",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 123816
-          },
-          "well_known_mcp_json": {
-            "url": "https://docs.cursor.com/.well-known/mcp-server-card.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 123816
-          },
-          "openapi_root": {
-            "url": "https://docs.cursor.com/openapi.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 123816
-          },
-          "openapi_v1": {
-            "url": "https://docs.cursor.com/v1/openapi.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 123816
-          },
-          "openapi_api": {
-            "url": "https://docs.cursor.com/api/openapi.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 123816
+            "length": 124010
           },
           "agents_md": {
             "url": "https://docs.cursor.com/AGENTS.md",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 123816
+            "length": 124010
+          },
+          "well_known_ai_plugin": {
+            "url": "https://docs.cursor.com/.well-known/ai-plugin.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 124010
+          },
+          "llms_txt": {
+            "url": "https://docs.cursor.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 124010
+          },
+          "well_known_oauth": {
+            "url": "https://docs.cursor.com/.well-known/oauth-authorization-server",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 124010
+          },
+          "well_known_mcp": {
+            "url": "https://docs.cursor.com/.well-known/mcp-server-card",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 124010
+          },
+          "agents_json": {
+            "url": "https://docs.cursor.com/agents.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 124010
+          },
+          "sitemap": {
+            "url": "https://docs.cursor.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 124010
+          },
+          "sitemap_index": {
+            "url": "https://docs.cursor.com/sitemap-index.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 124010
+          },
+          "openapi_v1": {
+            "url": "https://docs.cursor.com/v1/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 124010
+          },
+          "openapi_api": {
+            "url": "https://docs.cursor.com/api/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 124010
+          },
+          "robots_txt": {
+            "url": "https://docs.cursor.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 124010
+          },
+          "well_known_mcp_json": {
+            "url": "https://docs.cursor.com/.well-known/mcp-server-card.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 124010
+          },
+          "openapi_root": {
+            "url": "https://docs.cursor.com/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 124010
           }
         },
         "markdown_negotiation": {
@@ -215,7 +215,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 123816
+          "length": 124010
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -316,11 +316,18 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://cursor.com",
-      "timestamp": "2026-05-21T15:10:20.540Z",
+      "timestamp": "2026-05-28T15:09:41.983Z",
       "signals": {
         "surfaces": {
           "agents_md": {
             "url": "https://cursor.com/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 6317
+          },
+          "llms_full_txt": {
+            "url": "https://cursor.com/llms-full.txt",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
@@ -331,10 +338,10 @@
             "status": 200,
             "ok": true,
             "content_type": "text/plain; charset=utf-8",
-            "length": 9381
+            "length": 9476
           },
-          "llms_full_txt": {
-            "url": "https://cursor.com/llms-full.txt",
+          "agents_json": {
+            "url": "https://cursor.com/agents.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
@@ -347,33 +354,12 @@
             "content_type": "text/plain; charset=utf-8",
             "length": 1106
           },
-          "agents_json": {
-            "url": "https://cursor.com/agents.json",
+          "openapi_root": {
+            "url": "https://cursor.com/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
             "length": 6317
-          },
-          "well_known_ai_plugin": {
-            "url": "https://cursor.com/.well-known/ai-plugin.json",
-            "status": 500,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 644224
-          },
-          "well_known_agent_rules": {
-            "url": "https://cursor.com/.well-known/agent-rules",
-            "status": 500,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 644215
-          },
-          "well_known_mcp": {
-            "url": "https://cursor.com/.well-known/mcp-server-card",
-            "status": 500,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 644227
           },
           "sitemap_index": {
             "url": "https://cursor.com/sitemap-index.xml",
@@ -382,19 +368,47 @@
             "content_type": "text/html; charset=utf-8",
             "length": 6317
           },
+          "well_known_agent_rules": {
+            "url": "https://cursor.com/.well-known/agent-rules",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 673335
+          },
+          "well_known_ai_plugin": {
+            "url": "https://cursor.com/.well-known/ai-plugin.json",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 673344
+          },
+          "well_known_mcp": {
+            "url": "https://cursor.com/.well-known/mcp-server-card",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 673347
+          },
           "well_known_mcp_json": {
             "url": "https://cursor.com/.well-known/mcp-server-card.json",
             "status": 500,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 644242
+            "length": 673362
           },
           "well_known_oauth": {
             "url": "https://cursor.com/.well-known/oauth-authorization-server",
             "status": 500,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 644260
+            "length": 673380
+          },
+          "openapi_api": {
+            "url": "https://cursor.com/api/openapi.json",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 673242
           },
           "sitemap": {
             "url": "https://cursor.com/sitemap.xml",
@@ -403,26 +417,12 @@
             "content_type": "application/xml",
             "length": 17249
           },
-          "openapi_root": {
-            "url": "https://cursor.com/openapi.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 6317
-          },
-          "openapi_api": {
-            "url": "https://cursor.com/api/openapi.json",
-            "status": 500,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 644178
-          },
           "openapi_v1": {
             "url": "https://cursor.com/v1/openapi.json",
             "status": 500,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 644173
+            "length": 673237
           }
         },
         "markdown_negotiation": {
@@ -436,7 +436,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 711412
+          "length": 711795
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -537,16 +537,9 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://www.cursor.com",
-      "timestamp": "2026-05-21T15:10:21.482Z",
+      "timestamp": "2026-05-28T15:09:42.893Z",
       "signals": {
         "surfaces": {
-          "llms_full_txt": {
-            "url": "https://www.cursor.com/llms-full.txt",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 6317
-          },
           "agents_md": {
             "url": "https://www.cursor.com/AGENTS.md",
             "status": 404,
@@ -554,19 +547,19 @@
             "content_type": "text/html; charset=utf-8",
             "length": 6317
           },
-          "robots_txt": {
-            "url": "https://www.cursor.com/robots.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain; charset=utf-8",
-            "length": 1106
+          "llms_full_txt": {
+            "url": "https://www.cursor.com/llms-full.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 6317
           },
           "llms_txt": {
             "url": "https://www.cursor.com/llms.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/plain; charset=utf-8",
-            "length": 9381
+            "length": 9476
           },
           "agents_json": {
             "url": "https://www.cursor.com/agents.json",
@@ -574,20 +567,6 @@
             "ok": false,
             "content_type": "text/html; charset=utf-8",
             "length": 6317
-          },
-          "well_known_agent_rules": {
-            "url": "https://www.cursor.com/.well-known/agent-rules",
-            "status": 500,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 644215
-          },
-          "sitemap": {
-            "url": "https://www.cursor.com/sitemap.xml",
-            "status": 200,
-            "ok": true,
-            "content_type": "application/xml",
-            "length": 17249
           },
           "sitemap_index": {
             "url": "https://www.cursor.com/sitemap-index.xml",
@@ -603,47 +582,68 @@
             "content_type": "text/html; charset=utf-8",
             "length": 6317
           },
-          "well_known_ai_plugin": {
-            "url": "https://www.cursor.com/.well-known/ai-plugin.json",
-            "status": 500,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 644224
+          "sitemap": {
+            "url": "https://www.cursor.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/xml",
+            "length": 17249
           },
-          "well_known_mcp_json": {
-            "url": "https://www.cursor.com/.well-known/mcp-server-card.json",
-            "status": 500,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 644242
-          },
-          "openapi_v1": {
-            "url": "https://www.cursor.com/v1/openapi.json",
-            "status": 500,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 644173
-          },
-          "well_known_mcp": {
-            "url": "https://www.cursor.com/.well-known/mcp-server-card",
-            "status": 500,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 644227
+          "robots_txt": {
+            "url": "https://www.cursor.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain; charset=utf-8",
+            "length": 1106
           },
           "well_known_oauth": {
             "url": "https://www.cursor.com/.well-known/oauth-authorization-server",
             "status": 500,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 644260
+            "length": 673380
+          },
+          "well_known_ai_plugin": {
+            "url": "https://www.cursor.com/.well-known/ai-plugin.json",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 673344
+          },
+          "openapi_v1": {
+            "url": "https://www.cursor.com/v1/openapi.json",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 673237
+          },
+          "well_known_mcp": {
+            "url": "https://www.cursor.com/.well-known/mcp-server-card",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 673347
           },
           "openapi_api": {
             "url": "https://www.cursor.com/api/openapi.json",
             "status": 500,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 644178
+            "length": 673242
+          },
+          "well_known_mcp_json": {
+            "url": "https://www.cursor.com/.well-known/mcp-server-card.json",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 673362
+          },
+          "well_known_agent_rules": {
+            "url": "https://www.cursor.com/.well-known/agent-rules",
+            "status": 500,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 673335
           }
         },
         "markdown_negotiation": {
@@ -657,7 +657,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 711412
+          "length": 712897
         },
         "robots_analysis": {
           "ai_agents_addressed": [],

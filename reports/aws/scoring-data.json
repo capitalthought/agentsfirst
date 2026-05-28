@@ -6,7 +6,7 @@
     "headline_score": 50,
     "headline_level": 2,
     "headline_surface": "https://builder.aws.com",
-    "last_refreshed": "2026-05-21T15:10:03.181Z",
+    "last_refreshed": "2026-05-28T15:09:21.209Z",
     "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://aws.amazon.com": {
@@ -91,7 +91,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://aws.amazon.com",
-      "timestamp": "2026-05-21T15:10:03.465Z",
+      "timestamp": "2026-05-28T15:09:21.449Z",
       "signals": {
         "surfaces": {
           "robots_txt": {
@@ -100,6 +100,13 @@
             "ok": true,
             "content_type": "text/plain;charset=UTF-8",
             "length": 13955
+          },
+          "llms_txt": {
+            "url": "https://aws.amazon.com/llms.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001
           },
           "llms_full_txt": {
             "url": "https://aws.amazon.com/llms-full.txt",
@@ -115,15 +122,8 @@
             "content_type": "text/html;charset=UTF-8",
             "length": 43001
           },
-          "llms_txt": {
-            "url": "https://aws.amazon.com/llms.txt",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html;charset=UTF-8",
-            "length": 43001
-          },
-          "well_known_ai_plugin": {
-            "url": "https://aws.amazon.com/.well-known/ai-plugin.json",
+          "sitemap_index": {
+            "url": "https://aws.amazon.com/sitemap-index.xml",
             "status": 404,
             "ok": false,
             "content_type": "text/html;charset=UTF-8",
@@ -136,15 +136,15 @@
             "content_type": "text/html;charset=UTF-8",
             "length": 43001
           },
-          "sitemap_index": {
-            "url": "https://aws.amazon.com/sitemap-index.xml",
+          "well_known_agent_rules": {
+            "url": "https://aws.amazon.com/.well-known/agent-rules",
             "status": 404,
             "ok": false,
             "content_type": "text/html;charset=UTF-8",
             "length": 43001
           },
-          "well_known_mcp_json": {
-            "url": "https://aws.amazon.com/.well-known/mcp-server-card.json",
+          "well_known_ai_plugin": {
+            "url": "https://aws.amazon.com/.well-known/ai-plugin.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html;charset=UTF-8",
@@ -152,6 +152,20 @@
           },
           "well_known_oauth": {
             "url": "https://aws.amazon.com/.well-known/oauth-authorization-server",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001
+          },
+          "agents_json": {
+            "url": "https://aws.amazon.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html;charset=UTF-8",
+            "length": 43001
+          },
+          "openapi_v1": {
+            "url": "https://aws.amazon.com/v1/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html;charset=UTF-8",
@@ -171,15 +185,8 @@
             "content_type": "text/html;charset=UTF-8",
             "length": 43001
           },
-          "agents_json": {
-            "url": "https://aws.amazon.com/agents.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html;charset=UTF-8",
-            "length": 43001
-          },
-          "well_known_agent_rules": {
-            "url": "https://aws.amazon.com/.well-known/agent-rules",
+          "well_known_mcp_json": {
+            "url": "https://aws.amazon.com/.well-known/mcp-server-card.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html;charset=UTF-8",
@@ -187,13 +194,6 @@
           },
           "well_known_mcp": {
             "url": "https://aws.amazon.com/.well-known/mcp-server-card",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html;charset=UTF-8",
-            "length": 43001
-          },
-          "openapi_v1": {
-            "url": "https://aws.amazon.com/v1/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html;charset=UTF-8",
@@ -211,7 +211,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html;charset=utf-8",
-          "length": 333121
+          "length": 336313
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -312,9 +312,30 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://docs.aws.amazon.com",
-      "timestamp": "2026-05-21T15:10:04.560Z",
+      "timestamp": "2026-05-28T15:09:22.469Z",
       "signals": {
         "surfaces": {
+          "robots_txt": {
+            "url": "https://docs.aws.amazon.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain",
+            "length": 3567
+          },
+          "llms_txt": {
+            "url": "https://docs.aws.amazon.com/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain",
+            "length": 290583
+          },
+          "llms_full_txt": {
+            "url": "https://docs.aws.amazon.com/llms-full.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain",
+            "length": 585510
+          },
           "well_known_agent_rules": {
             "url": "https://docs.aws.amazon.com/.well-known/agent-rules",
             "status": 404,
@@ -329,50 +350,8 @@
             "content_type": "text/html",
             "length": 1711
           },
-          "llms_full_txt": {
-            "url": "https://docs.aws.amazon.com/llms-full.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain",
-            "length": 585087
-          },
-          "llms_txt": {
-            "url": "https://docs.aws.amazon.com/llms.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain",
-            "length": 289546
-          },
           "agents_md": {
             "url": "https://docs.aws.amazon.com/AGENTS.md",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 1711
-          },
-          "robots_txt": {
-            "url": "https://docs.aws.amazon.com/robots.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain",
-            "length": 3567
-          },
-          "well_known_mcp": {
-            "url": "https://docs.aws.amazon.com/.well-known/mcp-server-card",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 1711
-          },
-          "well_known_mcp_json": {
-            "url": "https://docs.aws.amazon.com/.well-known/mcp-server-card.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 1711
-          },
-          "sitemap": {
-            "url": "https://docs.aws.amazon.com/sitemap.xml",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
@@ -392,8 +371,36 @@
             "content_type": "text/html",
             "length": 1711
           },
+          "sitemap": {
+            "url": "https://docs.aws.amazon.com/sitemap.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 1711
+          },
           "sitemap_index": {
             "url": "https://docs.aws.amazon.com/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 1711
+          },
+          "well_known_mcp_json": {
+            "url": "https://docs.aws.amazon.com/.well-known/mcp-server-card.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 1711
+          },
+          "openapi_root": {
+            "url": "https://docs.aws.amazon.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 1711
+          },
+          "well_known_mcp": {
+            "url": "https://docs.aws.amazon.com/.well-known/mcp-server-card",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
@@ -408,13 +415,6 @@
           },
           "openapi_api": {
             "url": "https://docs.aws.amazon.com/api/openapi.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 1711
-          },
-          "openapi_root": {
-            "url": "https://docs.aws.amazon.com/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
@@ -527,7 +527,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://builder.aws.com",
-      "timestamp": "2026-05-21T15:10:05.403Z",
+      "timestamp": "2026-05-28T15:09:24.305Z",
       "signals": {
         "surfaces": {
           "robots_txt": {
@@ -542,98 +542,98 @@
             "status": 200,
             "ok": true,
             "content_type": "text/html",
-            "length": 2482
-          },
-          "llms_txt": {
-            "url": "https://builder.aws.com/llms.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html",
-            "length": 2482
-          },
-          "well_known_ai_plugin": {
-            "url": "https://builder.aws.com/.well-known/ai-plugin.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html",
-            "length": 2482
+            "length": 2842
           },
           "well_known_agent_rules": {
             "url": "https://builder.aws.com/.well-known/agent-rules",
             "status": 200,
             "ok": true,
             "content_type": "text/html",
-            "length": 2482
+            "length": 2842
+          },
+          "well_known_ai_plugin": {
+            "url": "https://builder.aws.com/.well-known/ai-plugin.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html",
+            "length": 2842
           },
           "agents_md": {
             "url": "https://builder.aws.com/AGENTS.md",
             "status": 200,
             "ok": true,
             "content_type": "text/html",
-            "length": 2482
+            "length": 2842
           },
-          "sitemap": {
-            "url": "https://builder.aws.com/sitemap.xml",
+          "llms_txt": {
+            "url": "https://builder.aws.com/llms.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/html",
-            "length": 2482
+            "length": 2842
           },
           "well_known_oauth": {
             "url": "https://builder.aws.com/.well-known/oauth-authorization-server",
             "status": 200,
             "ok": true,
             "content_type": "text/html",
-            "length": 2482
+            "length": 2842
           },
           "well_known_mcp": {
             "url": "https://builder.aws.com/.well-known/mcp-server-card",
             "status": 200,
             "ok": true,
             "content_type": "text/html",
-            "length": 2482
-          },
-          "well_known_mcp_json": {
-            "url": "https://builder.aws.com/.well-known/mcp-server-card.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html",
-            "length": 2482
+            "length": 2842
           },
           "sitemap_index": {
             "url": "https://builder.aws.com/sitemap-index.xml",
             "status": 200,
             "ok": true,
             "content_type": "text/html",
-            "length": 2482
+            "length": 2842
+          },
+          "well_known_mcp_json": {
+            "url": "https://builder.aws.com/.well-known/mcp-server-card.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html",
+            "length": 2842
+          },
+          "sitemap": {
+            "url": "https://builder.aws.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html",
+            "length": 2842
           },
           "agents_json": {
             "url": "https://builder.aws.com/agents.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html",
-            "length": 2482
-          },
-          "openapi_root": {
-            "url": "https://builder.aws.com/openapi.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html",
-            "length": 2482
-          },
-          "openapi_api": {
-            "url": "https://builder.aws.com/api/openapi.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html",
-            "length": 2482
+            "length": 2842
           },
           "openapi_v1": {
             "url": "https://builder.aws.com/v1/openapi.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html",
-            "length": 2482
+            "length": 2842
+          },
+          "openapi_root": {
+            "url": "https://builder.aws.com/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html",
+            "length": 2842
+          },
+          "openapi_api": {
+            "url": "https://builder.aws.com/api/openapi.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html",
+            "length": 2842
           }
         },
         "markdown_negotiation": {
@@ -647,7 +647,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html",
-          "length": 2482
+          "length": 2842
         },
         "robots_analysis": {
           "ai_agents_addressed": [],

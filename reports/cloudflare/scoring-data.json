@@ -4,7 +4,7 @@
     "rubric_version": "v0.3.2",
     "scored_at": "2026-05-14",
     "scorer_endpoint": "https://agentsfirst.dev/mcp",
-    "last_refreshed": "2026-05-21T15:10:09.124Z",
+    "last_refreshed": "2026-05-28T15:09:30.019Z",
     "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://www.cloudflare.com": {
@@ -78,9 +78,16 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://www.cloudflare.com",
-      "timestamp": "2026-05-21T15:10:10.216Z",
+      "timestamp": "2026-05-28T15:09:31.929Z",
       "signals": {
         "surfaces": {
+          "robots_txt": {
+            "url": "https://www.cloudflare.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain",
+            "length": 1097
+          },
           "llms_txt": {
             "url": "https://www.cloudflare.com/llms.txt",
             "status": 200,
@@ -88,19 +95,12 @@
             "content_type": "text/plain",
             "length": 16879
           },
-          "llms_full_txt": {
-            "url": "https://www.cloudflare.com/llms-full.txt",
+          "sitemap": {
+            "url": "https://www.cloudflare.com/sitemap.xml",
             "status": 200,
             "ok": true,
-            "content_type": "text/plain",
-            "length": 204448
-          },
-          "robots_txt": {
-            "url": "https://www.cloudflare.com/robots.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain",
-            "length": 1097
+            "content_type": "application/xml; charset=utf-8",
+            "length": 1403000
           },
           "agents_md": {
             "url": "https://www.cloudflare.com/AGENTS.md",
@@ -109,36 +109,8 @@
             "content_type": "text/markdown; charset=utf-8",
             "length": 721
           },
-          "sitemap": {
-            "url": "https://www.cloudflare.com/sitemap.xml",
-            "status": 200,
-            "ok": true,
-            "content_type": "application/xml; charset=utf-8",
-            "length": 1401437
-          },
-          "agents_json": {
-            "url": "https://www.cloudflare.com/agents.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "application/json",
-            "length": 276
-          },
           "well_known_ai_plugin": {
             "url": "https://www.cloudflare.com/.well-known/ai-plugin.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/plain; charset=UTF-8",
-            "length": 12
-          },
-          "well_known_mcp_json": {
-            "url": "https://www.cloudflare.com/.well-known/mcp-server-card.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/plain; charset=UTF-8",
-            "length": 12
-          },
-          "openapi_api": {
-            "url": "https://www.cloudflare.com/api/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/plain; charset=UTF-8",
@@ -151,8 +123,36 @@
             "content_type": "application/json",
             "length": 1218
           },
+          "llms_full_txt": {
+            "url": "https://www.cloudflare.com/llms-full.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain",
+            "length": 205736
+          },
           "openapi_v1": {
             "url": "https://www.cloudflare.com/v1/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain; charset=UTF-8",
+            "length": 12
+          },
+          "well_known_mcp_json": {
+            "url": "https://www.cloudflare.com/.well-known/mcp-server-card.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain; charset=UTF-8",
+            "length": 12
+          },
+          "agents_json": {
+            "url": "https://www.cloudflare.com/agents.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/json",
+            "length": 276
+          },
+          "openapi_api": {
+            "url": "https://www.cloudflare.com/api/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/plain; charset=UTF-8",
@@ -165,26 +165,26 @@
             "content_type": "text/plain; charset=UTF-8",
             "length": 12
           },
-          "well_known_agent_rules": {
-            "url": "https://www.cloudflare.com/.well-known/agent-rules",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 137854
-          },
           "well_known_oauth": {
             "url": "https://www.cloudflare.com/.well-known/oauth-authorization-server",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 137854
+            "length": 138090
           },
           "well_known_mcp": {
             "url": "https://www.cloudflare.com/.well-known/mcp-server-card",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 137854
+            "length": 138090
+          },
+          "well_known_agent_rules": {
+            "url": "https://www.cloudflare.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 138090
           }
         },
         "markdown_negotiation": {
@@ -198,7 +198,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 1375888
+          "length": 1376524
         },
         "robots_analysis": {
           "ai_agents_addressed": [
@@ -231,7 +231,7 @@
     }
   },
   "https://developers.cloudflare.com": {
-    "score": 35,
+    "score": 45,
     "level": 2,
     "level_name": "Agent-Aware",
     "dimensions": {
@@ -264,12 +264,12 @@
         ]
       },
       "agent-capabilities": {
-        "pts": 0,
+        "pts": 10,
         "max": 30,
-        "status": "fail",
+        "status": "partial",
         "notes": [
           "No MCP Server Card (/.well-known/mcp-server-card[.json] or /agents.json)",
-          "Homepage does not reference MCP / CLI / SDK",
+          "Homepage references agent surfaces: SDK",
           "No OAuth-with-PKCE or ai-plugin discovery"
         ]
       },
@@ -284,23 +284,23 @@
     },
     "anti_patterns_flagged": [
       {
-        "slug": "invisible-product",
-        "name": "The Invisible Product",
-        "evidence": "No MCP Server Card, no CLI/SDK reference, no agent capability surfaces detected."
+        "slug": "agents-without-rules",
+        "name": "Agents Without Rules",
+        "evidence": "Agent capabilities advertised but no /AGENTS.md or /.well-known/agent-rules."
       }
     ],
     "top_moves": [
       {
         "rank": 1,
-        "principle": "agent-capabilities",
-        "gap_pts": 30,
-        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
-      },
-      {
-        "rank": 2,
         "principle": "discoverability",
         "gap_pts": 20,
         "action": "Publish /llms.txt and /AGENTS.md at the site root. Update robots.txt to address GPTBot, ClaudeBot, anthropic-ai, Google-Extended, PerplexityBot, CCBot explicitly."
+      },
+      {
+        "rank": 2,
+        "principle": "agent-capabilities",
+        "gap_pts": 20,
+        "action": "Ship an MCP server (verb-first tools, Zod params), publish /.well-known/mcp-server-card, and reference it from the homepage hero."
       },
       {
         "rank": 3,
@@ -312,16 +312,9 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://developers.cloudflare.com",
-      "timestamp": "2026-05-21T15:10:11.385Z",
+      "timestamp": "2026-05-28T15:09:34.146Z",
       "signals": {
         "surfaces": {
-          "robots_txt": {
-            "url": "https://developers.cloudflare.com/robots.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain",
-            "length": 1460
-          },
           "llms_txt": {
             "url": "https://developers.cloudflare.com/llms.txt",
             "status": 200,
@@ -329,96 +322,103 @@
             "content_type": "text/plain",
             "length": 15327
           },
+          "robots_txt": {
+            "url": "https://developers.cloudflare.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain",
+            "length": 1460
+          },
           "agents_md": {
             "url": "https://developers.cloudflare.com/AGENTS.md",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
-            "length": 30844
-          },
-          "well_known_agent_rules": {
-            "url": "https://developers.cloudflare.com/.well-known/agent-rules",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 30844
+            "length": 32240
           },
           "well_known_ai_plugin": {
             "url": "https://developers.cloudflare.com/.well-known/ai-plugin.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
-            "length": 30844
+            "length": 32240
+          },
+          "well_known_agent_rules": {
+            "url": "https://developers.cloudflare.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 32240
           },
           "well_known_oauth": {
             "url": "https://developers.cloudflare.com/.well-known/oauth-authorization-server",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
-            "length": 30844
-          },
-          "well_known_mcp": {
-            "url": "https://developers.cloudflare.com/.well-known/mcp-server-card",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 30844
+            "length": 32240
           },
           "well_known_mcp_json": {
             "url": "https://developers.cloudflare.com/.well-known/mcp-server-card.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
-            "length": 30844
+            "length": 32240
+          },
+          "well_known_mcp": {
+            "url": "https://developers.cloudflare.com/.well-known/mcp-server-card",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 32240
           },
           "agents_json": {
             "url": "https://developers.cloudflare.com/agents.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
-            "length": 30844
-          },
-          "sitemap_index": {
-            "url": "https://developers.cloudflare.com/sitemap-index.xml",
-            "status": 200,
-            "ok": true,
-            "content_type": "application/xml",
-            "length": 196
+            "length": 32240
           },
           "openapi_v1": {
             "url": "https://developers.cloudflare.com/v1/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
-            "length": 30844
+            "length": 32240
           },
           "sitemap": {
             "url": "https://developers.cloudflare.com/sitemap.xml",
             "status": 200,
             "ok": true,
             "content_type": "application/xml",
-            "length": 196
+            "length": 239
+          },
+          "sitemap_index": {
+            "url": "https://developers.cloudflare.com/sitemap-index.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/xml",
+            "length": 239
           },
           "openapi_root": {
             "url": "https://developers.cloudflare.com/openapi.json",
             "status": 200,
             "ok": true,
             "content_type": "application/json; charset=utf-8",
-            "length": 9945868
+            "length": 10137234
           },
           "openapi_api": {
             "url": "https://developers.cloudflare.com/api/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 2249155
+            "length": 2257411
           },
           "llms_full_txt": {
             "url": "https://developers.cloudflare.com/llms-full.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/markdown; charset=utf-8",
-            "length": 49327387
+            "length": 49543805
           }
         },
         "markdown_negotiation": {
@@ -432,7 +432,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html",
-          "length": 93523
+          "length": 206417
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -448,7 +448,7 @@
           "mentions_mcp": false,
           "mentions_npx": false,
           "mentions_cli": false,
-          "mentions_sdk": false,
+          "mentions_sdk": true,
           "mentions_api": true,
           "mentions_oauth": false,
           "mentions_agents_first": false
@@ -538,7 +538,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://blog.cloudflare.com",
-      "timestamp": "2026-05-21T15:10:12.497Z",
+      "timestamp": "2026-05-28T15:09:35.878Z",
       "signals": {
         "surfaces": {
           "robots_txt": {
@@ -548,19 +548,12 @@
             "content_type": "text/plain; charset=utf-8",
             "length": 2504
           },
-          "llms_txt": {
-            "url": "https://blog.cloudflare.com/llms.txt",
+          "llms_full_txt": {
+            "url": "https://blog.cloudflare.com/llms-full.txt",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
-            "length": 51259
-          },
-          "sitemap_index": {
-            "url": "https://blog.cloudflare.com/sitemap-index.xml",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/plain;charset=UTF-8",
-            "length": 9
+            "length": 51265
           },
           "sitemap": {
             "url": "https://blog.cloudflare.com/sitemap.xml",
@@ -569,78 +562,85 @@
             "content_type": "application/xml",
             "length": 2340
           },
+          "sitemap_index": {
+            "url": "https://blog.cloudflare.com/sitemap-index.xml",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/plain;charset=UTF-8",
+            "length": 9
+          },
           "openapi_api": {
             "url": "https://blog.cloudflare.com/api/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
-            "length": 51267
+            "length": 51268
           },
           "well_known_ai_plugin": {
             "url": "https://blog.cloudflare.com/.well-known/ai-plugin.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
-            "length": 51863
+            "length": 51864
+          },
+          "llms_txt": {
+            "url": "https://blog.cloudflare.com/llms.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51260
           },
           "well_known_mcp_json": {
             "url": "https://blog.cloudflare.com/.well-known/mcp-server-card.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
-            "length": 51869
-          },
-          "llms_full_txt": {
-            "url": "https://blog.cloudflare.com/llms-full.txt",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 51264
-          },
-          "agents_md": {
-            "url": "https://blog.cloudflare.com/AGENTS.md",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 51846
-          },
-          "well_known_oauth": {
-            "url": "https://blog.cloudflare.com/.well-known/oauth-authorization-server",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 51875
-          },
-          "well_known_agent_rules": {
-            "url": "https://blog.cloudflare.com/.well-known/agent-rules",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 51860
+            "length": 51870
           },
           "openapi_v1": {
             "url": "https://blog.cloudflare.com/v1/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
-            "length": 51852
+            "length": 51853
+          },
+          "openapi_root": {
+            "url": "https://blog.cloudflare.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51850
+          },
+          "well_known_oauth": {
+            "url": "https://blog.cloudflare.com/.well-known/oauth-authorization-server",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51876
+          },
+          "agents_md": {
+            "url": "https://blog.cloudflare.com/AGENTS.md",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51847
+          },
+          "well_known_agent_rules": {
+            "url": "https://blog.cloudflare.com/.well-known/agent-rules",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html",
+            "length": 51861
           },
           "well_known_mcp": {
             "url": "https://blog.cloudflare.com/.well-known/mcp-server-card",
             "status": 404,
             "ok": false,
             "content_type": "text/html",
-            "length": 51864
+            "length": 51865
           },
           "agents_json": {
             "url": "https://blog.cloudflare.com/agents.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html",
-            "length": 51848
-          },
-          "openapi_root": {
-            "url": "https://blog.cloudflare.com/openapi.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html",

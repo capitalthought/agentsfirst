@@ -5,9 +5,9 @@ image: /reports/notion/og.png
 author: Joshua Baer
 permalink: /reports/notion/
 report_target: Notion
-report_score: 65
+report_score: 75
 report_level: 3
-report_date: 2026-05-21
+report_date: 2026-05-28
 ---
 
 # Agent Readiness Report: Notion

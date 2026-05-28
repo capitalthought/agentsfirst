@@ -7,7 +7,7 @@ permalink: /reports/google/
 report_target: Google
 report_score: 15
 report_level: 1
-report_date: 2026-05-21
+report_date: 2026-05-28
 ---
 
 # Agent Readiness Report: Google

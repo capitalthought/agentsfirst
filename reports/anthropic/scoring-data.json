@@ -4,7 +4,7 @@
     "rubric_version": "v0.1.2",
     "scored_at": "2026-05-06",
     "scorer_endpoint": "https://agentsfirst.dev/mcp",
-    "last_refreshed": "2026-05-21T15:09:47.504Z",
+    "last_refreshed": "2026-05-28T15:09:04.781Z",
     "updater": "tools/scoreboard-updater/update.mjs"
   },
   "https://claude.ai": {
@@ -84,7 +84,7 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://claude.ai",
-      "timestamp": "2026-05-21T15:09:47.569Z",
+      "timestamp": "2026-05-28T15:09:04.905Z",
       "signals": {
         "surfaces": {
           "agents_md": {
@@ -94,6 +94,20 @@
             "content_type": "text/html; charset=UTF-8",
             "length": 5576
           },
+          "well_known_ai_plugin": {
+            "url": "https://claude.ai/.well-known/ai-plugin.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html",
+            "length": 4566
+          },
+          "well_known_agent_rules": {
+            "url": "https://claude.ai/.well-known/agent-rules",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html",
+            "length": 4566
+          },
           "robots_txt": {
             "url": "https://claude.ai/robots.txt",
             "status": 200,
@@ -101,47 +115,33 @@
             "content_type": "text/plain",
             "length": 390
           },
-          "llms_txt": {
-            "url": "https://claude.ai/llms.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html",
-            "length": 5456
-          },
-          "well_known_agent_rules": {
-            "url": "https://claude.ai/.well-known/agent-rules",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html",
-            "length": 5456
-          },
           "llms_full_txt": {
             "url": "https://claude.ai/llms-full.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/html",
-            "length": 5456
+            "length": 4566
           },
-          "well_known_ai_plugin": {
-            "url": "https://claude.ai/.well-known/ai-plugin.json",
+          "well_known_oauth": {
+            "url": "https://claude.ai/.well-known/oauth-authorization-server",
             "status": 200,
             "ok": true,
             "content_type": "text/html",
-            "length": 5456
+            "length": 4566
           },
-          "agents_json": {
-            "url": "https://claude.ai/agents.json",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 5603
+          "llms_txt": {
+            "url": "https://claude.ai/llms.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html",
+            "length": 4566
           },
-          "sitemap": {
-            "url": "https://claude.ai/sitemap.xml",
-            "status": 403,
-            "ok": false,
-            "content_type": "text/html; charset=UTF-8",
-            "length": 5603
+          "well_known_mcp": {
+            "url": "https://claude.ai/.well-known/mcp-server-card",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html",
+            "length": 4566
           },
           "sitemap_index": {
             "url": "https://claude.ai/sitemap-index.xml",
@@ -150,12 +150,19 @@
             "content_type": "text/html; charset=UTF-8",
             "length": 5621
           },
-          "well_known_oauth": {
-            "url": "https://claude.ai/.well-known/oauth-authorization-server",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html",
-            "length": 5456
+          "agents_json": {
+            "url": "https://claude.ai/agents.json",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 5582
+          },
+          "sitemap": {
+            "url": "https://claude.ai/sitemap.xml",
+            "status": 403,
+            "ok": false,
+            "content_type": "text/html; charset=UTF-8",
+            "length": 5582
           },
           "openapi_root": {
             "url": "https://claude.ai/openapi.json",
@@ -178,19 +185,12 @@
             "content_type": "text/html; charset=UTF-8",
             "length": 5618
           },
-          "well_known_mcp": {
-            "url": "https://claude.ai/.well-known/mcp-server-card",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html",
-            "length": 5456
-          },
           "well_known_mcp_json": {
             "url": "https://claude.ai/.well-known/mcp-server-card.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html",
-            "length": 5456
+            "length": 4566
           }
         },
         "markdown_negotiation": {
@@ -301,57 +301,57 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://docs.anthropic.com",
-      "timestamp": "2026-05-21T15:09:51.619Z",
+      "timestamp": "2026-05-28T15:09:09.343Z",
       "signals": {
         "surfaces": {
-          "well_known_ai_plugin": {
-            "url": "https://docs.anthropic.com/.well-known/ai-plugin.json",
+          "well_known_oauth": {
+            "url": "https://docs.anthropic.com/.well-known/oauth-authorization-server",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 396899
+            "length": 410743
           },
           "agents_md": {
             "url": "https://docs.anthropic.com/AGENTS.md",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 392206
+            "length": 405973
+          },
+          "well_known_ai_plugin": {
+            "url": "https://docs.anthropic.com/.well-known/ai-plugin.json",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/html; charset=utf-8",
+            "length": 410734
           },
           "well_known_agent_rules": {
             "url": "https://docs.anthropic.com/.well-known/agent-rules",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 396899
+            "length": 410734
           },
-          "well_known_oauth": {
-            "url": "https://docs.anthropic.com/.well-known/oauth-authorization-server",
+          "well_known_mcp_json": {
+            "url": "https://docs.anthropic.com/.well-known/mcp-server-card.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 396959
+            "length": 410713
           },
           "well_known_mcp": {
             "url": "https://docs.anthropic.com/.well-known/mcp-server-card",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 396904
+            "length": 410688
           },
           "sitemap_index": {
             "url": "https://docs.anthropic.com/sitemap-index.xml",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 408565
-          },
-          "openapi_api": {
-            "url": "https://docs.anthropic.com/api/openapi.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 396834
+            "length": 422565
           },
           "llms_txt": {
             "url": "https://docs.anthropic.com/llms.txt",
@@ -360,33 +360,26 @@
             "content_type": "text/plain; charset=UTF-8",
             "length": 166575
           },
-          "well_known_mcp_json": {
-            "url": "https://docs.anthropic.com/.well-known/mcp-server-card.json",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/html; charset=utf-8",
-            "length": 396944
-          },
           "agents_json": {
             "url": "https://docs.anthropic.com/agents.json",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 408562
+            "length": 422598
           },
-          "robots_txt": {
-            "url": "https://docs.anthropic.com/robots.txt",
-            "status": 200,
-            "ok": true,
-            "content_type": "text/plain",
-            "length": 80
+          "openapi_root": {
+            "url": "https://docs.anthropic.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 422601
           },
           "openapi_v1": {
             "url": "https://docs.anthropic.com/v1/openapi.json",
             "status": 200,
             "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 396910
+            "length": 410679
           },
           "sitemap": {
             "url": "https://docs.anthropic.com/sitemap.xml",
@@ -395,19 +388,26 @@
             "content_type": "application/xml",
             "length": 357448
           },
-          "openapi_root": {
-            "url": "https://docs.anthropic.com/openapi.json",
-            "status": 404,
-            "ok": false,
+          "openapi_api": {
+            "url": "https://docs.anthropic.com/api/openapi.json",
+            "status": 200,
+            "ok": true,
             "content_type": "text/html; charset=utf-8",
-            "length": 408565
+            "length": 410684
+          },
+          "robots_txt": {
+            "url": "https://docs.anthropic.com/robots.txt",
+            "status": 200,
+            "ok": true,
+            "content_type": "text/plain",
+            "length": 80
           },
           "llms_full_txt": {
             "url": "https://docs.anthropic.com/llms-full.txt",
             "status": 200,
             "ok": true,
             "content_type": "text/plain; charset=utf-8",
-            "length": 87227986
+            "length": 69609359
           }
         },
         "markdown_negotiation": {
@@ -421,7 +421,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 639109
+          "length": 654247
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
@@ -522,23 +522,9 @@
     "probe_signals": {
       "mode": "website",
       "target": "https://www.anthropic.com",
-      "timestamp": "2026-05-21T15:10:03.014Z",
+      "timestamp": "2026-05-28T15:09:20.963Z",
       "signals": {
         "surfaces": {
-          "llms_full_txt": {
-            "url": "https://www.anthropic.com/llms-full.txt",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 58381
-          },
-          "well_known_agent_rules": {
-            "url": "https://www.anthropic.com/.well-known/agent-rules",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 58405
-          },
           "robots_txt": {
             "url": "https://www.anthropic.com/robots.txt",
             "status": 200,
@@ -546,85 +532,96 @@
             "content_type": "text/plain",
             "length": 71
           },
-          "llms_txt": {
-            "url": "https://www.anthropic.com/llms.txt",
+          "well_known_oauth": {
+            "url": "https://www.anthropic.com/.well-known/oauth-authorization-server",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 58471
+            "length": 60830
           },
-          "well_known_ai_plugin": {
-            "url": "https://www.anthropic.com/.well-known/ai-plugin.json",
+          "llms_full_txt": {
+            "url": "https://www.anthropic.com/llms-full.txt",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 58511
+            "length": 60776
           },
-          "sitemap": {
-            "url": "https://www.anthropic.com/sitemap.xml",
-            "status": 200,
-            "ok": true,
-            "content_type": "application/xml",
-            "length": 55989
-          },
-          "well_known_mcp_json": {
-            "url": "https://www.anthropic.com/.well-known/mcp-server-card.json",
+          "well_known_agent_rules": {
+            "url": "https://www.anthropic.com/.well-known/agent-rules",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 58623
-          },
-          "agents_json": {
-            "url": "https://www.anthropic.com/agents.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 58577
-          },
-          "sitemap_index": {
-            "url": "https://www.anthropic.com/sitemap-index.xml",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 58489
-          },
-          "openapi_api": {
-            "url": "https://www.anthropic.com/api/openapi.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 54862
+            "length": 60900
           },
           "agents_md": {
             "url": "https://www.anthropic.com/AGENTS.md",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 58573
+            "length": 60868
           },
-          "well_known_oauth": {
-            "url": "https://www.anthropic.com/.well-known/oauth-authorization-server",
+          "sitemap": {
+            "url": "https://www.anthropic.com/sitemap.xml",
+            "status": 200,
+            "ok": true,
+            "content_type": "application/xml",
+            "length": 56903
+          },
+          "sitemap_index": {
+            "url": "https://www.anthropic.com/sitemap-index.xml",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 58635
+            "length": 60784
+          },
+          "well_known_ai_plugin": {
+            "url": "https://www.anthropic.com/.well-known/ai-plugin.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 60806
+          },
+          "agents_json": {
+            "url": "https://www.anthropic.com/agents.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 60872
+          },
+          "llms_txt": {
+            "url": "https://www.anthropic.com/llms.txt",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 60766
+          },
+          "well_known_mcp_json": {
+            "url": "https://www.anthropic.com/.well-known/mcp-server-card.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 60918
           },
           "well_known_mcp": {
             "url": "https://www.anthropic.com/.well-known/mcp-server-card",
             "status": 404,
             "ok": false,
             "content_type": "text/html; charset=utf-8",
-            "length": 58613
-          },
-          "openapi_v1": {
-            "url": "https://www.anthropic.com/v1/openapi.json",
-            "status": 404,
-            "ok": false,
-            "content_type": "text/html; charset=utf-8",
-            "length": 58589
+            "length": 60908
           },
           "openapi_root": {
             "url": "https://www.anthropic.com/openapi.json",
+            "status": 404,
+            "ok": false,
+            "content_type": "text/html; charset=utf-8",
+            "length": 60674
+          },
+          "openapi_v1": {
+            "url": "https://www.anthropic.com/v1/openapi.json",
+            "error": "The operation was aborted"
+          },
+          "openapi_api": {
+            "url": "https://www.anthropic.com/api/openapi.json",
             "error": "The operation was aborted"
           }
         },
@@ -639,7 +636,7 @@
           "status": 200,
           "ok": true,
           "content_type": "text/html; charset=utf-8",
-          "length": 257686
+          "length": 258798
         },
         "robots_analysis": {
           "ai_agents_addressed": [],
