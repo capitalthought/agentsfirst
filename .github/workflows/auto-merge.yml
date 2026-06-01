@@ -1,9 +1,8 @@
 name: Auto-merge PRs
+
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
-  check_suite:
-    types: [completed]
+    types: [opened, synchronize, reopened, ready_for_review]
 
 permissions:
   contents: write
@@ -12,8 +11,31 @@ permissions:
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
+    # Only non-draft PRs targeting the default branch.
+    if: >-
+      github.event.pull_request.draft == false &&
+      github.event.pull_request.base.ref == github.event.repository.default_branch
     steps:
-      - name: Enable auto-merge
-        uses: peter-evans/enable-pull-request-automerge@v3
-        with:
-          merge-method: squash
+      - name: Enable squash auto-merge (fall back to direct merge when nothing gates it)
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          set -uo pipefail
+          # Prefer native auto-merge: GitHub squash-merges once required checks pass.
+          # Pass the PR number explicitly — never rely on `gh` inferring it from a
+          # checked-out branch (there is no checkout here; that inference was the bug
+          # that made every run die with "could not determine current branch").
+          if gh pr merge "$PR" --repo "$REPO" --squash --auto; then
+            echo "✅ auto-merge enabled for #$PR (merges when checks pass)"
+            exit 0
+          fi
+          # GitHub refuses to *enable* auto-merge when a PR is already in a clean,
+          # mergeable state with no pending required checks — there is nothing to
+          # wait for. This repo's only CI (contract-ci) is path-filtered, so most
+          # PRs have no gating check and land here. Merge directly.
+          # If the PR genuinely isn't mergeable (conflicts), this also fails and the
+          # job goes red — which is the correct, visible outcome.
+          echo "auto-merge not enabled (clean status / no required checks) — merging directly"
+          gh pr merge "$PR" --repo "$REPO" --squash
