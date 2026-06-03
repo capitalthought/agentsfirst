@@ -4,6 +4,7 @@ description: "Score: 5/100 · Level 0 (No agent access). App Orchid is a Capital
 noindex: true
 sitemap: false
 image: /scores/portfolio-app-orchid-2fa74a5f1af4/og.png
+brand_domain: apporchid.com
 author: Joshua Baer
 ---
 

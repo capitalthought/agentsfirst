@@ -4,6 +4,7 @@ description: "Score: 15/100 · Level 1 (Agent as Afterthought). Vatn Systems is 
 noindex: true
 sitemap: false
 image: /scores/portfolio-vatn-systems-80d7c321c80c/og.png
+brand_domain: vatnsystems.com
 author: Joshua Baer
 ---
 

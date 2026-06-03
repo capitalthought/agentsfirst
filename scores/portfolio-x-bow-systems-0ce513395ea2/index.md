@@ -4,6 +4,7 @@ description: "Score: 0/100 · Level 0 (No agent access). X-Bow Systems is a Capi
 noindex: true
 sitemap: false
 image: /scores/portfolio-x-bow-systems-0ce513395ea2/og.png
+brand_domain: xbowsystems.com
 author: Joshua Baer
 ---
 

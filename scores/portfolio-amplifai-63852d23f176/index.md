@@ -4,6 +4,7 @@ description: "Score: 5/100 · Level 0 (No agent access). AmplifAI is a Capital F
 noindex: true
 sitemap: false
 image: /scores/portfolio-amplifai-63852d23f176/og.png
+brand_domain: amplifai.com
 author: Joshua Baer
 ---
 

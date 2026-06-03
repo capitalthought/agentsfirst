@@ -4,6 +4,7 @@ description: "Score: 50/100 · Level 2 (Agent-Aware). ICON is a Capital Factory 
 noindex: true
 sitemap: false
 image: /scores/portfolio-icon-cefab243df54/og.png
+brand_domain: iconbuild.com
 author: Joshua Baer
 ---
 

@@ -4,6 +4,7 @@ description: "Score: 0/100 · Level 0 (No agent access). TAE is a Capital Factor
 noindex: true
 sitemap: false
 image: /scores/portfolio-tae-2ab0289348b4/og.png
+brand_domain: tae.com
 author: Joshua Baer
 ---
 

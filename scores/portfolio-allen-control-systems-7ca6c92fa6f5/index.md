@@ -4,6 +4,7 @@ description: "Score: 5/100 · Level 0 (No agent access). Allen Control Systems i
 noindex: true
 sitemap: false
 image: /scores/portfolio-allen-control-systems-7ca6c92fa6f5/og.png
+brand_domain: allencontrolsystems.com
 author: Joshua Baer
 ---
 
