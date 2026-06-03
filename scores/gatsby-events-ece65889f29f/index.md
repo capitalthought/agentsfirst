@@ -3,7 +3,7 @@ title: "Agents First Score — gatsby.events"
 description: "Score: 15/100 · Level 1 (Agent as Afterthought). Gatsby.events shipped a thoughtful /llms.txt and 655 KB /llms-full.txt — but no MCP server, no CLI, no SDK, no AGENTS.md. Docs are agent-ready; the product isn't."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/gatsby-events-ece65889f29f/og.png
 author: Joshua Baer
 ---
 

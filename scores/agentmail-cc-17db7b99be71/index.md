@@ -3,7 +3,7 @@ title: "Agents First Score — agentmail.cc"
 description: "Score: 66/100 · Level 3 (Agents First). AgentMail's llms.txt literally walks an autonomous agent through Step 0, Step 1, Step 2 of onboarding. Textbook implementation."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/agentmail-cc-17db7b99be71/og.png
 author: Joshua Baer
 ---
 

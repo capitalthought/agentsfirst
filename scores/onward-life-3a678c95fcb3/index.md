@@ -3,7 +3,7 @@ title: "Agents First Score — onward.life"
 description: "Score: 15/100 · Level 1 (Agent as Afterthought). Onward is a consumer divorce-companion web app an agent can read about via a Yoast llms.txt but cannot use — no AGENTS.md, no MCP server, no markdown negotiation."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/onward-life-3a678c95fcb3/og.png
 author: Joshua Baer
 ---
 

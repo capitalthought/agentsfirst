@@ -14,3 +14,6 @@ docs/campaigns/cf-portfolio-pilot-emails.csv
 tools/*/dist/
 # agentsfirst-radar moved to capitalthought/agentsfirst-radar (private companion repo).
 # This .gitignore no longer needs the radar's state allowlist.
+
+# og-card build cache (fetched favicons)
+tools/og-card/.logo-cache/

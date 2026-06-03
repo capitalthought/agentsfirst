@@ -3,7 +3,7 @@ title: "Agents First Score — wootznano.com"
 description: "Score: 5/100 · Level 0 (No agent access). Wootz Nano sells carbon-nanotube antennas and wires to Tier-1 defense primes but has no agent-discovery surface — standard WordPress with no AI directives, no llms.txt, no AGENTS.md."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/wootz-nano-eb1ff413e146/og.png
 author: Joshua Baer
 ---
 

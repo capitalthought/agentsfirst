@@ -3,7 +3,7 @@ title: "Agents First Score — superhuman.com"
 description: "Score: 5/100 · Level 0 (No agent access). Superhuman's robots.txt names Twitter, Facebook, LinkedIn, Telegram — but no AI agent. Textbook Invisible Product on one of the highest-leverage agent surfaces."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/superhuman-com-3ce6669a5e90/og.png
 author: Joshua Baer
 ---
 

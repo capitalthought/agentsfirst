@@ -3,7 +3,7 @@ title: "Agents First Score — tiaminetworks.com"
 description: "Score: 5/100 · Level 0 (No agent access). Tiami Networks is a federally-funded passive-radar / 5G-sensing company with no agent-discovery surface — generic WordPress robots.txt, no llms.txt, no AGENTS.md, no OpenAPI."
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/tiami-networks-f7190e080974/og.png
 author: Joshua Baer
 ---
 

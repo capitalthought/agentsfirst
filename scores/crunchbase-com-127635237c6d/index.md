@@ -3,7 +3,7 @@ title: "Agents First Score — crunchbase.com"
 description: "Score: 37/100 · Level 2 (Agent-Aware). Crunchbase is the textbook fortress-data product: every agent-readiness signal exists technically — but every answer is 'no, pay for the API.'"
 noindex: true
 sitemap: false
-image: /og-image.png
+image: /scores/crunchbase-com-127635237c6d/og.png
 author: Joshua Baer
 ---
 
