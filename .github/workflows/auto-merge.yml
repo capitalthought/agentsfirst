@@ -18,7 +18,9 @@ jobs:
     steps:
       - name: Enable squash auto-merge (fall back to direct merge when nothing gates it)
         env:
-          GH_TOKEN: ${{ github.token }}
+          # MERGE_PAT (org secret) attributes the squash-merge push to a user so push-event
+          # workflows (CI-on-main + deploy) fire. Falls back to github.token if unset.
+          GH_TOKEN: ${{ secrets.MERGE_PAT || github.token }}
           REPO: ${{ github.repository }}
           PR: ${{ github.event.pull_request.number }}
         run: |
