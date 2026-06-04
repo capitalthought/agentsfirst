@@ -1,0 +1,104 @@
+<!-- Self-serve Agents First reviewer. Posts to the Worker at /api/review,
+     shows the score inline, links to the shareable /r/<token> page.
+     Progressive Turnstile: the challenge only appears if the API asks for it. -->
+<div class="afr" id="afr">
+  <form class="afr-form" id="afr-form" autocomplete="off">
+    <input class="afr-url" id="afr-url" type="url" inputmode="url" required
+           placeholder="https://yourcompany.com" aria-label="Website URL to score">
+    <button class="afr-btn" id="afr-btn" type="submit">Score it</button>
+  </form>
+  <div class="afr-turnstile" id="afr-turnstile" hidden></div>
+  <p class="afr-hint" id="afr-hint">Probes the site for agent-discoverable surfaces — llms.txt, AGENTS.md, MCP card, OpenAPI, OAuth, markdown. No login.</p>
+  <div class="afr-out" id="afr-out" hidden></div>
+</div>
+
+<style>
+  .afr{max-width:640px;margin:8px 0 4px;font-family:-apple-system,system-ui,sans-serif}
+  .afr-form{display:flex;gap:10px;flex-wrap:wrap}
+  .afr-url{flex:1;min-width:240px;padding:13px 15px;font-size:16px;border:1px solid #d0d7de;border-radius:9px;background:#fff;color:#111}
+  .afr-url:focus{outline:none;border-color:#2da44e;box-shadow:0 0 0 3px rgba(45,164,78,.18)}
+  .afr-btn{padding:13px 22px;font-size:16px;font-weight:700;color:#fff;background:#2da44e;border:0;border-radius:9px;cursor:pointer}
+  .afr-btn:hover{background:#2c974b}
+  .afr-btn:disabled{opacity:.6;cursor:progress}
+  .afr-turnstile{margin-top:12px}
+  .afr-hint{font-size:13px;color:#6e7781;margin:10px 2px 0}
+  .afr-out{margin-top:18px;border:1px solid #d0d7de;border-radius:12px;padding:22px;background:#0d1117;color:#c9d1d9}
+  .afr-out .host{font-size:18px;font-weight:700;color:#f0f6fc;word-break:break-all}
+  .afr-out .score{font-size:54px;font-weight:800;line-height:1.05;margin:6px 0 0}
+  .afr-out .level{font-size:15px;font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+  .afr-out .moves{margin:14px 0 0;padding-left:18px;font-size:14px}
+  .afr-out .moves li{margin:4px 0}
+  .afr-out .links{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
+  .afr-out a,.afr-out button.copy{font-size:14px;font-weight:600;color:#58a6ff;background:none;border:0;padding:0;cursor:pointer;text-decoration:none}
+  .afr-out a:hover,.afr-out button.copy:hover{text-decoration:underline}
+  .afr-err{margin-top:16px;padding:12px 15px;border-radius:9px;background:#fff5f5;border:1px solid #ffc9c9;color:#b42318;font-size:14px}
+</style>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+<script>
+(function(){
+  var SITEKEY = "0x4AAAAAADecp_gTPuTNaM1S";
+  var API = "/api/review";
+  var LVL = {0:"#f85149",1:"#fb8500",2:"#d29922",3:"#2da44e",4:"#58a6ff"};
+  var form=document.getElementById('afr-form'), input=document.getElementById('afr-url'),
+      btn=document.getElementById('afr-btn'), out=document.getElementById('afr-out'),
+      hint=document.getElementById('afr-hint'), tsBox=document.getElementById('afr-turnstile');
+  var widgetId=null, pendingUrl=null;
+
+  function busy(b){ btn.disabled=b; btn.textContent=b?"Scoring…":"Score it"; }
+  function showErr(msg){ out.hidden=false; out.innerHTML='<div class="afr-err">'+msg+'</div>'; }
+  function esc(s){ return String(s).replace(/[<>&"]/g,function(c){return {'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'}[c];}); }
+
+  function showResult(d){
+    var color = LVL[d.level]||"#2da44e";
+    var moves = (d.top_moves||[]).slice(0,3).map(function(m){
+      return '<li><strong>+'+m.gap_pts+'</strong> '+esc(m.action)+'</li>'; }).join('');
+    var share = "https://agentsfirst.dev"+d.path;
+    out.hidden=false;
+    out.innerHTML =
+      '<div class="host">'+esc(d.hostname)+'</div>'+
+      '<div class="score" style="color:'+color+'">'+d.score+' / 100</div>'+
+      '<div class="level" style="color:'+color+'">Level '+d.level+' — '+esc(d.level_name)+'</div>'+
+      (moves?'<ul class="moves">'+moves+'</ul>':'')+
+      '<div class="links">'+
+        '<a href="'+d.path+'">View full report &amp; share &rarr;</a>'+
+        '<button class="copy" type="button">Copy share link</button>'+
+      '</div>';
+    out.querySelector('.copy').onclick=function(){
+      navigator.clipboard.writeText(share).then(function(){ this.textContent="Link copied ✓"; }.bind(this)); };
+  }
+
+  function review(url, token){
+    busy(true); hint.style.visibility="hidden";
+    fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(token?{url:url,turnstileToken:token}:{url:url})})
+    .then(function(r){return r.json();})
+    .then(function(d){
+      busy(false);
+      if(d.ok){ tsBox.hidden=true; showResult(d); return; }
+      if(d.error==="turnstile_required"){ pendingUrl=url; renderTurnstile(); return; }
+      if(d.error==="turnstile_failed"){ showErr("Verification failed — please try the checkbox again."); return; }
+      if(d.error==="blocked_host"){ showErr("That doesn't look like a public website. Enter a full https:// URL with a real domain."); return; }
+      if(d.error==="rate_limited"){ showErr("You've hit the rate limit. Give it a few minutes and try again."); return; }
+      showErr("Couldn't score that site"+(d.detail?": "+esc(d.detail):".")); })
+    .catch(function(){ busy(false); showErr("Network error — please try again."); });
+  }
+
+  function renderTurnstile(){
+    tsBox.hidden=false;
+    hint.textContent="Quick check you're human, then it'll score automatically.";
+    hint.style.visibility="visible";
+    if(widgetId!==null){ if(window.turnstile) window.turnstile.reset(widgetId); return; }
+    if(!window.turnstile){ setTimeout(renderTurnstile,300); return; }
+    widgetId = window.turnstile.render(tsBox, { sitekey:SITEKEY, callback:function(token){
+      if(pendingUrl) review(pendingUrl, token); } });
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var url=input.value.trim(); if(!url) return;
+    if(!/^https?:\/\//i.test(url)) url="https://"+url;
+    out.hidden=true; review(url, null);
+  });
+})();
+</script>

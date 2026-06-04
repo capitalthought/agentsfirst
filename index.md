@@ -11,6 +11,14 @@ author: Joshua Baer
 
 ---
 
+## Score your site against the framework
+
+Enter a URL — it probes what an agent actually finds (llms.txt, AGENTS.md, MCP card, OpenAPI, OAuth, markdown negotiation) and scores it 0–100, on the spot. You get a shareable result card.
+
+{% include reviewer.html %}
+
+---
+
 ## Every product is getting a second customer
 
 The human who pays.

@@ -12,12 +12,35 @@ compatibility_flags = ["nodejs_compat"]
 # Avoids accidental deploys to wrong-account login sessions.
 account_id = "ac5a9971e6d58775db8f543db1489403"
 
-# Path-scoped route. Cloudflare matches on the full path; only /mcp and /mcp/*
-# reach the Worker. The apex (/) and the rest of the site continue to flow to
-# GitHub Pages via the existing CNAME.
+# Path-scoped routes. Cloudflare matches on the full path; only these reach the
+# Worker. The apex (/) and the rest of the site continue to flow to GitHub Pages.
+# /mcp*          — MCP server (existing)
+# /api/review    — self-serve reviewer API (POST)
+# /r/*           — shareable result pages + og.png
+# NB: /review (the form) is intentionally NOT routed here — it's a Jekyll page.
 [[routes]]
 pattern = "agentsfirst.dev/mcp*"
 zone_name = "agentsfirst.dev"
+
+[[routes]]
+pattern = "agentsfirst.dev/api/review"
+zone_name = "agentsfirst.dev"
+
+[[routes]]
+pattern = "agentsfirst.dev/r/*"
+zone_name = "agentsfirst.dev"
+
+# Self-serve reviewer storage: result records (r:<token>, 90d TTL) + rate-limit
+# counters (rl:*). id filled in after `wrangler kv namespace create REVIEWS`.
+[[kv_namespaces]]
+binding = "REVIEWS"
+id = "dbdc6e1ee0544425b1f701da9e3302d7"
+
+# Bundle the OG-card font as raw bytes (ArrayBuffer) for resvg.
+[[rules]]
+type = "Data"
+globs = ["**/*.ttf"]
+fallthrough = true
 
 [observability]
 enabled = true

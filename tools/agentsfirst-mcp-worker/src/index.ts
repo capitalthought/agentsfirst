@@ -12,6 +12,7 @@
 import { WebStandardStreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/webStandardStreamableHttp.js';
 
 import { createServer, SERVER_NAME, TOOL_NAMES, VERSION } from './server.js';
+import { handleReview, handleResultRoute, type ReviewEnv } from './review-api.js';
 
 const FRAMEWORK_URL = 'https://agentsfirst.dev';
 const ENDPOINT_URL = 'https://agentsfirst.dev/mcp';
@@ -22,6 +23,11 @@ interface Env {
   // Worker still scores in environments where the binding isn't configured
   // (e.g. local `wrangler dev` with no datasets attached).
   SCORE_EVENTS?: AnalyticsEngineDataset;
+  // Self-serve reviewer: KV store for results + rate-limit counters, and the
+  // Turnstile secret used to gate bursts. Both optional so /mcp still works
+  // when they aren't bound.
+  REVIEWS?: KVNamespace;
+  TURNSTILE_SECRET?: string;
   [key: string]: unknown;
 }
 
@@ -173,6 +179,17 @@ export default {
     // CORS preflight — answer for any /mcp path.
     if (request.method === 'OPTIONS' && pathname.startsWith('/mcp')) {
       return new Response(null, { status: 204, headers: CORS_HEADERS });
+    }
+
+    // ── Self-serve reviewer (public) ──
+    if (pathname === '/api/review') {
+      if (request.method === 'OPTIONS') {
+        return new Response(null, { status: 204, headers: CORS_HEADERS });
+      }
+      return handleReview(request, env as ReviewEnv);
+    }
+    if (pathname.startsWith('/r/')) {
+      return handleResultRoute(request, env as ReviewEnv, pathname);
     }
 
     // Healthcheck
